@@ -3,6 +3,15 @@ import navbar from "./navbar";
 import sidebar from "./sidebar";
 
 export default hopeTheme({
+
+  backToTop: true,
+  fullscreen: true,
+  themeColor: {
+    blue: "#2196f3",
+    red: "#f26d6d",
+    green: "#3eaf7c",
+    orange: "#fb9b5f",
+  },
   hostname: "https://vuepress-theme-hope-v2-demo.mrhope.site",
 
   author: {
@@ -84,12 +93,11 @@ export default hopeTheme({
       /**
        * Using giscus
        */
-      type: "giscus",
-      repo: "vuepress-theme-hope/giscus-discussions",
-      repoId: "R_kgDOG_Pt2A",
+      provider: "Giscus",
+      repo: "GISFSDE/vuepressd-discussions",
+      repoId: "R_kgDOHc7-gA",
       category: "Announcements",
-      categoryId: "DIC_kwDOG_Pt2M4COD69",
-
+      categoryId: "DIC_kwDOHc7-gM4CPewo",
       /**
        * Using twikoo
        */
