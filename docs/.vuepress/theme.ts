@@ -40,7 +40,7 @@ export default hopeTheme({
   pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime"],
 
   blog: {
-    description: "一个前端开发者",
+    description: "-----GISFSDE(GIS Full Stack Developer)-----GIS开发、JAVA全栈开发",
     intro: "/intro.html",
     medias: {
       Baidu: "https://example.com",

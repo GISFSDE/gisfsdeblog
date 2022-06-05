@@ -4,13 +4,13 @@ layout: Blog
 icon: home
 title: 博客主页
 heroImage: /logo.svg
-heroText: 你博客的名称
+heroText: GIS-FSDE(GIS Full Stack Developer)
 heroFullScreen: true
-tagline: 你可以在这里放置你的口号与标语
+tagline: GIS开发、JAVA全栈开发。
 projects:
   - icon: project
-    name: 项目名称
-    desc: 项目详细描述
+    name: GISFSDE
+    desc: GIS开发、JAVA全栈开发。
     link: https://你的项目链接
 
   - icon: link

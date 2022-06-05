@@ -43,8 +43,6 @@ pnpm docs:build
 
 一个基本的项目结构如下:
 
-
-
 ```text
 .
 ├── .github (可选的) → GitHub 配置文件存放路径
@@ -77,3 +75,7 @@ pnpm docs:build
 
 
 # 部署
+
+pnpm docs:build
+
+`.vuepress/dist` 文件夹下
