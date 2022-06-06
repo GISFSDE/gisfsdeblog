@@ -3,8 +3,8 @@ import theme from "./theme";
 
 export default defineUserConfig({
   lang: "zh-CN",
-  title: "主题演示",
-  description: "vuepress-theme-hope 的演示",
+  title: "GIS-FSDE",
+  description: "GISFSDE(GIS Full Stack Developer)--GIS开发、JAVA全栈开发",
 
   base: "/",
 
