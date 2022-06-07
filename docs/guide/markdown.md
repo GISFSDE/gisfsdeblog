@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: Markdown 增强
+date: 2022-06-06
 category:
   - 使用指南
 tag:
@@ -287,8 +288,8 @@ $$
 ::: normal-demo 一个普通 Demo
 
 ```html
-<h1>VuePress Theme Hope</h1>
-<p><span id="very">非常</span>强大!</p>
+\<h1>VuePress Theme Hope\</h1>
+\<p>\<span id="very">非常\</span>强大!\</p>
 ```
 
 ```js

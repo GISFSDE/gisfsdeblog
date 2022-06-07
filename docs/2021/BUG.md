@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: BUG
+date: 2022-06-06
 category:
   - BUG
 tag:
@@ -81,12 +82,12 @@ public class TomcatServerConfig {
 ## ‘parent.relativePath’ of POM
 
 ```xml
-<parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.6.RELEASE</version>
-        <relativePath /><!-- 加上这个-->
-    </parent>
+\<parent>
+        \<groupId>org.springframework.boot\</groupId>
+        \<artifactId>spring-boot-starter-parent\</artifactId>
+        \<version>2.2.6.RELEASE\</version>
+        \<relativePath /><!-- 加上这个-->
+    \</parent>
 ```
 
 # JAVA
@@ -95,33 +96,33 @@ public class TomcatServerConfig {
 
 ```xml
 <!--引入本地资源-->
-        <resources>
+        \<resources>
             <!--加载lib文件，特殊情况下会有lib，但大部分都靠依赖下载了-->
-            <resource>
-                <directory>lib</directory>
-                <targetPath>BOOT-INF/lib/</targetPath>
-                <includes>
-                    <include>**/*.jar</include>
-                </includes>
-            </resource>
+            \<resource>
+                \<directory>lib\</directory>
+                \<targetPath>BOOT-INF/lib/\</targetPath>
+                \<includes>
+                    \<include>**/*.jar\</include>
+                \</includes>
+            \</resource>
             <!--打jar包-->
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.properties</include>
-                    <include>**/*.xml</include>
-                </includes>
-            </resource>
+            \<resource>
+                \<directory>src/main/java\</directory>
+                \<includes>
+                    \<include>**/*.properties\</include>
+                    \<include>**/*.xml\</include>
+                \</includes>
+            \</resource>
             <!--将properties和xml文件编译-->
-            <resource>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>**/*.properties</include>
-                    <include>**/*.xml</include>
-                </includes>
-                <filtering>false</filtering>
-            </resource>
-        </resources>
+            \<resource>
+                \<directory>src/main/resources\</directory>
+                \<includes>
+                    \<include>**/*.properties\</include>
+                    \<include>**/*.xml\</include>
+                \</includes>
+                \<filtering>false\</filtering>
+            \</resource>
+        \</resources>
 ```
 
 

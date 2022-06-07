@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: MongoDB
+date: 2022-06-06
 category:
   - MongoDB
 tag:
@@ -166,7 +167,7 @@ db.createCollection("mycoll", {capped:true, size:100000})
 dbname.system.*
 ```
 
-在MongoDB数据库中名字空间 <dbname>.system.* 是包含多种系统信息的特殊集合(Collection)，如下:
+在MongoDB数据库中名字空间 \<dbname>.system.* 是包含多种系统信息的特殊集合(Collection)，如下:
 
 | 集合命名空间             | 描述                                      |
 | :----------------------- | :---------------------------------------- |
@@ -178,9 +179,9 @@ dbname.system.*
 
 对于修改系统集合中的对象有如下限制。
 
-在{{system.indexes}}插入数据，可以创建索引。但除此之外该表信息是不可变的(特殊的drop index命令将自动更新相关信息)。
+在system.indexes插入数据，可以创建索引。但除此之外该表信息是不可变的(特殊的drop index命令将自动更新相关信息)。
 
-{{system.users}}是可修改的。 {{system.profile}}是可删除的。
+system.users是可修改的。 system.profile是可删除的。
 
 ------
 
@@ -491,12 +492,12 @@ DBCollection.prototype.replaceOne@src/mongo/shell/crud_api.js:477:16
 
 ```bash
 db.collection.update(
-   <query>,
-   <update>,
+   \<query>,
+   \<update>,
    {
-     upsert: <boolean>,
-     multi: <boolean>,
-     writeConcern: <document>
+     upsert: \<boolean>,
+     multi: \<boolean>,
+     writeConcern: \<document>
    }
 )
 ```
@@ -569,10 +570,10 @@ WriteResult({ "nMatched" : 2, "nUpserted" : 0, "nModified" : 2 })
 
 ```
 db.collection.remove(
-   <query>,
+   \<query>,
    {
-     justOne: <boolean>,
-     writeConcern: <document>
+     justOne: \<boolean>,
+     writeConcern: \<document>
    }
 )
 ```
@@ -1408,10 +1409,10 @@ mongodb使用 mongorestore 命令来恢复备份的数据。
 mongorestore命令脚本语法如下：
 
 ```
->mongorestore -h <hostname><:port> -d dbname <path>
+>mongorestore -h \<hostname>\<:port> -d dbname \<path>
 ```
 
-- --host <:port>, -h <:port>：
+- --host \<:port>, -h \<:port>：
 
   MongoDB所在服务器地址，默认为： localhost:27017
 
@@ -1423,17 +1424,17 @@ mongorestore命令脚本语法如下：
 
   恢复的时候，先删除当前数据，然后恢复备份的数据。就是说，恢复后，备份后添加修改的数据都会被删除，慎用哦！
 
-- <path>：
+- \<path>：
 
   mongorestore 最后的一个参数，设置备份数据所在位置，例如：c:\data\dump\test。
 
-  你不能同时指定 <path> 和 --dir 选项，--dir也可以设置备份目录。
+  你不能同时指定 \<path> 和 --dir 选项，--dir也可以设置备份目录。
 
 - --dir：
 
   指定备份的目录
 
-  你不能同时指定 <path> 和 --dir 选项。
+  你不能同时指定 \<path> 和 --dir 选项。
 
 接下来我们执行以下命令:
 
@@ -1491,7 +1492,7 @@ D:\set up\mongodb\bin>mongotop
 
 ![img](https://www.runoob.com/wp-content/uploads/2013/12/29122412-e32a9f09e46e496a8833433fdb421311.gif)
 
-后面的10是*<sleeptime>*参数 ，可以不使用，等待的时间长度，以秒为单位，mongotop等待调用之间。通过的默认mongotop返回数据的每一秒。
+后面的10是*\<sleeptime>*参数 ，可以不使用，等待的时间长度，以秒为单位，mongotop等待调用之间。通过的默认mongotop返回数据的每一秒。
 
 ```
  E:\mongodb-win32-x86_64-2.2.1\bin>mongotop --locks
@@ -1547,11 +1548,11 @@ mongo命令连接服务器后打开工具
 
 ```xml
 <!--MongoDB-->
-<dependency>
-   <groupId>org.mongodb</groupId>
-   <artifactId>mongodb-driver-sync</artifactId>
-   <version>4.4.1</version>
-</dependency>
+\<dependency>
+   \<groupId>org.mongodb\</groupId>
+   \<artifactId>mongodb-driver-sync\</artifactId>
+   \<version>4.4.1\</version>
+\</dependency>
 ```
 
 
@@ -1568,11 +1569,11 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 public class HelloMongoDB {
 //1.添加依赖
-//            <dependency>
-//            <groupId>org.mongodb</groupId>
-//            <artifactId>mongodb-driver-sync</artifactId>
-//            <version>4.4.1</version>
-//        </dependency>
+//            \<dependency>
+//            \<groupId>org.mongodb\</groupId>
+//            \<artifactId>mongodb-driver-sync\</artifactId>
+//            \<version>4.4.1\</version>
+//        \</dependency>
 
 //    2.连接到数据库
 public static void main( String args[] ){
@@ -1597,7 +1598,7 @@ public static void main( String args[] ){
 //        show dbs
         MongoDatabase database = mongoClient.getDatabase("student");
 //        show collections 或 show tables
-        MongoCollection<Document> collection = database.getCollection("student");
+        MongoCollection\<Document> collection = database.getCollection("student");
         Document doc = collection.find(eq("age", 11)).first();
         System.out.println(doc.toJson()+"==========");
     }

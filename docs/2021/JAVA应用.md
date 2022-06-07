@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: JAVA应用
+date: 2022-06-06
 category:
   - JAVA应用
 tag:
@@ -235,7 +236,7 @@ static Map analysisJsonResultMap = new HashMap();
         //如果obj为json数组
         if (objJson instanceof JSONArray) {
             JSONArray objArray = (JSONArray) objJson;
-            for (int i = 0; i < objArray.size(); i++) {
+            for (int i = 0; i \< objArray.size(); i++) {
                 analysisJson(objArray.get(i));
             }
         }
@@ -311,24 +312,24 @@ import org.junit.Test;
 
 //POM
 //junit4
-<dependency>
-    <groupId>junit</groupId>
-    <artifactId>junit</artifactId>
-    <version>4.13.1</version>
-    <scope>test</scope>
-</dependency>
+\<dependency>
+    \<groupId>junit\</groupId>
+    \<artifactId>junit\</artifactId>
+    \<version>4.13.1\</version>
+    \<scope>test\</scope>
+\</dependency>
 //junit5
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-test</artifactId>
-    <scope>test</scope>
-    <exclusions>
-        <exclusion>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-        </exclusion>
-    </exclusions>
-</dependency>
+\<dependency>
+    \<groupId>org.springframework.boot\</groupId>
+    \<artifactId>spring-boot-starter-test\</artifactId>
+    \<scope>test\</scope>
+    \<exclusions>
+        \<exclusion>
+            \<groupId>org.junit.vintage\</groupId>
+            \<artifactId>junit-vintage-engine\</artifactId>
+        \</exclusion>
+    \</exclusions>
+\</dependency>
 
 - JUnit — The de-facto standard for unit testing Java applications.
 - Spring Test & Spring Boot Test — Utilities and integration test support for Spring Boot applications.
@@ -1110,8 +1111,8 @@ import com.jeethink.common.utils.StringUtils;
 public class Convert
 {
     /**
-     * 转换为字符串<br>
-     * 如果给定的值为null，或者转换失败，返回默认值<br>
+     * 转换为字符串\<br>
+     * 如果给定的值为null，或者转换失败，返回默认值\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1132,8 +1133,8 @@ public class Convert
     }
 
     /**
-     * 转换为字符串<br>
-     * 如果给定的值为<code>null</code>，或者转换失败，返回默认值<code>null</code><br>
+     * 转换为字符串\<br>
+     * 如果给定的值为\<code>null\</code>，或者转换失败，返回默认值\<code>null\</code>\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1145,8 +1146,8 @@ public class Convert
     }
 
     /**
-     * 转换为字符<br>
-     * 如果给定的值为null，或者转换失败，返回默认值<br>
+     * 转换为字符\<br>
+     * 如果给定的值为null，或者转换失败，返回默认值\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1169,8 +1170,8 @@ public class Convert
     }
 
     /**
-     * 转换为字符<br>
-     * 如果给定的值为<code>null</code>，或者转换失败，返回默认值<code>null</code><br>
+     * 转换为字符\<br>
+     * 如果给定的值为\<code>null\</code>，或者转换失败，返回默认值\<code>null\</code>\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1182,8 +1183,8 @@ public class Convert
     }
 
     /**
-     * 转换为byte<br>
-     * 如果给定的值为<code>null</code>，或者转换失败，返回默认值<br>
+     * 转换为byte\<br>
+     * 如果给定的值为\<code>null\</code>，或者转换失败，返回默认值\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1220,8 +1221,8 @@ public class Convert
     }
 
     /**
-     * 转换为byte<br>
-     * 如果给定的值为<code>null</code>，或者转换失败，返回默认值<code>null</code><br>
+     * 转换为byte\<br>
+     * 如果给定的值为\<code>null\</code>，或者转换失败，返回默认值\<code>null\</code>\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1233,8 +1234,8 @@ public class Convert
     }
 
     /**
-     * 转换为Short<br>
-     * 如果给定的值为<code>null</code>，或者转换失败，返回默认值<br>
+     * 转换为Short\<br>
+     * 如果给定的值为\<code>null\</code>，或者转换失败，返回默认值\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1271,8 +1272,8 @@ public class Convert
     }
 
     /**
-     * 转换为Short<br>
-     * 如果给定的值为<code>null</code>，或者转换失败，返回默认值<code>null</code><br>
+     * 转换为Short\<br>
+     * 如果给定的值为\<code>null\</code>，或者转换失败，返回默认值\<code>null\</code>\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1284,8 +1285,8 @@ public class Convert
     }
 
     /**
-     * 转换为Number<br>
-     * 如果给定的值为空，或者转换失败，返回默认值<br>
+     * 转换为Number\<br>
+     * 如果给定的值为空，或者转换失败，返回默认值\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1318,8 +1319,8 @@ public class Convert
     }
 
     /**
-     * 转换为Number<br>
-     * 如果给定的值为空，或者转换失败，返回默认值<code>null</code><br>
+     * 转换为Number\<br>
+     * 如果给定的值为空，或者转换失败，返回默认值\<code>null\</code>\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1331,8 +1332,8 @@ public class Convert
     }
 
     /**
-     * 转换为int<br>
-     * 如果给定的值为空，或者转换失败，返回默认值<br>
+     * 转换为int\<br>
+     * 如果给定的值为空，或者转换失败，返回默认值\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1369,8 +1370,8 @@ public class Convert
     }
 
     /**
-     * 转换为int<br>
-     * 如果给定的值为<code>null</code>，或者转换失败，返回默认值<code>null</code><br>
+     * 转换为int\<br>
+     * 如果给定的值为\<code>null\</code>，或者转换失败，返回默认值\<code>null\</code>\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1382,7 +1383,7 @@ public class Convert
     }
 
     /**
-     * 转换为Integer数组<br>
+     * 转换为Integer数组\<br>
      * 
      * @param str 被转换的值
      * @return 结果
@@ -1393,7 +1394,7 @@ public class Convert
     }
 
     /**
-     * 转换为Long数组<br>
+     * 转换为Long数组\<br>
      * 
      * @param str 被转换的值
      * @return 结果
@@ -1404,7 +1405,7 @@ public class Convert
     }
 
     /**
-     * 转换为Integer数组<br>
+     * 转换为Integer数组\<br>
      * 
      * @param split 分隔符
      * @param split 被转换的值
@@ -1418,7 +1419,7 @@ public class Convert
         }
         String[] arr = str.split(split);
         final Integer[] ints = new Integer[arr.length];
-        for (int i = 0; i < arr.length; i++)
+        for (int i = 0; i \< arr.length; i++)
         {
             final Integer v = toInt(arr[i], 0);
             ints[i] = v;
@@ -1427,7 +1428,7 @@ public class Convert
     }
 
     /**
-     * 转换为Long数组<br>
+     * 转换为Long数组\<br>
      * 
      * @param split 分隔符
      * @param str 被转换的值
@@ -1441,7 +1442,7 @@ public class Convert
         }
         String[] arr = str.split(split);
         final Long[] longs = new Long[arr.length];
-        for (int i = 0; i < arr.length; i++)
+        for (int i = 0; i \< arr.length; i++)
         {
             final Long v = toLong(arr[i], null);
             longs[i] = v;
@@ -1450,7 +1451,7 @@ public class Convert
     }
 
     /**
-     * 转换为String数组<br>
+     * 转换为String数组\<br>
      * 
      * @param str 被转换的值
      * @return 结果
@@ -1461,7 +1462,7 @@ public class Convert
     }
 
     /**
-     * 转换为String数组<br>
+     * 转换为String数组\<br>
      * 
      * @param split 分隔符
      * @param split 被转换的值
@@ -1473,8 +1474,8 @@ public class Convert
     }
 
     /**
-     * 转换为long<br>
-     * 如果给定的值为空，或者转换失败，返回默认值<br>
+     * 转换为long\<br>
+     * 如果给定的值为空，或者转换失败，返回默认值\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1512,8 +1513,8 @@ public class Convert
     }
 
     /**
-     * 转换为long<br>
-     * 如果给定的值为<code>null</code>，或者转换失败，返回默认值<code>null</code><br>
+     * 转换为long\<br>
+     * 如果给定的值为\<code>null\</code>，或者转换失败，返回默认值\<code>null\</code>\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1525,8 +1526,8 @@ public class Convert
     }
 
     /**
-     * 转换为double<br>
-     * 如果给定的值为空，或者转换失败，返回默认值<br>
+     * 转换为double\<br>
+     * 如果给定的值为空，或者转换失败，返回默认值\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1564,8 +1565,8 @@ public class Convert
     }
 
     /**
-     * 转换为double<br>
-     * 如果给定的值为空，或者转换失败，返回默认值<code>null</code><br>
+     * 转换为double\<br>
+     * 如果给定的值为空，或者转换失败，返回默认值\<code>null\</code>\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1577,8 +1578,8 @@ public class Convert
     }
 
     /**
-     * 转换为Float<br>
-     * 如果给定的值为空，或者转换失败，返回默认值<br>
+     * 转换为Float\<br>
+     * 如果给定的值为空，或者转换失败，返回默认值\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1615,8 +1616,8 @@ public class Convert
     }
 
     /**
-     * 转换为Float<br>
-     * 如果给定的值为空，或者转换失败，返回默认值<code>null</code><br>
+     * 转换为Float\<br>
+     * 如果给定的值为空，或者转换失败，返回默认值\<code>null\</code>\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1628,8 +1629,8 @@ public class Convert
     }
 
     /**
-     * 转换为boolean<br>
-     * String支持的值为：true、false、yes、ok、no，1,0 如果给定的值为空，或者转换失败，返回默认值<br>
+     * 转换为boolean\<br>
+     * String支持的值为：true、false、yes、ok、no，1,0 如果给定的值为空，或者转换失败，返回默认值\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1674,8 +1675,8 @@ public class Convert
     }
 
     /**
-     * 转换为boolean<br>
-     * 如果给定的值为空，或者转换失败，返回默认值<code>null</code><br>
+     * 转换为boolean\<br>
+     * 如果给定的值为空，或者转换失败，返回默认值\<code>null\</code>\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1687,15 +1688,15 @@ public class Convert
     }
 
     /**
-     * 转换为Enum对象<br>
-     * 如果给定的值为空，或者转换失败，返回默认值<br>
+     * 转换为Enum对象\<br>
+     * 如果给定的值为空，或者转换失败，返回默认值\<br>
      * 
      * @param clazz Enum的Class
      * @param value 值
      * @param defaultValue 默认值
      * @return Enum
      */
-    public static <E extends Enum<E>> E toEnum(Class<E> clazz, Object value, E defaultValue)
+    public static \<E extends Enum\<E>> E toEnum(Class\<E> clazz, Object value, E defaultValue)
     {
         if (value == null)
         {
@@ -1723,21 +1724,21 @@ public class Convert
     }
 
     /**
-     * 转换为Enum对象<br>
-     * 如果给定的值为空，或者转换失败，返回默认值<code>null</code><br>
+     * 转换为Enum对象\<br>
+     * 如果给定的值为空，或者转换失败，返回默认值\<code>null\</code>\<br>
      * 
      * @param clazz Enum的Class
      * @param value 值
      * @return Enum
      */
-    public static <E extends Enum<E>> E toEnum(Class<E> clazz, Object value)
+    public static \<E extends Enum\<E>> E toEnum(Class\<E> clazz, Object value)
     {
         return toEnum(clazz, value, null);
     }
 
     /**
-     * 转换为BigInteger<br>
-     * 如果给定的值为空，或者转换失败，返回默认值<br>
+     * 转换为BigInteger\<br>
+     * 如果给定的值为空，或者转换失败，返回默认值\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1774,8 +1775,8 @@ public class Convert
     }
 
     /**
-     * 转换为BigInteger<br>
-     * 如果给定的值为空，或者转换失败，返回默认值<code>null</code><br>
+     * 转换为BigInteger\<br>
+     * 如果给定的值为空，或者转换失败，返回默认值\<code>null\</code>\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1787,8 +1788,8 @@ public class Convert
     }
 
     /**
-     * 转换为BigDecimal<br>
-     * 如果给定的值为空，或者转换失败，返回默认值<br>
+     * 转换为BigDecimal\<br>
+     * 如果给定的值为空，或者转换失败，返回默认值\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1833,8 +1834,8 @@ public class Convert
     }
 
     /**
-     * 转换为BigDecimal<br>
-     * 如果给定的值为空，或者转换失败，返回默认值<br>
+     * 转换为BigDecimal\<br>
+     * 如果给定的值为空，或者转换失败，返回默认值\<br>
      * 转换失败不会报错
      * 
      * @param value 被转换的值
@@ -1846,7 +1847,7 @@ public class Convert
     }
 
     /**
-     * 将对象转为字符串<br>
+     * 将对象转为字符串\<br>
      * 1、Byte数组和ByteBuffer会被转换为对应字符串的数组 2、对象数组会调用Arrays.toString方法
      * 
      * @param obj 对象
@@ -1858,7 +1859,7 @@ public class Convert
     }
 
     /**
-     * 将对象转为字符串<br>
+     * 将对象转为字符串\<br>
      * 1、Byte数组和ByteBuffer会被转换为对应字符串的数组 2、对象数组会调用Arrays.toString方法
      * 
      * @param obj 对象
@@ -1871,7 +1872,7 @@ public class Convert
     }
 
     /**
-     * 将对象转为字符串<br>
+     * 将对象转为字符串\<br>
      * 1、Byte数组和ByteBuffer会被转换为对应字符串的数组 2、对象数组会调用Arrays.toString方法
      * 
      * @param obj 对象
@@ -1985,10 +1986,10 @@ public class Convert
      * @param notConvertSet 不替换的字符集合
      * @return 全角字符串.
      */
-    public static String toSBC(String input, Set<Character> notConvertSet)
+    public static String toSBC(String input, Set\<Character> notConvertSet)
     {
         char c[] = input.toCharArray();
-        for (int i = 0; i < c.length; i++)
+        for (int i = 0; i \< c.length; i++)
         {
             if (null != notConvertSet && notConvertSet.contains(c[i]))
             {
@@ -2000,7 +2001,7 @@ public class Convert
             {
                 c[i] = '\u3000';
             }
-            else if (c[i] < '\177')
+            else if (c[i] \< '\177')
             {
                 c[i] = (char) (c[i] + 65248);
 
@@ -2027,10 +2028,10 @@ public class Convert
      * @param notConvertSet 不替换的字符集合
      * @return 替换后的字符
      */
-    public static String toDBC(String text, Set<Character> notConvertSet)
+    public static String toDBC(String text, Set\<Character> notConvertSet)
     {
         char c[] = text.toCharArray();
-        for (int i = 0; i < c.length; i++)
+        for (int i = 0; i \< c.length; i++)
         {
             if (null != notConvertSet && notConvertSet.contains(c[i]))
             {
@@ -2042,7 +2043,7 @@ public class Convert
             {
                 c[i] = ' ';
             }
-            else if (c[i] > '\uFF00' && c[i] < '\uFF5F')
+            else if (c[i] > '\uFF00' && c[i] \< '\uFF5F')
             {
                 c[i] = (char) (c[i] - 65248);
             }
@@ -2064,24 +2065,24 @@ public class Convert
         String[] digit = { "零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖" };
         String[][] unit = { { "元", "万", "亿" }, { "", "拾", "佰", "仟" } };
 
-        String head = n < 0 ? "负" : "";
+        String head = n \< 0 ? "负" : "";
         n = Math.abs(n);
 
         String s = "";
-        for (int i = 0; i < fraction.length; i++)
+        for (int i = 0; i \< fraction.length; i++)
         {
             s += (digit[(int) (Math.floor(n * 10 * Math.pow(10, i)) % 10)] + fraction[i]).replaceAll("(零.)+", "");
         }
-        if (s.length() < 1)
+        if (s.length() \< 1)
         {
             s = "整";
         }
         int integerPart = (int) Math.floor(n);
 
-        for (int i = 0; i < unit[0].length && integerPart > 0; i++)
+        for (int i = 0; i \< unit[0].length && integerPart > 0; i++)
         {
             String p = "";
-            for (int j = 0; j < unit[1].length && n > 0; j++)
+            for (int j = 0; j \< unit[1].length && n > 0; j++)
             {
                 p = digit[integerPart % 10] + unit[1][j] + p;
                 integerPart = integerPart / 10;
@@ -2112,7 +2113,7 @@ import com.jeethink.common.exception.UtilException;
  *
  @author  官方网址
  */
-public final class UUID implements java.io.Serializable, Comparable<UUID>
+public final class UUID implements java.io.Serializable, Comparable\<UUID>
 {
     private static final long serialVersionUID = -1185015143654744140L;
 
@@ -2141,13 +2142,13 @@ public final class UUID implements java.io.Serializable, Comparable<UUID>
         long msb = 0;
         long lsb = 0;
         assert data.length == 16 : "data must be 16 bytes in length";
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i \< 8; i++)
         {
-            msb = (msb << 8) | (data[i] & 0xff);
+            msb = (msb \<\< 8) | (data[i] & 0xff);
         }
-        for (int i = 8; i < 16; i++)
+        for (int i = 8; i \< 16; i++)
         {
-            lsb = (lsb << 8) | (data[i] & 0xff);
+            lsb = (lsb \<\< 8) | (data[i] & 0xff);
         }
         this.mostSigBits = msb;
         this.leastSigBits = lsb;
@@ -2249,19 +2250,19 @@ public final class UUID implements java.io.Serializable, Comparable<UUID>
         {
             throw new IllegalArgumentException("Invalid UUID string: " + name);
         }
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i \< 5; i++)
         {
             components[i] = "0x" + components[i];
         }
 
         long mostSigBits = Long.decode(components[0]).longValue();
-        mostSigBits <<= 16;
+        mostSigBits \<\<= 16;
         mostSigBits |= Long.decode(components[1]).longValue();
-        mostSigBits <<= 16;
+        mostSigBits \<\<= 16;
         mostSigBits |= Long.decode(components[2]).longValue();
 
         long leastSigBits = Long.decode(components[3]).longValue();
-        leastSigBits <<= 48;
+        leastSigBits \<\<= 48;
         leastSigBits |= Long.decode(components[4]).longValue();
 
         return new UUID(mostSigBits, leastSigBits);
@@ -2289,14 +2290,14 @@ public final class UUID implements java.io.Serializable, Comparable<UUID>
 
     /**
      * 与此 {@code UUID} 相关联的版本号. 版本号描述此 {@code UUID} 是如何生成的。
-     * <p>
+     * \<p>
      * 版本号具有以下含意:
-     * <ul>
-     * <li>1 基于时间的 UUID
-     * <li>2 DCE 安全 UUID
-     * <li>3 基于名称的 UUID
-     * <li>4 随机生成的 UUID
-     * </ul>
+     * \<ul>
+     * \<li>1 基于时间的 UUID
+     * \<li>2 DCE 安全 UUID
+     * \<li>3 基于名称的 UUID
+     * \<li>4 随机生成的 UUID
+     * \</ul>
      *
      * @return 此 {@code UUID} 的版本号
      */
@@ -2308,14 +2309,14 @@ public final class UUID implements java.io.Serializable, Comparable<UUID>
 
     /**
      * 与此 {@code UUID} 相关联的变体号。变体号描述 {@code UUID} 的布局。
-     * <p>
+     * \<p>
      * 变体号具有以下含意：
-     * <ul>
-     * <li>0 为 NCS 向后兼容保留
-     * <li>2 <a href="http://www.ietf.org/rfc/rfc4122.txt">IETF&nbsp;RFC&nbsp;4122</a>(Leach-Salz), 用于此类
-     * <li>6 保留，微软向后兼容
-     * <li>7 保留供以后定义使用
-     * </ul>
+     * \<ul>
+     * \<li>0 为 NCS 向后兼容保留
+     * \<li>2 \<a href="http://www.ietf.org/rfc/rfc4122.txt">IETF&nbsp;RFC&nbsp;4122\</a>(Leach-Salz), 用于此类
+     * \<li>6 保留，微软向后兼容
+     * \<li>7 保留供以后定义使用
+     * \</ul>
      *
      * @return 此 {@code UUID} 相关联的变体号
      */
@@ -2332,12 +2333,12 @@ public final class UUID implements java.io.Serializable, Comparable<UUID>
     /**
      * 与此 UUID 相关联的时间戳值。
      *
-     * <p>
-     * 60 位的时间戳值根据此 {@code UUID} 的 time_low、time_mid 和 time_hi 字段构造。<br>
+     * \<p>
+     * 60 位的时间戳值根据此 {@code UUID} 的 time_low、time_mid 和 time_hi 字段构造。\<br>
      * 所得到的时间戳以 100 毫微秒为单位，从 UTC（通用协调时间） 1582 年 10 月 15 日零时开始。
      *
-     * <p>
-     * 时间戳值仅在在基于时间的 UUID（其 version 类型为 1）中才有意义。<br>
+     * \<p>
+     * 时间戳值仅在在基于时间的 UUID（其 version 类型为 1）中才有意义。\<br>
      * 如果此 {@code UUID} 不是基于时间的 UUID，则此方法抛出 UnsupportedOperationException。
      *
      * @throws UnsupportedOperationException 如果此 {@code UUID} 不是 version 为 1 的 UUID。
@@ -2345,17 +2346,17 @@ public final class UUID implements java.io.Serializable, Comparable<UUID>
     public long timestamp() throws UnsupportedOperationException
     {
         checkTimeBase();
-        return (mostSigBits & 0x0FFFL) << 48//
-                | ((mostSigBits >> 16) & 0x0FFFFL) << 32//
+        return (mostSigBits & 0x0FFFL) \<\< 48//
+                | ((mostSigBits >> 16) & 0x0FFFFL) \<\< 32//
                 | mostSigBits >>> 32;
     }
 
     /**
      * 与此 UUID 相关联的时钟序列值。
      *
-     * <p>
+     * \<p>
      * 14 位的时钟序列值根据此 UUID 的 clock_seq 字段构造。clock_seq 字段用于保证在基于时间的 UUID 中的时间唯一性。
-     * <p>
+     * \<p>
      * {@code clockSequence} 值仅在基于时间的 UUID（其 version 类型为 1）中才有意义。 如果此 UUID 不是基于时间的 UUID，则此方法抛出
      * UnsupportedOperationException。
      *
@@ -2372,10 +2373,10 @@ public final class UUID implements java.io.Serializable, Comparable<UUID>
     /**
      * 与此 UUID 相关的节点值。
      *
-     * <p>
+     * \<p>
      * 48 位的节点值根据此 UUID 的 node 字段构造。此字段旨在用于保存机器的 IEEE 802 地址，该地址用于生成此 UUID 以保证空间唯一性。
-     * <p>
-     * 节点值仅在基于时间的 UUID（其 version 类型为 1）中才有意义。<br>
+     * \<p>
+     * 节点值仅在基于时间的 UUID（其 version 类型为 1）中才有意义。\<br>
      * 如果此 UUID 不是基于时间的 UUID，则此方法抛出 UnsupportedOperationException。
      *
      * @return 此 {@code UUID} 的节点值
@@ -2391,23 +2392,23 @@ public final class UUID implements java.io.Serializable, Comparable<UUID>
     /**
      * 返回此{@code UUID} 的字符串表现形式。
      *
-     * <p>
+     * \<p>
      * UUID 的字符串表示形式由此 BNF 描述：
      * 
-     * <pre>
+     * \<pre>
      * {@code
-     * UUID                   = <time_low>-<time_mid>-<time_high_and_version>-<variant_and_sequence>-<node>
-     * time_low               = 4*<hexOctet>
-     * time_mid               = 2*<hexOctet>
-     * time_high_and_version  = 2*<hexOctet>
-     * variant_and_sequence   = 2*<hexOctet>
-     * node                   = 6*<hexOctet>
-     * hexOctet               = <hexDigit><hexDigit>
+     * UUID                   = \<time_low>-\<time_mid>-\<time_high_and_version>-\<variant_and_sequence>-\<node>
+     * time_low               = 4*\<hexOctet>
+     * time_mid               = 2*\<hexOctet>
+     * time_high_and_version  = 2*\<hexOctet>
+     * variant_and_sequence   = 2*\<hexOctet>
+     * node                   = 6*\<hexOctet>
+     * hexOctet               = \<hexDigit>\<hexDigit>
      * hexDigit               = [0-9a-fA-F]
      * }
-     * </pre>
+     * \</pre>
      * 
-     * </blockquote>
+     * \</blockquote>
      *
      * @return 此{@code UUID} 的字符串表现形式
      * @see #toString(boolean)
@@ -2421,23 +2422,23 @@ public final class UUID implements java.io.Serializable, Comparable<UUID>
     /**
      * 返回此{@code UUID} 的字符串表现形式。
      *
-     * <p>
+     * \<p>
      * UUID 的字符串表示形式由此 BNF 描述：
      * 
-     * <pre>
+     * \<pre>
      * {@code
-     * UUID                   = <time_low>-<time_mid>-<time_high_and_version>-<variant_and_sequence>-<node>
-     * time_low               = 4*<hexOctet>
-     * time_mid               = 2*<hexOctet>
-     * time_high_and_version  = 2*<hexOctet>
-     * variant_and_sequence   = 2*<hexOctet>
-     * node                   = 6*<hexOctet>
-     * hexOctet               = <hexDigit><hexDigit>
+     * UUID                   = \<time_low>-\<time_mid>-\<time_high_and_version>-\<variant_and_sequence>-\<node>
+     * time_low               = 4*\<hexOctet>
+     * time_mid               = 2*\<hexOctet>
+     * time_high_and_version  = 2*\<hexOctet>
+     * variant_and_sequence   = 2*\<hexOctet>
+     * node                   = 6*\<hexOctet>
+     * hexOctet               = \<hexDigit>\<hexDigit>
      * hexDigit               = [0-9a-fA-F]
      * }
-     * </pre>
+     * \</pre>
      * 
-     * </blockquote>
+     * \</blockquote>
      *
      * @param isSimple 是否简单模式，简单模式为不带'-'的UUID字符串
      * @return 此{@code UUID} 的字符串表现形式
@@ -2488,7 +2489,7 @@ public final class UUID implements java.io.Serializable, Comparable<UUID>
 
     /**
      * 将此对象与指定对象比较。
-     * <p>
+     * \<p>
      * 当且仅当参数不为 {@code null}、而是一个 UUID 对象、具有与此 UUID 相同的 varriant、包含相同的值（每一位均相同）时，结果才为 {@code true}。
      *
      * @param obj 要与之比较的对象
@@ -2510,7 +2511,7 @@ public final class UUID implements java.io.Serializable, Comparable<UUID>
     /**
      * 将此 UUID 与指定的 UUID 比较。
      *
-     * <p>
+     * \<p>
      * 如果两个 UUID 不同，且第一个 UUID 的最高有效字段大于第二个 UUID 的对应字段，则第一个 UUID 大于第二个 UUID。
      *
      * @param val 与此 UUID 比较的 UUID
@@ -2522,9 +2523,9 @@ public final class UUID implements java.io.Serializable, Comparable<UUID>
     {
         // The ordering is intentionally set up so that the UUIDs
         // can simply be numerically compared as two numbers
-        return (this.mostSigBits < val.mostSigBits ? -1 : //
+        return (this.mostSigBits \< val.mostSigBits ? -1 : //
                 (this.mostSigBits > val.mostSigBits ? 1 : //
-                        (this.leastSigBits < val.leastSigBits ? -1 : //
+                        (this.leastSigBits \< val.leastSigBits ? -1 : //
                                 (this.leastSigBits > val.leastSigBits ? 1 : //
                                         0))));
     }
@@ -2540,7 +2541,7 @@ public final class UUID implements java.io.Serializable, Comparable<UUID>
      */
     private static String digits(long val, int digits)
     {
-        long hi = 1L << (digits * 4);
+        long hi = 1L \<\< (digits * 4);
         return Long.toHexString(hi | (val & (hi - 1))).substring(1);
     }
 
@@ -2573,7 +2574,7 @@ public final class UUID implements java.io.Serializable, Comparable<UUID>
     }
 
     /**
-     * 获取随机数生成器对象<br>
+     * 获取随机数生成器对象\<br>
      * ThreadLocalRandom是JDK 7之后提供并发产生随机数，能够解决多个线程发生的竞争争夺。
      * 
      * @return {@link ThreadLocalRandom}
@@ -2586,8 +2587,8 @@ public final class UUID implements java.io.Serializable, Comparable<UUID>
 
 ```
 
-<details>
-</details>
+\<details>
+\</details>
 
 # 提高CPU，防止服务器降配
 
@@ -2603,7 +2604,7 @@ class CPUTest {
         CPUTestThread cpuTestThread = new CPUTestThread();
         //修改for次数
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i \< 20; i++) {
 
             Thread cpuTest = new Thread(cpuTestThread);
 
@@ -2647,7 +2648,7 @@ class CPUTestThread implements Runnable {
 
 // busy loop
 
-            while ((System.currentTimeMillis() - startTime) <= busyTime);
+            while ((System.currentTimeMillis() - startTime) \<= busyTime);
 
 // idle loop
 

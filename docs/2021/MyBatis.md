@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: MyBatis
+date: 2022-06-06
 category:
   - MyBatis
 tag:
@@ -47,10 +48,10 @@ tag:
 
 ```xml
 <!--mybatis-config.xml配置文件中 -->
-<setting name="cacheEnabled"             value="true" />  <!-- 全局映射器启用缓存 -->
+\<setting name="cacheEnabled"             value="true" />  <!-- 全局映射器启用缓存 -->
 
 <!--mapper中开启缓存，可自定义一些参数，没有eviction时需要序列化实体类（implement Serializable） -->
-<cache/> 
+\<cache/> 
 ```
 
 一级缓存失效时二级缓存失效或提交会话后将数据提交到二级缓存。先读二级缓存再一级缓存。
@@ -64,7 +65,7 @@ tag:
 现在一般用redis。
 
 ```xml
-<cache type="自定义缓存的包.自定义缓存"/> 
+\<cache type="自定义缓存的包.自定义缓存"/> 
 ```
 
 ## [${}和#{}区别](https://blog.csdn.net/super_DuoLa/article/details/121971500)

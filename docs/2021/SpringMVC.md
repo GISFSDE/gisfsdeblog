@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: SpringMVC
+date: 2022-06-06
 category:
   - SpringMVC
 tag:
@@ -54,15 +55,15 @@ private ThemeResolver themeResolver;
 
 // 处理器映射器组件集合
 /** List of HandlerMappings used by this servlet */
-private List<HandlerMapping> handlerMappings;
+private List\<HandlerMapping> handlerMappings;
 
 // 处理器适配器组件集合
 /** List of HandlerAdapters used by this servlet */
-private List<HandlerAdapter> handlerAdapters;
+private List\<HandlerAdapter> handlerAdapters;
 
 // 异常处理解析器集合
 /** List of HandlerExceptionResolvers used by this servlet */
-private List<HandlerExceptionResolver> handlerExceptionResolvers;
+private List\<HandlerExceptionResolver> handlerExceptionResolvers;
 
 // 视图名解析器
 /** RequestToViewNameTranslator used by this servlet */
@@ -74,7 +75,7 @@ private FlashMapManager flashMapManager;
 
 // 视图解析组件集合
 /** List of ViewResolvers used by this servlet */
-private List<ViewResolver> viewResolvers;
+private List\<ViewResolver> viewResolvers;
 ```
 
 

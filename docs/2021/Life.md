@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: Life
+date: 2022-06-06
 category:
   - Life
 tag:
@@ -12,7 +13,7 @@ tag:
 
 <!-- more -->
 
-> **时间**：<span style="border-bottom:2px dashed yellow;">2020</span> **年** <span style="border-bottom:2px dashed yellow;">4</span> **月** <span style="border-bottom:2px dashed yellow;">文字</span> **日**   -  <span style="border-bottom:2px dashed yellow;">2022</span> **年** <span style="border-bottom:2px dashed yellow;">5</span> **月** <span style="border-bottom:2px dashed yellow;">文字</span> **日**   **感悟**
+> **时间**：\<span style="border-bottom:2px dashed yellow;">2020\</span> **年** \<span style="border-bottom:2px dashed yellow;">4\</span> **月** \<span style="border-bottom:2px dashed yellow;">文字\</span> **日**   -  \<span style="border-bottom:2px dashed yellow;">2022\</span> **年** \<span style="border-bottom:2px dashed yellow;">5\</span> **月** \<span style="border-bottom:2px dashed yellow;">文字\</span> **日**   **感悟**
 >
 >   
 

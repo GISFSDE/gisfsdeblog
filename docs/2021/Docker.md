@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: Docker
+date: 2022-06-06
 category:
   - Docker
 tag:
@@ -785,7 +786,7 @@ docker run -it -v /宿主机绝对路径目录:/容器内目录 镜像名
 
 容器停止退出后，主机修改后的数据是否同步
 
-![](image/Snipaste_2020-10-03_15-33-03.png)
+![](http://rcy276gfy.hd-bkt.clouddn.com/work/image/Snipaste_2020-10-03_15-33-03.png)
 
 命令(带权限)
 
@@ -949,7 +950,7 @@ Dockerfile面向开发，Docker镜 像成为交付标准，Docker容 器则涉�
 
 ## DockerFile体系结构(保留字指令)
 
-<img src="/Snipaste_2020-10-03_17-47-26.png" style="zoom:200%;" />
+<img src="http://rcy276gfy.hd-bkt.clouddn.com/work/Snipaste_2020-10-03_17-47-26.png" style="zoom:200%;" />
 
 ![](http://rcy276gfy.hd-bkt.clouddn.com/work/Snipaste_2020-10-03_17-47-58.png)
 
@@ -981,7 +982,7 @@ myCentOS内容Dockerfile
 
 ```shell
 FROM centos
-MAINTAINER ZZYY<zzyy167@126.com>
+MAINTAINER ZZYY\<zzyy167@126.com>
 
 ENV MYPATH /usr/local
 WORKDIR $MYPATH
@@ -1071,7 +1072,7 @@ WHY
 
 ```dockerfile
 FROM centos
-MAINTAINER zzyy<zzyybs@ 126.com>
+MAINTAINER zzyy\<zzyybs@ 126.com>
 #把宿主机当前上下文的c .txt拷贝到容器/usr/local/路径下
 COPY c.txt /usr/local/cincontainer.txt
 #把java与tomcat添加到容器中
@@ -1133,54 +1134,54 @@ Docker挂载主机目录Docker访问出现cannot open directory : Permission den
 web.xml
 
 ```xml
-<?xml version="1 .0" encoding="UTF-8"?>
-<web-app xmIns:xsi="http://www.w3.org/2001/XML Schema-instance"
+\<?xml version="1 .0" encoding="UTF-8"?>
+\<web-app xmIns:xsi="http://www.w3.org/2001/XML Schema-instance"
 xmIns="http://java sun.com/xm/ns/javaee"
 xsi:schemaL ocation="http://java. sun.com/xml/ns/javaee htp:/:/java. sun.com/xml/ns/javaee/web-app_ 2_ _5.xsd"
 id="WebApp_ ID" version="2.5">
-<display-name>test</display-name>
+\<display-name>test\</display-name>
 
-</web-app>
+\</web-app>
 ```
 
 a.jsp
 
 ```jsp
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC“//W3C//DTD HTML 4.01 Transitional//EN" http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here </title>
-</head>
-<body>
+\<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+\<!DOCTYPE html PUBLIC“//W3C//DTD HTML 4.01 Transitional//EN" http://www.w3.org/TR/html4/loose.dtd">
+\<html>
+\<head>
+\<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+\<title>Insert title here \</title>
+\</head>
+\<body>
 welcome-
-<%="i am in docker tomcat self "%>
-<br>
-<br>
-<% System.out,.printIn("==========docker tomcat self");%>
-</body>
-</htmI>
+\<%="i am in docker tomcat self "%>
+\<br>
+\<br>
+\<% System.out,.printIn("==========docker tomcat self");%>
+\</body>
+\</htmI>
 ```
 
 测试
 
 ```html
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC“//W3C//DTD HTML 4.01 Transitional//EN" http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here </title>
-</head>
-<body>
+\<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+\<!DOCTYPE html PUBLIC“//W3C//DTD HTML 4.01 Transitional//EN" http://www.w3.org/TR/html4/loose.dtd">
+\<html>
+\<head>
+\<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+\<title>Insert title here \</title>
+\</head>
+\<body>
 welcome-
-<%="i am in docker tomcat self "%>
-<br>
-<br>
-<% System.out,.printIn("==========docker tomcat self");%>
-</body>
-</htmI>
+\<%="i am in docker tomcat self "%>
+\<br>
+\<br>
+\<% System.out,.printIn("==========docker tomcat self");%>
+\</body>
+\</htmI>
 ```
 
 
@@ -1462,7 +1463,7 @@ tcp-keepalive 300
 # Configure allowed ciphers.  See the ciphers(1ssl) manpage for more information
 # about the syntax of this string.
 #
-# Note: this configuration applies only to <= TLSv1.2.
+# Note: this configuration applies only to \<= TLSv1.2.
 #
 # tls-ciphers DEFAULT:!MEDIUM
 
@@ -1545,7 +1546,7 @@ logfile ""
 # syslog-facility local0
 
 # Set the number of databases. The default database is DB 0, you can select
-# a different one on a per-connection basis using SELECT <dbid> where
+# a different one on a per-connection basis using SELECT \<dbid> where
 # dbid is a number between 0 and 'databases'-1
 databases 16
 
@@ -1561,7 +1562,7 @@ always-show-logo yes
 #
 # Save the DB on disk:
 #
-#   save <seconds> <changes>
+#   save \<seconds> \<changes>
 #
 #   Will save the DB if both the given number of seconds and the given
 #   number of write operations against the DB occurred.
@@ -1660,14 +1661,14 @@ dir ./
 #    network partition replicas automatically try to reconnect to masters
 #    and resynchronize with them.
 #
-# replicaof <masterip> <masterport>
+# replicaof \<masterip> \<masterport>
 
 # If the master is password protected (using the "requirepass" configuration
 # directive below) it is possible to tell the replica to authenticate before
 # starting the replication synchronization process, otherwise the master will
 # refuse the replica request.
 #
-# masterauth <master-password>
+# masterauth \<master-password>
 #
 # However this is not enough if you are using Redis ACLs (for Redis version
 # 6 or greater), and the default user is not capable of running the PSYNC
@@ -1675,10 +1676,10 @@ dir ./
 # better to configure a special user to use with replication, and specify the
 # masteruser configuration as such:
 #
-# masteruser <username>
+# masteruser \<username>
 #
 # When masteruser is specified, the replica will authenticate against its
-# master using the new AUTH form: AUTH <username> <password>.
+# master using the new AUTH form: AUTH \<username> \<password>.
 
 # When a replica loses its connection with the master, or when the replication
 # is still in progress, the replica can act in two different ways:
@@ -1857,14 +1858,14 @@ replica-priority 100
 #
 # The N replicas need to be in "online" state.
 #
-# The lag in seconds, that must be <= the specified value, is calculated from
+# The lag in seconds, that must be \<= the specified value, is calculated from
 # the last ping received from the replica, that is usually sent every second.
 #
 # This option does not GUARANTEE that N replicas will accept the write, but
 # will limit the window of exposure for lost writes in case not enough replicas
 # are available, to the specified number of seconds.
 #
-# For example to require at least 3 replicas with a lag <= 10 seconds use:
+# For example to require at least 3 replicas with a lag \<= 10 seconds use:
 #
 # min-replicas-to-write 3
 # min-replicas-max-lag 10
@@ -1951,7 +1952,7 @@ replica-priority 100
 
 # Redis ACL users are defined in the following format:
 #
-#   user <username> ... acl rules ...
+#   user \<username> ... acl rules ...
 #
 # For example:
 #
@@ -1971,32 +1972,32 @@ replica-priority 100
 #  off          Disable the user: it's no longer possible to authenticate
 #               with this user, however the already authenticated connections
 #               will still work.
-#  +<command>   Allow the execution of that command
-#  -<command>   Disallow the execution of that command
-#  +@<category> Allow the execution of all the commands in such category
+#  +\<command>   Allow the execution of that command
+#  -\<command>   Disallow the execution of that command
+#  +@\<category> Allow the execution of all the commands in such category
 #               with valid categories are like @admin, @set, @sortedset, ...
 #               and so forth, see the full list in the server.c file where
 #               the Redis command table is described and defined.
 #               The special category @all means all the commands, but currently
 #               present in the server, and that will be loaded in the future
 #               via modules.
-#  +<command>|subcommand    Allow a specific subcommand of an otherwise
+#  +\<command>|subcommand    Allow a specific subcommand of an otherwise
 #                           disabled command. Note that this form is not
 #                           allowed as negative like -DEBUG|SEGFAULT, but
 #                           only additive starting with "+".
 #  allcommands  Alias for +@all. Note that it implies the ability to execute
 #               all the future commands loaded via the modules system.
 #  nocommands   Alias for -@all.
-#  ~<pattern>   Add a pattern of keys that can be mentioned as part of
+#  ~\<pattern>   Add a pattern of keys that can be mentioned as part of
 #               commands. For instance ~* allows all the keys. The pattern
 #               is a glob-style pattern like the one of KEYS.
 #               It is possible to specify multiple patterns.
 #  allkeys      Alias for ~*
 #  resetkeys    Flush the list of allowed keys patterns.
-#  ><password>  Add this passowrd to the list of valid password for the user.
+#  >\<password>  Add this passowrd to the list of valid password for the user.
 #               For example >mypass will add "mypass" to the list.
 #               This directive clears the "nopass" flag (see later).
-#  <<password>  Remove this password from the list of valid passwords.
+#  \<\<password>  Remove this password from the list of valid passwords.
 #  nopass       All the set passwords of the user are removed, and the user
 #               is flagged as requiring no password: it means that every
 #               password will work against this user. If this directive is
@@ -2058,7 +2059,7 @@ acllog-max-len 128
 # IMPORTANT NOTE: starting with Redis 6 "requirepass" is just a compatiblity
 # layer on top of the new ACL system. The option effect will be just setting
 # the password for the default user. Clients will still authenticate using
-# AUTH <password> as usually, or more explicitly with AUTH default <password>
+# AUTH \<password> as usually, or more explicitly with AUTH default \<password>
 # if they follow the new protocol: both will work.
 #
 # requirepass foobared
@@ -2131,7 +2132,7 @@ acllog-max-len 128
 # limit for maxmemory so that there is some free RAM on the system for replica
 # output buffers (but this is not needed if the policy is 'noeviction').
 #
-# maxmemory <bytes>
+# maxmemory \<bytes>
 
 # MAXMEMORY POLICY: how Redis will select what to remove when maxmemory
 # is reached. You can select one from the following behaviors:
@@ -2690,7 +2691,7 @@ slowlog-max-len 128
 # if you don't have latency issues, and collecting data has a performance
 # impact, that while very small, can be measured under big load. Latency
 # monitoring can easily be enabled at runtime using the command
-# "CONFIG SET latency-monitor-threshold <milliseconds>" if needed.
+# "CONFIG SET latency-monitor-threshold \<milliseconds>" if needed.
 latency-monitor-threshold 0
 
 ############################# EVENT NOTIFICATION ##############################
@@ -2708,8 +2709,8 @@ latency-monitor-threshold 0
 # It is possible to select the events that Redis will notify among a set
 # of classes. Every class is identified by a single character:
 #
-#  K     Keyspace events, published with __keyspace@<db>__ prefix.
-#  E     Keyevent events, published with __keyevent@<db>__ prefix.
+#  K     Keyspace events, published with __keyspace@\<db>__ prefix.
+#  E     Keyevent events, published with __keyevent@\<db>__ prefix.
 #  g     Generic commands (non-type specific) like DEL, EXPIRE, RENAME, ...
 #  $     String commands
 #  l     List commands
@@ -2810,11 +2811,11 @@ hash-max-ziplist-value 64
 # The number of entries allowed per internal list node can be specified
 # as a fixed maximum size or a maximum number of elements.
 # For a fixed maximum size, use -5 through -1, meaning:
-# -5: max size: 64 Kb  <-- not recommended for normal workloads
-# -4: max size: 32 Kb  <-- not recommended
-# -3: max size: 16 Kb  <-- probably not recommended
-# -2: max size: 8 Kb   <-- good
-# -1: max size: 4 Kb   <-- good
+# -5: max size: 64 Kb  \<-- not recommended for normal workloads
+# -4: max size: 32 Kb  \<-- not recommended
+# -3: max size: 16 Kb  \<-- probably not recommended
+# -2: max size: 8 Kb   \<-- good
+# -1: max size: 4 Kb   \<-- good
 # Positive numbers mean store up to _exactly_ that number of elements
 # per list node.
 # The highest performing option is usually -2 (8 Kb size) or -1 (4 Kb size),
@@ -2908,7 +2909,7 @@ activerehashing yes
 #
 # The syntax of every client-output-buffer-limit directive is the following:
 #
-# client-output-buffer-limit <class> <hard limit> <soft limit> <soft seconds>
+# client-output-buffer-limit \<class> \<hard limit> \<soft limit> \<soft seconds>
 #
 # A client is immediately disconnected once the hard limit is reached, or if
 # the soft limit is reached and remains reached for the specified number of
@@ -3007,7 +3008,7 @@ rdb-save-incremental-fsync yes
 #
 # 1. A random number R between 0 and 1 is extracted.
 # 2. A probability P is calculated as 1/(old_value*lfu_log_factor+1).
-# 3. The counter is incremented only if R < P.
+# 3. The counter is incremented only if R \< P.
 #
 # The default lfu-log-factor is 10. This is a table of how the frequency
 # counter changes with a different number of accesses with different
@@ -3035,7 +3036,7 @@ rdb-save-incremental-fsync yes
 #
 # The counter decay time is the time, in minutes, that must elapse in order
 # for the key counter to be divided by two (or decremented if it has a value
-# less <= 10).
+# less \<= 10).
 #
 # The default value for the lfu-decay-time is 1. A Special value of 0 means to
 # decay the counter every time it happens to be scanned.

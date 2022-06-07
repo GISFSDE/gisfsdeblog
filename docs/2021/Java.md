@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: JAVA
+date: 2022-06-06
 category:
   - JAVA
 tag:
@@ -105,7 +106,6 @@ R-B Tree，全称是Red-Black Tree，又称为“红黑树”，它一种特殊�
 
 ![image-20210728134306985](http://rcy276gfy.hd-bkt.clouddn.com/work/image-20210728134306985.png)
 
-![image-20210728135916553](C:/Users/Administrator/Desktop/image-20210728135916553.png)
 
 <img src="http://rcy276gfy.hd-bkt.clouddn.com/work/image-20210607192537702.png" alt="image-20210607192537702" style="zoom: 67%;" />
 
@@ -146,7 +146,7 @@ R-B Tree，全称是Red-Black Tree，又称为“红黑树”，它一种特殊�
 **listiterator**:区别：List专用、遍历时可添加元素、可逆向遍历、可定位当前索引位置、可修改遍历对象。
 
 ```java
-Collection<Person> persons = new ArrayList<Person>();
+Collection\<Person> persons = new ArrayList\<Person>();
 Iterator iterator = persons.iterator();
 while (iterator.hasNext()) { 
     System.out.println(iterator.next);  
@@ -156,10 +156,10 @@ while (iterator.hasNext()) {
 **aggregate operations**
 
 ```java
-Collection<Person> persons = new ArrayList<Person>();
+Collection\<Person> persons = new ArrayList\<Person>();
 persons
     .stream()
-    .forEach(new Consumer<Person>() {  
+    .forEach(new Consumer\<Person>() {  
         @Override  
         public void accept(Person person) {  
             System.out.println(person.name);  
@@ -211,7 +211,7 @@ String joined = elements.stream()
         //扩容为原来两倍
         int newCapacity = oldCapacity + ((capacityIncrement > 0) ?
                                          capacityIncrement : oldCapacity);
-        if (newCapacity - minCapacity < 0)
+        if (newCapacity - minCapacity \< 0)
             newCapacity = minCapacity;
         if (newCapacity - MAX_ARRAY_SIZE > 0)
             newCapacity = hugeCapacity(minCapacity);
@@ -228,7 +228,7 @@ String joined = elements.stream()
 | 底层数组                           | new Object[initialCapacity];                                 |      |
 | 查优，**尾**增删快，其他地方增删慢 | 底层数组                                                     |      |
 | 动态扩容原来的1.5倍                | [int newCapacity = oldCapacity + (oldCapacity >> 1);](#动态扩容) |      |
-| 线程不安全                         | 方法中没有synchronized<br />/**This class is roughly equivalent to<br/> * <tt>Vector</tt>, except that it is unsynchronized.*/ |      |
+| 线程不安全                         | 方法中没有synchronized\<br />/**This class is roughly equivalent to\<br/> * \<tt>Vector\</tt>, except that it is unsynchronized.*/ |      |
 | 支持快速随机访问                   | RandomAccess                                                 |      |
 |                                    |                                                              |      |
 |                                    |                                                              |      |
@@ -247,7 +247,7 @@ String joined = elements.stream()
         int oldCapacity = elementData.length;
         //====== 动态扩容：位运算 >>：右移运算符  oldCapacity >> 1   ---》   M >> n  = M / 2^n  即扩容50%======
         int newCapacity = oldCapacity + (oldCapacity >> 1);
-        if (newCapacity - minCapacity < 0)
+        if (newCapacity - minCapacity \< 0)
             newCapacity = minCapacity;
         if (newCapacity - MAX_ARRAY_SIZE > 0)
             newCapacity = hugeCapacity(minCapacity);
@@ -278,16 +278,16 @@ String joined = elements.stream()
     /**
      * Returns the (non-null) Node at the specified element index.
      */
-    Node<E> node(int index) {
+    Node\<E> node(int index) {
         // assert isElementIndex(index);
 
-        if (index < (size >> 1)) {
-            Node<E> x = first;
-            for (int i = 0; i < index; i++)
+        if (index \< (size >> 1)) {
+            Node\<E> x = first;
+            for (int i = 0; i \< index; i++)
                 x = x.next;
             return x;
         } else {
-            Node<E> x = last;
+            Node\<E> x = last;
             for (int i = size - 1; i > index; i--)
                 x = x.prev;
             return x;
@@ -309,7 +309,7 @@ String joined = elements.stream()
      * @throws IndexOutOfBoundsException {@inheritDoc}
      * @throws NullPointerException if the specified collection is null
      */
-    public boolean addAll(int index, Collection<? extends E> c) {
+    public boolean addAll(int index, Collection\<? extends E> c) {
         checkPositionIndex(index);
 
         Object[] a = c.toArray();
@@ -317,7 +317,7 @@ String joined = elements.stream()
         if (numNew == 0)
             return false;
 
-        Node<E> pred, succ;
+        Node\<E> pred, succ;
         if (index == size) {
             succ = null;
             pred = last;
@@ -328,7 +328,7 @@ String joined = elements.stream()
 
         for (Object o : a) {
             @SuppressWarnings("unchecked") E e = (E) o;
-            Node<E> newNode = new Node<>(pred, e, null);
+            Node\<E> newNode = new Node\<>(pred, e, null);
             if (pred == null)
                 first = newNode;
             else
@@ -377,10 +377,10 @@ String joined = elements.stream()
 #### 底层、可排序底层、可排序
 
 ```java
-public interface NavigableSet<E> extends SortedSet<E> {}
+public interface NavigableSet\<E> extends SortedSet\<E> {}
 
-public class TreeSet<E> extends AbstractSet<E>
-    implements NavigableSet<E>, Cloneable, java.io.Serializable
+public class TreeSet\<E> extends AbstractSet\<E>
+    implements NavigableSet\<E>, Cloneable, java.io.Serializable
 {}
 // Integer能排序(有默认顺序), String能排序(有默认顺序)，可以对对象元素进行排序，但是自定义类需要实现comparable接口，重写comparaTo() 方法,否则：{@code ClassCastException}报ClassCastException异常。所有元素必须可以相互比较（相同类型），否则将会报类型转换异常ClassCastExection
 
@@ -388,8 +388,8 @@ public class TreeSet<E> extends AbstractSet<E>
      * Constructs a new, empty tree set, sorted according to the
      * natural ordering of its elements.  All elements inserted into
      * the set must implement the {@link Comparable} interface.
-     * Furthermore, all such elements must be <i>mutually
-     * comparable</i>: {@code e1.compareTo(e2)} must not throw a
+     * Furthermore, all such elements must be \<i>mutually
+     * comparable\</i>: {@code e1.compareTo(e2)} must not throw a
      * {@code ClassCastException} for any elements {@code e1} and
      * {@code e2} in the set.  If the user attempts to add an element
      * to the set that violates this constraint (for example, the user
@@ -398,7 +398,7 @@ public class TreeSet<E> extends AbstractSet<E>
      * {@code ClassCastException}.
      */
     public TreeSet() {
-        this(new TreeMap<E,Object>());
+        this(new TreeMap\<E,Object>());
     }
 ```
 
@@ -429,7 +429,7 @@ return -1:元素每次进行比较，都认为新插入的元素比上一个元�
 #### 底层HashMap
 
 ```java
-    private transient HashMap<E,Object> map;
+    private transient HashMap\<E,Object> map;
 
     // Dummy value to associate with an Object in the backing Map
     private static final Object PRESENT = new Object();
@@ -437,16 +437,16 @@ return -1:元素每次进行比较，都认为新插入的元素比上一个元�
 
 /**
  * Constructs a new set containing the elements in the specified
- * collection.  The <tt>HashMap</tt> is created with default load factor
+ * collection.  The \<tt>HashMap\</tt> is created with default load factor
  * (0.75) and an initial capacity sufficient to contain the elements in
  * the specified collection.
  *
  * @param c the collection whose elements are to be placed into this set
  * @throws NullPointerException if the specified collection is null
  */
-public HashSet(Collection<? extends E> c) {
+public HashSet(Collection\<? extends E> c) {
     //初始16，加载因子0.75
-    map = new HashMap<>(Math.max((int) (c.size()/.75f) + 1, 16));
+    map = new HashMap\<>(Math.max((int) (c.size()/.75f) + 1, 16));
     addAll(c);
 }
 //HashSet中的元素都存放在HashMap的key上面，而value中的值都是统一的一个固定对象private static final Object PRESENT = new Object();
@@ -457,14 +457,14 @@ public HashSet(Collection<? extends E> c) {
 ```java
     /**
      * Adds the specified element to this set if it is not already present.
-     * More formally, adds the specified element <tt>e</tt> to this set if
-     * this set contains no element <tt>e2</tt> such that
-     * <tt>(e==null&nbsp;?&nbsp;e2==null&nbsp;:&nbsp;e.equals(e2))</tt>.
+     * More formally, adds the specified element \<tt>e\</tt> to this set if
+     * this set contains no element \<tt>e2\</tt> such that
+     * \<tt>(e==null&nbsp;?&nbsp;e2==null&nbsp;:&nbsp;e.equals(e2))\</tt>.
      * If this set already contains the element, the call leaves the set
-     * unchanged and returns <tt>false</tt>.
+     * unchanged and returns \<tt>false\</tt>.
      *
      * @param e element to be added to this set
-     * @return <tt>true</tt> if this set did not already contain the specified
+     * @return \<tt>true\</tt> if this set did not already contain the specified
      * element
      */
     public boolean add(E e) {
@@ -478,10 +478,10 @@ public HashSet(Collection<? extends E> c) {
      *
      * @param key key with which the specified value is to be associated
      * @param value value to be associated with the specified key
-     * @return the previous value associated with <tt>key</tt>, or
-     *         <tt>null</tt> if there was no mapping for <tt>key</tt>.
-     *         (A <tt>null</tt> return can also indicate that the map
-     *         previously associated <tt>null</tt> with <tt>key</tt>.)
+     * @return the previous value associated with \<tt>key\</tt>, or
+     *         \<tt>null\</tt> if there was no mapping for \<tt>key\</tt>.
+     *         (A \<tt>null\</tt> return can also indicate that the map
+     *         previously associated \<tt>null\</tt> with \<tt>key\</tt>.)
      */
     public V put(K key, V value) {
         return putVal(hash(key), key, value, false, true);
@@ -499,18 +499,18 @@ public HashSet(Collection<? extends E> c) {
      */
     final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
                    boolean evict) {
-        Node<K,V>[] tab; Node<K,V> p; int n, i;
+        Node\<K,V>[] tab; Node\<K,V> p; int n, i;
         if ((tab = table) == null || (n = tab.length) == 0)
             n = (tab = resize()).length;
         if ((p = tab[i = (n - 1) & hash]) == null)
             tab[i] = newNode(hash, key, value, null);
         else {
-            Node<K,V> e; K k;
+            Node\<K,V> e; K k;
             if (p.hash == hash &&
                 ((k = p.key) == key || (key != null && key.equals(k))))
                 e = p;
             else if (p instanceof TreeNode)
-                e = ((TreeNode<K,V>)p).putTreeVal(this, tab, hash, key, value);
+                e = ((TreeNode\<K,V>)p).putTreeVal(this, tab, hash, key, value);
             else {
                 for (int binCount = 0; ; ++binCount) {
                     if ((e = p.next) == null) {
@@ -566,14 +566,14 @@ public HashSet(Collection<? extends E> c) {
      *           this set
      * @throws NullPointerException if the specified collection is null
      */
-    public LinkedHashSet(Collection<? extends E> c) {
+    public LinkedHashSet(Collection\<? extends E> c) {
         super(Math.max(2*c.size(), 11), .75f, true);
         addAll(c);
     }
     
-    public class LinkedHashSet<E>
-    extends HashSet<E>
-    implements Set<E>, Cloneable, java.io.Serializable {}
+    public class LinkedHashSet\<E>
+    extends HashSet\<E>
+    implements Set\<E>, Cloneable, java.io.Serializable {}
     
     /**
      * Constructs a new, empty linked hash set.  (This package private
@@ -589,7 +589,7 @@ public HashSet(Collection<? extends E> c) {
      *             than zero, or if the load factor is nonpositive
      */
     HashSet(int initialCapacity, float loadFactor, boolean dummy) {
-        map = new LinkedHashMap<>(initialCapacity, loadFactor);
+        map = new LinkedHashMap\<>(initialCapacity, loadFactor);
     }
 ```
 
@@ -605,7 +605,7 @@ public HashSet(Collection<? extends E> c) {
 
 | 特点                                                         | 原因（源码）            |      |
 | ------------------------------------------------------------ | ----------------------- | ---- |
-| 底层为**数组**称之为**哈希桶**，每个**桶里面放的是链表**，链表中的**每个节点**，就是哈希表中的**每个元素**。<br/>JDK8后，链表容量大于8且桶的容量大于64，转化成红黑树 | [底层](#底层)           |      |
+| 底层为**数组**称之为**哈希桶**，每个**桶里面放的是链表**，链表中的**每个节点**，就是哈希表中的**每个元素**。\<br/>JDK8后，链表容量大于8且桶的容量大于64，转化成红黑树 | [底层](#底层)           |      |
 | 线程不安全                                                   | 方法中没有synchronized  |      |
 | 默认长度16                                                   | [初始容量](#初始容量)   |      |
 | 扩容为原来的两倍                                             | [扩容](#扩容)           |      |
@@ -622,14 +622,14 @@ public HashSet(Collection<? extends E> c) {
      * Basic hash bin node, used for most entries.  (See below for
      * TreeNode subclass, and in LinkedHashMap for its Entry subclass.)
      */
-    static class Node<K,V> implements Map.Entry<K,V> {
+    static class Node\<K,V> implements Map.Entry\<K,V> {
         final int hash;
         final K key;
         V value;
         //碰撞之后形成链表
-        Node<K,V> next;
+        Node\<K,V> next;
 
-        Node(int hash, K key, V value, Node<K,V> next) {
+        Node(int hash, K key, V value, Node\<K,V> next) {
             this.hash = hash;
             this.key = key;
             this.value = value;
@@ -654,7 +654,7 @@ public HashSet(Collection<? extends E> c) {
             if (o == this)
                 return true;
             if (o instanceof Map.Entry) {
-                Map.Entry<?,?> e = (Map.Entry<?,?>)o;
+                Map.Entry\<?,?> e = (Map.Entry\<?,?>)o;
                 if (Objects.equals(key, e.getKey()) &&
                     Objects.equals(value, e.getValue()))
                     return true;
@@ -669,21 +669,21 @@ public HashSet(Collection<? extends E> c) {
      * extends Node) so can be used as extension of either regular or
      * linked node.
      */
-    static final class TreeNode<K,V> extends LinkedHashMap.Entry<K,V> {
-        TreeNode<K,V> parent;  // red-black tree links
-        TreeNode<K,V> left;
-        TreeNode<K,V> right;
-        TreeNode<K,V> prev;    // needed to unlink next upon deletion
+    static final class TreeNode\<K,V> extends LinkedHashMap.Entry\<K,V> {
+        TreeNode\<K,V> parent;  // red-black tree links
+        TreeNode\<K,V> left;
+        TreeNode\<K,V> right;
+        TreeNode\<K,V> prev;    // needed to unlink next upon deletion
         boolean red;
-        TreeNode(int hash, K key, V val, Node<K,V> next) {
+        TreeNode(int hash, K key, V val, Node\<K,V> next) {
             super(hash, key, val, next);
         }
 
         /**
          * Returns root of tree containing this node.
          */
-        final TreeNode<K,V> root() {
-            for (TreeNode<K,V> r = this, p;;) {
+        final TreeNode\<K,V> root() {
+            for (TreeNode\<K,V> r = this, p;;) {
                 if ((p = r.parent) == null)
                     return r;
                 r = p;
@@ -700,11 +700,11 @@ public HashSet(Collection<? extends E> c) {
 
 ```java
    /** 为什么需要扩容：哈希冲突导致的链化影像查找效率，数组以空间换时间  
-   由power-of-two expansion  newCap = oldCap << 1 可知扩容为原来的两倍
+   由power-of-two expansion  newCap = oldCap \<\< 1 可知扩容为原来的两倍
 		1010      十进制：10     原始数         number
-		10100      十进制：20     左移一位       number = number << 1;
+		10100      十进制：20     左移一位       number = number \<\< 1;
 	     1010      十进制：10     右移一位       number = number >> 1;
-   		即	oldCap << 1 即二进制向左移动两位：oldCap << 1=oldCap*2
+   		即	oldCap \<\< 1 即二进制向左移动两位：oldCap \<\< 1=oldCap*2
    			同理oldCap >> 1=oldCap/2
    			补充>>>：无符号右移，忽略符号位，空位都以0补齐
      * Initializes or doubles table size.  If null, allocates in
@@ -715,9 +715,9 @@ public HashSet(Collection<? extends E> c) {
      *
      * @return the table
      */
-    final Node<K,V>[] resize() {
+    final Node\<K,V>[] resize() {
         //oldTab扩容前哈希表
-        Node<K,V>[] oldTab = table;
+        Node\<K,V>[] oldTab = table;
         //扩容之前数组长度
         int oldCap = (oldTab == null) ? 0 : oldTab.length;
         //扩容之前的阈值，触发本次扩容的阈值
@@ -733,9 +733,9 @@ public HashSet(Collection<? extends E> c) {
                 return oldTab;
             }
             //oldCap左移一位实现数值翻倍，并且复制给newCap，newCap小于最大限制且扩容之前的数组长度 >= 16
-            else if ((newCap = oldCap << 1) < MAXIMUM_CAPACITY &&
+            else if ((newCap = oldCap \<\< 1) \< MAXIMUM_CAPACITY &&
                      oldCap >= DEFAULT_INITIAL_CAPACITY)
-                newThr = oldThr << 1; // double threshold
+                newThr = oldThr \<\< 1; // double threshold
         }
         //oldCap==0,说明HashMap中的散列表是null
         //1.new HashMap（initCap，loadFactor）；
@@ -753,20 +753,20 @@ public HashSet(Collection<? extends E> c) {
         //newThr为0时，通过newCap和loadFactor计算出一个newThr
         if (newThr == 0) {
             float ft = (float)newCap * loadFactor;
-            newThr = (newCap < MAXIMUM_CAPACITY && ft < (float)MAXIMUM_CAPACITY ?
+            newThr = (newCap \< MAXIMUM_CAPACITY && ft \< (float)MAXIMUM_CAPACITY ?
                       (int)ft : Integer.MAX_VALUE);
         }
         threshold = newThr;
         
         //第一次或创建一个更大的数组
         @SuppressWarnings({"rawtypes","unchecked"})
-            Node<K,V>[] newTab = (Node<K,V>[])new Node[newCap];
+            Node\<K,V>[] newTab = (Node\<K,V>[])new Node[newCap];
         table = newTab;
         //扩容前数组不为空
         if (oldTab != null) {
-            for (int j = 0; j < oldCap; ++j) {
+            for (int j = 0; j \< oldCap; ++j) {
                 //当前node节点
-                Node<K,V> e;
+                Node\<K,V> e;
                 //当前桶位中有数据，但是数据具体是单个数据或链表或红黑树还不明确
                 if ((e = oldTab[j]) != null) {
                     //方便JVM GC回收
@@ -776,14 +776,14 @@ public HashSet(Collection<? extends E> c) {
                         newTab[e.hash & (newCap - 1)] = e;
                     //当前节点已经树化
                     else if (e instanceof TreeNode)
-                        ((TreeNode<K,V>)e).split(this, newTab, j, oldCap);
+                        ((TreeNode\<K,V>)e).split(this, newTab, j, oldCap);
                     //当前节点为链表
                     else { // preserve order
                         //loHead低位链表，存放在扩容之后的数组的下标位置，与当前数组的下标位置一致。
                         //hiHead高位链表，存放在扩容之后的数组的下标位置为当前数组的下标位置+扩容之前的长度。
-                        Node<K,V> loHead = null, loTail = null;
-                        Node<K,V> hiHead = null, hiTail = null;
-                        Node<K,V> next;
+                        Node\<K,V> loHead = null, loTail = null;
+                        Node\<K,V> hiHead = null, hiTail = null;
+                        Node\<K,V> next;
                         do {
                             next = e.next;
                             if ((e.hash & oldCap) == 0) {
@@ -825,14 +825,14 @@ public HashSet(Collection<? extends E> c) {
 /**默认（缺省）数组长度
      * The default initial capacity - MUST be a power of two.
      */
-    static final int DEFAULT_INITIAL_CAPACITY = 1 << 4; // aka 16
+    static final int DEFAULT_INITIAL_CAPACITY = 1 \<\< 4; // aka 16
 
     /**最大数组长度
      * The maximum capacity, used if a higher value is implicitly specified
      * by either of the constructors with arguments.
-     * MUST be a power of two <= 1<<30.
+     * MUST be a power of two \<= 1\<\<30.
      */
-    static final int MAXIMUM_CAPACITY = 1 << 30;
+    static final int MAXIMUM_CAPACITY = 1 \<\< 30;
 
     /**缺省负载因子大小
      * The load factor used when none specified in constructor.
@@ -856,14 +856,14 @@ public HashSet(Collection<? extends E> c) {
      * Replaces all linked nodes in bin at index for given hash unless
      * table is too small, in which case resizes instead.
      */
-    final void treeifyBin(Node<K,V>[] tab, int hash) {
-        int n, index; Node<K,V> e;
-        if (tab == null || (n = tab.length) < MIN_TREEIFY_CAPACITY)
+    final void treeifyBin(Node\<K,V>[] tab, int hash) {
+        int n, index; Node\<K,V> e;
+        if (tab == null || (n = tab.length) \< MIN_TREEIFY_CAPACITY)
             resize();
         else if ((e = tab[index = (n - 1) & hash]) != null) {
-            TreeNode<K,V> hd = null, tl = null;
+            TreeNode\<K,V> hd = null, tl = null;
             do {
-                TreeNode<K,V> p = replacementTreeNode(e, null);
+                TreeNode\<K,V> p = replacementTreeNode(e, null);
                 if (tl == null)
                     hd = p;
                 else {
@@ -901,13 +901,13 @@ public HashSet(Collection<? extends E> c) {
      * (We also tolerate length zero in some operations to allow
      * bootstrapping mechanics that are currently not needed.)
      */
-    transient Node<K,V>[] table;
+    transient Node\<K,V>[] table;
 
     /**
      * Holds cached entrySet(). Note that AbstractMap fields are used
      * for keySet() and values().
      */
-    transient Set<Map.Entry<K,V>> entrySet;
+    transient Set\<Map.Entry\<K,V>> entrySet;
 
     /**当前哈希表元素个数
      * The number of key-value mappings contained in this map.
@@ -955,10 +955,10 @@ public HashSet(Collection<? extends E> c) {
      *
      * @param key key with which the specified value is to be associated
      * @param value value to be associated with the specified key
-     * @return the previous value associated with <tt>key</tt>, or
-     *         <tt>null</tt> if there was no mapping for <tt>key</tt>.
-     *         (A <tt>null</tt> return can also indicate that the map
-     *         previously associated <tt>null</tt> with <tt>key</tt>.)
+     * @return the previous value associated with \<tt>key\</tt>, or
+     *         \<tt>null\</tt> if there was no mapping for \<tt>key\</tt>.
+     *         (A \<tt>null\</tt> return can also indicate that the map
+     *         previously associated \<tt>null\</tt> with \<tt>key\</tt>.)
      */
     public V put(K key, V value) {
         return putVal(hash(key), key, value, false, true);
@@ -1018,7 +1018,7 @@ public HashSet(Collection<? extends E> c) {
         //p 当前散列表元素
         //n 当前散列表数组长度
         //i 路由寻址结果
-        Node<K,V>[] tab; Node<K,V> p; int n, i;
+        Node\<K,V>[] tab; Node\<K,V> p; int n, i;
         //延迟初始化，第一次调用putVal时会初始化hashMap对象中最消耗内存的散列表
         if ((tab = table) == null || (n = tab.length) == 0)
             n = (tab = resize()).length;
@@ -1027,14 +1027,14 @@ public HashSet(Collection<? extends E> c) {
             tab[i] = newNode(hash, key, value, null);
         else {
             //e 不为null 找到了一个与当前要插入的key-value一致的 key元素
-            Node<K,V> e; K k;
+            Node\<K,V> e; K k;
             //表示桶位中的该元素与当前插入元素key完全一致，后续将替换
             if (p.hash == hash &&
                 ((k = p.key) == key || (key != null && key.equals(k))))
                 e = p;
             //该元素已经树化时
             else if (p instanceof TreeNode)
-                e = ((TreeNode<K,V>)p).putTreeVal(this, tab, hash, key, value);
+                e = ((TreeNode\<K,V>)p).putTreeVal(this, tab, hash, key, value);
             //链表时且不等于头元素，元素依次比较
             else {
                 for (int binCount = 0; ; ++binCount) {
@@ -1081,12 +1081,12 @@ public HashSet(Collection<? extends E> c) {
      * Returns the value to which the specified key is mapped,
      * or {@code null} if this map contains no mapping for the key.
      *
-     * <p>More formally, if this map contains a mapping from a key
+     * \<p>More formally, if this map contains a mapping from a key
      * {@code k} to a value {@code v} such that {@code (key==null ? k==null :
      * key.equals(k))}, then this method returns {@code v}; otherwise
      * it returns {@code null}.  (There can be at most one such mapping.)
      *
-     * <p>A return value of {@code null} does not <i>necessarily</i>
+     * \<p>A return value of {@code null} does not \<i>necessarily\</i>
      * indicate that the map contains no mapping for the key; it's also
      * possible that the map explicitly maps the key to {@code null}.
      * The {@link #containsKey containsKey} operation may be used to
@@ -1095,7 +1095,7 @@ public HashSet(Collection<? extends E> c) {
      * @see #put(Object, Object)
      */
     public V get(Object key) {
-        Node<K,V> e;
+        Node\<K,V> e;
         return (e = getNode(hash(key), key)) == null ? null : e.value;
     }
     
@@ -1107,12 +1107,12 @@ public HashSet(Collection<? extends E> c) {
      * @param key the key
      * @return the node, or null if none
      */
-    final Node<K,V> getNode(int hash, Object key) {
+    final Node\<K,V> getNode(int hash, Object key) {
         //tab:引用当前 hashmap的散列表
         //first:桶位中的头元素
         //e:临时node元素
         //n: table数组长度
-        Node<K,V>[] tab; Node<K,V> first, e; int n; K k;
+        Node\<K,V>[] tab; Node\<K,V> first, e; int n; K k;
         if ((tab = table) != null && (n = tab.length) > 0 &&
             (first = tab[(n - 1) & hash]) != null) {
             //第一种情况：定位出来的桶位元素即为咱们要get的数据
@@ -1123,7 +1123,7 @@ public HashSet(Collection<? extends E> c) {
             if ((e = first.next) != null) {
                 //第二种情况，桶升级成了红黑树
                 if (first instanceof TreeNode)
-                    return ((TreeNode<K,V>)first).getTreeNode(hash, key);
+                    return ((TreeNode\<K,V>)first).getTreeNode(hash, key);
                 //桶形成了链表
                 do {
                     if (e.hash == hash &&
@@ -1150,19 +1150,19 @@ public HashSet(Collection<? extends E> c) {
      * @param movable if false do not move other nodes while removing
      * @return the node, or null if none
      */
-    final Node<K,V> removeNode(int hash, Object key, Object value,
+    final Node\<K,V> removeNode(int hash, Object key, Object value,
                                boolean matchValue, boolean movable) {
         //tab:引用当前 hashmap中的散列表
         //p:当前node元素
         //n:表示散列表数组长度
         //index:表示寻址结果
-        Node<K,V>[] tab; Node<K,V> p; int n, index;
+        Node\<K,V>[] tab; Node\<K,V> p; int n, index;
         if ((tab = table) != null && (n = tab.length) > 0 &&
             (p = tab[index = (n - 1) & hash]) != null) {
             //说明路由的桶位是有数据的，需要进行查找操作，并且删除
             //node:查找到的结果
             //e:当前Node的下一个元素
-            Node<K,V> node = null, e; K k; V v;
+            Node\<K,V> node = null, e; K k; V v;
             if (p.hash == hash &&
                 ((k = p.key) == key || (key != null && key.equals(k))))
                 node = p;
@@ -1170,7 +1170,7 @@ public HashSet(Collection<? extends E> c) {
                 //说明，当前桶位要么是链表要么是红黑树
                 if (p instanceof TreeNode)//判断当前桶位是否升级为红黑树了
                     //第二种情况：红黑树查找
-                    node = ((TreeNode<K,V>)p).getTreeNode(hash, key);
+                    node = ((TreeNode\<K,V>)p).getTreeNode(hash, key);
                 else {
                     //第三种链表
                     do {
@@ -1189,7 +1189,7 @@ public HashSet(Collection<? extends E> c) {
                                  (value != null && value.equals(v)))) {
                 //第一种情況：node是树节点，说明需要进行树节点移除操作
                 if (node instanceof TreeNode)
-                    ((TreeNode<K,V>)node).removeTreeNode(this, tab, movable);
+                    ((TreeNode\<K,V>)node).removeTreeNode(this, tab, movable);
                 //第二种情況：桶位元素即为査找结果，则将该元素的下一个元素放至桶位中
                 else if (node == p)
                     tab[index] = node.next;
@@ -1220,7 +1220,7 @@ public HashSet(Collection<? extends E> c) {
 /* ---------------- Public operations -------------- */
 
     /**
-     * Constructs an empty <tt>HashMap</tt> with the specified initial
+     * Constructs an empty \<tt>HashMap\</tt> with the specified initial
      * capacity and load factor.
      *
      * @param  initialCapacity the initial capacity
@@ -1229,14 +1229,14 @@ public HashSet(Collection<? extends E> c) {
      *         or the load factor is nonpositive
      */
     public HashMap(int initialCapacity, float loadFactor) {
-        //限制数组与loadFactor 0<initialCapacity<MAXIMUM_CAPACITY
+        //限制数组与loadFactor 0\<initialCapacity\<MAXIMUM_CAPACITY
         // loadFactor>0
-        if (initialCapacity < 0)
+        if (initialCapacity \< 0)
             throw new IllegalArgumentException("Illegal initial capacity: " +
                                                initialCapacity);
         if (initialCapacity > MAXIMUM_CAPACITY)
             initialCapacity = MAXIMUM_CAPACITY;
-        if (loadFactor <= 0 || Float.isNaN(loadFactor))
+        if (loadFactor \<= 0 || Float.isNaN(loadFactor))
             throw new IllegalArgumentException("Illegal load factor: " +
                                                loadFactor);
         this.loadFactor = loadFactor;
@@ -1255,11 +1255,11 @@ public HashSet(Collection<? extends E> c) {
         n |= n >>> 4;
         n |= n >>> 8;
         n |= n >>> 16;
-        return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
+        return (n \< 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
     }
 
     /**
-     * Constructs an empty <tt>HashMap</tt> with the specified initial
+     * Constructs an empty \<tt>HashMap\</tt> with the specified initial
      * capacity and the default load factor (0.75).
      *
      * @param  initialCapacity the initial capacity.
@@ -1270,7 +1270,7 @@ public HashSet(Collection<? extends E> c) {
     }
 
     /**
-     * Constructs an empty <tt>HashMap</tt> with the default initial capacity
+     * Constructs an empty \<tt>HashMap\</tt> with the default initial capacity
      * (16) and the default load factor (0.75).
      */
     public HashMap() {
@@ -1278,15 +1278,15 @@ public HashSet(Collection<? extends E> c) {
     }
 
     /**
-     * Constructs a new <tt>HashMap</tt> with the same mappings as the
-     * specified <tt>Map</tt>.  The <tt>HashMap</tt> is created with
+     * Constructs a new \<tt>HashMap\</tt> with the same mappings as the
+     * specified \<tt>Map\</tt>.  The \<tt>HashMap\</tt> is created with
      * default load factor (0.75) and an initial capacity sufficient to
-     * hold the mappings in the specified <tt>Map</tt>.
+     * hold the mappings in the specified \<tt>Map\</tt>.
      *
      * @param   m the map whose mappings are to be placed in this map
      * @throws  NullPointerException if the specified map is null
      */
-    public HashMap(Map<? extends K, ? extends V> m) {
+    public HashMap(Map\<? extends K, ? extends V> m) {
         this.loadFactor = DEFAULT_LOAD_FACTOR;
         putMapEntries(m, false);
     }
@@ -1309,39 +1309,39 @@ public HashSet(Collection<? extends E> c) {
 put、resize扩容均使用HashMap的方法，拥有HashMap所有特性。
 
 ```java
-public class LinkedHashMap<K,V>
-    extends HashMap<K,V>
-    implements Map<K,V>
+public class LinkedHashMap\<K,V>
+    extends HashMap\<K,V>
+    implements Map\<K,V>
 {}
 
     /**
      * HashMap.Node subclass for normal LinkedHashMap entries.
      */
-    static class Entry<K,V> extends HashMap.Node<K,V> {
-        Entry<K,V> before, after;
-        Entry(int hash, K key, V value, Node<K,V> next) {
+    static class Entry\<K,V> extends HashMap.Node\<K,V> {
+        Entry\<K,V> before, after;
+        Entry(int hash, K key, V value, Node\<K,V> next) {
             super(hash, key, value, next);
         }
     }
     /**双向链表头
      * The head (eldest) of the doubly linked list.
      */
-    transient LinkedHashMap.Entry<K,V> head;
+    transient LinkedHashMap.Entry\<K,V> head;
 
     /**双向链表尾
      * The tail (youngest) of the doubly linked list.
      */
-    transient LinkedHashMap.Entry<K,V> tail;
+    transient LinkedHashMap.Entry\<K,V> tail;
 
     /**
-     * The iteration ordering method for this linked hash map: <tt>true</tt>
-     * for access-order, <tt>false</tt> for insertion-order.
+     * The iteration ordering method for this linked hash map: \<tt>true\</tt>
+     * for access-order, \<tt>false\</tt> for insertion-order.
      *
      * @serial
      */
     final boolean accessOrder;
 /**
-     * Constructs an empty insertion-ordered <tt>LinkedHashMap</tt> instance
+     * Constructs an empty insertion-ordered \<tt>LinkedHashMap\</tt> instance
      * with the specified initial capacity and a default load factor (0.75).
      *
      * @param  initialCapacity the initial capacity
@@ -1353,7 +1353,7 @@ public class LinkedHashMap<K,V>
     }
 
     /**
-     * Constructs an empty insertion-ordered <tt>LinkedHashMap</tt> instance
+     * Constructs an empty insertion-ordered \<tt>LinkedHashMap\</tt> instance
      * with the default initial capacity (16) and load factor (0.75).
      */
     public LinkedHashMap() {
@@ -1362,28 +1362,28 @@ public class LinkedHashMap<K,V>
     }
 
     /**
-     * Constructs an insertion-ordered <tt>LinkedHashMap</tt> instance with
-     * the same mappings as the specified map.  The <tt>LinkedHashMap</tt>
+     * Constructs an insertion-ordered \<tt>LinkedHashMap\</tt> instance with
+     * the same mappings as the specified map.  The \<tt>LinkedHashMap\</tt>
      * instance is created with a default load factor (0.75) and an initial
      * capacity sufficient to hold the mappings in the specified map.
      *
      * @param  m the map whose mappings are to be placed in this map
      * @throws NullPointerException if the specified map is null
      */
-    public LinkedHashMap(Map<? extends K, ? extends V> m) {
+    public LinkedHashMap(Map\<? extends K, ? extends V> m) {
         super();
         accessOrder = false;
         putMapEntries(m, false);
     }
 
     /**
-     * Constructs an empty <tt>LinkedHashMap</tt> instance with the
+     * Constructs an empty \<tt>LinkedHashMap\</tt> instance with the
      * specified initial capacity, load factor and ordering mode.
      *
      * @param  initialCapacity the initial capacity
      * @param  loadFactor      the load factor
      *=====此构造方法accessOrder为true时实现了按访问顺序存储元素======
-     *@param  accessOrder     the ordering mode - <tt>true</tt> for access-order, <tt>false</tt> for insertion-order
+     *@param  accessOrder     the ordering mode - \<tt>true\</tt> for access-order, \<tt>false\</tt> for insertion-order
      * @throws IllegalArgumentException if the initial capacity is negative
      *         or the load factor is nonpositive
      */
@@ -1402,40 +1402,40 @@ public class LinkedHashMap<K,V>
      /**
      * HashMap.Node subclass for normal LinkedHashMap entries.
      */
-    static class Entry<K,V> extends HashMap.Node<K,V> {
+    static class Entry\<K,V> extends HashMap.Node\<K,V> {
         //记录相邻两个key-value对象
-        Entry<K,V> before, after;
-        Entry(int hash, K key, V value, Node<K,V> next) {
+        Entry\<K,V> before, after;
+        Entry(int hash, K key, V value, Node\<K,V> next) {
             super(hash, key, value, next);
         }
     }
     /**双向链表头
      * The head (eldest) of the doubly linked list.
      */
-    transient LinkedHashMap.Entry<K,V> head;
+    transient LinkedHashMap.Entry\<K,V> head;
 
     /**双向链表尾
      * The tail (youngest) of the doubly linked list.
      */
-    transient LinkedHashMap.Entry<K,V> tail;
+    transient LinkedHashMap.Entry\<K,V> tail;
 /**====false则按插入顺序存储元素，如果是true则按访问顺序存储元素
-     * The iteration ordering method for this linked hash map: <tt>true</tt>
-     * for access-order, <tt>false</tt> for insertion-order.
+     * The iteration ordering method for this linked hash map: \<tt>true\</tt>
+     * for access-order, \<tt>false\</tt> for insertion-order.
      *
      * @serial
      */
     final boolean accessOrder;
 
-    Node<K,V> newNode(int hash, K key, V value, Node<K,V> e) {
-        LinkedHashMap.Entry<K,V> p =
-            new LinkedHashMap.Entry<K,V>(hash, key, value, e);
+    Node\<K,V> newNode(int hash, K key, V value, Node\<K,V> e) {
+        LinkedHashMap.Entry\<K,V> p =
+            new LinkedHashMap.Entry\<K,V>(hash, key, value, e);
         linkNodeLast(p);
         return p;
     }
 
     /**
-     * The iteration ordering method for this linked hash map: <tt>true</tt>
-     * for access-order, <tt>false</tt> for insertion-order.
+     * The iteration ordering method for this linked hash map: \<tt>true\</tt>
+     * for access-order, \<tt>false\</tt> for insertion-order.
      *
      * @serial
      */
@@ -1448,8 +1448,8 @@ public class LinkedHashMap<K,V>
 //    3进：tail=last=1--》tail=3  3.before=1 --》 1.after=3
  //   	2进：tail=last=3--》tail=2  2.before=3 --》 3.after=2
     // link at the end of list
-    private void linkNodeLast(LinkedHashMap.Entry<K,V> p) {
-        LinkedHashMap.Entry<K,V> last = tail;
+    private void linkNodeLast(LinkedHashMap.Entry\<K,V> p) {
+        LinkedHashMap.Entry\<K,V> last = tail;
         tail = p;
         if (last == null)
             head = p;
@@ -1465,13 +1465,13 @@ public class LinkedHashMap<K,V>
      * Basic hash bin node, used for most entries.  (See below for
      * TreeNode subclass, and in LinkedHashMap for its Entry subclass.)
      */
-    static class Node<K,V> implements Map.Entry<K,V> {
+    static class Node\<K,V> implements Map.Entry\<K,V> {
         final int hash;
         final K key;
         V value;
-        Node<K,V> next;
+        Node\<K,V> next;
 
-        Node(int hash, K key, V value, Node<K,V> next) {
+        Node(int hash, K key, V value, Node\<K,V> next) {
             this.hash = hash;
             this.key = key;
             this.value = value;
@@ -1496,7 +1496,7 @@ public class LinkedHashMap<K,V>
             if (o == this)
                 return true;
             if (o instanceof Map.Entry) {
-                Map.Entry<?,?> e = (Map.Entry<?,?>)o;
+                Map.Entry\<?,?> e = (Map.Entry\<?,?>)o;
                 if (Objects.equals(key, e.getKey()) &&
                     Objects.equals(value, e.getValue()))
                     return true;
@@ -1522,9 +1522,9 @@ public class LinkedHashMap<K,V>
 
 ```java
 //NavigableMap接口提供针对Key的有序访问，
-public class TreeMap<K,V>
-    extends AbstractMap<K,V>
-    implements NavigableMap<K,V>, Cloneable, java.io.Serializable
+public class TreeMap\<K,V>
+    extends AbstractMap\<K,V>
+    implements NavigableMap\<K,V>, Cloneable, java.io.Serializable
 {
     /**
      * The comparator used to maintain order in this tree map, or
@@ -1532,9 +1532,9 @@ public class TreeMap<K,V>
      *
      * @serial
      */
-    private final Comparator<? super K> comparator;
+    private final Comparator\<? super K> comparator;
 
-    private transient Entry<K,V> root;
+    private transient Entry\<K,V> root;
 
     /**
      * The number of entries in the tree
@@ -1551,19 +1551,19 @@ public class TreeMap<K,V>
      * user (see Map.Entry).
      */
 
-    static final class Entry<K,V> implements Map.Entry<K,V> {
+    static final class Entry\<K,V> implements Map.Entry\<K,V> {
         K key;
         V value;
-        Entry<K,V> left;
-        Entry<K,V> right;
-        Entry<K,V> parent;
+        Entry\<K,V> left;
+        Entry\<K,V> right;
+        Entry\<K,V> parent;
         boolean color = BLACK;
 
         /**
          * Make a new cell with given key, value, and parent, and with
          * {@code null} child links, and BLACK color.
          */
-        Entry(K key, V value, Entry<K,V> parent) {
+        Entry(K key, V value, Entry\<K,V> parent) {
             this.key = key;
             this.value = value;
             this.parent = parent;
@@ -1603,7 +1603,7 @@ public class TreeMap<K,V>
         public boolean equals(Object o) {
             if (!(o instanceof Map.Entry))
                 return false;
-            Map.Entry<?,?> e = (Map.Entry<?,?>)o;
+            Map.Entry\<?,?> e = (Map.Entry\<?,?>)o;
 
             return valEquals(key,e.getKey()) && valEquals(value,e.getValue());
         }
@@ -1650,12 +1650,12 @@ JDK1.8 : Node数组+链表 / 红黑树
      * The array of bins. Lazily initialized upon first insertion.
      * Size is always a power of two. Accessed directly by iterators.
      */
-    transient volatile Node<K,V>[] table;
+    transient volatile Node\<K,V>[] table;
 
     /**
      * The next table to use; non-null only while resizing.
      */
-    private transient volatile Node<K,V>[] nextTable;
+    private transient volatile Node\<K,V>[] nextTable;
 
     /**
      * Base counter value, used mainly when there is no contention,
@@ -1791,7 +1791,7 @@ Thread.setPriority(int n) // 1~10, 默认值5
     2.重写**call**方法,需要抛出异常
     3.创建目标对象
     4.创建执行服务: Executorservice ser= Executors. newfixed Threadpool(1)
-    5.提交执行: Future< Boolean> result1=ser. submit(t1);
+    5.提交执行: Future\< Boolean> result1=ser. submit(t1);
     6.获取**结果**: boolean r1= result1.get()
     7.关闭服务:ser. shutdownNow()
 
@@ -1859,7 +1859,7 @@ public class HelloClass {
     /**
      * 方法三：实现Callable接口,与Runnable相比,Callable可以有返回值,返回值通过FutureTask【未来任务】进行封装
      */
-    static class MyCallable implements Callable<Integer> {
+    static class MyCallable implements Callable\<Integer> {
         @Override
         public Integer call() {
             return 123;
@@ -1883,12 +1883,12 @@ public class HelloClass {
 
 //implements Callable=============
         MyCallable mc = new MyCallable();
-        FutureTask<Integer> ft = new FutureTask<>(mc);
+        FutureTask\<Integer> ft = new FutureTask\<>(mc);
         Thread thread1 = new Thread(ft);
         thread1.start();
         System.out.println(ft.get());
 //lambda Callbale
-        FutureTask<Integer> futureTask2 = new FutureTask<>(()->{
+        FutureTask\<Integer> futureTask2 = new FutureTask\<>(()->{
              System.out.println(Thread.currentThread().getName()+"come in callbale");
             return 111;
         });
@@ -2275,7 +2275,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 //资源类
 class MyCache {
     //创建map集合
-    private volatile Map<String,Object> map = new HashMap<>();
+    private volatile Map\<String,Object> map = new HashMap\<>();
 
     //创建读写锁对象
     private ReadWriteLock rwLock = new ReentrantReadWriteLock();
@@ -2325,7 +2325,7 @@ public class ReadWriteLockDemo {
     public static void main(String[] args) throws InterruptedException {
         MyCache myCache = new MyCache();
         //创建线程放数据
-        for (int i = 1; i <=5; i++) {
+        for (int i = 1; i \<=5; i++) {
             final int num = i;
             new Thread(()->{
                 myCache.put(num+"",num+"");
@@ -2335,7 +2335,7 @@ public class ReadWriteLockDemo {
         TimeUnit.MICROSECONDS.sleep(300);
 
         //创建线程取数据
-        for (int i = 1; i <=5; i++) {
+        for (int i = 1; i \<=5; i++) {
             final int num = i;
             new Thread(()->{
                 myCache.get(num+"");
@@ -2408,16 +2408,16 @@ ThreadLocal适合在一个线程的处理流程中保持上下文（避免了同
 ```java
 public static void main(String[] args) {
         //创建ArrayList集合
-//        List<String> list = new ArrayList<>();
+//        List\<String> list = new ArrayList\<>();
         // Vector解决
-//        List<String> list = new Vector<>();
+//        List\<String> list = new Vector\<>();
 
         //Collections解决
-//        List<String> list = Collections.synchronizedList(new ArrayList<>());
+//        List\<String> list = Collections.synchronizedList(new ArrayList\<>());
 
         // CopyOnWriteArrayList写时复制技术解决
-//        List<String> list = new CopyOnWriteArrayList<>();
-//        for (int i = 0; i <30; i++) {
+//        List\<String> list = new CopyOnWriteArrayList\<>();
+//        for (int i = 0; i \<30; i++) {
 //            new Thread(()->{
 //                //向集合添加内容
 //                list.add(UUID.randomUUID().toString().substring(0,8));
@@ -2427,10 +2427,10 @@ public static void main(String[] args) {
 //        }
 
         //演示Hashset
-//        Set<String> set = new HashSet<>();
+//        Set\<String> set = new HashSet\<>();
 
-//        Set<String> set = new CopyOnWriteArraySet<>();
-//        for (int i = 0; i <30; i++) {
+//        Set\<String> set = new CopyOnWriteArraySet\<>();
+//        for (int i = 0; i \<30; i++) {
 //            new Thread(()->{
 //                //向集合添加内容
 //                set.add(UUID.randomUUID().toString().substring(0,8));
@@ -2440,10 +2440,10 @@ public static void main(String[] args) {
 //        }
 
         //演示HashMap
-//        Map<String,String> map = new HashMap<>();
+//        Map\<String,String> map = new HashMap\<>();
 
-        Map<String,String> map = new ConcurrentHashMap<>();
-        for (int i = 0; i <30; i++) {
+        Map\<String,String> map = new ConcurrentHashMap\<>();
+        for (int i = 0; i \<30; i++) {
             String key = String.valueOf(i);
             new Thread(()->{
                 //向集合添加内容
@@ -2484,7 +2484,7 @@ public class CountDownLatchDemo {
     CountDownLatch countDownLatch = new CountDownLatch(6);
 
     //6个同学陆续离开教室之后
-    for (int i = 1; i <=6; i++) {
+    for (int i = 1; i \<=6; i++) {
         new Thread(()->{
             System.out.println(Thread.currentThread().getName()+" 号同学离开了教室");
 
@@ -2526,7 +2526,7 @@ public static void main(String[] args) {
             });
 
     //集齐七颗龙珠过程
-    for (int i = 1; i <=7; i++) {
+    for (int i = 1; i \<=7; i++) {
         new Thread(()->{
             try {
                 System.out.println(Thread.currentThread().getName()+" 星龙被收集到了");
@@ -2560,7 +2560,7 @@ public class SemaphoreDemo {
         Semaphore semaphore = new Semaphore(3);
 
         //模拟6辆汽车
-        for (int i = 1; i <=6; i++) {
+        for (int i = 1; i \<=6; i++) {
             new Thread(()->{
                 try {
                     //抢占
@@ -2639,7 +2639,7 @@ public class BlockingQueueDemo {
 
     public static void main(String[] args) throws InterruptedException {
         //创建阻塞队列
-        BlockingQueue<String> blockingQueue = new ArrayBlockingQueue<>(3);
+        BlockingQueue\<String> blockingQueue = new ArrayBlockingQueue\<>(3);
 
         //第一组
 //        System.out.println(blockingQueue.add("a"));
@@ -2776,7 +2776,7 @@ public class ThreadPoolDemo1 {
         ExecutorService threadPool3 = Executors.newCachedThreadPool();
         //10个顾客请求
         try {
-            for (int i = 1; i <=10; i++) {
+            for (int i = 1; i \<=10; i++) {
                 //执行
                 threadPool3.execute(()->{
                     System.out.println(Thread.currentThread().getName()+" 办理业务");
@@ -2803,7 +2803,7 @@ public class ThreadPoolDemo1 {
 ​		即，**当提交的任务数大于（workQueue.size() + maximumPoolSize ），就会触发线程池的拒绝策略。**
 
 ```cpp
-public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue) {
+public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue\<Runnable> workQueue) {
     this(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue,
          Executors.defaultThreadFactory(), defaultHandler);
 }
@@ -2824,7 +2824,7 @@ public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveT
 7、unit 存活的时间单位
 
 ```java
-ThreadPoolExecutor threadPool = new ThreadPoolExecutor(corePoolSize：10, maximumPoolSize：15, keepAliveTime：6060, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
+ThreadPoolExecutor threadPool = new ThreadPoolExecutor(corePoolSize：10, maximumPoolSize：15, keepAliveTime：6060, TimeUnit.SECONDS, new LinkedBlockingQueue\<Runnable>());
 ```
 
 > **即初始化10个，最大15个，存活6060，单位为秒，有哪些待执行任务。**
@@ -2864,7 +2864,7 @@ public static ExecutorService newCachedThreadPool(){
     * workQueue 存放提交但未执行任务的队列 
     * threadFactory 创建线程的工厂类:可以省略 
     * handler 等待队列满后的拒绝策略:可以省略 */ 
-    return new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue<>(), 
+    return new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue\<>(), 
                                   Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy()); }
 ```
 
@@ -2889,7 +2889,7 @@ public static ExecutorService newFixedThreadPool(){
     * workQueue 存放提交但未执行任务的队列 
     * threadFactory 创建线程的工厂类:可以省略 
     * handler 等待队列满后的拒绝策略:可以省略 */ 
-    return new ThreadPoolExecutor(10, 10, 0L, TimeUnit.SECONDS, new LinkedBlockingQueue<>(), 
+    return new ThreadPoolExecutor(10, 10, 0L, TimeUnit.SECONDS, new LinkedBlockingQueue\<>(), 
                                   Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy()); }
 
 ```
@@ -2912,7 +2912,7 @@ public static ExecutorService newFixedThreadPool(){
 * threadFactory 创建线程的工厂类:可以省略 
 * handler 等待队列满后的拒绝策略:可以省略 */
 public static ExecutorService newSingleThreadExecutor(){ 
-    return new ThreadPoolExecutor(1, 1, 0L, TimeUnit.SECONDS, new LinkedBlockingQueue<>(), 
+    return new ThreadPoolExecutor(1, 1, 0L, TimeUnit.SECONDS, new LinkedBlockingQueue\<>(), 
                                   Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy()); }
 ```
 
@@ -2992,14 +2992,14 @@ public class ThreadPoolDemo2 {
                 5,
                 2L,
                 TimeUnit.SECONDS,
-                new ArrayBlockingQueue<>(3),
+                new ArrayBlockingQueue\<>(3),
                 Executors.defaultThreadFactory(),
                 new ThreadPoolExecutor.AbortPolicy()
         );
 
         //10个顾客请求
         try {
-            for (int i = 1; i <=10; i++) {
+            for (int i = 1; i \<=10; i++) {
                 //执行
                 threadPool.execute(()->{
                     System.out.println(Thread.currentThread().getName()+" 办理业务");
@@ -3044,7 +3044,7 @@ Positive example 2：
     //Common Thread Pool
     ExecutorService pool = new ThreadPoolExecutor(5, 200,
         0L, TimeUnit.MILLISECONDS,
-        new LinkedBlockingQueue<Runnable>(1024), namedThreadFactory, new ThreadPoolExecutor.AbortPolicy());
+        new LinkedBlockingQueue\<Runnable>(1024), namedThreadFactory, new ThreadPoolExecutor.AbortPolicy());
 
     pool.execute(()-> System.out.println(Thread.currentThread().getName()));
     pool.shutdown();//gracefully shutdown
@@ -3052,17 +3052,17 @@ Positive example 2：
         
             
 Positive example 3：
-    <bean id="userThreadPool"
+    \<bean id="userThreadPool"
         class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
-        <property name="corePoolSize" value="10" />
-        <property name="maxPoolSize" value="100" />
-        <property name="queueCapacity" value="2000" />
+        \<property name="corePoolSize" value="10" />
+        \<property name="maxPoolSize" value="100" />
+        \<property name="queueCapacity" value="2000" />
 
-    <property name="threadFactory" value= threadFactory />
-        <property name="rejectedExecutionHandler">
-            <ref local="rejectedExecutionHandler" />
-        </property>
-    </bean>
+    \<property name="threadFactory" value= threadFactory />
+        \<property name="rejectedExecutionHandler">
+            \<ref local="rejectedExecutionHandler" />
+        \</property>
+    \</bean>
     //in code
     userThreadPool.execute(thread);
 ```
@@ -3121,7 +3121,7 @@ IO密集型任务
 
 1、execute()，执行一个任务，没有返回值。
  2、submit()，提交一个线程任务，有返回值。
- submit(Callable<T> task)能获取到它的返回值，通过future.get()获取（阻塞直到任务执行完）。一般使用FutureTask+Callable配合使用（IntentService中有体现）。
+ submit(Callable\<T> task)能获取到它的返回值，通过future.get()获取（阻塞直到任务执行完）。一般使用FutureTask+Callable配合使用（IntentService中有体现）。
 
 submit(Runnable task, T result)能通过传入的载体result间接获得线程的返回值。
  submit(Runnable task)则是没有返回值的，就算获取它的返回值也是null。
@@ -3159,7 +3159,7 @@ Fork/Join它可以将一个大的任务拆分成多个子任务进行并行处�
 ​		Fork方法的实现原理： 当我们调用ForkJoinTask的fork方法时，程序会把任务放在ForkJoinWorkerThread的pushTask的workQueue中，异步地执行这个任务，然后立即返回结果
 
 ```java
-public final ForkJoinTask<V> fork() { 
+public final ForkJoinTask\<V> fork() { 
     Thread t; 
     if ((t = Thread.currentThread()) instanceof ForkJoinWorkerThread) ((ForkJoinWorkerThread)t).workQueue.push(this); 
     else ForkJoinPool.common.externalPush(this); 
@@ -3170,15 +3170,15 @@ public final ForkJoinTask<V> fork() {
 pushTask方法把当前任务存放在ForkJoinTask数组队列里。然后再调用ForkJoinPool的signalWork()方法唤醒或创建一个工作线程来执行任务。代码如下：
 
 ```java
-final void push(ForkJoinTask<?> task) { 
-    ForkJoinTask<?>[] a; 
+final void push(ForkJoinTask\<?> task) { 
+    ForkJoinTask\<?>[] a; 
     ForkJoinPool p; 
     int b = base, s = top, n; 
     if ((a = array) != null) { 
         // ignore if queue removed int m = a.length - 1; 
-        // fenced write for task visibility U.putOrderedObject(a, ((m & s) << ASHIFT) + ABASE, task);
+        // fenced write for task visibility U.putOrderedObject(a, ((m & s) \<\< ASHIFT) + ABASE, task);
         U.putOrderedInt(this, QTOP, s + 1); 
-        if ((n = s - b) <= 1) { if ((p = pool) != null) p.signalWork(p.workQueues, this);//执行 
+        if ((n = s - b) \<= 1) { if ((p = pool) != null) p.signalWork(p.workQueues, this);//执行 
                               } else if (n >= m) growArray(); 
     } 
 }
@@ -3210,8 +3210,8 @@ private int doJoin() {
     Thread t; 
     ForkJoinWorkerThread wt; 
     ForkJoinPool.WorkQueue w; 
-    return (s = status) < 0 ? s : 
-    ((t = Thread.currentThread()) instanceof ForkJoinWorkerThread) ? (w = (wt = (ForkJoinWorkerThread)t).workQueue). tryUnpush(this) && (s = doExec()) < 0 ? s : wt.pool.awaitJoin(w, this, 0L) : externalAwaitDone(); 
+    return (s = status) \< 0 ? s : 
+    ((t = Thread.currentThread()) instanceof ForkJoinWorkerThread) ? (w = (wt = (ForkJoinWorkerThread)t).workQueue). tryUnpush(this) && (s = doExec()) \< 0 ? s : wt.pool.awaitJoin(w, this, 0L) : externalAwaitDone(); 
 } 
 final int doExec() { 
     int s; 
@@ -3244,7 +3244,7 @@ final int doExec() {
   
   import java.util.concurrent.*;
   
-  class MyTask extends RecursiveTask<Integer> {
+  class MyTask extends RecursiveTask\<Integer> {
   
       //拆分差值不能超过10，计算10以内运算
       private static final Integer VALUE = 10;
@@ -3262,9 +3262,9 @@ final int doExec() {
       @Override
       protected Integer compute() {
           //判断相加两个数值是否大于10
-          if((end-begin)<=VALUE) {
+          if((end-begin)\<=VALUE) {
               //相加操作
-              for (int i = begin; i <=end; i++) {
+              for (int i = begin; i \<=end; i++) {
                   result = result+i;
               }
           } else {//进一步拆分
@@ -3290,7 +3290,7 @@ final int doExec() {
           MyTask myTask = new MyTask(0,100);
           //创建分支合并池对象
           ForkJoinPool forkJoinPool = new ForkJoinPool();
-          ForkJoinTask<Integer> forkJoinTask = forkJoinPool.submit(myTask);
+          ForkJoinTask\<Integer> forkJoinTask = forkJoinPool.submit(myTask);
           //获取最终合并之后结果
           Integer result = forkJoinTask.get();
           System.out.println(result);
@@ -3334,7 +3334,7 @@ Future的API没有任何的异常处理的api，所以在异步运行时，如�
 ```java
 /** * 主线程里面创建一个CompletableFuture，然后主线程调用get方法会阻塞，最后我们在一个子线程中使其终止 * @param args */ 
 public static void main(String[] args) throws Exception{ 
-    CompletableFuture<String> future = new CompletableFuture<>(); 
+    CompletableFuture\<String> future = new CompletableFuture\<>(); 
     new Thread(() -> { 
         try{ System.out.println(Thread.currentThread().getName() + "子线程开始干活"); 
             //子线程睡5秒 
@@ -3356,7 +3356,7 @@ public static void main(String[] args) throws Exception{
  public static void main(String[] args) throws Exception{ 
      System.out.println("主线程开始"); 
      //运行一个没有返回值的异步任务 
-     CompletableFuture<Void> future = CompletableFuture.runAsync(() -> { try { 
+     CompletableFuture\<Void> future = CompletableFuture.runAsync(() -> { try { 
          System.out.println("子线程启动干活");                                                  
         Thread.sleep(5000); System.out.println("子线程完成"); 
      } catch (Exception e) { e.printStackTrace(); 
@@ -3375,7 +3375,7 @@ public static void main(String[] args) throws Exception{
      */
     public static void main(String[] args) throws Exception {
         System.out.println("主线程开始"); //运行一个有返回值的异步任务 
-        CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
+        CompletableFuture\<String> future = CompletableFuture.supplyAsync(() -> {
             try {
                 System.out.println("子线程开始任务");
                 Thread.sleep(5000);
@@ -3401,7 +3401,7 @@ public static void main(String[] args) throws Exception{
      */
     public static void main(String[] args) throws Exception {
         System.out.println("主线程开始");
-        CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
+        CompletableFuture\<Integer> future = CompletableFuture.supplyAsync(() -> {
             try {
                 System.out.println("加10任务开始");
                 num += 10;
@@ -3434,7 +3434,7 @@ thenAccept 消费处理结果, 接收任务的处理结果，并消费处理，�
             return num;
         }).thenApply(integer -> {
             return num * num;
-        }).thenAccept(new Consumer<Integer>() {
+        }).thenAccept(new Consumer\<Integer>() {
             @Override
             public void accept(Integer integer) {
                 System.out.println("子线程全部处理完成,最后调用了accept,结果为:" + integer);
@@ -3450,7 +3450,7 @@ exceptionally异常处理,出现异常时触发
 ```java
 public static void main(String[] args) throws Exception {
         System.out.println("主线程开始");
-        CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
+        CompletableFuture\<Integer> future = CompletableFuture.supplyAsync(() -> {
             int i = 1 / 0;
             System.out.println("加10任务开始");
             num += 10;
@@ -3468,7 +3468,7 @@ handle类似于thenAccept/thenRun方法,是最后一步的处理调用,但是同
 ```java
 public static void main(String[] args) throws Exception {
         System.out.println("主线程开始");
-        CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
+        CompletableFuture\<Integer> future = CompletableFuture.supplyAsync(() -> {
             System.out.println("加10任务开始");
             num += 10;
             return num;
@@ -3494,12 +3494,12 @@ thenCompose合并两个有依赖关系的CompletableFutures的执行结果
 
     public static void main(String[] args) throws Exception {
         System.out.println("主线程开始"); //第一步加10 
-        CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
+        CompletableFuture\<Integer> future = CompletableFuture.supplyAsync(() -> {
             System.out.println("加10任务开始");
             num += 10;
             return num;
         }); //合并 
-        CompletableFuture<Integer> future1 = future.thenCompose(i -> //再来一个CompletableFuture 
+        CompletableFuture\<Integer> future1 = future.thenCompose(i -> //再来一个CompletableFuture 
                 CompletableFuture.supplyAsync(() -> {
                     return i + 1;
                 }));
@@ -3513,20 +3513,20 @@ thenCombine合并两个没有依赖关系的CompletableFutures任务
 ```java
 public static void main(String[] args) throws Exception {
         System.out.println("主线程开始");
-        CompletableFuture<Integer> job1 = CompletableFuture.supplyAsync(() -> {
+        CompletableFuture\<Integer> job1 = CompletableFuture.supplyAsync(() -> {
             System.out.println("加10任务开始");
             num += 10;
             return num;
         });
-        CompletableFuture<Integer> job2 = CompletableFuture.supplyAsync(() -> {
+        CompletableFuture\<Integer> job2 = CompletableFuture.supplyAsync(() -> {
             System.out.println("乘以10任务开始");
             num = num * 10;
             return num;
         }); //合并两个结果 
-        CompletableFuture<Object> future = job1.thenCombine(job2, new BiFunction<Integer, Integer, List<Integer>>() {
+        CompletableFuture\<Object> future = job1.thenCombine(job2, new BiFunction\<Integer, Integer, List\<Integer>>() {
             @Override
-            public List<Integer> apply(Integer a, Integer b) {
-                List<Integer> list = new ArrayList<>();
+            public List\<Integer> apply(Integer a, Integer b) {
+                List\<Integer> list = new ArrayList\<>();
                 list.add(a);
                 list.add(b);
                 return list;
@@ -3545,32 +3545,32 @@ allOf: 一系列独立的future任务，等其所有的任务执行完后做一�
      */
     public static void main(String[] args) throws Exception {
         System.out.println("主线程开始");
-        List<CompletableFuture> list = new ArrayList<>();
-        CompletableFuture<Integer> job1 = CompletableFuture.supplyAsync(() -> {
+        List\<CompletableFuture> list = new ArrayList\<>();
+        CompletableFuture\<Integer> job1 = CompletableFuture.supplyAsync(() -> {
             System.out.println("加10任务开始");
             num += 10;
             return num;
         });
         list.add(job1);
-        CompletableFuture<Integer> job2 = CompletableFuture.supplyAsync(() -> {
+        CompletableFuture\<Integer> job2 = CompletableFuture.supplyAsync(() -> {
             System.out.println("乘以10任务开始");
             num = num * 10;
             return num;
         });
         list.add(job2);
-        CompletableFuture<Integer> job3 = CompletableFuture.supplyAsync(() -> {
+        CompletableFuture\<Integer> job3 = CompletableFuture.supplyAsync(() -> {
             System.out.println("减以10任务开始");
             num = num * 10;
             return num;
         });
         list.add(job3);
-        CompletableFuture<Integer> job4 = CompletableFuture.supplyAsync(() -> {
+        CompletableFuture\<Integer> job4 = CompletableFuture.supplyAsync(() -> {
             System.out.println("除以10任务开始");
             num = num * 10;
             return num;
         });
         list.add(job4); //多任务合并 
-        List<Integer> collect = list.stream().map(CompletableFuture<Integer>::join).collect(Collectors.toList());
+        List\<Integer> collect = list.stream().map(CompletableFuture\<Integer>::join).collect(Collectors.toList());
         System.out.println(collect);
     }
 ```
@@ -3583,8 +3583,8 @@ anyOf: 只要在多个future里面有一个返回，整个任务就可以结束�
      */
     public static void main(String[] args) throws Exception {
         System.out.println("主线程开始");
-        CompletableFuture<Integer>[] futures = new CompletableFuture[4];
-        CompletableFuture<Integer> job1 = CompletableFuture.supplyAsync(() -> {
+        CompletableFuture\<Integer>[] futures = new CompletableFuture[4];
+        CompletableFuture\<Integer> job1 = CompletableFuture.supplyAsync(() -> {
             try {
                 Thread.sleep(5000);
                 System.out.println("加10任务开始");
@@ -3595,7 +3595,7 @@ anyOf: 只要在多个future里面有一个返回，整个任务就可以结束�
             }
         });
         futures[0] = job1;
-        CompletableFuture<Integer> job2 = CompletableFuture.supplyAsync(() -> {
+        CompletableFuture\<Integer> job2 = CompletableFuture.supplyAsync(() -> {
             try {
                 Thread.sleep(2000);
                 System.out.println("乘以10任务开始");
@@ -3606,7 +3606,7 @@ anyOf: 只要在多个future里面有一个返回，整个任务就可以结束�
             }
         });
         futures[1] = job2;
-        CompletableFuture<Integer> job3 = CompletableFuture.supplyAsync(() -> {
+        CompletableFuture\<Integer> job3 = CompletableFuture.supplyAsync(() -> {
             try {
                 Thread.sleep(3000);
                 System.out.println("减以10任务开始");
@@ -3617,7 +3617,7 @@ anyOf: 只要在多个future里面有一个返回，整个任务就可以结束�
             }
         });
         futures[2] = job3;
-        CompletableFuture<Integer> job4 = CompletableFuture.supplyAsync(() -> {
+        CompletableFuture\<Integer> job4 = CompletableFuture.supplyAsync(() -> {
             try {
                 Thread.sleep(4000);
                 System.out.println("除以10任务开始");
@@ -3628,7 +3628,7 @@ anyOf: 只要在多个future里面有一个返回，整个任务就可以结束�
             }
         });
         futures[3] = job4;
-        CompletableFuture<Object> future = CompletableFuture.anyOf(futures);
+        CompletableFuture\<Object> future = CompletableFuture.anyOf(futures);
         System.out.println(future.get());
     }
 ```
@@ -4515,7 +4515,7 @@ public class BufferDemo {
         // 新缓冲区的当前位置将为零，其界限(限制位置)将为其容量。
         // 它将具有一个底层实现数组，其数组偏移量将为零。
         IntBuffer buffer = IntBuffer.allocate(8);
-        for (int i = 0; i < buffer.capacity(); ++i) {
+        for (int i = 0; i \< buffer.capacity(); ++i) {
             int j = 2 * (i + 1);
             // 将给定整数写入此缓冲区的当前位置，当前位置递增
             buffer.put(j);
@@ -4642,7 +4642,7 @@ Java NIO 有以下Buffer类型
     public void testConect2() throws IOException {
         ByteBuffer buffer = ByteBuffer.allocate(10);
         // 缓冲区中的数据0-9
-        for (int i = 0; i < buffer.capacity(); ++i) {
+        for (int i = 0; i \< buffer.capacity(); ++i) {
             buffer.put((byte) i);
         }
         // 创建子缓冲区
@@ -4650,7 +4650,7 @@ Java NIO 有以下Buffer类型
         buffer.limit(7);
         ByteBuffer slice = buffer.slice();
         // 改变子缓冲区的内容
-        for (int i = 0; i < slice.capacity(); ++i) {
+        for (int i = 0; i \< slice.capacity(); ++i) {
             byte b = slice.get(i);
             b *= 10;
             slice.put(i, b);
@@ -4674,13 +4674,13 @@ Java NIO 有以下Buffer类型
     public void testConect4() throws IOException {
         ByteBuffer buffer = ByteBuffer.allocate(10);
         // 缓冲区中的数据0-9 
-        for (int i = 0; i < buffer.capacity(); ++i) {
+        for (int i = 0; i \< buffer.capacity(); ++i) {
             buffer.put((byte) i);
         }
         // 创建只读缓冲区 
         ByteBuffer readonly = buffer.asReadOnlyBuffer();
         // 改变原缓冲区的内容 
-        for (int i = 0; i < buffer.capacity(); ++i) {
+        for (int i = 0; i \< buffer.capacity(); ++i) {
             byte b = buffer.get(i);
             b *= 10;
             buffer.put(i, b);
@@ -4893,8 +4893,8 @@ public class SelectorDemo {
 //            7.检测通道就绪状态
             int nReady = selector.select();
 //            8.遍历选择器，获取就绪通道集合
-            Set<SelectionKey> keys = selector.selectedKeys();
-            Iterator<SelectionKey> it = keys.iterator();
+            Set\<SelectionKey> keys = selector.selectedKeys();
+            Iterator\<SelectionKey> it = keys.iterator();
             while (it.hasNext()) {
                 SelectionKey key = it.next();
                 it.remove();
@@ -5023,10 +5023,10 @@ SelectionKey.OP_READ
 SelectionKey.OP_WRITE
 它们在 SelectionKey 的定义如下：
 
-public static final int OP_READ = 1 << 0;
-public static final int OP_WRITE = 1 << 2;
-public static final int OP_CONNECT = 1 << 3;
-public static final int OP_ACCEPT = 1 << 4;
+public static final int OP_READ = 1 \<\< 0;
+public static final int OP_WRITE = 1 \<\< 2;
+public static final int OP_CONNECT = 1 \<\< 3;
+public static final int OP_ACCEPT = 1 \<\< 4;
 可以看出每个事件可以被当成一个位域，从而组成事件集整数。例如：
 
 int interestSet = SelectionKey.OP_READ | SelectionKey.OP_WRITE;
@@ -5036,8 +5036,8 @@ int interestSet = SelectionKey.OP_READ | SelectionKey.OP_WRITE;
    使用 select() 来监听到达的事件，它会一直阻塞直到有至少一个事件到达。
 
 4. 获取到达的事件
-   Set<SelectionKey> keys = selector.selectedKeys();
-   Iterator<SelectionKey> keyIterator = keys.iterator();
+   Set\<SelectionKey> keys = selector.selectedKeys();
+   Iterator\<SelectionKey> keyIterator = keys.iterator();
    while (keyIterator.hasNext()) {
     SelectionKey key = keyIterator.next();
     if (key.isAcceptable()) {
@@ -5052,8 +5052,8 @@ int interestSet = SelectionKey.OP_READ | SelectionKey.OP_WRITE;
 
 while (true) {
     int num = selector.select();
-    Set<SelectionKey> keys = selector.selectedKeys();
-    Iterator<SelectionKey> keyIterator = keys.iterator();
+    Set\<SelectionKey> keys = selector.selectedKeys();
+    Iterator\<SelectionKey> keyIterator = keys.iterator();
     while (keyIterator.hasNext()) {
         SelectionKey key = keyIterator.next();
         if (key.isAcceptable()) {
@@ -5320,7 +5320,7 @@ CONTINUE 继续
 TERMINATE 终止
 SKIP_SIBLING 跳过同级
 SKIP_SUBTREE 跳过子级
-（4）查找一个名为001.txt的文件示例： Path rootPath = Paths.get("d:\\atguigu"); String fileToFind = File.separator + "001.txt"; try { Files.walkFileTree(rootPath, new SimpleFileVisitor<Path>() { @Override public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException { String fileString = file.toAbsolutePath().toString(); //System.out.println("pathString = " + fileString);
+（4）查找一个名为001.txt的文件示例： Path rootPath = Paths.get("d:\\atguigu"); String fileToFind = File.separator + "001.txt"; try { Files.walkFileTree(rootPath, new SimpleFileVisitor\<Path>() { @Override public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException { String fileString = file.toAbsolutePath().toString(); //System.out.println("pathString = " + fileString);
 if(fileString.endsWith(fileToFind)){ System.out.println("file found at path: " + file.toAbsolutePath()); return FileVisitResult.TERMINATE; } return FileVisitResult.CONTINUE; } }); } catch(IOException e){ e.printStackTrace(); }
 （5）java.nio.file.Files类包含许多其他的函数，有关这些方法的更多信息，请查看java.nio.file.Files类的JavaDoc。
 
@@ -5338,7 +5338,7 @@ open()方法的第一个参数指向与AsynchronousFileChannel相关联文件的
 #### 2、通过Future读取数据
 
 可以通过两种方式从AsynchronousFileChannel读取数据。第一种方式是调用返回Future的read()方法
-示例： Path path = Paths.get("d:\\atguigu\\001.txt"); AsynchronousFileChannel fileChannel = null; try { fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.READ); } catch (IOException e) { e.printStackTrace(); } ByteBuffer buffer = ByteBuffer.allocate(1024); long position = 0; Future<Integer> operation = fileChannel.read(buffer, position); while(!operation.isDone()); buffer.flip(); byte[] data = new byte[buffer.limit()]; buffer.get(data); System.out.println(new String(data)); buffer.clear();
+示例： Path path = Paths.get("d:\\atguigu\\001.txt"); AsynchronousFileChannel fileChannel = null; try { fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.READ); } catch (IOException e) { e.printStackTrace(); } ByteBuffer buffer = ByteBuffer.allocate(1024); long position = 0; Future\<Integer> operation = fileChannel.read(buffer, position); while(!operation.isDone()); buffer.flip(); byte[] data = new byte[buffer.limit()]; buffer.get(data); System.out.println(new String(data)); buffer.clear();
 上述代码：
 （1）创建了一个AsynchronousFileChannel，
 （2）创建一个ByteBuffer，它被传递给read()方法作为参数，以及一个0的位置。
@@ -5347,7 +5347,7 @@ open()方法的第一个参数指向与AsynchronousFileChannel相关联文件的
 
 #### 3、通过CompletionHandler读取数据
 
- 第二种方法是调用read()方法，该方法将一个CompletionHandler作为参数 示例： Path path = Paths.get("d:\\atguigu\\001.txt"); AsynchronousFileChannel fileChannel = null; try { fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.READ); } catch (IOException e) { e.printStackTrace(); } ByteBuffer buffer = ByteBuffer.allocate(1024); long position = 0; fileChannel.read(buffer, position, buffer, new CompletionHandler<Integer, ByteBuffer>() { @Override public void completed(Integer result, ByteBuffer attachment) { System.out.println("result = " + result); attachment.flip(); byte[] data = new byte[attachment.limit()]; attachment.get(data);
+ 第二种方法是调用read()方法，该方法将一个CompletionHandler作为参数 示例： Path path = Paths.get("d:\\atguigu\\001.txt"); AsynchronousFileChannel fileChannel = null; try { fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.READ); } catch (IOException e) { e.printStackTrace(); } ByteBuffer buffer = ByteBuffer.allocate(1024); long position = 0; fileChannel.read(buffer, position, buffer, new CompletionHandler\<Integer, ByteBuffer>() { @Override public void completed(Integer result, ByteBuffer attachment) { System.out.println("result = " + result); attachment.flip(); byte[] data = new byte[attachment.limit()]; attachment.get(data);
 System.out.println(new String(data)); attachment.clear(); } @Override public void failed(Throwable exc, ByteBuffer attachment) { } });
 （1）读取操作完成，将调用CompletionHandler的completed()方法。
 （2）对于completed()方法的参数传递一个整数，它告诉我们读取了多少字节，以及传递给read()方法的“附件”。“附件”是read()方法的第三个参数。在本代码中，它是ByteBuffer，数据也被读取。
@@ -5357,7 +5357,7 @@ System.out.println(new String(data)); attachment.clear(); } @Override public voi
 
 和读取一样，可以通过两种方式将数据写入一个AsynchronousFileChannel
 示例： Path path = Paths.get("d:\\atguigu\\001.txt"); AsynchronousFileChannel fileChannel = null; try { fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.WRITE); } catch (IOException e) { e.printStackTrace(); } ByteBuffer buffer = ByteBuffer.allocate(1024); long position = 0; buffer.put("atguigu data".getBytes()); buffer.flip();
-Future<Integer> operation = fileChannel.write(buffer, position); buffer.clear(); while(!operation.isDone()); System.out.println("Write over");
+Future\<Integer> operation = fileChannel.write(buffer, position); buffer.clear(); while(!operation.isDone()); System.out.println("Write over");
 首先，AsynchronousFileChannel以写模式打开。然后创建一个ByteBuffer，并将一些数据写入其中。然后，ByteBuffer中的数据被写入到文件中。最后，示例检查返回的Future，以查看写操作完成时的情况。
 注意，文件必须已经存在。如果该文件不存在，那么write()方法将抛出一个java.nio.file.NoSuchFileException。
 
@@ -5366,7 +5366,7 @@ Future<Integer> operation = fileChannel.write(buffer, position); buffer.clear();
 示例： 
 
 Path path = Paths.get("d:\\atguigu\\001.txt"); if(!Files.exists(path)){ try { Files.createFile(path); } catch (IOException e) { e.printStackTrace(); } } AsynchronousFileChannel fileChannel = null; try { fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.WRITE); } catch (IOException e) { e.printStackTrace(); } ByteBuffer buffer = ByteBuffer.allocate(1024);
-long position = 0; buffer.put("atguigu data".getBytes()); buffer.flip(); fileChannel.write(buffer, position, buffer, new CompletionHandler<Integer, ByteBuffer>() { @Override public void completed(Integer result, ByteBuffer attachment) { System.out.println("bytes written: " + result); } @Override public void failed(Throwable exc, ByteBuffer attachment) { System.out.println("Write failed"); exc.printStackTrace(); } });
+long position = 0; buffer.put("atguigu data".getBytes()); buffer.flip(); fileChannel.write(buffer, position, buffer, new CompletionHandler\<Integer, ByteBuffer>() { @Override public void completed(Integer result, ByteBuffer attachment) { System.out.println("bytes written: " + result); } @Override public void failed(Throwable exc, ByteBuffer attachment) { System.out.println("Write failed"); exc.printStackTrace(); } });
 
 当写操作完成时，将会调用CompletionHandler的completed()方法。如果写失败，则会调用failed()方法。
 
@@ -5377,7 +5377,7 @@ java中使用Charset来表示字符集编码对象
 #### Charset常用静态方法
 
 public static Charset forName(String charsetName)//通过编码类型获得Charset对象
-public static SortedMap<String,Charset> availableCharsets()//获得系统支持的所有编码方式
+public static SortedMap\<String,Charset> availableCharsets()//获得系统支持的所有编码方式
 public static Charset defaultCharset()//获得虚拟机默认的编码方式
 public static boolean isSupported(String charsetName)//判断是否支持该编码类型
 
@@ -5418,7 +5418,7 @@ public class CharsetDemo {
         //4.编码 
         ByteBuffer byteBuffer = charsetEncoder.encode(charBuffer);
         System.out.println("编码后：");
-        for (int i = 0; i < byteBuffer.limit(); i++) {
+        for (int i = 0; i \< byteBuffer.limit(); i++) {
             System.out.println(byteBuffer.get());
         }
         //5.解码
@@ -5432,9 +5432,9 @@ public class CharsetDemo {
         CharBuffer charBuffer2 = charset1.decode(byteBuffer);
         System.out.println(charBuffer2.toString());
         //6.获取Charset所支持的字符编码
-        Map<String, Charset> map = Charset.availableCharsets();
-        Set<Map.Entry<String, Charset>> set = map.entrySet();
-        for (Map.Entry<String, Charset> entry : set) {
+        Map\<String, Charset> map = Charset.availableCharsets();
+        Set\<Map.Entry\<String, Charset>> set = map.entrySet();
+        for (Map.Entry\<String, Charset> entry : set) {
             System.out.println(entry.getKey() + "=" + entry.getValue().toString());
         }
     }
@@ -5478,9 +5478,9 @@ public class ChatServer {
                 continue;
             }
             //获取可用的channel
-            Set<SelectionKey> selectionKeys = selector.selectedKeys();
+            Set\<SelectionKey> selectionKeys = selector.selectedKeys();
             //遍历集合
-            Iterator<SelectionKey> iterator = selectionKeys.iterator();
+            Iterator\<SelectionKey> iterator = selectionKeys.iterator();
             while (iterator.hasNext()) {
                 SelectionKey selectionKey = iterator.next();
                 //移除set集合当前selectionKey
@@ -5527,7 +5527,7 @@ public class ChatServer {
     //广播到其他客户端
     private void castOtherClient(String message, Selector selector, SocketChannel socketChannel) throws IOException {
         //1 获取所有已经接入channel
-        Set<SelectionKey> selectionKeySet = selector.keys();
+        Set\<SelectionKey> selectionKeySet = selector.keys();
         //2 循环想所有channel广播消息
         for (SelectionKey selectionKey : selectionKeySet) {
             //获取每个channel
@@ -5624,9 +5624,9 @@ public class ClientThread implements Runnable {
                     continue;
                 }
                 //获取可用的channel
-                Set<SelectionKey> selectionKeys = selector.selectedKeys();
+                Set\<SelectionKey> selectionKeys = selector.selectedKeys();
                 //遍历集合
-                Iterator<SelectionKey> iterator = selectionKeys.iterator();
+                Iterator\<SelectionKey> iterator = selectionKeys.iterator();
                 while (iterator.hasNext()) {
                     SelectionKey selectionKey = iterator.next();
                     //移除set集合当前selectionKey
@@ -5755,14 +5755,14 @@ public class BClient {
   // 可指定编码:
   String content2 = Files.readString(Paths.get("/path/to/file.txt"), StandardCharsets.ISO_8859_1);
   // 按行读取并返回每行内容:
-  List<String> lines = Files.readAllLines(Paths.get("/path/to/file.txt"));
+  List\<String> lines = Files.readAllLines(Paths.get("/path/to/file.txt"));
 - / 写入二进制文件:
   byte[] data = ...
   Files.write(Paths.get("/path/to/file.txt"), data);
   // 写入文本并指定编码:
   Files.writeString(Paths.get("/path/to/file.txt"), "文本内容...", StandardCharsets.ISO_8859_1);
   // 按行写入文本:
-  List<String> lines = ...
+  List\<String> lines = ...
   Files.write(Paths.get("/path/to/file.txt"), lines);
 - 此外，Files工具类还有copy()、delete()、exists()、move()等快捷方法操作文件和目录。
   最后需要特别注意的是，Files提供的读写方法，受内存限制，只能读写小文件，例如配置文件等，不可一次读入几个G的大文件。读写大型文件仍然要使用文件流，每次只读写一部分文件内容。
@@ -5787,10 +5787,10 @@ MappedByteBuffer mbb = fc.map(FileChannel.MapMode.READ_WRITE, 0, 1024);
 
 ### 压缩文件
 
-| IO              | NIO<br/> |
+| IO              | NIO\<br/> |
 | --------------- | -------- |
-| 面向流	<br/> | 面向缓冲 |
-| 阻塞IO	<br/> | 非阻塞IO |
+| 面向流	\<br/> | 面向缓冲 |
+| 阻塞IO	\<br/> | 非阻塞IO |
 | 无              | 选择器   |
 
 
@@ -6019,17 +6019,17 @@ public class StreamL {
 //      1.生成流
         //stream() − 为集合创建串行流。
         //parallelStream() − 为集合创建并行流。
-        List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd", "", "jkl");
-        List<String> filtered = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.toList());
-        List<String> filteredParallelStream = strings.parallelStream().filter(string -> !string.isEmpty()).collect(Collectors.toList());
+        List\<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd", "", "jkl");
+        List\<String> filtered = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.toList());
+        List\<String> filteredParallelStream = strings.parallelStream().filter(string -> !string.isEmpty()).collect(Collectors.toList());
 //      2.聚合操作
 //      迭代数据foreach(),limit() 获取指定数量的流,sorted() 对流进行排序。
         Random random = new Random();
         random.ints().limit(10).sorted().forEach(System.out::println);
 //       map() 映射每个元素到对应的结果
-        List<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
+        List\<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
 //      获取对应的平方数
-        List<Integer> squaresList = numbers.stream().map( i -> i*i).distinct().collect(Collectors.toList());
+        List\<Integer> squaresList = numbers.stream().map( i -> i*i).distinct().collect(Collectors.toList());
 //      filter() 通过设置的条件过滤出元素
 //      获取空字符串的数量
         long count = strings.stream().filter(string -> string.isEmpty()).count();
@@ -6146,7 +6146,7 @@ public class StringBuilderL {
 
     public static void main(String[] args) {
         StringBuffer sb = new StringBuffer(1024);
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i \< 1000; i++) {
             sb.append('s');
             sb.append(i);
         }

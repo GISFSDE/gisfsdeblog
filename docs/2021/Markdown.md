@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: Markdown
+date: 2022-06-06
 category:
   - Markdown
 tag:
@@ -127,12 +128,12 @@ tag:
 ~缩小~
 `代码`  
 ---  分割线
-<font color=red>字体颜色</font>
+\<font color=red>字体颜色\</font>
 +空格[空格]空格  勾选框
 [内容文字](#标题)  页内跳转
 [内容文字](跳转目标文件的相对路径)
-下划线 html 方法：<span style="border-bottom:2px dashed yellow;">文字</span>
-下划线 typory 方法（ctrl+u）： <u>awdw</u>
+下划线 html 方法：\<span style="border-bottom:2px dashed yellow;">文字\</span>
+下划线 typory 方法（ctrl+u）： \<u>awdw\</u>
 ```
 
 # 图
@@ -225,13 +226,13 @@ class Duck{
           -someStaticMethod() $
       }
 class Shape{
-%% This whole line is a comment classDiagram class Shape <<interface>>
-    <<interface>>
+%% This whole line is a comment classDiagram class Shape \<\<interface>>
+    \<\<interface>>
     noOfVertices
     draw()
 }
 class Color{
-    <<enumeration>>
+    \<\<enumeration>>
     RED
     BLUE
     GREEN
@@ -239,7 +240,7 @@ class Color{
     BLACK
 }
 class Relation{
-    <<<<abstract>>>>
+    \<\<\<\<abstract>>>>
 }
 
 classK ..> classL : 依赖关系
@@ -487,10 +488,10 @@ Hexo可折叠
 
 😎
 
-++inserted++ => <ins>inserted</ins>
+++inserted++ => \<ins>inserted\</ins>
 
-29^th^ => 29<sup>th</sup>
-H~2~0 => H<sub>2</sub>O
+29^th^ => 29\<sup>th\</sup>
+H~2~0 => H\<sub>2\</sub>O
 
 basic footnote[^1]
 here is an inline footnote[^2](inline footnote)

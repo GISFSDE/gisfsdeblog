@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: MyBatis-Plus
+date: 2022-06-06
 category:
   - MyBatis-Plus
 tag:

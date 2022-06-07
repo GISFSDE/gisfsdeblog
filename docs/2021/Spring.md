@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: Spring
+date: 2022-06-06
 category:
   - Spring
 tag:
@@ -157,15 +158,15 @@ public class User {
 ![image-20211220205251963](http://rcy276gfy.hd-bkt.clouddn.com/work/image-20211220205251963.png)
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+\<?xml version="1.0" encoding="UTF-8"?>
+\<beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--配置User对象创建-->
-    <bean id="user" class="com.lxl.spring5.User"></bean>
+    \<bean id="user" class="com.lxl.spring5.User">\</bean>
 
-</beans>
+\</beans>
 ```
 
 ## 测试代码
@@ -263,8 +264,8 @@ Bean管理指的是两个操作
 ##### 		1、基于xml方式创建对象
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+\<?xml version="1.0" encoding="UTF-8"?>
+\<beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
@@ -276,9 +277,9 @@ Bean管理指的是两个操作
     * class属性：类全路径（包类路径）
     （3）创建对象时候，默认也是执行无参数构造方法完成对象创建
     -->
-    <bean id="user" class="com.lxl.spring5.User"></bean>
+    \<bean id="user" class="com.lxl.spring5.User">\</bean>
 
-</beans>
+\</beans>
 ```
 
 ##### 		2、基于xml方式注入属性
@@ -312,11 +313,11 @@ public class Book {
 ```xml
 <!--=========================set方法注入属性=============================================-->
     <!--2 set方法注入属性-->
-    <bean id="book" class="com.lxl.spring5.Book">
+    \<bean id="book" class="com.lxl.spring5.Book">
         <!--使用property完成属性注入 name：类里面属性名称 value：向属性注入的值 -->
-        <property name="bname" value="易筋经"></property>
-        <property name="bauthor" value="达摩老祖"></property>
-    </bean>
+        \<property name="bname" value="易筋经">\</property>
+        \<property name="bauthor" value="达摩老祖">\</property>
+    \</bean>
 ```
 
 ###### 2.2有参数构造进行注入
@@ -349,12 +350,12 @@ public class Orders {
   ```xml
   <!--==========================有参构造注入===========================================-->
       <!--3 有参构造注入-->
-      <bean id="orders" class="com.lxl.spring5.Orders">
-  <!--        <constructor-arg index="0" value=""/>  效果同下-->
-          <constructor-arg name="oname" value="电脑"></constructor-arg>
-  <!--        <constructor-arg index="1" value=""/>-->
-          <constructor-arg name="address" value="China"></constructor-arg>
-      </bean>
+      \<bean id="orders" class="com.lxl.spring5.Orders">
+  <!--        \<constructor-arg index="0" value=""/>  效果同下-->
+          \<constructor-arg name="oname" value="电脑">\</constructor-arg>
+  <!--        \<constructor-arg index="1" value=""/>-->
+          \<constructor-arg name="address" value="China">\</constructor-arg>
+      \</bean>
   ```
 
 ###### 2.3p名称空间注入
@@ -364,7 +365,7 @@ public class Orders {
 - 第一步 添加p名称空间在配置文件中
 
   ```xml
-  <beans xmlns="http://www.springframework.org/schema/beans"
+  \<beans xmlns="http://www.springframework.org/schema/beans"
          xmlns:p="http://www.springframework.org/schema/p"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
@@ -375,23 +376,23 @@ public class Orders {
 ```xml
 <!--=========================set方法注入属性=============================================-->
     <!--2 set方法注入属性-->
-    <bean id="book" class="com.lxl.spring5.Book">
+    \<bean id="book" class="com.lxl.spring5.Book">
         <!--使用property完成属性注入 name：类里面属性名称 value：向属性注入的值 -->
-        <property name="bname" value="易筋经"></property>
-        <property name="bauthor" value="达摩老祖"></property>
-    </bean>
+        \<property name="bname" value="易筋经">\</property>
+        \<property name="bauthor" value="达摩老祖">\</property>
+    \</bean>
 
 
 <!--2.1 p名称空间注入方式，已达到简化目的--> 
-<bean id="book" class="com.lxl.spring5.Book" p:bname="易筋经" p:bauthor="达摩老祖"></bean>
+\<bean id="book" class="com.lxl.spring5.Book" p:bname="易筋经" p:bauthor="达摩老祖">\</bean>
 ```
 
 ###### 2.4xml注入其他类型属性
 
 **字面量：**属性设置的固定值。
 
-- null值  ： <property name="bname" ~~value="易筋经"~~> <null/> </property>
-- 包含特殊符号：<property name="bname" value="<<易筋经>>"></property>  解决：转义、特殊内容写到<![CDATA[<<易筋经>>]]> 即：<property name="bname"><value><![CDATA[<<易筋经>>]]> </value></property>
+- null值  ： \<property name="bname" ~~value="易筋经"~~> \<null/> \</property>
+- 包含特殊符号：\<property name="bname" value="\<\<易筋经>>">\</property>  解决：转义、特殊内容写到\<![CDATA[\<\<易筋经>>]]> 即：\<property name="bname">\<value>\<![CDATA[\<\<易筋经>>]]> \</value>\</property>
 
 **注入属性-外部bean**
 （1）创建两个类 service类和dao类
@@ -452,19 +453,19 @@ public class UserDaoImpl implements UserDao{
 （3）在spring配置文件中进行配置
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+\<?xml version="1.0" encoding="UTF-8"?>
+\<beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!--1 service和dao对象创建-->
-    <bean id="userService" class="com.lxl.spring5.service.UserService">
+    \<bean id="userService" class="com.lxl.spring5.service.UserService">
         <!--注入userDao对象
         name属性：类里面属性名称
         ref属性：创建userDao对象bean标签id值 -->
-        <property name="userDao" ref="userDaoImpl"></property>
-    </bean>
-    <bean id="userDaoImpl" class="com.lxl.spring5.dao.UserDaoImpl"></bean>
-</beans>
+        \<property name="userDao" ref="userDaoImpl">\</property>
+    \</bean>
+    \<bean id="userDaoImpl" class="com.lxl.spring5.dao.UserDaoImpl">\</bean>
+\</beans>
 ```
 
 （4）测试
@@ -487,7 +488,7 @@ public class UserDaoImpl implements UserDao{
 
 **注入属性-内部bean**
 
-​		当一个bean仅被用作另一个bean的属性时，它能被声明为一个内部bean，为了定义innerbean，在Spring的基于XML的配置元数据中，可以在<property/>或<constructor-arg/>元素内使用<bean/>元素，内部bean通常是匿名的，它们的Scope一般是prototype
+​		当一个bean仅被用作另一个bean的属性时，它能被声明为一个内部bean，为了定义innerbean，在Spring的基于XML的配置元数据中，可以在\<property/>或\<constructor-arg/>元素内使用\<bean/>元素，内部bean通常是匿名的，它们的Scope一般是prototype
 
 （1）一对多两个类：
 
@@ -546,15 +547,15 @@ public class Dept {
 ```xml
 <!--+++++++++++++++++++注入属性-内部bean：一对多+++++++++++++++++++++++-->
     <!--内部bean-->
-    <bean id="emp" class="com.lxl.spring5.bean.Emp"> <!--设置两个普通属性-->
-        <property name="ename" value="lucy"></property>
-        <property name="gender" value="女"></property> <!--设置对象类型属性-->
-        <property name="dept">
-            <bean id="dept" class="com.lxl.spring5.bean.Dept">
-                <property name="dname" value="安保部"></property>
-            </bean>
-        </property>
-    </bean>
+    \<bean id="emp" class="com.lxl.spring5.bean.Emp"> <!--设置两个普通属性-->
+        \<property name="ename" value="lucy">\</property>
+        \<property name="gender" value="女">\</property> <!--设置对象类型属性-->
+        \<property name="dept">
+            \<bean id="dept" class="com.lxl.spring5.bean.Dept">
+                \<property name="dname" value="安保部">\</property>
+            \</bean>
+        \</property>
+    \</bean>
 ```
 
 （3）测试：
@@ -580,27 +581,27 @@ public class Dept {
 ```xml
   <!--    +++++++++++++++++++ 级联赋值两种方式 +++++++++++++++++++++++-->
     <!--级联赋值   方式一 -->
-    <bean id="emp" class="com.lxl.spring5.bean.Emp"> <!--设置两个普通属性-->
-        <property name="ename" value="lucy"></property>
-        <property name="gender" value="女"></property> <!--级联赋值-->
-        <property name="dept" ref="dept"></property>
-    </bean>
-    <bean id="dept" class="com.lxl.spring5.bean.Dept">
-        <property name="dname" value="财务部"></property>
-    </bean>
+    \<bean id="emp" class="com.lxl.spring5.bean.Emp"> <!--设置两个普通属性-->
+        \<property name="ename" value="lucy">\</property>
+        \<property name="gender" value="女">\</property> <!--级联赋值-->
+        \<property name="dept" ref="dept">\</property>
+    \</bean>
+    \<bean id="dept" class="com.lxl.spring5.bean.Dept">
+        \<property name="dname" value="财务部">\</property>
+    \</bean>
 
 
     <!--级联赋值   方式二 -->
 <!--    设置两个普通属性 dept.dname方式需要添加dept的get方法 -->
-<!--    <bean id="emp" class="com.lxl.spring5.bean.Emp"> -->
-<!--        <property name="ename" value="lucy"></property>-->
-<!--        <property name="gender" value="女"></property> -->
-<!--        <property name="dept" ref="dept"></property>-->
-<!--        <property name="dept.dname" value="技术部"></property>-->
-<!--    </bean>-->
-<!--    <bean id="dept" class="com.lxl.spring5.bean.Dept">-->
-<!--        <property name="dname" value="财务部"></property>-->
-<!--    </bean>-->
+<!--    \<bean id="emp" class="com.lxl.spring5.bean.Emp"> -->
+<!--        \<property name="ename" value="lucy">\</property>-->
+<!--        \<property name="gender" value="女">\</property> -->
+<!--        \<property name="dept" ref="dept">\</property>-->
+<!--        \<property name="dept.dname" value="技术部">\</property>-->
+<!--    \</bean>-->
+<!--    \<bean id="dept" class="com.lxl.spring5.bean.Dept">-->
+<!--        \<property name="dname" value="财务部">\</property>-->
+<!--    \</bean>-->
 ```
 
 ###### 2.5xml注入集合类属性
@@ -619,13 +620,13 @@ public class Stu {
     //1 数组类型属性
     private String[] courses;
     //2 list集合类型属性
-    private List<String> list;
+    private List\<String> list;
     //3 map集合类型属性
-    private Map<String, String> maps;
+    private Map\<String, String> maps;
     //4 set集合类型属性
-    private Set<String> sets;
+    private Set\<String> sets;
 
-    public void setSets(Set<String> sets) {
+    public void setSets(Set\<String> sets) {
         this.sets = sets;
     }
 
@@ -633,11 +634,11 @@ public class Stu {
         this.courses = courses;
     }
 
-    public void setList(List<String> list) {
+    public void setList(List\<String> list) {
         this.list = list;
     }
 
-    public void setMaps(Map<String, String> maps) {
+    public void setMaps(Map\<String, String> maps) {
         this.maps = maps;
     }
 
@@ -653,40 +654,40 @@ public class Stu {
 （2）xml配置
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+\<?xml version="1.0" encoding="UTF-8"?>
+\<beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!--    +++++++++++++++++++ 集合类属性注入 +++++++++++++++++++++++-->
     <!--1 集合类型属性注入-->
-    <bean id="stu" class="com.lxl.spring5.collectiontype.Stu"> <!--数组类型属性注入-->
-        <property name="courses">
-            <array>
-                <value>java课程</value>
-                <value>数据库课程</value>
-            </array>
-        </property>
+    \<bean id="stu" class="com.lxl.spring5.collectiontype.Stu"> <!--数组类型属性注入-->
+        \<property name="courses">
+            \<array>
+                \<value>java课程\</value>
+                \<value>数据库课程\</value>
+            \</array>
+        \</property>
         <!--list类型属性注入-->
-        <property name="list">
-            <list>
-                <value>张三</value>
-                <value>小三</value>
-            </list>
-        </property> <!--map类型属性注入-->
-        <property name="maps">
-            <map>
-                <entry key="JAVA" value="java"></entry>
-                <entry key="PHP" value="php"></entry>
-            </map>
-        </property> <!--set类型属性注入-->
-        <property name="sets">
-            <set>
-                <value>MySQL</value>
-                <value>Redis</value>
-            </set>
-        </property>
-    </bean>
-</beans>
+        \<property name="list">
+            \<list>
+                \<value>张三\</value>
+                \<value>小三\</value>
+            \</list>
+        \</property> <!--map类型属性注入-->
+        \<property name="maps">
+            \<map>
+                \<entry key="JAVA" value="java">\</entry>
+                \<entry key="PHP" value="php">\</entry>
+            \</map>
+        \</property> <!--set类型属性注入-->
+        \<property name="sets">
+            \<set>
+                \<value>MySQL\</value>
+                \<value>Redis\</value>
+            \</set>
+        \</property>
+    \</bean>
+\</beans>
 ```
 
 （3）测试
@@ -730,19 +731,19 @@ public class Stu {
     //1 数组类型属性
     private String[] courses;
     //2 list集合类型属性
-    private List<String> list;
+    private List\<String> list;
     //3 map集合类型属性
-    private Map<String, String> maps;
+    private Map\<String, String> maps;
     //4 set集合类型属性
-    private Set<String> sets;
+    private Set\<String> sets;
 	//5 List集合中为对象类型属性
-    private List<Course> courseList;
+    private List\<Course> courseList;
 
-    public void setCourseList(List<Course> courseList) {
+    public void setCourseList(List\<Course> courseList) {
         this.courseList = courseList;
     }
 
-    public void setSets(Set<String> sets) {
+    public void setSets(Set\<String> sets) {
         this.sets = sets;
     }
 
@@ -750,11 +751,11 @@ public class Stu {
         this.courses = courses;
     }
 
-    public void setList(List<String> list) {
+    public void setList(List\<String> list) {
         this.list = list;
     }
 
-    public void setMaps(Map<String, String> maps) {
+    public void setMaps(Map\<String, String> maps) {
         this.maps = maps;
     }
 
@@ -788,55 +789,55 @@ public class Course {
 ```
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+\<?xml version="1.0" encoding="UTF-8"?>
+\<beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!--    +++++++++++++++++++ 集合类属性注入、集合内为对象情况注入 +++++++++++++++++++++++-->
     <!--1 集合类型属性注入-->
-    <bean id="stu" class="com.lxl.spring5.collectiontype.Stu"> <!--数组类型属性注入-->
-        <property name="courses">
-            <array>
-                <value>java课程</value>
-                <value>数据库课程</value>
-            </array>
-        </property>
+    \<bean id="stu" class="com.lxl.spring5.collectiontype.Stu"> <!--数组类型属性注入-->
+        \<property name="courses">
+            \<array>
+                \<value>java课程\</value>
+                \<value>数据库课程\</value>
+            \</array>
+        \</property>
         <!--list类型属性注入-->
-        <property name="list">
-            <list>
-                <value>张三</value>
-                <value>小三</value>
-            </list>
-        </property> <!--map类型属性注入-->
-        <property name="maps">
-            <map>
-                <entry key="JAVA" value="java"></entry>
-                <entry key="PHP" value="php"></entry>
-            </map>
-        </property> <!--set类型属性注入-->
-        <property name="sets">
-            <set>
-                <value>MySQL</value>
-                <value>Redis</value>
-            </set>
-        </property>
+        \<property name="list">
+            \<list>
+                \<value>张三\</value>
+                \<value>小三\</value>
+            \</list>
+        \</property> <!--map类型属性注入-->
+        \<property name="maps">
+            \<map>
+                \<entry key="JAVA" value="java">\</entry>
+                \<entry key="PHP" value="php">\</entry>
+            \</map>
+        \</property> <!--set类型属性注入-->
+        \<property name="sets">
+            \<set>
+                \<value>MySQL\</value>
+                \<value>Redis\</value>
+            \</set>
+        \</property>
         <!--注入list集合类型，值是对象-->
-        <property name="courseList">
-            <list>
-                <ref bean="course1"></ref>
-                <ref bean="course2"></ref>
-            </list>
-        </property>
-    </bean>
+        \<property name="courseList">
+            \<list>
+                \<ref bean="course1">\</ref>
+                \<ref bean="course2">\</ref>
+            \</list>
+        \</property>
+    \</bean>
 
-        <bean id="course1" class="com.lxl.spring5.collectiontype.Course">
-            <property name="cname" value="Spring5框架"></property>
-        </bean>
-        <bean id="course2" class="com.lxl.spring5.collectiontype.Course">
-            <property name="cname" value="MyBatis框架"></property>
-        </bean>
+        \<bean id="course1" class="com.lxl.spring5.collectiontype.Course">
+            \<property name="cname" value="Spring5框架">\</property>
+        \</bean>
+        \<bean id="course2" class="com.lxl.spring5.collectiontype.Course">
+            \<property name="cname" value="MyBatis框架">\</property>
+        \</bean>
 
-</beans>
+\</beans>
 ```
 
 把集合注入部分提取出来
@@ -847,9 +848,9 @@ package com.lxl.spring5.collectiontype;
 import java.util.List;
 
 public class Book {
-    private List<String> list;
+    private List\<String> list;
 
-    public void setList(List<String> list) {
+    public void setList(List\<String> list) {
         this.list = list;
     }
     public void test() {
@@ -859,8 +860,8 @@ public class Book {
 ```
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+\<?xml version="1.0" encoding="UTF-8"?>
+\<beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -872,16 +873,16 @@ public class Book {
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
     -->
     <!--2 提取list集合类型属性注入-->
-    <util:list id="bookList">
-        <value>易筋经</value>
-        <value>九阴真经</value>
-        <value>九阳神功</value>
-    </util:list> <!--3 提取list集合类型属性注入使用-->
-    <bean id="book" class="com.lxl.spring5.collectiontype.Book">
-        <property name="list" ref="bookList"></property>
-    </bean>
+    \<util:list id="bookList">
+        \<value>易筋经\</value>
+        \<value>九阴真经\</value>
+        \<value>九阳神功\</value>
+    \</util:list> <!--3 提取list集合类型属性注入使用-->
+    \<bean id="book" class="com.lxl.spring5.collectiontype.Book">
+        \<property name="list" ref="bookList">\</property>
+    \</bean>
 
-</beans>
+\</beans>
 ```
 
 测试类
@@ -939,7 +940,7 @@ import com.lxl.spring5.collectiontype.Course;
 import org.springframework.beans.factory.FactoryBean;
 
 /**FactoryBean*/
-public class MyBean implements FactoryBean<Course> {
+public class MyBean implements FactoryBean\<Course> {
 
     /**定义返回bean类型*/
     @Override
@@ -950,7 +951,7 @@ public class MyBean implements FactoryBean<Course> {
     }
 
     @Override
-    public Class<?> getObjectType() {
+    public Class\<?> getObjectType() {
         return null;
     }
 
@@ -962,8 +963,8 @@ public class MyBean implements FactoryBean<Course> {
 ```
 
 ```xml
-<bean id="myBean" class="com.lxl.spring5.factorybean.MyBean">
-</bean>
+\<bean id="myBean" class="com.lxl.spring5.factorybean.MyBean">
+\</bean>
 ```
 
 ```java
@@ -1046,9 +1047,9 @@ public class Orders {
 
 ```xml
 <!--    +++++++++++++++++++bean生命周期+++++++++++++++++++++++-->
-<bean id="orders" class="com.lxl.spring5.lifecyclebean.Orders" init-method="initMethod" destroy-method="destroyMethod">
-    <property name="oname" value="键盘"></property>
-</bean>
+\<bean id="orders" class="com.lxl.spring5.lifecyclebean.Orders" init-method="initMethod" destroy-method="destroyMethod">
+    \<property name="oname" value="键盘">\</property>
+\</bean>
 ```
 
 ```java
@@ -1094,12 +1095,12 @@ public class BeforeAfter implements BeanPostProcessor {
 ```xml
 <!--+++++++++++++++++++bean生命周期、后置处理器+++++++++++++++++++++++-->
 
-<bean id="orders" class="com.lxl.spring5.lifecyclebean.Orders" init-method="initMethod" destroy-method="destroyMethod">
-    <property name="oname" value="键盘"></property>
-</bean>
+\<bean id="orders" class="com.lxl.spring5.lifecyclebean.Orders" init-method="initMethod" destroy-method="destroyMethod">
+    \<property name="oname" value="键盘">\</property>
+\</bean>
 
 <!--后置处理器 ,在此配置文件中的所有bean添加后置处理器-->
-<bean id="myBeanPost" class="com.lxl.spring5.lifecyclebean.BeforeAfter"></bean>
+\<bean id="myBeanPost" class="com.lxl.spring5.lifecyclebean.BeforeAfter">\</bean>
 ```
 
 ###### 2.12自动装配
@@ -1150,8 +1151,8 @@ public class TestAutoWire {
 ```
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+\<?xml version="1.0" encoding="UTF-8"?>
+\<beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -1159,17 +1160,17 @@ public class TestAutoWire {
     <!--+++++++++++++++++++自动装配 autowire="byName/byType"+++++++++++++++++++++++-->
 
     <!--实现自动装配 bean标签属性autowire，配置自动装配 autowire属性常用两个值： byName根据属性名称注入 ，注入值bean的id值和类属性名称一样，如下dept1不会注入。 byType根据属性类型注入 -->
-    <bean id="emp" class="com.lxl.spring5.autowire.Emp" autowire="byName">
+    \<bean id="emp" class="com.lxl.spring5.autowire.Emp" autowire="byName">
 <!--    Could not autowire. There is more than one bean of 'Dept' type. Beans: dept,dept1. Properties: 'dept'-->
-<!--    <bean id="emp" class="com.lxl.spring5.autowire.Emp" autowire="byType">-->
+<!--    \<bean id="emp" class="com.lxl.spring5.autowire.Emp" autowire="byType">-->
 <!--        原始模式-->
-<!--        <property name="dept" ref="dept"></property>-->
-    </bean>
+<!--        \<property name="dept" ref="dept">\</property>-->
+    \</bean>
 
     <!--后置处理器 ,在此配置文件中的所有bean添加后置处理器-->
-    <bean id="dept" class="com.lxl.spring5.autowire.Dept"></bean>
-    <bean id="dept1" class="com.lxl.spring5.autowire.Dept"></bean>
-</beans>
+    \<bean id="dept" class="com.lxl.spring5.autowire.Dept">\</bean>
+    \<bean id="dept1" class="com.lxl.spring5.autowire.Dept">\</bean>
+\</beans>
 ```
 
 **测试**
@@ -1208,8 +1209,8 @@ public class TestAutoWire {
 ![image-20211222192551378](http://rcy276gfy.hd-bkt.clouddn.com/work/image-20211222192551378.png)
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+\<?xml version="1.0" encoding="UTF-8"?>
+\<beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context ="http://www.springframework.org/schema/context"
@@ -1221,25 +1222,25 @@ public class TestAutoWire {
 
 
     <!--        原始形式，固定值-->
-<!--    <bean id="dept1" class="com.alibaba.druid.pool.DruidDataSource">-->
-<!--        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>-->
-<!--        <property name="url" value="jdbc:mysql://localhost:3306/userDb"></property>-->
-<!--        <property name="username" value="root"></property>-->
-<!--        <property name="password" value="root"></property>-->
+<!--    \<bean id="dept1" class="com.alibaba.druid.pool.DruidDataSource">-->
+<!--        \<property name="driverClassName" value="com.mysql.jdbc.Driver">\</property>-->
+<!--        \<property name="url" value="jdbc:mysql://localhost:3306/userDb">\</property>-->
+<!--        \<property name="username" value="root">\</property>-->
+<!--        \<property name="password" value="root">\</property>-->
 <!--        引入外部文件-->
-<!--    </bean>-->
+<!--    \</bean>-->
 
 <!--    引入外部文件形式-->
 <!--    引入外部文件-->
-    <context:property-placeholder location="classpath:jdbc.properties"/>
+    \<context:property-placeholder location="classpath:jdbc.properties"/>
 <!--    配置连接池-->
-    <bean id="dept1" class="com.alibaba.druid.pool.DruidDataSource">
-        <property name="driverClassName" value="${prop.driverClass}"></property>
-        <property name="url" value="${prop.url}"></property>
-        <property name="username" value="${prop.userName}"></property>
-        <property name="password" value="${prop.password}"></property>
-    </bean>
-</beans>
+    \<bean id="dept1" class="com.alibaba.druid.pool.DruidDataSource">
+        \<property name="driverClassName" value="${prop.driverClass}">\</property>
+        \<property name="url" value="${prop.url}">\</property>
+        \<property name="username" value="${prop.userName}">\</property>
+        \<property name="password" value="${prop.password}">\</property>
+    \</bean>
+\</beans>
 ```
 jdbc.properties
 ```properties
@@ -1281,7 +1282,7 @@ import org.springframework.stereotype.Service;
 //在注解里面value属性值可以省略不写，
 // 默认值是类名称，首字母小写
 // UserService -- userService
-@Component(value = "userService") //等同<bean id="userService" class=".."/>
+@Component(value = "userService") //等同\<bean id="userService" class=".."/>
 /**
  * @author Administrator*/
 //@Component
@@ -1300,8 +1301,8 @@ public class UserService {
 - 开启组件扫描
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+\<?xml version="1.0" encoding="UTF-8"?>
+\<beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -1315,20 +1316,20 @@ public class UserService {
         1.扫描多个包，可逗号隔开
         2.扫描多个包的上层目录
     -->
-    <context:component-scan base-package="com.lxl"></context:component-scan>
+    \<context:component-scan base-package="com.lxl">\</context:component-scan>
 
 
     <!--示例1 use-default-filters="false" 表示现在不使用默认filter，自己配置filter context:include-filter ，设置扫描哪些内容 -->
-    <context:component-scan base-package="com.lxl" use-default-filters="false">
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-    </context:component-scan>
+    \<context:component-scan base-package="com.lxl" use-default-filters="false">
+        \<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    \</context:component-scan>
 
 
     <!--示例2 下面配置扫描包所有内容 context:exclude-filter： 设置哪些内容不进行扫描 -->
-    <context:component-scan base-package="com.lxl">
-        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-    </context:component-scan>
-</beans>
+    \<context:component-scan base-package="com.lxl">
+        \<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    \</context:component-scan>
+\</beans>
 ```
 
 - 测试
@@ -1632,8 +1633,8 @@ public class UserProxy {
 （1）在spring配置文件中，开启注解扫描
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+\<?xml version="1.0" encoding="UTF-8"?>
+\<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -1645,11 +1646,11 @@ public class UserProxy {
     <!--=====================AOP注解使用======================-->
     <!--    添加命名空间：aop、context-->
     <!-- 开启注解扫描 -->
-    <context:component-scan base-package="com.lxl.spring5.aop.aspectjanno"></context:component-scan>
+    \<context:component-scan base-package="com.lxl.spring5.aop.aspectjanno">\</context:component-scan>
 
     <!-- 开启Aspect生成代理对象-->
-    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-</beans>
+    \<aop:aspectj-autoproxy>\</aop:aspectj-autoproxy>
+\</beans>
 
 ```
 
@@ -1751,8 +1752,8 @@ public class BookProxy {
 ### 2.配置切入点
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+\<?xml version="1.0" encoding="UTF-8"?>
+\<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -1763,19 +1764,19 @@ public class BookProxy {
        http://www.springframework.org/schema/aop/spring-aop.xsd">
     <!--=====================AOP xml操作======================-->
     <!--创建对象-->
-    <bean id="book" class="com.lxl.spring5.aop.aopxml.Book"/>
-    <bean id="bookProxy" class="com.lxl.spring5.aop.aopxml.BookProxy"/>
+    \<bean id="book" class="com.lxl.spring5.aop.aopxml.Book"/>
+    \<bean id="bookProxy" class="com.lxl.spring5.aop.aopxml.BookProxy"/>
     <!--配置aop增强-->
-    <aop:config>
+    \<aop:config>
         <!--切入点-->
-        <aop:pointcut id="p" expression="execution(* com.lxl.spring5.aop.aopxml.Book.buy(..))"/>
+        \<aop:pointcut id="p" expression="execution(* com.lxl.spring5.aop.aopxml.Book.buy(..))"/>
         <!--配置切面，即把通知（增强的部分bookProxy）ref应用到切入点（buy()）的过程动作-->
-        <aop:aspect ref="bookProxy">
+        \<aop:aspect ref="bookProxy">
             <!--增强作用在具体的方法上-->
-            <aop:before method="before" pointcut-ref="p"/>
-        </aop:aspect>
-    </aop:config>
-</beans>
+            \<aop:before method="before" pointcut-ref="p"/>
+        \</aop:aspect>
+    \</aop:config>
+\</beans>
 ```
 
 ### 3.测试
@@ -1820,8 +1821,8 @@ prop.password=root
 ```
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+\<?xml version="1.0" encoding="UTF-8"?>
+\<beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -1830,22 +1831,22 @@ prop.password=root
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <!--    引入外部文件-->
-    <context:property-placeholder location="classpath:jdbc.properties"/>
+    \<context:property-placeholder location="classpath:jdbc.properties"/>
     <!--    配置druid连接池-->
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
-        <property name="driverClassName" value="${prop.driverClass}"></property>
-        <property name="url" value="${prop.url}"></property>
-        <property name="username" value="${prop.userName}"></property>
-        <property name="password" value="${prop.password}"></property>
-    </bean>
+    \<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        \<property name="driverClassName" value="${prop.driverClass}">\</property>
+        \<property name="url" value="${prop.url}">\</property>
+        \<property name="username" value="${prop.userName}">\</property>
+        \<property name="password" value="${prop.password}">\</property>
+    \</bean>
 
     <!-- JdbcTemplate对象 -->
-    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"> <!--注入dataSource-->
-        <property name="dataSource" ref="dataSource"></property>
-    </bean>
+    \<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"> <!--注入dataSource-->
+        \<property name="dataSource" ref="dataSource">\</property>
+    \</bean>
 
-    <!-- 组件扫描 --> <context:component-scan base-package="com.lxl.spring5.jdbctemplatel"></context:component-scan>
-</beans>
+    <!-- 组件扫描 --> \<context:component-scan base-package="com.lxl.spring5.jdbctemplatel">\</context:component-scan>
+\</beans>
 ```
 
 ## 所有数据库基本操作
@@ -1862,10 +1863,10 @@ public interface BookDao {
     public void updateBook(Book book);
     public int selectCount();
     public Book selectOneBook(String bookid);
-    public List<Book> selectAllBooks();
-    public void batchInsert(List<Object[]> books);
-    public void batchUpdateBook(List<Object[]> batchArgs);
-    public void batchDeleteBook(List<Object[]> batchArgs);
+    public List\<Book> selectAllBooks();
+    public void batchInsert(List\<Object[]> books);
+    public void batchUpdateBook(List\<Object[]> batchArgs);
+    public void batchDeleteBook(List\<Object[]> batchArgs);
 }
 
 //=======================DaoImpl=============================
@@ -1922,27 +1923,27 @@ public class BookDaoImpl implements BookDao {
     @Override
     public Book selectOneBook(String bookid) {
         String sql = "select * from book where bookid=?";
-        Book book = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Book>(Book.class), bookid);
+        Book book = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper\<Book>(Book.class), bookid);
         return book;
     }
 
     //查询多个对象
     @Override
-    public List<Book> selectAllBooks() {
+    public List\<Book> selectAllBooks() {
         String sql = "select * from book";
-        List<Book> query = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Book>(Book.class));
+        List\<Book> query = jdbcTemplate.query(sql, new BeanPropertyRowMapper\<Book>(Book.class));
         return query;
     }
 
     @Override
-    public void batchInsert(List<Object[]> books) {
+    public void batchInsert(List\<Object[]> books) {
         String sql = "insert into book values(?,?,?)";
         int[] ints = jdbcTemplate.batchUpdate(sql, books);
         System.out.println(Arrays.toString(ints));
     }
 //    批量修改
     @Override
-    public void batchUpdateBook(List<Object[]> batchArgs) {
+    public void batchUpdateBook(List\<Object[]> batchArgs) {
         String sql = "update book set bookname=?,bookstatus=? where bookid=?";
         int[] ints = jdbcTemplate.batchUpdate(sql, batchArgs);
         System.out.println(Arrays.toString(ints));
@@ -1950,7 +1951,7 @@ public class BookDaoImpl implements BookDao {
 
 //    批量删除
     @Override
-    public void batchDeleteBook(List<Object[]> batchArgs) {
+    public void batchDeleteBook(List\<Object[]> batchArgs) {
         String sql = "delete from book where bookid=?";
         int[] ints = jdbcTemplate.batchUpdate(sql, batchArgs);
         System.out.println(Arrays.toString(ints));
@@ -1986,17 +1987,17 @@ public class BookService { //注入dao
     public Book selectOneBook(String bookid){
         return bookDao.selectOneBook(bookid);
     }
-    public List<Book> selectAllBooks(){
+    public List\<Book> selectAllBooks(){
         return bookDao.selectAllBooks();
     }
 
-    public void batchInsert(List<Object[]> books){
+    public void batchInsert(List\<Object[]> books){
         bookDao.batchInsert(books);
     };
-    public void batchUpdateBook(List<Object[]> books){
+    public void batchUpdateBook(List\<Object[]> books){
         bookDao.batchUpdateBook(books);
     };
-    public void batchDeleteBook(List<Object[]> books){
+    public void batchDeleteBook(List\<Object[]> books){
         bookDao.batchDeleteBook(books);
     };
 }
@@ -2087,12 +2088,12 @@ public class BookTest {
 
 //        查询一组对象
 //        BookService bookService = context.getBean("bookService", BookService.class);
-//        List<Book> book = bookService.selectAllBooks();
+//        List\<Book> book = bookService.selectAllBooks();
 //        System.out.println(book);
 
 //       批量新增一组对象
 //        BookService bookService = context.getBean("bookService", BookService.class);
-//        List<Object[]> books = new ArrayList<>();
+//        List\<Object[]> books = new ArrayList\<>();
 //        Object[] o1={"3","java","a"};
 //        Object[] o2={"4","orcle","b"};
 //        Object[] o3={"5","net","v"};
@@ -2103,7 +2104,7 @@ public class BookTest {
 
 //            批量修改
 //        BookService bookService = context.getBean("bookService", BookService.class);
-//        List<Object[]> batchArgs = new ArrayList<>();
+//        List\<Object[]> batchArgs = new ArrayList\<>();
 ////        sql参数顺序
 //        Object[] o1 = {"java1", "a3", "3"};
 //        Object[] o2 = {"orcle1", "b4", "4"};
@@ -2114,7 +2115,7 @@ public class BookTest {
 
         //批量删除
         BookService bookService = context.getBean("bookService", BookService.class);
-         List<Object[]> batchArgs = new ArrayList<>();
+         List\<Object[]> batchArgs = new ArrayList\<>();
         Object[] o1 = {"3"};
         Object[] o2 = {"4"};
         batchArgs.add(o1);
@@ -2256,8 +2257,8 @@ public class UserService {
 ```
 
 ```java
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+\<?xml version="1.0" encoding="UTF-8"?>
+\<beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -2266,22 +2267,22 @@ public class UserService {
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     <!--    引入外部文件-->
-    <context:property-placeholder location="classpath:jdbc.properties"/>
+    \<context:property-placeholder location="classpath:jdbc.properties"/>
     <!--    配置连接池-->
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
-        <property name="driverClassName" value="${prop.driverClass}"></property>
-        <property name="url" value="${prop.url}"></property>
-        <property name="username" value="${prop.userName}"></property>
-        <property name="password" value="${prop.password}"></property>
-    </bean>
+    \<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        \<property name="driverClassName" value="${prop.driverClass}">\</property>
+        \<property name="url" value="${prop.url}">\</property>
+        \<property name="username" value="${prop.userName}">\</property>
+        \<property name="password" value="${prop.password}">\</property>
+    \</bean>
 
     <!-- JdbcTemplate对象 -->
-    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"> <!--注入dataSource-->
-        <property name="dataSource" ref="dataSource"></property>
-    </bean>
+    \<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"> <!--注入dataSource-->
+        \<property name="dataSource" ref="dataSource">\</property>
+    \</bean>
 
-    <!-- 组件扫描 --> <context:component-scan base-package="com.lxl.spring5.transactionl"></context:component-scan>
-</beans>
+    <!-- 组件扫描 --> \<context:component-scan base-package="com.lxl.spring5.transactionl">\</context:component-scan>
+\</beans>
 ```
 - 测试
 
@@ -2352,13 +2353,13 @@ public void accountMoney() {
    xmlns:tx="http://www.springframework.org/schema/tx"
    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
    <!--2.创建事务管理器-->
-   <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+   \<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
        <!--3.注入数据源-->
-       <property name="dataSource" ref="dataSource"></property>
-   </bean>
+       \<property name="dataSource" ref="dataSource">\</property>
+   \</bean>
    
    <!--4.开启事务注解-->
-   <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+   \<tx:annotation-driven transaction-manager="transactionManager">\</tx:annotation-driven>
    
    <!--5.添加@Transactional注解到需要的类或者方法上，其位置决定起作用域。-->
    ```
@@ -2459,18 +2460,18 @@ public void accountMoney() {
 ```xml
 <!--添加aop命名空间-->  
 <!--无需事务注解配置-->
-<!--    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>-->
+<!--    \<tx:annotation-driven transaction-manager="transactionManager">\</tx:annotation-driven>-->
 
     <!--配置通知-->
-    <tx:advice id="txadvice"> <!--配置事务参数-->
-        <tx:attributes> <!--指定哪种规则的方法上面添加事务-->
-            <tx:method name="accountMoney" propagation="REQUIRED"/> <!--<tx:method name="account*"/>-->
-        </tx:attributes>
-    </tx:advice> <!--3 配置切入点和切面-->
-    <aop:config> <!--配置切入点-->
-        <aop:pointcut id="pt" expression="execution(* com.lxl.spring5.transactionl.service.UserService.*(..))"/> <!--配置切面-->
-        <aop:advisor advice-ref="txadvice" pointcut-ref="pt"/>
-    </aop:config>
+    \<tx:advice id="txadvice"> <!--配置事务参数-->
+        \<tx:attributes> <!--指定哪种规则的方法上面添加事务-->
+            \<tx:method name="accountMoney" propagation="REQUIRED"/> <!--\<tx:method name="account*"/>-->
+        \</tx:attributes>
+    \</tx:advice> <!--3 配置切入点和切面-->
+    \<aop:config> <!--配置切入点-->
+        \<aop:pointcut id="pt" expression="execution(* com.lxl.spring5.transactionl.service.UserService.*(..))"/> <!--配置切面-->
+        \<aop:advisor advice-ref="txadvice" pointcut-ref="pt"/>
+    \</aop:config>
 ```
 
 ### 8.事务操作（完全注解）
@@ -2558,30 +2559,30 @@ public void accountMoney() {
 ### 创建配置文件log4j2
 
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
+\<?xml version="1.0" encoding="UTF-8"?>
 <!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
 <!--Configuration后面的status用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，可以看到log4j2内部各种详细输出-->
 <!--设置INFO会输出前面级别所有日志-->
-<configuration status="INFO">
+\<configuration status="INFO">
     <!--先定义所有的appender-->
-    <appenders>
+    \<appenders>
         <!--输出日志信息到控制台-->
-        <console name="Console" target="SYSTEM_OUT">
+        \<console name="Console" target="SYSTEM_OUT">
             <!--控制日志输出的格式-->
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
-        </console>
-    </appenders>
+            \<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        \</console>
+    \</appenders>
     <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效-->
     <!--root：用于指定项目的根日志，如果没有单独指定Logger，则会使用root作为默认的日志输出-->
-    <loggers>
-        <root level="info">
-            <appender-ref ref="Console"/>
-        </root>
-    </loggers>
-</configuration>
+    \<loggers>
+        \<root level="info">
+            \<appender-ref ref="Console"/>
+        \</root>
+    \</loggers>
+\</configuration>
 ```
 
-任意运行程序可见日志，更改<configuration status="INFO"> 查看不同级别日志。
+任意运行程序可见日志，更改\<configuration status="INFO"> 查看不同级别日志。
 
 ### 手动加日志
 

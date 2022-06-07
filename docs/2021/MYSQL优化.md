@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: MYSQL优化
+date: 2022-06-06
 category:
   - MYSQL优化
 tag:
@@ -67,7 +68,6 @@ mixed，一种折中的方案，普通操作使用statement记录，当无法使
 
 ## 执行顺序
 
-![desc](file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image002.png)
 
 ## CREATE（drop，use） DATABASE 数据库名;
 
@@ -217,7 +217,7 @@ CHECK: 用于控制字段的值范围。
 
 ## 子查询的三种情况
 
-子查询是单行单列的情况：结果集是一个值，父查询使用：=、 <、> 等运算符  -- 查询工资最高的员工是谁？   select * from employee where salary=(select max(salary) from employee);  子查询是多行单列的情况：结果集类似于一个数组，父查询使用：in 运算符  -- 查询工资最高的员工是谁？   select * from employee where salary=(select max(salary) from employee);  子查询是多行多列的情况：结果集类似于一张虚拟表，不能用于 where 条件，用于 select 子句中做为子表  -- 1) 查询出2011年以后入职的员工信息  -- 2) 查询所有的部门信息，与上面的虚拟表中的信息比对，找出所有部门ID相等的员工。  select * from dept d, (select * from employee where join_date > '2011-1-1') e where e.dept_id = d.id;      -- 使用表连接：  select d.*, e.* from dept d inner join employee e on d.id = e.dept_id where e.join_date > '2011-1-1'
+子查询是单行单列的情况：结果集是一个值，父查询使用：=、 \<、> 等运算符  -- 查询工资最高的员工是谁？   select * from employee where salary=(select max(salary) from employee);  子查询是多行单列的情况：结果集类似于一个数组，父查询使用：in 运算符  -- 查询工资最高的员工是谁？   select * from employee where salary=(select max(salary) from employee);  子查询是多行多列的情况：结果集类似于一张虚拟表，不能用于 where 条件，用于 select 子句中做为子表  -- 1) 查询出2011年以后入职的员工信息  -- 2) 查询所有的部门信息，与上面的虚拟表中的信息比对，找出所有部门ID相等的员工。  select * from dept d, (select * from employee where join_date > '2011-1-1') e where e.dept_id = d.id;      -- 使用表连接：  select d.*, e.* from dept d inner join employee e on d.id = e.dept_id where e.join_date > '2011-1-1'
 
 ## mysql中 in 和 exists 区别
 
@@ -383,7 +383,6 @@ Innodb 引擎：Innodb 引擎提供了对数据库 ACID 事务的支持。并且
 
 ### 哈希索引
 
-![desc](file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image008.png)
 
 简要说下，类似于数据结构中简单实现的 HASH 表（散列表）一样，当我们在 mysql 中用哈希索引时，主要就是通过 Hash 算法（常见的 Hash 算法有直接定址法、平方取中法、折叠法、除数取余法、随机数法），将数据库字段数据转换成定长的 Hash 值，与这条数据的行指针一并存入 Hash 表的对应位置；如果发生 Hash 碰撞（两个不同关键字的 Hash 值相同），则在对应 Hash 键下以链表形式存储。当然这只是简略模拟图。
 
@@ -393,7 +392,7 @@ Innodb 引擎：Innodb 引擎提供了对数据库 ACID 事务的支持。并且
 
 ## 索引算法有哪些？
 
-BTree 算法  BTree 是最常用的 mysql 数据库索引算法，也是 mysql 默认的算法。因为它不仅可以被用在 =,>,>=,<,<= 和 between 这些比较操作符上，而且还可以用于 like 操作符，只要它的查询条件是一个不以通配符开头的常量， 例如：  -- 只要它的查询条件是一个不以通配符开头的常量  select * from user where name like 'jack%';   -- 如果一通配符开头，或者没有使用常量，则不会使用索引，例如：   select * from user where name like '%jack';    Hash 算法  Hash Hash 索引只能用于对等比较，例如 =,<=>（相当于 =）操作符。由于是一次定位数据，不像 BTree 索引需要从根节点到枝节点，最后才能访问到页节点这样多次 IO 访问，所以检索效率远高于 BTree 索引。
+BTree 算法  BTree 是最常用的 mysql 数据库索引算法，也是 mysql 默认的算法。因为它不仅可以被用在 =,>,>=,\<,\<= 和 between 这些比较操作符上，而且还可以用于 like 操作符，只要它的查询条件是一个不以通配符开头的常量， 例如：  -- 只要它的查询条件是一个不以通配符开头的常量  select * from user where name like 'jack%';   -- 如果一通配符开头，或者没有使用常量，则不会使用索引，例如：   select * from user where name like '%jack';    Hash 算法  Hash Hash 索引只能用于对等比较，例如 =,\<=>（相当于 =）操作符。由于是一次定位数据，不像 BTree 索引需要从根节点到枝节点，最后才能访问到页节点这样多次 IO 访问，所以检索效率远高于 BTree 索引。
 
 ## 索引设计的原则？
 
@@ -403,7 +402,7 @@ BTree 算法  BTree 是最常用的 mysql 数据库索引算法，也是 mysql �
 
 索引虽好，但也不是无限制的使用，最好符合一下几个原则    
 
-1） 最左前缀匹配原则，组合索引非常重要的原则，mysql 会一直向右匹配直到遇到范围查询 (>、<、between、like) 就停止匹配，比如 a = 1 and b = 2 and c > 3 and d = 4 如果建立 (a,b,c,d) 顺序的索引，d 是用不到索引的，如果建立 (a,b,d,c) 的索引则都可以用到，a,b,d 的顺序可以任意调整。   
+1） 最左前缀匹配原则，组合索引非常重要的原则，mysql 会一直向右匹配直到遇到范围查询 (>、\<、between、like) 就停止匹配，比如 a = 1 and b = 2 and c > 3 and d = 4 如果建立 (a,b,c,d) 顺序的索引，d 是用不到索引的，如果建立 (a,b,d,c) 的索引则都可以用到，a,b,d 的顺序可以任意调整。   
 2）较频繁作为查询条件的字段才去创建索引    
 3）更新频繁字段不适合创建索引    
 4）若是不能有效区分数据的列不适合做索引列 (如性别，男女未知，最多也就三种，区分度实在太低)    
@@ -421,7 +420,6 @@ BTree 算法  BTree 是最常用的 mysql 数据库索引算法，也是 mysql �
 
 删除索引    根据索引名删除普通索引、唯一索引、全文索引：alter table 表名 drop KEY 索引名    alter table user_index drop KEY name;  alter table user_index drop KEY id_card;  alter table user_index drop KEY information;  删除主键索引：alter table 表名 drop primary key（因为主键只有一个）。这里值得注意的是，如果主键自增长，那么不能直接执行此操作（自增长依赖于主键索引）：    需要取消自增长再行删除：    alter table user_index  -- 重新定义字段  MODIFY id int,  drop PRIMARY KEY  但通常不会删除主键，因为设计主键一定与业务逻辑无关。
 
-![desc](file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image010.png)
 
 ## 创建索引时需要注意什么？
 
@@ -450,7 +448,7 @@ or，%，算，函数，转换，复合索引
 1.唯一性差;
 2.频繁更新的字段不用（更新索引消耗）;
 3.where中不用的字段;
-4.索引使用<>时，效果一般;
+4.索引使用\<>时，效果一般;
 
 ## 详述（转）
 
@@ -497,7 +495,7 @@ or，%，算，函数，转换，复合索引
 
 > 只有在where语句出现，mysql才会去使用索引
 
-4） where 子句里对索引列使用不等于（<>），使用索引效果一般
+4） where 子句里对索引列使用不等于（\<>），使用索引效果一般
 
 
 
@@ -511,7 +509,7 @@ or，%，算，函数，转换，复合索引
 
 ## 什么是最左前缀原则？什么是最左匹配原则
 
-顾名思义，就是最左优先，在创建多列索引时，要根据业务需求，where 子句中使用最频繁的一列放在最左边。  最左前缀匹配原则，非常重要的原则，mysql 会一直向右匹配直到遇到范围查询 (>、<、between、like) 就停止匹配，比如 a = 1 and b = 2 and c > 3 and d = 4 如果建立 (a,b,c,d) 顺序的索引，d 是用不到索引的，如果建立 (a,b,d,c) 的索引则都可以用到，a,b,d 的顺序可以任意调整。  = 和 in 可以乱序，比如 a = 1 and b = 2 and c = 3 建立 (a,b,c) 索引可以任意顺序，mysql 的查询优化器会帮你优化成索引可以识别的形式
+顾名思义，就是最左优先，在创建多列索引时，要根据业务需求，where 子句中使用最频繁的一列放在最左边。  最左前缀匹配原则，非常重要的原则，mysql 会一直向右匹配直到遇到范围查询 (>、\<、between、like) 就停止匹配，比如 a = 1 and b = 2 and c > 3 and d = 4 如果建立 (a,b,c,d) 顺序的索引，d 是用不到索引的，如果建立 (a,b,d,c) 的索引则都可以用到，a,b,d 的顺序可以任意调整。  = 和 in 可以乱序，比如 a = 1 and b = 2 and c = 3 建立 (a,b,c) 索引可以任意顺序，mysql 的查询优化器会帮你优化成索引可以识别的形式
 
 ## B树和B+树的区别
 
@@ -519,7 +517,6 @@ or，%，算，函数，转换，复合索引
 
 ·     
 
-![desc](file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image012.png)
 
 ## 使用B树的好处
 
@@ -553,11 +550,10 @@ B + 树的查询效率更加稳定。B 树搜索有可能会在非叶子结点�
 
 ·     
 
-![desc](file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image014.png)
 
 ## 非聚簇索引一定会回表查询吗？
 
-不一定，这涉及到查询语句所要求的字段是否全部命中了索引，如果全部命中了索引，那么就不必再进行回表查询。    举个简单的例子，假设我们在员工表的年龄上建立了索引，那么当进行select age from employee where age < 20的查询时，在索引的叶子节点上，已经包含了 age 信息，不会再次进行回表查询。
+不一定，这涉及到查询语句所要求的字段是否全部命中了索引，如果全部命中了索引，那么就不必再进行回表查询。    举个简单的例子，假设我们在员工表的年龄上建立了索引，那么当进行select age from employee where age \< 20的查询时，在索引的叶子节点上，已经包含了 age 信息，不会再次进行回表查询。
 
 ## 联合索引是什么？为什么需要注意联合索引中的顺序？
 
@@ -1047,7 +1043,7 @@ system，const知识理想情况，实际能达到 ref >range
 
 - ref：非唯一性索引，对于每个索引建的查询，返回匹配的所有行（0，多）
 
-- range：检索指定范围的行，where后面是一个范围查询（between，in，> < >=，in有时候会失效，从而转为all）
+- range：检索指定范围的行，where后面是一个范围查询（between，in，> \< >=，in有时候会失效，从而转为all）
 
 - index：查询全部索引中的数据，只需要扫描索引表，不需要所有表中的所有数据
 
@@ -1243,9 +1239,9 @@ commit;
 	大表:300
 	
 	select ...where 小表.x10=大表.x300 ;
-	for(int i=0;i<小表.length10;i++)
+	for(int i=0;i\<小表.length10;i++)
 	{
-		for(int j=0;j<大表.length300;j++)
+		for(int j=0;j\<大表.length300;j++)
 		{
 			...
 		}
@@ -1253,9 +1249,9 @@ commit;
 
 
 	select ...where 大表.x300=小表.x10 ;
-	for(int i=0;i<大表.length300;i++)
+	for(int i=0;i\<大表.length300;i++)
 	{
-		for(int j=0;j<小表.length10;j++)
+		for(int j=0;j\<小表.length10;j++)
 		{
 			...
 		}
@@ -1342,7 +1338,7 @@ from .. on.. join ..where ..group by ....having ...select dinstinct ..order by l
 	alter table book add index idx_authroid (authorid) ;
 	alter table book add index idx_typeid (typeid) ;
 	explain select * from book where authorid*2 = 1 and typeid = 2 ;
-#（3）复合索引不能使用不等于（!=  <>）或is null (is not null)，否则自身以及右侧所有全部失效。
+#（3）复合索引不能使用不等于（!=  \<>）或is null (is not null)，否则自身以及右侧所有全部失效。
 #	复合索引中如果有>，则自身和右侧索引全部失效。
 
 explain select * from book where authorid = 1 and typeid =2 ;
@@ -1352,7 +1348,7 @@ explain select * from book where authorid = 1 and typeid =2 ;
 explain select * from book where authorid != 1 and typeid =2 ;
 explain select * from book where authorid != 1 and typeid !=2 ;
 
-#体验概率情况(< > =)：原因是服务层中有SQL优化器，可能会影响我们的优化。
+#体验概率情况(\< > =)：原因是服务层中有SQL优化器，可能会影响我们的优化。
 drop index idx_typeid on book;
 drop index idx_authroid on book;
 alter table book add index idx_book_at (authorid,typeid);
@@ -1360,11 +1356,11 @@ explain select * from book where authorid = 1 and typeid =2 ;--复合索引at全
 explain select * from book where authorid > 1 and typeid =2 ; --复合索引中如果有>，则自身和右侧索引全部失效。
 explain select * from book where authorid = 1 and typeid >2 ;--复合索引at全部使用
 #----明显的概率问题---
-explain select * from book where authorid < 1 and typeid =2 ;--复合索引at只用到了1个索引
-explain select * from book where authorid < 4 and typeid =2 ;--复合索引全部失效
+explain select * from book where authorid \< 1 and typeid =2 ;--复合索引at只用到了1个索引
+explain select * from book where authorid \< 4 and typeid =2 ;--复合索引全部失效
 
 -- 我们学习索引优化 ，是一个大部分情况适用的结论，但由于SQL优化器等原因  该结论不是100%正确。
--- 一般而言， 范围查询（> <  in），之后的索引失效。
+-- 一般而言， 范围查询（> \<  in），之后的索引失效。
 
 #（4）补救。尽量使用索引覆盖（using index）
 #		（a,b,c）
@@ -1517,7 +1513,7 @@ begin
 	declare  all_str varchar(100) default 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ' ;
 	declare return_str varchar(255) default '' ;
 	declare i int default 0 ; 
-	while i<n		 
+	while i\<n		 
 	do									
 		set return_str = concat(  return_str,      substring(all_str,   FLOOR(1+rand()*52)   ,1)       );
 		set i=i+1 ;
@@ -1797,7 +1793,7 @@ insert into linelock(name) values('5')  ;
 ​	
 ​	**b.行锁的一种特殊情况：间隙锁：值在范围内，但却不存在**
 ​	 --此时linelock表中 没有id=7的数据
-​	 update linelock set name ='x' where id >1 and id<9 ;   --即在此where范围中，没有id=7的数据，则id=7的数据成为间隙。
+​	 update linelock set name ='x' where id >1 and id\<9 ;   --即在此where范围中，没有id=7的数据，则id=7的数据成为间隙。
 ​	间隙：Mysql会自动给 间隙 加索 ->间隙锁。即 本题 会自动给id=7的数据加 间隙锁（行锁）。
 ​	行锁：如果有where，则实际加索的范围 就是where后面的范围（不是实际的值）
 
@@ -2204,11 +2200,11 @@ from employees e INNER join emp_bonus eb on e.emp_no=eb.emp_no INNER join salari
 **1.窗口函数语法**
 
 ```text
-<窗口函数> over (partition by <用于分组的列名>
-                order by <用于排序的列名>)
+\<窗口函数> over (partition by \<用于分组的列名>
+                order by \<用于排序的列名>)
 ```
 
-<窗口函数>的位置，可以放以下两种函数：
+\<窗口函数>的位置，可以放以下两种函数：
 
 #### 1） 专用窗口函数，比如
 
@@ -2242,7 +2238,7 @@ from employees e INNER join emp_bonus eb on e.emp_no=eb.emp_no INNER join salari
 
 1、left(str,length) 从左边截取length
 2、right(str,length)从右边截取length
-3、substring(str,index)当index>0从左边开始截取直到结束  当index<0从右边开始截取直到结束  当index=0返回空
+3、substring(str,index)当index>0从左边开始截取直到结束  当index\<0从右边开始截取直到结束  当index=0返回空
 4、substring(str,index,len) 截取str,从index开始，截取len长度
 5、substring_index(str,delim,count)，str是要截取的字符串，delim是截取的字段 count是从哪里开始截取(为0则是左边第0个开始，1位左边开始第一个选取左边的，-1从右边第一个开始选取右边的
 6、subdate(date,day)截取时间，时间减去后面的day
@@ -2462,9 +2458,9 @@ select job,date_format(date,"%Y-%m") as mon,sum(num) as cnt from resume_info whe
 单输入，多字段查询
 
 ```
-<if test="text!=null and text!=''">
+\<if test="text!=null and text!=''">
     and CONCAT(t.city,t.bh,t.cun,t.jsztmc,t.xmxmmc) like concat ('%',#{text},'%')
-</if>
+\</if>
 ```
 
 ## 有没有进行过分库分表操作？分库之后如何保持事务一致？
@@ -2567,7 +2563,7 @@ select job,date_format(date,"%Y-%m") as mon,sum(num) as cnt from resume_info whe
 1. 不要使用count(列名)或count(常量)来替代count(*)，count(*)是SQL92定义的标准统计行数的语法，跟数据库无关，跟NULL和非NULL无关。 说明：count(*)会统计值为NULL的行，而count(列名)不会统计此列为NULL值的行。
 2. 】count(distinct col) 计算该列除NULL之外的不重复行数，注意 count(distinct col1, col2) 如果其中一列全为NULL，那么即使另一列有不同的值，也返回为0。
 3. 当某一列的值全是NULL时，count(col)的返回结果为0，但sum(col)的返回结果为NULL，因此使用sum()时需注意NPE问题。 正例：可以使用如下方式来避免sum的NPE问题：SELECT IFNULL(SUM(column), 0) FROM table;
-4. 使用ISNULL()来判断是否为NULL值。 说明：NULL与任何值的直接比较都为NULL。 1） NULL<>NULL的返回结果是NULL，而不是false。 2） NULL=NULL的返回结果是NULL，而不是true。 3） NULL<>1的返回结果是NULL，而不是true。
+4. 使用ISNULL()来判断是否为NULL值。 说明：NULL与任何值的直接比较都为NULL。 1） NULL\<>NULL的返回结果是NULL，而不是false。 2） NULL=NULL的返回结果是NULL，而不是true。 3） NULL\<>1的返回结果是NULL，而不是true。
 5. 代码中写分页查询逻辑时，若count为0应直接返回，避免执行后面的分页语句。
 6. 不得使用外键与级联，一切外键概念必须在应用层解决。
 7. 禁止使用存储过程，存储过程难以调试和扩展，更没有移植性。
@@ -2579,14 +2575,14 @@ select job,date_format(date,"%Y-%m") as mon,sum(num) as cnt from resume_info whe
 
 1. 一律不要使用 * 作为查询的字段列表，需要哪些字段必须明确写明。因为会 1）增加查询分析器解析成本。2）增减字段容易与resultMap配置不一致。3）无用字段增加网络消耗，尤其是text类型的字段。
 2. POJO类的布尔属性不能加is，而数据库字段必须加is_，要求在resultMap中进行字段与属性之间的映射。
-3. 不要用resultClass当返回参数，即使所有类属性名与数据库字段一一对应，也需要定义<resultMap>；反过来，每一个表也必然有一个<resultMap>与之对应。配置映射关系，使字段与DO类解耦，方便维护。
+3. 不要用resultClass当返回参数，即使所有类属性名与数据库字段一一对应，也需要定义\<resultMap>；反过来，每一个表也必然有一个\<resultMap>与之对应。配置映射关系，使字段与DO类解耦，方便维护。
 4. sql.xml配置参数使用：#{}，#param# 不要使用${} 此种方式容易出现SQL注入
 5. iBATIS自带的queryForList(String statementName,int start,int size)不推荐使用。
 6. 不允许直接拿HashMap与Hashtable作为查询结果集的输出。
 7. 更新数据表记录时，必须同时更新记录对应的gmt_modified字段值为当前时间。
 8. 执行SQL时，不要更新无改动的字段，一是易出错；二是效率低；三是增加binlog存储
 9. @Transactional事务不要滥用。事务会影响数据库的QPS，另外使用事务的地方需要考虑各方面的回滚方案，包括缓存回滚、搜索引擎回滚、消息补偿、统计修正等。
-10. <isEqual>中的compareValue是与属性值对比的常量，一般是数字，表示相等时带上此条件；<isNotEmpty>表示不为空且不为null时执行；<isNotNull>表示不为null值时执行。
+10. \<isEqual>中的compareValue是与属性值对比的常量，一般是数字，表示相等时带上此条件；\<isNotEmpty>表示不为空且不为null时执行；\<isNotNull>表示不为null值时执行。
 
 ## [主键UUID  or  INT 自增？](https://blog.csdn.net/Liu_Wd/article/details/53011128)
 

@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: Redis
+date: 2022-06-06
 category:
   - Redis
 tag:
@@ -93,14 +94,14 @@ Pub/Sub：支持多播的可持久化的消息队列，用于实现**发布订�
 
 |              数据类型               |   [String](#String（字符串）)    |                 [Hash](#Hash（哈希）)                 |         [List](#List（列表）)          |         [Set](#Set（集合）)          |                   [ZSet](#ZSet(有序集合))                    |            [Geospatial](#Geospatial（地理位置）)             | [Hyperloglog](#Hyperloglog（基数统计）) |              [Bitmap](#Bitmap（位图）)               | [Stream 5.0](#Redis Stream) |
 | :---------------------------------: | :------------------------------: | :---------------------------------------------------: | :------------------------------------: | :----------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :-------------------------------------: | :--------------------------------------------------: | ---- |
-|                特点                 | 字符串，整数或浮点数，二进制安全 | 哈希，包含键（string ）值对的无序散列表，适合存储对象 | 列表，链表上的节点字符串元素，插入有序 |   集合，不同无序字符串元素,哈希表    | 有序集合，不同字符串，还有带double类型的可重复**分数**的有序集合 |                           地理位置                           | 基数统计<br />不占内存<br />记录网站UV  | Bitmap 位图，数据结构！二进制位记录，0 和 1 两个状态 | 弥补发布订阅无法持久化的缺点 |
-|                容量                 |              512MB               |          2<sup>32</sup> -1 键值对（40多亿）           |           2<sup>32</sup> -1            |          2<sup>32</sup> -1           |                      2<sup>32</sup> -1                       |                                                              |                                         |                                                      |      |
+|                特点                 | 字符串，整数或浮点数，二进制安全 | 哈希，包含键（string ）值对的无序散列表，适合存储对象 | 列表，链表上的节点字符串元素，插入有序 |   集合，不同无序字符串元素,哈希表    | 有序集合，不同字符串，还有带double类型的可重复**分数**的有序集合 |                           地理位置                           | 基数统计\<br />不占内存\<br />记录网站UV  | Bitmap 位图，数据结构！二进制位记录，0 和 1 两个状态 | 弥补发布订阅无法持久化的缺点 |
+|                容量                 |              512MB               |          2\<sup>32\</sup> -1 键值对（40多亿）           |           2\<sup>32\</sup> -1            |          2\<sup>32\</sup> -1           |                      2\<sup>32\</sup> -1                       |                                                              |                                         |                                                      |      |
 |                 增                  |               set                |                      hset/hmset                       |              lpush，rpush              |                 sadd                 |                             zadd                             |                            geoadd                            |                  pfadd                  |                        setbit                        |      |
-|                 取                  |               get                |            hget （取单个）/hmget (取多个)             | lrange取区间值lpop左取<br/>rpop 右取  |           smembers 取所有            | zscore单取 zrange  范围取 zrevrange   升序<br />取zrangebyscore  所有降序取zrevrangebyscore  所有升序取 | geopos<br />geodist（两点距离）<br/>georadius（点附近点，可数量限制） |                                         | getbit |      |
+|                 取                  |               get                |            hget （取单个）/hmget (取多个)             | lrange取区间值lpop左取\<br/>rpop 右取  |           smembers 取所有            | zscore单取 zrange  范围取 zrevrange   升序\<br />取zrangebyscore  所有降序取zrevrangebyscore  所有升序取 | geopos\<br />geodist（两点距离）\<br/>georadius（点附近点，可数量限制） |                                         | getbit |      |
 |                 删                  |               del                |                         hdel                          |            Lpop、Rpop、lrem            |                 srem                 |                             zrem                             |                                                              |                                         |                                                      |      |
 |              取旧改新               |              getset              |                                                       |                                        |                                      |                                                              |                                                              |                                         |                                                      |      |
-|                自增                 |       incr <br />（可指定        |                  HINCRBY增加指定步长                  |                                        |                                      |                                                              |                                                              |                                         |                                                      |      |
-|                自减                 |       decr <br />（可指定        |                                                       |                                        |                                      |                                                              |                                                              |                                         |                                                      |      |
+|                自增                 |       incr \<br />（可指定        |                  HINCRBY增加指定步长                  |                                        |                                      |                                                              |                                                              |                                         |                                                      |      |
+|                自减                 |       decr \<br />（可指定        |                                                       |                                        |                                      |                                                              |                                                              |                                         |                                                      |      |
 |                追加                 |              append              |                                                       |                                        |                                      |                                                              |                                                              |                                         |                                                      |      |
 |                长度                 |              strlen              |                         hlen                          |                  llen                  |                                      |                            zcard                             |                                                              |          pfcount（不重复数量）          |                bitcount(计算状态数量)                |      |
 | 批量同时设置一个或多个 key-value 对 |               mset               |                         hmset                         |                                        |                                      |                                                              |                                                              |                                         |                                                      |      |
@@ -748,7 +749,7 @@ Redis hash 是一个 string 类型的 field 和 value 的映射表，hash 特别
 	- DEL runoob 用于删除前面测试用过的 key，不然会报错：(error) WRONGTYPE Operation against a key holding the wrong kind of value
 	- HMSET 设置了两个 field=>value 对, HGET 获取对应 field 对应的 value。
 
-每个 hash 可以存储 2<sup>32</sup> -1 键值对（40多亿）。
+每个 hash 可以存储 2\<sup>32\</sup> -1 键值对（40多亿）。
 
 - HMSET runoob field1 "Hello" field2 "World"
 
@@ -811,7 +812,7 @@ hash变更的数据 user name age,尤其是是用户信息之类的，经常变�
 
 - Redis 列表是简单的字符串列表，按照**插入顺序排序**。你可以添加一个元素到列表的头部（左边）或者尾部（右边）。
 
-- 列表最多可存储2<sup>32</sup> -1元素 (4294967295, 每个列表可存储40多亿)。
+- 列表最多可存储2\<sup>32\</sup> -1元素 (4294967295, 每个列表可存储40多亿)。
 
 - lpush runoob redis
 
@@ -1013,7 +1014,7 @@ hash变更的数据 user name age,尤其是是用户信息之类的，经常变�
 添加一个 string 元素到 key 对应的 set 集合中，成功返回 1，如果元素已经在集合中返回 0。
 
 sadd key member
-- 集合中最大的成员数为 2<sup>32</sup> - 1(4294967295, 每个集合可存储40多亿个成员)。
+- 集合中最大的成员数为 2\<sup>32\</sup> - 1(4294967295, 每个集合可存储40多亿个成员)。
 - sadd runoob redis
 
 	- smembers runoob
@@ -1235,7 +1236,7 @@ GEODIST
 该命令将返回11个字符的Geohash字符串，所以没有精度Geohash，损失相比，使用内部52位表示。返回的geohashes具有以下特性：
 
 1. 他们可以缩短从右边的字符。它将失去精度，但仍将指向同一地区。
-2. 它可以在 `geohash.org` 网站使用，网址 `http://geohash.org/<geohash-string>`。查询例子：http://geohash.org/sqdtr74hyu0.
+2. 它可以在 `geohash.org` 网站使用，网址 `http://geohash.org/\<geohash-string>`。查询例子：http://geohash.org/sqdtr74hyu0.
 3. 与类似的前缀字符串是附近，但相反的是不正确的，这是可能的，用不同的前缀字符串附近。
 
 ```bash
@@ -2101,21 +2102,21 @@ dir /tmp
 # 哨兵sentinel监控的redis主节点的 ip port
 # master-name 可以自己命名的主节点名字 只能由字母A-z、数字0-9 、这三个字符".-_"组成。
 # quorum 配置多少个sentinel哨兵统一认为master主节点失联 那么这时客观上认为主节点失联了
-# sentinel monitor <master-name> <ip> <redis-port> <quorum>
+# sentinel monitor \<master-name> \<ip> \<redis-port> \<quorum>
 sentinel monitor mymaster 127.0.0.1 6379 2
 # 当在Redis实例中开启了requirepass foobared 授权密码 这样所有连接Redis实例的客户端都要提供
 密码
 # 设置哨兵sentinel 连接主从的密码 注意必须为主从设置一样的验证密码
-# sentinel auth-pass <master-name> <password>
+# sentinel auth-pass \<master-name> \<password>
 sentinel auth-pass mymaster MySUPER--secret-0123passw0rd
 # 指定多少毫秒之后 主节点没有应答哨兵sentinel 此时 哨兵主观上认为主节点下线 默认30秒
-# sentinel down-after-milliseconds <master-name> <milliseconds>
+# sentinel down-after-milliseconds \<master-name> \<milliseconds>
 sentinel down-after-milliseconds mymaster 30000
 # 这个配置项指定了在发生failover主备切换时最多可以有多少个slave同时对新的master进行 同步，
 这个数字越小，完成failover所需的时间就越长，
 但是如果这个数字越大，就意味着越 多的slave因为replication而不可用。
 可以通过将这个值设为 1 来保证每次只有一个slave 处于不能处理命令请求的状态。
-# sentinel parallel-syncs <master-name> <numslaves>
+# sentinel parallel-syncs \<master-name> \<numslaves>
 sentinel parallel-syncs mymaster 1
 # 故障转移的超时时间 failover-timeout 可以用在以下这些方面：
 #1. 同一个sentinel对同一个master两次failover之间的间隔时间。
@@ -2125,7 +2126,7 @@ sentinel parallel-syncs mymaster 1
 #4.当进行failover时，配置所有slaves指向新的master所需的最大时间。不过，即使过了这个超时，
 slaves依然会被正确配置为指向master，但是就不按parallel-syncs所配置的规则来了
 # 默认三分钟
-# sentinel failover-timeout <master-name> <milliseconds>
+# sentinel failover-timeout \<master-name> \<milliseconds>
 sentinel failover-timeout mymaster 180000
 # SCRIPTS EXECUTION
 #配置当某一事件发生时所需要执行的脚本，可以通过脚本来通知管理员，例如当系统运行不正常时发邮件通知
@@ -2142,19 +2143,19 @@ sentinel failover-timeout mymaster 180000
 法正常启动成功。
 #通知脚本
 # shell编程
-# sentinel notification-script <master-name> <script-path>
+# sentinel notification-script \<master-name> \<script-path>
 sentinel notification-script mymaster /var/redis/notify.sh
 # 客户端重新配置主节点参数脚本
 # 当一个master由于failover而发生改变时，这个脚本将会被调用，通知相关的客户端关于master地址已
 经发生改变的信息。
 # 以下参数将会在调用脚本时传给脚本:
-# <master-name> <role> <state> <from-ip> <from-port> <to-ip> <to-port>
-# 目前<state>总是“failover”,
-# <role>是“leader”或者“observer”中的一个。
+# \<master-name> \<role> \<state> \<from-ip> \<from-port> \<to-ip> \<to-port>
+# 目前\<state>总是“failover”,
+# \<role>是“leader”或者“observer”中的一个。
 # 参数 from-ip, from-port, to-ip, to-port是用来和旧的master和新的master(即旧的slave)通
 信的
 # 这个脚本应该是通用的，能被多次调用，不是针对性的。
-# sentinel client-reconfig-script <master-name> <script-path>
+# sentinel client-reconfig-script \<master-name> \<script-path>
 sentinel client-reconfig-script mymaster /var/redis/reconfig.sh # 一般都是由运维来配
 置！
 
@@ -2538,7 +2539,7 @@ redis-benchmark -n 10000  -q
 6	-d	以字节的形式指定 SET/GET 值的数据大小	2
 7	-k	1=keep alive 0=reconnect	1
 8	-r	SET/GET/INCR 使用随机 key, SADD 使用随机值	
-9	-P	通过管道传输 <numreq> 请求	1
+9	-P	通过管道传输 \<numreq> 请求	1
 10	-q	强制退出 redis。仅显示 query/sec 值	
 11	--csv	以 CSV 格式输出	
 12	-l	生成循环，永久执行测试	
@@ -2693,8 +2694,8 @@ public class RedisListJava {
         jedis.lpush("site-list", "Google");
         jedis.lpush("site-list", "Taobao");
         // 获取存储的数据并输出
-        List<String> list = jedis.lrange("site-list", 0 ,2);
-        for(int i=0; i<list.size(); i++) {
+        List\<String> list = jedis.lrange("site-list", 0 ,2);
+        for(int i=0; i\<list.size(); i++) {
             System.out.println("列表项为: "+list.get(i));
         }
     }
@@ -2714,8 +2715,8 @@ public class RedisKeyJava {
         Jedis jedis = new Jedis("localhost");
         System.out.println("连接成功");
     // 获取数据并输出
-    Set<String> keys = jedis.keys("*"); 
-    Iterator<String> it=keys.iterator() ;   
+    Set\<String> keys = jedis.keys("*"); 
+    Iterator\<String> it=keys.iterator() ;   
     while(it.hasNext()){   
         String key = it.next();   
         System.out.println(key);   
@@ -2765,12 +2766,12 @@ lettuce : 采用netty，实例可以再多个线程中进行共享，不存在�
 @Bean
 @ConditionalOnMissingBean(name = "redisTemplate") // 我们可以自己定义一个
 redisTemplate来替换这个默认的！
-public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory
+public RedisTemplate\<Object, Object> redisTemplate(RedisConnectionFactory
 redisConnectionFactory)
 throws UnknownHostException {
 // 默认的 RedisTemplate 没有过多的设置，redis 对象都是需要序列化！
-// 两个泛型都是 Object, Object 的类型，我们后使用需要强制转换 <String, Object>
-RedisTemplate<Object, Object> template = new RedisTemplate<>();
+// 两个泛型都是 Object, Object 的类型，我们后使用需要强制转换 \<String, Object>
+RedisTemplate\<Object, Object> template = new RedisTemplate\<>();
 template.setConnectionFactory(redisConnectionFactory);
 return template;
 }
@@ -2789,10 +2790,10 @@ return template;
 ```java
 1、导入依赖
 <!-- 操作redis -->
-<dependency>
-<groupId>org.springframework.boot</groupId>
-<artifactId>spring-boot-starter-data-redis</artifactId>
-</dependency>
+\<dependency>
+\<groupId>org.springframework.boot\</groupId>
+\<artifactId>spring-boot-starter-data-redis\</artifactId>
+\</dependency>
 2、配置连接
 # 配置redis
 spring.redis.host=127.0.0.1

@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: 博客模板
+date: 2022-06-06
 category:
   - 博客模板
 tag:
@@ -80,6 +81,6 @@ npm install hexo-renderer-kramed --save
 npm install --save hexo-filter-flowchart #流程图
 npm install --save hexo-filter-mermaid-diagrams
 
-<!显示-- more -->之后的内容自动隐藏，之前作为摘要放入description中，最好为文章总结
+\<!显示-- more -->之后的内容自动隐藏，之前作为摘要放入description中，最好为文章总结
 
 -[ ] 勾选框初始化

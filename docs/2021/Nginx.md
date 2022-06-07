@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: Nginx
+date: 2022-06-06
 category:
   - Nginx
 tag:

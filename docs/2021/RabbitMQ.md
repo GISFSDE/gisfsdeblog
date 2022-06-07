@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: RabbitMQ
+date: 2022-06-06
 category:
   - RabbitMQ
 tag:
@@ -197,7 +198,7 @@ erlang-18.3-1.el7.centos.x86_64.rpm  rabbitmq-server-3.6.5-1.noarch.rpm  socat-1
 rabbitmq-plugins enable rabbitmq_management
 # 修改默认配置信息
 vim /usr/lib/rabbitmq/lib/rabbitmq_server-3.6.5/ebin/rabbit.app 
-# 比如修改密码、配置等等，例如：loopback_users 中的 <<"guest">>,只保留guest
+# 比如修改密码、配置等等，例如：loopback_users 中的 \<\<"guest">>,只保留guest
 http://ip:15672 访问
 ```
 
@@ -349,7 +350,7 @@ public class Producer_HelloWord {
         Channel channel = connection.createChannel();
         //5. 创建队列Queue
         /*
-        queueDeclare(String queue, boolean durable, boolean exclusive, boolean autoDelete, Map<String, Object> arguments)
+        queueDeclare(String queue, boolean durable, boolean exclusive, boolean autoDelete, Map\<String, Object> arguments)
         参数：
             1. queue：队列名称
             2. durable:是否持久化，当mq重启之后，还在
@@ -416,7 +417,7 @@ public class Consumer_HelloWorld {
         Channel channel = connection.createChannel();
         //5. 创建队列Queue
         /*
-        queueDeclare(String queue, boolean durable, boolean exclusive, boolean autoDelete, Map<String, Object> arguments)
+        queueDeclare(String queue, boolean durable, boolean exclusive, boolean autoDelete, Map\<String, Object> arguments)
         参数：
             1. queue：队列名称
             2. durable:是否持久化，当mq重启之后，还在
@@ -558,7 +559,7 @@ public class Producer {
          */
         channel.queueDeclare(QUEUE_NAME, true, false, false, null);
 
-        for (int i = 1; i <= 30; i++) {
+        for (int i = 1; i \<= 30; i++) {
             // 发送信息
             String message = "你好；小兔子！work模式--" + i;
             /**
@@ -888,7 +889,7 @@ ack指acknowledge，确认。表示**消费端收到消息后的确认方式**
 1. 确保ack机制为手动确认。
 2. listener-container配置属性 perfetch = 1,表示消费端每次从mq拉去一条消息来消费，直到手动确认消费完毕后，才会继续拉去下一条消息。
  
-    <rabbit:listener-container connection-factory="connectionFactory" acknowledge="manual" prefetch="1" >
+    \<rabbit:listener-container connection-factory="connectionFactory" acknowledge="manual" prefetch="1" >
 ```
 
 <img src="http://rcy276gfy.hd-bkt.clouddn.com/image-20210414191501891.png" alt="image-20210414191501891" style="zoom: 50%;" />
@@ -1185,7 +1186,7 @@ Starting node rabbit2@super ...
 Cluster status of node rabbit1@super ...
 [{nodes,[{disc,[rabbit1@super,rabbit2@super]}]},
  {running_nodes,[rabbit2@super,rabbit1@super]},
- {cluster_name,<<"rabbit1@super">>},
+ {cluster_name,\<\<"rabbit1@super">>},
  {partitions,[]},
  {alarms,[{rabbit2@super,[]},{rabbit1@super,[]}]}]
 ```

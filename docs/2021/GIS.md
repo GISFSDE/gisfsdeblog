@@ -2,21 +2,22 @@
 index: 2
 icon: markdown
 title: GIS
+date: 2022-06-06
 category:
   - GIS
 tag:
   - GIS
 ---
 
+
+关于GIS
+
+<!-- more -->
 # MAPBOX
 
 ## cgcs2000 Mapbox VUE使用
 
 安装：npm i @cgcs2000/mapbox-gl
-
-
-
-
 
 ## MAPBOX源码编译、切片流程
 
@@ -26,7 +27,7 @@ tag:
 
 > Ubuntu环境准备===》其他格式数据===》shp数据===》Windows导入postgresql数据库===》通过ogr2ogr转换为geojson===》通过tippecanoe切片（参数自控）==》~~数据打包（传输更快）~~windows共享文件夹===》准备mapbox2000 js css文件====》mapbox前端代码导入数据并显示====》准备图标数据===》filter分类图标显示=====》分层数据显示====》细节优化（颜色，光，字体大小，图片大小）====》加入点击显示位置====》其他点击功能====》wfts底图切换==》控件加载===》wfs，wms数据加载（不同数据源）==》其他模型加入
 
-<!-- more -->
+
 
 ### 详细步骤
 
@@ -290,7 +291,7 @@ Postgresql,VMware,Ubuntu镜像（官方指定），Navicat（方便查看数据�
     ​      var feature = features[0];
     ​      var popup = new mapboxgl.Popup({ offset: [0, -15] })
     ​        .setLngLat(feature.geometry.coordinates)
-    ​        .setHTML('<h3>' + feature.properties.shortname + '</h3><p>' + feature.properties.name + '</p>')
+    ​        .setHTML('\<h3>' + feature.properties.shortname + '\</h3>\<p>' + feature.properties.name + '\</p>')
     ​        .addTo(map);
     ​    });
     ```
@@ -350,7 +351,7 @@ GitHub Mapbox源码地址：https://github.com/mapbox/mapbox-gl-js
 
 3. debug/index.html中代码最上方增加token
 
-   <script>
+   \<script>
    mapboxgl.accessToken='pk.eyJ1IjoibGltbiIsImEiOiJja2t1bG1na2IxZGU0MnZvNmlzY3FhZXM4In0.oQx4VguycOR4TK80Pyusmw';
    var map = window.map = new mapboxgl.Map({
 
@@ -1038,14 +1039,14 @@ module.exports = {
 ### 创建地图组件 src\view\earth.vue
 
 ```html
-<template>
-  <div class="container">
-    <div id="cesiumContainer"></div>
-    <div id="credit"></div>
-  </div>
-</template>
+\<template>
+  \<div class="container">
+    \<div id="cesiumContainer">\</div>
+    \<div id="credit">\</div>
+  \</div>
+\</template>
  
-<script>
+\<script>
 // 这里不能使用 import Cesium from 'cesium/Cesium' 导入模块，因为Cesium 1.63 版本以后使用的是ES6。应该使用一下方式
 // import { Viewer } from "cesium/Cesium";
 import * as Cesium from "cesium/Cesium"; //正确
@@ -1144,9 +1145,9 @@ export default {
     viewer.zoomTo(dataSourcePromise);
   },
 };
-</script>
+\</script>
  
-<style scoped>
+\<style scoped>
 .container {
   width: 100%;
   height: 100%;
@@ -1171,8 +1172,8 @@ export default {
 
 /* 注：全屏按钮不能通过display:none的方式来达到隐藏的目的，这是因为生成的按钮控件的行内样式设置了display属性，会覆盖引入的css属性
 
-<div class="cesium-viewer-fullscreenContainer" style="display: block;">...</div> */
-</style>
+\<div class="cesium-viewer-fullscreenContainer" style="display: block;">...\</div> */
+\</style>
 ```
 
 ### 添加路由  src\router\index.js
@@ -1512,18 +1513,18 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
 ### 3.3.1.1矢量电子地图
 
 ```html
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>添加电子地图</title>
+\<html>
+\<head>
+  \<meta charset="UTF-8">
+  \<title>添加电子地图\</title>
   <!--添加leaflet样式-->
-  <link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
   <!--添加leafletjs包-->
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js"></script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
   <!--添加坐标库-->
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js"></script>
-  <style>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
+  \<style>
     html {
       height: 100%
     }
@@ -1535,11 +1536,11 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     .map {
       height: 100%
     }
-  </style>
-</head>
-<body>
-  <div id="mapid" class="map"></div>
-  <script>
+  \</style>
+\</head>
+\<body>
+  \<div id="mapid" class="map">\</div>
+  \<script>
     var res = [
       0.00549933137239034, // Level 0
       0.00274966568619517, // Level 1
@@ -1573,9 +1574,9 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     });
     map.addLayer(basemap);
     map.setView([30.25168, 120.16179], 4); //设置比例尺和中心点级别             	
-  </script>
-</body>
-</html>
+  \</script>
+\</body>
+\</html>
 ```
 
    
@@ -1583,16 +1584,16 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
 ### 3.3.1.2影像电子地图
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>添加影像地图</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js"></script>
-  <style>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta charset="UTF-8">
+  \<title>添加影像地图\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
+  \<style>
     html {
       height: 100%
     }
@@ -1604,11 +1605,11 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     .map {
       height: 100%
     }
-  </style>
-</head>
-<body>
-  <div id="mapid" class="map"></div>
-  <script>
+  \</style>
+\</head>
+\<body>
+  \<div id="mapid" class="map">\</div>
+  \<script>
     var res = [
       0.00549933137239034, // Level 0
       0.00274966568619517, // Level 1
@@ -1642,9 +1643,9 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     });
     map.addLayer(basemap);
     map.setView([30, 120], 4); //设置比例尺和中心点级别
-  </script>
-</body>
-</html>
+  \</script>
+\</body>
+\</html>
 ```
 
 ### 3.3.1.3手动加载/移除地图
@@ -1656,18 +1657,18 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
 点击地图弹出信息，示例代码bindPopup
 
 ```html
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>添加电子地图</title>
+\<html>
+\<head>
+  \<meta charset="UTF-8">
+  \<title>添加电子地图\</title>
   <!--添加leaflet样式-->
-  <link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
   <!--添加leafletjs包-->
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js"></script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
   <!--添加坐标库-->
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js"></script>
-  <style>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
+  \<style>
     html {
       height: 100%
     }
@@ -1679,11 +1680,11 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     .map {
       height: 100%
     }
-  </style>
-</head>
-<body>
-  <div id="mapid" class="map"></div>
-  <script>
+  \</style>
+\</head>
+\<body>
+  \<div id="mapid" class="map">\</div>
+  \<script>
     var res = [
       0.00549933137239034, // Level 0
       0.00274966568619517, // Level 1
@@ -1717,10 +1718,10 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     });
     map.addLayer(basemap);
     map.setView([30.25168, 120.16179], 4); //设置比例尺和中心点级别					
-    L.marker([30.25168, 120.16179]).addTo(map).bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
-  </script>
-</body>
-</html>
+    L.marker([30.25168, 120.16179]).addTo(map).bindPopup("\<b>Hello world!\</b>\<br />I am a popup.").openPopup();
+  \</script>
+\</body>
+\</html>
 ```
 
  
@@ -1730,17 +1731,17 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
 加载WMS地图服务，支持filter筛选
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>调用WMS</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet.wms.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js"></script>
-  <style>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta charset="UTF-8">
+  \<title>调用WMS\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet.wms.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
+  \<style>
     html {
       height: 100%
     }
@@ -1752,11 +1753,11 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     .map {
       height: 100%
     }
-  </style>
-</head>
-<body>
-  <div id="mapid" class="map"></div>
-  <script>
+  \</style>
+\</head>
+\<body>
+  \<div id="mapid" class="map">\</div>
+  \<script>
     var res = [
       0.00549933137239034, // Level 0
       0.00274966568619517, // Level 1
@@ -1803,26 +1804,26 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     map.on('click', function (e) {
       alert("You clicked the map at " + e.latlng);
     });              	
-  </script>
-</body>
-</html>
+  \</script>
+\</body>
+\</html>
 ```
 
 #### 3.3.2.3矢量图层（wfs）
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8" />
-  <title>加载WFS电子地图</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-  <style>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta charset="UTF-8" />
+  \<title>加载WFS电子地图\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<style>
     html {
       height: 100%;
     }
@@ -1834,11 +1835,11 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     .map {
       height: 100%;
     }
-  </style>
-</head>
-<body>
-  <div id="mapid" class="map"></div>
-  <script>
+  \</style>
+\</head>
+\<body>
+  \<div id="mapid" class="map">\</div>
+  \<script>
     var res = [
       0.00549933137239034, // Level 0
       0.00274966568619517, // Level 1
@@ -1894,9 +1895,9 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
         }).addTo(map);
       },
     });
-  </script>
-</body>
-</html>
+  \</script>
+\</body>
+\</html>
 ```
 
  
@@ -1908,18 +1909,18 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
 ### 3.3.3.1点查询 
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8" />
-  <title>点查询</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-  <style>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta charset="UTF-8" />
+  \<title>点查询\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<style>
     html {
       height: 100%;
     }
@@ -1931,11 +1932,11 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     .map {
       height: 100%;
     }
-  </style>
-</head>
-<body>
-  <div id="mapid" class="map"></div>
-  <script>
+  \</style>
+\</head>
+\<body>
+  \<div id="mapid" class="map">\</div>
+  \<script>
     var res = [
       0.00549933137239034, // Level 0
       0.00274966568619517, // Level 1
@@ -2005,9 +2006,9 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
         }).addTo(map);
       },
     });
-  </script>
-</body>
-</html>
+  \</script>
+\</body>
+\</html>
 ```
 
  
@@ -2015,20 +2016,20 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
 ### 3.3.3.2面查询
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8" />
-  <title>面查询</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
-  <link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-draw/leaflet.draw.css" />
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-draw/leaflet.draw.js"></script>
-  <style>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta charset="UTF-8" />
+  \<title>面查询\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-draw/leaflet.draw.css" />
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-draw/leaflet.draw.js">\</script>
+  \<style>
     html {
       height: 100%;
     }
@@ -2040,11 +2041,11 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     .map {
       height: 100%;
     }
-  </style>
-</head>
-<body>
-  <div id="mapid" class="map"></div>
-  <script>
+  \</style>
+\</head>
+\<body>
+  \<div id="mapid" class="map">\</div>
+  \<script>
     var res = [
       0.00549933137239034, // Level 0
       0.00274966568619517, // Level 1
@@ -2146,9 +2147,9 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
         }).addTo(map);
       },
     });
-  </script>
-</body>
-</html>
+  \</script>
+\</body>
+\</html>
 ```
 
  
@@ -2158,18 +2159,18 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
 ### 3.3.3.3属性查询
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8" />
-  <title>点查询</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-  <style>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta charset="UTF-8" />
+  \<title>点查询\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<style>
     html {
       height: 100%;
     }
@@ -2186,13 +2187,13 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
       position: absolute;
       left: 100px;
     }
-  </style>
-</head>
-<body>
-  <div id="mapid" class="map">
-    <h1>点击地图根据属性查询</h1>
-  </div>
-  <script>
+  \</style>
+\</head>
+\<body>
+  \<div id="mapid" class="map">
+    \<h1>点击地图根据属性查询\</h1>
+  \</div>
+  \<script>
     var res = [
       0.00549933137239034, // Level 0
       0.00274966568619517, // Level 1
@@ -2269,9 +2270,9 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
         }).addTo(map);
       },
     });
-  </script>
-</body>
-</html>
+  \</script>
+\</body>
+\</html>
 ```
 
  
@@ -2281,20 +2282,20 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
 ### 3.3.3.4组合查询
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8" />
-  <title>面查询</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
-  <link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-draw/leaflet.draw.css" />
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-  <script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-draw/leaflet.draw.js"></script>
-  <style>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta charset="UTF-8" />
+  \<title>面查询\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-draw/leaflet.draw.css" />
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-draw/leaflet.draw.js">\</script>
+  \<style>
     html {
       height: 100%;
     }
@@ -2306,11 +2307,11 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     .map {
       height: 100%;
     }
-  </style>
-</head>
-<body>
-  <div id="mapid" class="map"></div>
-  <script>
+  \</style>
+\</head>
+\<body>
+  \<div id="mapid" class="map">\</div>
+  \<script>
     var res = [
       0.00549933137239034, // Level 0
       0.00274966568619517, // Level 1
@@ -2415,9 +2416,9 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
         }).addTo(map);
       },
     });
-  </script>
-</body>
-</html>
+  \</script>
+\</body>
+\</html>
 ```
 
  
@@ -2437,15 +2438,15 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
 ### 3.1.1.1矢量电子地图
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
-  <title>Map with Vertor</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
-  <style>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+  \<title>Map with Vertor\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<style>
     html,
     body,
     \#map {
@@ -2457,10 +2458,10 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
     .esriControlsBR .logo-med {
       ​ display: none;
     }
-  </style>
-  <script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-  <script>
+  \</style>
+  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script>
     var map;
     require([
       "esri/map",
@@ -2503,14 +2504,14 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       );
       map.addLayer(layer);
     });
-  </script>
-</head>
-<body class="claro">
-  <div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
-    style="overflow: hidden;" \></div>
-  </div>
-</body>
-</html>
+  \</script>
+\</head>
+\<body class="claro">
+  \<div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
+    style="overflow: hidden;" \>\</div>
+  \</div>
+\</body>
+\</html>
 ```
 
 
@@ -2522,15 +2523,15 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
 #### 3.1.1.2影像电子地图
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
-  <title>Map with Raster</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
-  <style>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+  \<title>Map with Raster\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<style>
     html,
     body,
     \#map {
@@ -2542,10 +2543,10 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
     .esriControlsBR .logo-med {
       ​ display: none;
     }
-  </style>
-  <script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-  <script>
+  \</style>
+  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script>
     var map;
     require([
       "esri/map",
@@ -2588,14 +2589,14 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       );
       map.addLayer(layer);
     });
-  </script>
-</head>
-<body class="claro">
-  <div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
-    style="overflow: hidden;" \></div>
-  </div>
-</body>
-</html>
+  \</script>
+\</head>
+\<body class="claro">
+  \<div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
+    style="overflow: hidden;" \>\</div>
+  \</div>
+\</body>
+\</html>
 ```
 
 
@@ -2607,15 +2608,15 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
 #### 3.1.1.3手动加载/移除地图
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
-  <title>Map with Control</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
-  <style>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+  \<title>Map with Control\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<style>
     html,
     body,
     \#map {
@@ -2630,10 +2631,10 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
     .details span {
       ​ cursor: pointer;
     }
-  </style>
-  <script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-  <script>
+  \</style>
+  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script>
     var map;
     require([
       "esri/map",
@@ -2700,23 +2701,23 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
         }
       });
     });
-  </script>
-</head>
-<body class="claro">
-  <div id="content" data-dojo-type="dijit.layout.BorderContainer" data-dojo-props="design:'headline', gutters:true"
+  \</script>
+\</head>
+\<body class="claro">
+  \<div id="content" data-dojo-type="dijit.layout.BorderContainer" data-dojo-props="design:'headline', gutters:true"
     style="width: 100%; height: 100%; margin: 0;" \>
-    <div ​ id="details" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'left', splitter:true" ​
+    \<div ​ id="details" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'left', splitter:true" ​
       style="overflow: auto; width: 200px;" \>
-      ​ <span name="vector">添加矢量图层</span>
-      ​ <span name="raster">添加影像图层</span>
-      ​ <span name="rvector">移除矢量图层</span>
-      ​ <span name="rraster">移除影像图层</span>
-    </div>
-    <div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
-      style="overflow: hidden;" \></div>
-  </div>
-</body>
-</html>
+      ​ \<span name="vector">添加矢量图层\</span>
+      ​ \<span name="raster">添加影像图层\</span>
+      ​ \<span name="rvector">移除矢量图层\</span>
+      ​ \<span name="rraster">移除影像图层\</span>
+    \</div>
+    \<div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
+      style="overflow: hidden;" \>\</div>
+  \</div>
+\</body>
+\</html>
 ```
 
 
@@ -2730,15 +2731,15 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
 ### 3.1.2.1弹出信息框
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
-  <title>Map with infoWindow</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
-  <style>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+  \<title>Map with infoWindow\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<style>
     html,
     body,
     \#map {
@@ -2750,10 +2751,10 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
     .esriControlsBR .logo-med {
       ​ display: none;
     }
-  </style>
-  <script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-  <script>
+  \</style>
+  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script>
     var map;
     require([
       "esri/map",
@@ -2801,14 +2802,14 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
         map.infoWindow.show(e.mapPoint);
       })
     });
-  </script>
-</head>
-<body class="claro">
-  <div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
-    style="overflow: hidden;" \></div>
-  </div>
-</body>
-</html>
+  \</script>
+\</head>
+\<body class="claro">
+  \<div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
+    style="overflow: hidden;" \>\</div>
+  \</div>
+\</body>
+\</html>
 ```
 
 
@@ -2820,15 +2821,15 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
 ### 3.1.2.2矢量图层（wms）
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
-  <title>Map with wmslayer</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
-  <style>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+  \<title>Map with wmslayer\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<style>
     html,
     body,
     \#map {
@@ -2840,10 +2841,10 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
     .esriControlsBR .logo-med {
       ​ display: none;
     }
-  </style>
-  <script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-  <script>
+  \</style>
+  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script>
     var map;
     require([
       "esri/map",
@@ -2903,14 +2904,14 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
         map.addLayer(wmslayer);
       });
     });
-  </script>
-</head>
-<body class="claro">
-  <div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
-    style="overflow: hidden;" \></div>
-  </div>
-</body>
-</html>
+  \</script>
+\</head>
+\<body class="claro">
+  \<div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
+    style="overflow: hidden;" \>\</div>
+  \</div>
+\</body>
+\</html>
 ```
 
 
@@ -2922,15 +2923,15 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
 ### 3.1.2.3矢量图层（wfs）
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
-  <title>Map with wfslayer</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
-  <style>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+  \<title>Map with wfslayer\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<style>
     html,
     body,
     \#map {
@@ -2942,10 +2943,10 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
     .esriControlsBR .logo-med {
       ​ display: none;
     }
-  </style>
-  <script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-  <script>
+  \</style>
+  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script>
     var map, symbol;
     require([
       "esri/map",
@@ -3004,7 +3005,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
           success: function (data) {
             console.log(data);
             var text = JSON.parse(data);
-            for (var i = 0; i < text.features.length; i++) {
+            for (var i = 0; i \< text.features.length; i++) {
               symbol = new SimpleFillSymbol();
               if (text.features[i].geometry.type == "Polygon") {
                 var polygonjson = {
@@ -3017,7 +3018,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
                 map.graphics.add(graphic);
               } else if (text.features[i].geometry.type == "MultiPolygon") {
                 var len = text.features[i].geometry.coordinates.length;
-                for (var k = 0; k < len; k++) {
+                for (var k = 0; k \< len; k++) {
                   var polygonjson = {
                     "rings": text.features[i].geometry.coordinates[k],
                     "spatialReference": { "wkid": 4490 }
@@ -3034,14 +3035,14 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
         });
       });
     });
-  </script>
-</head>
-<body class="claro">
-  <div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
-    style="overflow: hidden;" \></div>
-  </div>
-</body>
-</html>
+  \</script>
+\</head>
+\<body class="claro">
+  \<div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
+    style="overflow: hidden;" \>\</div>
+  \</div>
+\</body>
+\</html>
 ```
 
 
@@ -3051,15 +3052,15 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
 ### 3.1.3.1点查询
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
-  <title>Query By Point</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
-  <style>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+  \<title>Query By Point\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<style>
     html,
     body,
     \#map {
@@ -3068,10 +3069,10 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       ​ margin: 0;
       ​ padding: 0;
     }
-  </style>
-  <script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-  <script>
+  \</style>
+  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script>
     var map;
     require([
       "esri/map",
@@ -3148,18 +3149,18 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
         });
       });
     });
-  </script>
-</head>
-<body class="claro">
-  <div id="content" data-dojo-type="dijit.layout.BorderContainer" data-dojo-props="design:'headline', gutters:true"
+  \</script>
+\</head>
+\<body class="claro">
+  \<div id="content" data-dojo-type="dijit.layout.BorderContainer" data-dojo-props="design:'headline', gutters:true"
     style="width: 100%; height: 100%; margin: 0;" \>
-    <div ​ id="details" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'left', splitter:true" ​
-      style="overflow: auto; width: 200px;" \></div>
-    <div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
-      style="overflow: hidden;" \></div>
-  </div>
-</body>
-</html>
+    \<div ​ id="details" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'left', splitter:true" ​
+      style="overflow: auto; width: 200px;" \>\</div>
+    \<div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
+      style="overflow: hidden;" \>\</div>
+  \</div>
+\</body>
+\</html>
 ```
 
 
@@ -3167,15 +3168,15 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
 ### 3.1.3.2面查询
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
-  <title>Query By Rectangle</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
-  <style>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+  \<title>Query By Rectangle\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<style>
     html,
     body,
     \#map {
@@ -3184,10 +3185,10 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       ​ margin: 0;
       ​ padding: 0;
     }
-  </style>
-  <script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-  <script>
+  \</style>
+  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script>
     var map, toolbar;
     require([
       "esri/map",
@@ -3285,8 +3286,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
             console.log(data);
             var text = JSON.parse(data);
             var attr = "";
-            for (var i = 0; i < text.features.length; i++) {
-              attr += text.features[i].properties["quxian"] + "</br>";
+            for (var i = 0; i \< text.features.length; i++) {
+              attr += text.features[i].properties["quxian"] + "\</br>";
             }
             $("#details").html(attr);
             toolbar.activate(Draw["RECTANGLE"]);
@@ -3294,32 +3295,32 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
         });
       }
     });
-  </script>
-</head>
-<body class="claro">
-  <div id="content" data-dojo-type="dijit.layout.BorderContainer" data-dojo-props="design:'headline', gutters:true"
+  \</script>
+\</head>
+\<body class="claro">
+  \<div id="content" data-dojo-type="dijit.layout.BorderContainer" data-dojo-props="design:'headline', gutters:true"
     style="width: 100%; height: 100%; margin: 0;" \>
-    <div ​ id="details" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'left', splitter:true" ​
-      style="overflow: auto; width: 200px;" \></div>
-    <div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
-      style="overflow: hidden;" \></div>
-  </div>
-</body>
-</html>
+    \<div ​ id="details" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'left', splitter:true" ​
+      style="overflow: auto; width: 200px;" \>\</div>
+    \<div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
+      style="overflow: hidden;" \>\</div>
+  \</div>
+\</body>
+\</html>
 ```
 
 ### 3.1.3.3属性查询
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
-  <title>Query by Attr</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
-  <style>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+  \<title>Query by Attr\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<style>
     html,
     body,
     \#map {
@@ -3328,10 +3329,10 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       ​ margin: 0;
       ​ padding: 0;
     }
-  </style>
-  <script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-  <script>
+  \</style>
+  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script>
     var map;
     require([
       "esri/map",
@@ -3405,39 +3406,39 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
             console.log(data);
             var text = JSON.parse(data);
             var attr = "";
-            for (var i = 0; i < text.features.length; i++) {
-              attr += text.features[i].properties["quxian"] + "</br>";
+            for (var i = 0; i \< text.features.length; i++) {
+              attr += text.features[i].properties["quxian"] + "\</br>";
             }
             $("#details").html(attr);
           },
         });
       });
     });
-  </script>
-</head>
-<body class="claro">
-  <div id="content" data-dojo-type="dijit.layout.BorderContainer" data-dojo-props="design:'headline', gutters:true"
+  \</script>
+\</head>
+\<body class="claro">
+  \<div id="content" data-dojo-type="dijit.layout.BorderContainer" data-dojo-props="design:'headline', gutters:true"
     style="width: 100%; height: 100%; margin: 0;" \>
-    <div ​ id="details" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'left', splitter:true" ​
-      style="overflow: auto; width: 200px;" \>点击地图实现按属性查询（区县=上城区）</div>
-    <div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
-      style="overflow: hidden;" \></div>
-  </div>
-</body>
-</html>
+    \<div ​ id="details" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'left', splitter:true" ​
+      style="overflow: auto; width: 200px;" \>点击地图实现按属性查询（区县=上城区）\</div>
+    \<div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
+      style="overflow: hidden;" \>\</div>
+  \</div>
+\</body>
+\</html>
 ```
 
 ### 3.1.3.4组合查询
 
 ```html
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
-  <title>Query</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  <link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
-  <style>
+\<html>
+\<head>
+  \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
+  \<title>Query\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<style>
     html,
     body,
     \#map {
@@ -3446,10 +3447,10 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       ​ margin: 0;
       ​ padding: 0;
     }
-  </style>
-  <script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-  <script>
+  \</style>
+  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script>
     var map, toolbar;
     require([
       "esri/map",
@@ -3548,8 +3549,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
             console.log(data);
             var text = JSON.parse(data);
             var attr = "";
-            for (var i = 0; i < text.features.length; i++) {
-              attr += text.features[i].properties["quxian"] + "</br>";
+            for (var i = 0; i \< text.features.length; i++) {
+              attr += text.features[i].properties["quxian"] + "\</br>";
             }
             $("#details").html(attr);
             toolbar.activate(Draw["RECTANGLE"]);
@@ -3557,21 +3558,21 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
         });
       }
     });
-  </script>
-</head>
-<body class="claro">
-  <div id="content" data-dojo-type="dijit.layout.BorderContainer" data-dojo-props="design:'headline', gutters:true"
+  \</script>
+\</head>
+\<body class="claro">
+  \<div id="content" data-dojo-type="dijit.layout.BorderContainer" data-dojo-props="design:'headline', gutters:true"
     style="width: 100%; height: 100%; margin: 0;" \>
-    <div ​ id="details" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'left', splitter:true" ​
-      style="overflow: auto; width: 200px;" \>在框选范围内查询属性（区县=上城区）的数据</div>
-    <div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
-      style="overflow: hidden;" \></div>
-  </div>
-</body>
-</html>
+    \<div ​ id="details" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'left', splitter:true" ​
+      style="overflow: auto; width: 200px;" \>在框选范围内查询属性（区县=上城区）的数据\</div>
+    \<div ​ id="map" ​ data-dojo-type="dijit.layout.ContentPane" ​ data-dojo-props="region:'center'" ​
+      style="overflow: hidden;" \>\</div>
+  \</div>
+\</body>
+\</html>
 ```
 
-<!DOCTYPE html>
+\<!DOCTYPE html>
 
 # Openlayers
 
@@ -3582,17 +3583,17 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
 ####  矢量电子地图
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>添加电子地图</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css">
-  <script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js"></script>
-</head>
-<body>
-  <div id="map" class="map"></div>
-  <script>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta charset="UTF-8">
+  \<title>添加电子地图\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css">
+  \<script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js">\</script>
+\</head>
+\<body>
+  \<div id="map" class="map">\</div>
+  \<script>
     var format = 'image/png';
     var bounds = [119.347618103027, 29.7052669525146,
       120.698570251465, 30.5366992950439
@@ -3651,26 +3652,26 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
       })
     });
     map.getView().fit(bounds, map.getSize()); //非常重要
-  </script>
-</body>
-</html>
+  \</script>
+\</body>
+\</html>
 ```
 
 
 
 ####  影像电子地图  
 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>添加电子地图</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css">
-  <script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js"></script>
-</head>
-<body>
-  <div id="map" class="map"></div>
-  <script>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta charset="UTF-8">
+  \<title>添加电子地图\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css">
+  \<script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js">\</script>
+\</head>
+\<body>
+  \<div id="map" class="map">\</div>
+  \<script>
     var format = 'image/png';
     var bounds = [119.347618103027, 29.7052669525146,
       120.698570251465, 30.5366992950439
@@ -3729,25 +3730,25 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
       })
     });
     map.getView().fit(bounds, map.getSize()); //非常重要
-  </script>
-</body>
-</html>
+  \</script>
+\</body>
+\</html>
 
 ### 图层
 
 ####  弹出框信息框
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8" />
-  <title>弹出信息框</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
-  <script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-</head>
-<style>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta charset="UTF-8" />
+  \<title>弹出信息框\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
+  \<script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+\</head>
+\<style>
   #map {
     height: 100%;
     width: 100%;
@@ -3755,14 +3756,14 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
   #mypopup {
     background: #fff;
   }
-</style>
-<body>
-  <div id="map" class="map"></div>
-  <div id="mypopup">
-    <div id="mypopup-content">内容自定义</div>
-    <button id="closeOverlay">关闭</button>
-  </div>
-  <script>
+\</style>
+\<body>
+  \<div id="map" class="map">\</div>
+  \<div id="mypopup">
+    \<div id="mypopup-content">内容自定义\</div>
+    \<button id="closeOverlay">关闭\</button>
+  \</div>
+  \<script>
     var format = "image/png";
     var bounds = [
       119.347618103027,
@@ -3852,9 +3853,9 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
       info.show();
       overlay.setPosition(location);
     });
-  </script>
-</body>
-</html>
+  \</script>
+\</body>
+\</html>
 ```
 
 
@@ -3864,17 +3865,17 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
 ####  矢量图层（wms）
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>添加电子地图</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css">
-  <script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js"></script>
-</head>
-<body>
-  <div id="map" class="map"></div>
-  <script>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta charset="UTF-8">
+  \<title>添加电子地图\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css">
+  \<script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js">\</script>
+\</head>
+\<body>
+  \<div id="map" class="map">\</div>
+  \<script>
     var format = 'image/png';
     var bounds = [119.347618103027, 29.7052669525146,
       120.698570251465, 30.5366992950439
@@ -3947,9 +3948,9 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
       })
     });
     map.getView().fit(bounds, map.getSize()); //非常重要
-  </script>
-</body>
-</html>
+  \</script>
+\</body>
+\</html>
 ```
 
 
@@ -3957,17 +3958,17 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
 ####  矢量图层（wfs）
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8" />
-  <title>添加WFS电子地图</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
-  <script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js"></script>
-</head>
-<body>
-  <div id="map" class="map"></div>
-  <script>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta charset="UTF-8" />
+  \<title>添加WFS电子地图\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
+  \<script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js">\</script>
+\</head>
+\<body>
+  \<div id="map" class="map">\</div>
+  \<script>
     var format = "image/png";
     var bounds = [
       119.347618103027,
@@ -4053,9 +4054,9 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
       }),
     });
     map.getView().fit(bounds, map.getSize()); //非常重要
-  </script>
-</body>
-</html>
+  \</script>
+\</body>
+\</html>
 ```
 
 
@@ -4065,18 +4066,18 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
 ####  点查询 
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8" />
-  <title>点查询</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
-  <script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-</head>
-<body>
-  <div id="map" class="map"></div>
-  <script>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta charset="UTF-8" />
+  \<title>点查询\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
+  \<script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+\</head>
+\<body>
+  \<div id="map" class="map">\</div>
+  \<script>
     var format = "image/png";
     var bounds = [
       119.347618103027,
@@ -4176,26 +4177,26 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
         }
       });
     });
-  </script>
-</body>
-</html>
+  \</script>
+\</body>
+\</html>
 ```
 
 ####  面查询
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8" />
-  <title>框选查询</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
-  <script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-</head>
-<body>
-  <div id="map" class="map"></div>
-  <script>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta charset="UTF-8" />
+  \<title>框选查询\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
+  \<script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+\</head>
+\<body>
+  \<div id="map" class="map">\</div>
+  \<script>
     var format = "image/png";
     var bounds = [
       119.347618103027,
@@ -4297,9 +4298,9 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
         }
       });
     })
-  </script>
-</body>
-</html>
+  \</script>
+\</body>
+\</html>
 ```
 
  
@@ -4309,18 +4310,18 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
 ####  属性查询
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8" />
-  <title>属性查询</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
-  <script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-</head>
-<body>
-  <div id="map" class="map"></div>
-  <script>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta charset="UTF-8" />
+  \<title>属性查询\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
+  \<script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+\</head>
+\<body>
+  \<div id="map" class="map">\</div>
+  \<script>
     var format = "image/png";
     var bounds = [
       119.347618103027,
@@ -4421,26 +4422,26 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
         }
       });
     });
-  </script>
-</body>
-</html>
+  \</script>
+\</body>
+\</html>
 ```
 
 ####  组合查询
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8" />
-  <title>组合查询</title>
-  <link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
-  <script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js"></script>
-  <script src="http://172.18.109.232:8082/jquery/jquery.js"></script>
-</head>
-<body>
-  <div id="map" class="map"></div>
-  <script>
+\<!DOCTYPE html>
+\<html>
+\<head>
+  \<meta charset="UTF-8" />
+  \<title>组合查询\</title>
+  \<link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
+  \<script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js">\</script>
+  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+\</head>
+\<body>
+  \<div id="map" class="map">\</div>
+  \<script>
     var format = "image/png";
     var bounds = [
       119.347618103027,
@@ -4545,9 +4546,9 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
         }
       });
     });
-  </script>
-</body>
-</html>
+  \</script>
+\</body>
+\</html>
 ```
 
  

@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: SpringCloud
+date: 2022-06-06
 category:
   - SpringCloud
 tag:
@@ -379,10 +380,10 @@ Hystrix解决雪崩效应：
 - 添加依赖
 
 ```xml
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-        </dependency>
+        \<dependency>
+            \<groupId>org.springframework.cloud\</groupId>
+            \<artifactId>spring-cloud-starter-netflix-hystrix\</artifactId>
+        \</dependency>
 ```
 
 - 开启熔断 
@@ -409,7 +410,7 @@ public class ConsumerController {
         /*String url = "http://localhost:9091/user/"+id;
         
         //获取eureka中注册的user-service的实例
-        List<ServiceInstance> serviceInstances = discoveryClient.getInstances("user-service");
+        List\<ServiceInstance> serviceInstances = discoveryClient.getInstances("user-service");
         ServiceInstance serviceInstance = serviceInstances.get(0);
 
         url = "http://" + serviceInstance.getHost() + ":" + serviceInstance.getPort() + "/user/" + id;*/

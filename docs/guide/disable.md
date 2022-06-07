@@ -2,6 +2,7 @@
 index: 3
 title: 组件禁用
 icon: config
+date: 2022-06-06
 category:
   - 使用指南
 tag:

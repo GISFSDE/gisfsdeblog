@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: CRUD
+date: 2022-06-06
 category:
   - CRUD
 tag:

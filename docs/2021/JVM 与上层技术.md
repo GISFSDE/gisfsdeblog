@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: JVM与上层技术
+date: 2022-06-06
 category:
   - JVM与上层技术
 tag:
@@ -372,11 +373,11 @@ ClassLoader只负责class文件的加载，至于它是否可以运行，则由E
 
 ### 初始化:
 
-·初始化阶段就是**执行类构造器方法<clinit> ()的过程**。
+·初始化阶段就是**执行类构造器方法\<clinit> ()的过程**。
 ·此方法不需定义，是javac编译器自动收集类中的所有类变量的赋值动作和静态代码块中的语句合并而来。
 ·构造器方法中指令按语句在源文件中出现的顺序执行。
-. <clinit> ()不同于类的构造器。(关联:构造器是虚拟机视角下的<init>( ))·若该类具有父类，JVM会保证子类的<clinit>()执行前，父类的<clinit> ()已经执行完毕。
-·虚拟机必须保证一个类的<clinit> ()方法在多线程下被同步加锁。
+. \<clinit> ()不同于类的构造器。(关联:构造器是虚拟机视角下的\<init>( ))·若该类具有父类，JVM会保证子类的\<clinit>()执行前，父类的\<clinit> ()已经执行完毕。
+·虚拟机必须保证一个类的\<clinit> ()方法在多线程下被同步加锁。
 
 ## 5.类加载器分类
 
@@ -548,7 +549,6 @@ Java程序对类的使用方式分为:主动使用和被动使用。·主动使�
 javap -v/verbose （class名） //反编译
 ```
 
-<img src="C:/Users/Administrator/Desktop/image-20211117141655513.png" alt="image-20211117141655513" style="zoom:67%;" />
 
 ### 3.两个问题
 
@@ -797,7 +797,7 @@ $\star$ 如果被调用的方法在**编译期无法被确定下来，只能够�
 **普通调用指令**
 
 1. invokestatic:调用**静态**方法，解析阶段确定唯一方法版本
-2. invokespecial:调用**<init>**方法、私有及父类方法，解析阶段确定唯一方法版本
+2. invokespecial:调用**\<init>**方法、私有及父类方法，解析阶段确定唯一方法版本
 3. involkevirtual:调用所有虚方法
 4. invokeinterface:调用接口方法
 
@@ -956,7 +956,7 @@ jvisualvm：查看内存情况，jvisualvm命令可直接打开
 ```java
 public class OOMInstance {
     public static void main(String[] args){
-    ArrayList<Picture1> list=new ArrayList<>();
+    ArrayList\<Picture1> list=new ArrayList\<>();
             while(true)
 
     {
@@ -994,7 +994,7 @@ class Picture1{
 
 
 Exception in thread "main" java.lang.**OutOfMemoryError**: Java heap space
-	at pers.lxl.mylearnproject.programbase.jvm.Picture1.<init>(OOMInstance.java:27)
+	at pers.lxl.mylearnproject.programbase.jvm.Picture1.\<init>(OOMInstance.java:27)
 	at pers.lxl.mylearnproject.programbase.jvm.OOMInstance.main(OOMInstance.java:19)
 
 ## 4.年轻代与老年代
@@ -1027,7 +1027,7 @@ Exception in thread "main" java.lang.**OutOfMemoryError**: Java heap space
 
 ### 		1.一般过程
 
-​		Eden 满触发 YGC/Minor GC 对 Eden与 From 区回收，还在用的对象放到 From 区，Age设为1，下次回收触发时复制 From 区转到 To 区（空的区），Age+1，Age 达到阈值（可通过设置  -XX: MaxTenuringThreshold=<N>）放入Old。
+​		Eden 满触发 YGC/Minor GC 对 Eden与 From 区回收，还在用的对象放到 From 区，Age设为1，下次回收触发时复制 From 区转到 To 区（空的区），Age+1，Age 达到阈值（可通过设置  -XX: MaxTenuringThreshold=\<N>）放入Old。
 
 ![第08章_新生代对象分配与回收过程](http://rcy276gfy.hd-bkt.clouddn.com/work/%E7%AC%AC08%E7%AB%A0_%E6%96%B0%E7%94%9F%E4%BB%A3%E5%AF%B9%E8%B1%A1%E5%88%86%E9%85%8D%E4%B8%8E%E5%9B%9E%E6%94%B6%E8%BF%87%E7%A8%8B.jpg)
 
@@ -1037,7 +1037,7 @@ Exception in thread "main" java.lang.**OutOfMemoryError**: Java heap space
 3.然后将伊甸园中的剩余对象移动到幸存者0区
 4.如果再次触发垃圾回收，此时上次幸存下来的放到幸存者0区的，如果没有回收，就会放到幸存者1区。
 5.如果再次经历垃圾回收，此时会重新放回幸存者0区，接着再去幸存者1区
-6.啥时候能去养老区呢？可以设置次数。默认是15次。可以设置参数：-XX: MaxTenuringThreshold=<N>进行设置。
+6.啥时候能去养老区呢？可以设置次数。默认是15次。可以设置参数：-XX: MaxTenuringThreshold=\<N>进行设置。
 
 **总结**
 针对幸存者s0,s1区的总结：复制之后有交换，谁空谁是To
@@ -1222,7 +1222,7 @@ public class StackAllocation {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 
-        for (int i = 0; i < 10000000; i++) {
+        for (int i = 0; i \< 10000000; i++) {
             alloc();
         }
         // 查看执行时间
@@ -1349,7 +1349,7 @@ public class OOMTest extends ClassLoader {
         int j = 0;
         try {
             OOMTest test = new OOMTest();
-            for (int i = 0; i < 10000; i++) {
+            for (int i = 0; i \< 10000; i++) {
                 //创建ClassWriter对象，用于生成类的二进制字节码
                 ClassWriter classWriter = new ClassWriter(0);
                 //指明版本号，修饰符，类名，包名，父类，接口
@@ -1418,7 +1418,7 @@ import java.io.Serializable;
  * @author shkstart  shkstart@126.com
  * @create 2020  23:39
  */
-public class MethodInnerStrucTest extends Object implements Comparable<String>,Serializable {
+public class MethodInnerStrucTest extends Object implements Comparable\<String>,Serializable {
     //属性
     public int num = 10;
     private static String str = "测试方法的内部结构";
@@ -1454,17 +1454,17 @@ Classfile /D:/workspace_idea5/JVMDemo/out/production/chapter09/com/atguigu/java/
   Compiled from "MethodInnerStrucTest.java"
   //类型信息
 public class com.atguigu.java.MethodInnerStrucTest extends java.lang.Object 
-implements java.lang.Comparable<java.lang.String>, java.io.Serializable
+implements java.lang.Comparable\<java.lang.String>, java.io.Serializable
 
   minor version: 0
   major version: 51
   flags: ACC_PUBLIC, ACC_SUPER
 Constant pool:
-   #1 = Methodref          #18.#52        // java/lang/Object."<init>":()V
+   #1 = Methodref          #18.#52        // java/lang/Object."\<init>":()V
    #2 = Fieldref           #17.#53        // com/atguigu/java/MethodInnerStrucTest.num:I
    #3 = Fieldref           #54.#55        // java/lang/System.out:Ljava/io/PrintStream;
    #4 = Class              #56            // java/lang/StringBuilder
-   #5 = Methodref          #4.#52         // java/lang/StringBuilder."<init>":()V
+   #5 = Methodref          #4.#52         // java/lang/StringBuilder."\<init>":()V
    #6 = String             #57            // count =
    #7 = Methodref          #4.#58         // java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
    #8 = Methodref          #4.#59         // java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
@@ -1484,7 +1484,7 @@ Constant pool:
   #22 = Utf8               I
   #23 = Utf8               str
   #24 = Utf8               Ljava/lang/String;
-  #25 = Utf8               <init>
+  #25 = Utf8               \<init>
   #26 = Utf8               ()V
   #27 = Utf8               Code
   #28 = Utf8               LineNumberTable
@@ -1506,12 +1506,12 @@ Constant pool:
   #44 = Utf8               (Ljava/lang/String;)I
   #45 = Utf8               o
   #46 = Utf8               (Ljava/lang/Object;)I
-  #47 = Utf8               <clinit>
+  #47 = Utf8               \<clinit>
   #48 = Utf8               Signature
-  #49 = Utf8               Ljava/lang/Object;Ljava/lang/Comparable<Ljava/lang/String;>;Ljava/io/Serializable;
+  #49 = Utf8               Ljava/lang/Object;Ljava/lang/Comparable\<Ljava/lang/String;>;Ljava/io/Serializable;
   #50 = Utf8               SourceFile
   #51 = Utf8               MethodInnerStrucTest.java
-  #52 = NameAndType        #25:#26        // "<init>":()V
+  #52 = NameAndType        #25:#26        // "\<init>":()V
   #53 = NameAndType        #21:#22        // num:I
   #54 = Class              #73            // java/lang/System
   #55 = NameAndType        #74:#75        // out:Ljava/io/PrintStream;
@@ -1561,7 +1561,7 @@ Constant pool:
     Code:
       stack=2, locals=1, args_size=1
          0: aload_0
-         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         1: invokespecial #1                  // Method java/lang/Object."\<init>":()V
          4: aload_0
          5: bipush        10
          7: putfield      #2                  // Field num:I
@@ -1583,7 +1583,7 @@ Constant pool:
          3: getstatic     #3                  // Field java/lang/System.out:Ljava/io/PrintStream;
          6: new           #4                  // class java/lang/StringBuilder
          9: dup
-        10: invokespecial #5                  // Method java/lang/StringBuilder."<init>":()V
+        10: invokespecial #5                  // Method java/lang/StringBuilder."\<init>":()V
         13: ldc           #6                  // String count =
         15: invokevirtual #7                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
         18: iload_1
@@ -1684,7 +1684,7 @@ Constant pool:
       LineNumberTable:
         line 13: 0
 }
-Signature: #49                          // Ljava/lang/Object;Ljava/lang/Comparable<Ljava/lang/String;>;Ljava/io/Serializable;
+Signature: #49                          // Ljava/lang/Object;Ljava/lang/Comparable\<Ljava/lang/String;>;Ljava/io/Serializable;
 SourceFile: "MethodInnerStrucTest.java"
 
 ```
@@ -2123,7 +2123,7 @@ public class StringIntern2 {
         Integer[] data = new Integer[]{1,2,3,4,5,6,7,8,9,10};
 
         long start = System.currentTimeMillis();
-        for (int i = 0; i < MAX_COUNT; i++) {
+        for (int i = 0; i \< MAX_COUNT; i++) {
 //            arr[i] = new String(String.valueOf(data[i % data.length]));
             arr[i] = new String(String.valueOf(data[i % data.length])).intern();
 
@@ -2153,7 +2153,7 @@ public class StringIntern2 {
  */
 public class StringGCTest {
     public static void main(String[] args) {
-        for (int j = 0; j < 100000; j++) {
+        for (int j = 0; j \< 100000; j++) {
             String.valueOf(j).intern();
         }
     }

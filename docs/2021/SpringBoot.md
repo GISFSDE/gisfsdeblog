@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: SpringBoot
+date: 2022-06-06
 category:
   - SpringBoot
 tag:
@@ -84,38 +85,38 @@ Spring Cloud focuses on providing good out of box experience for typical use cas
 
 ```xml
 <!-- Spring Boot 项目启动父依赖 -->
-<parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.1.3.RELEASE</version>
-</parent>
-    <properties>
-        <junit.version>8.0.13</junit.version>
-    </properties>
-        <!-- Junit 填写${}会默认父依赖的版本号，父依赖没有必须指定版本，可通过如上<propertites>修改默认版本-->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-           <version>${junit.version}</version>
-        </dependency>
+\<parent>
+    \<groupId>org.springframework.boot\</groupId>
+    \<artifactId>spring-boot-starter-parent\</artifactId>
+    \<version>2.1.3.RELEASE\</version>
+\</parent>
+    \<properties>
+        \<junit.version>8.0.13\</junit.version>
+    \</properties>
+        <!-- Junit 填写${}会默认父依赖的版本号，父依赖没有必须指定版本，可通过如上\<propertites>修改默认版本-->
+        \<dependency>
+            \<groupId>junit\</groupId>
+            \<artifactId>junit\</artifactId>
+           \<version>${junit.version}\</version>
+        \</dependency>
 
 <!-- 其父依赖的父依赖 -->
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-dependencies</artifactId>
-        <version>2.1.3.RELEASE</version>
-        <relativePath>../../spring-boot-dependencies</relativePath>
-    </parent>
+    \<parent>
+        \<groupId>org.springframework.boot\</groupId>
+        \<artifactId>spring-boot-dependencies\</artifactId>
+        \<version>2.1.3.RELEASE\</version>
+        \<relativePath>../../spring-boot-dependencies\</relativePath>
+    \</parent>
 <!--最高层依赖会定义所有当前版本会用到的依赖版本，自动版本仲裁机制-->
-<properties>
-        <activemq.version>5.15.8</activemq.version>
-        <antlr2.version>2.7.7</antlr2.version>
-        <appengine-sdk.version>1.9.71</appengine-sdk.version>
-        <artemis.version>2.6.4</artemis.version>
-        <aspectj.version>1.9.2</aspectj.version>
-        <assertj.version>3.11.1</assertj.version>
+\<properties>
+        \<activemq.version>5.15.8\</activemq.version>
+        \<antlr2.version>2.7.7\</antlr2.version>
+        \<appengine-sdk.version>1.9.71\</appengine-sdk.version>
+        \<artemis.version>2.6.4\</artemis.version>
+        \<aspectj.version>1.9.2\</aspectj.version>
+        \<assertj.version>3.11.1\</assertj.version>
     。。。。
-</properties>
+\</properties>
 ```
 
 ### SpringBoot会自动配置以下环境：
@@ -128,10 +129,10 @@ spring-boot-starter-tomcat //boot 项目集成 tomcat 内嵌服务器.
 spring-boot-starter-test //boot 项目集成测试模块.
 mybatis-spring-boot-starter //boot 项目集成 mybatis 框架.
 spring-boot-starter-jdbc //boot 项目底层集成 jdbc 实现数据库操作支持.-->
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-web</artifactId>
-</dependency>
+\<dependency>
+    \<groupId>org.springframework.boot\</groupId>
+    \<artifactId>spring-boot-starter-web\</artifactId>
+\</dependency>
 ```
 
 Tomcat、Spring、SpringMVC全套组件以及常用功能【字符编码、dispatcherServlet、viewResolver、MultiparResolver等】
@@ -357,7 +358,7 @@ public @interface AutoConfigurationPackage {}
             AutoConfigurationPackages.register(registry, (String[])(new AutoConfigurationPackages.PackageImports(metadata)).getPackageNames().toArray(new String[0]));//获取元注解的包名（com.xxx.xxx）封装到数组中
         }
 
-public Set<Object> determineImports(AnnotationMetadata metadata) {
+public Set\<Object> determineImports(AnnotationMetadata metadata) {
             return Collections.singleton(new AutoConfigurationPackages.PackageImports(metadata));
         }
     }
@@ -368,8 +369,8 @@ public Set<Object> determineImports(AnnotationMetadata metadata) {
 #### @Import({AutoConfigurationImportSelector.class})
 
 1、利用getAutoConfigurationEntry(annotationMetadata);给容器中批量导入一些组件
-2、调用List<-String> configurations = getCandidateConfigurations(annotationMetadata, attributes)获取到所有需要导入到容器中的配置类
-3、利用工厂加载 Map<String, List<-String>> loadSpringFactories(@Nullable ClassLoader classLoader)；得到所有的组件
+2、调用List\<-String> configurations = getCandidateConfigurations(annotationMetadata, attributes)获取到所有需要导入到容器中的配置类
+3、利用工厂加载 Map\<String, List\<-String>> loadSpringFactories(@Nullable ClassLoader classLoader)；得到所有的组件
 4、从META-INF/spring.factories位置来加载一个文件。
 	默认扫描我们当前系统里面所有META-INF/spring.factories位置的文件
     spring-boot-autoconfigure-2.3.4.RELEASE.jar包里面也有META-INF/spring.factories【springboot一启动原始加载的组件】
@@ -408,9 +409,9 @@ protected AutoConfigurationImportSelector.AutoConfigurationEntry getAutoConfigur
     } else {
         AnnotationAttributes attributes = this.getAttributes(annotationMetadata);
         //2.导入到容器中的所有默认候选组件
-        List<String> configurations = this.getCandidateConfigurations(annotationMetadata, attributes);
+        List\<String> configurations = this.getCandidateConfigurations(annotationMetadata, attributes);
         configurations = this.removeDuplicates(configurations);
-        Set<String> exclusions = this.getExclusions(annotationMetadata, attributes);
+        Set\<String> exclusions = this.getExclusions(annotationMetadata, attributes);
         this.checkExcludedClasses(configurations, exclusions);
         configurations.removeAll(exclusions);
         configurations = this.getConfigurationClassFilter().filter(configurations);
@@ -421,22 +422,22 @@ protected AutoConfigurationImportSelector.AutoConfigurationEntry getAutoConfigur
 ```
 
 ```java
-protected List<String> getCandidateConfigurations(AnnotationMetadata metadata, AnnotationAttributes attributes) {
-    //3.利用工厂加载 Map<String, List<String>> loadSpringFactories(@Nullable ClassLoader classLoader)；得到所有的组件
-    List<String> configurations = SpringFactoriesLoader.loadFactoryNames(this.getSpringFactoriesLoaderFactoryClass(), this.getBeanClassLoader());
+protected List\<String> getCandidateConfigurations(AnnotationMetadata metadata, AnnotationAttributes attributes) {
+    //3.利用工厂加载 Map\<String, List\<String>> loadSpringFactories(@Nullable ClassLoader classLoader)；得到所有的组件
+    List\<String> configurations = SpringFactoriesLoader.loadFactoryNames(this.getSpringFactoriesLoaderFactoryClass(), this.getBeanClassLoader());
     Assert.notEmpty(configurations, "No auto configuration classes found in META-INF/spring.factories. If you are using a custom packaging, make sure that file is correct.");
     return configurations;
 }
 ```
 
 ```java
-public static List<String> loadFactoryNames(Class<?> factoryType, @Nullable ClassLoader classLoader) {
+public static List\<String> loadFactoryNames(Class\<?> factoryType, @Nullable ClassLoader classLoader) {
     String factoryTypeName = factoryType.getName();
     return (List)loadSpringFactories(classLoader).getOrDefault(factoryTypeName, Collections.emptyList());
 }
 
-private static Map<String, List<String>> loadSpringFactories(@Nullable ClassLoader classLoader) {
-    MultiValueMap<String, String> result = (MultiValueMap)cache.get(classLoader);
+private static Map\<String, List\<String>> loadSpringFactories(@Nullable ClassLoader classLoader) {
+    MultiValueMap\<String, String> result = (MultiValueMap)cache.get(classLoader);
     if (result != null) {
         return result;
     } else {
@@ -444,7 +445,7 @@ private static Map<String, List<String>> loadSpringFactories(@Nullable ClassLoad
              //4、从META-INF/spring.factories位置来加载一个文件。
 			//默认扫描我们当前系统里面所有META-INF/spring.factories位置的文件
     		//spring-boot-autoconfigure-2.3.4.RELEASE.jar包里面也有META-INF/spring.factories
-            Enumeration<URL> urls = classLoader != null ? classLoader.getResources("META-INF/spring.factories") : ClassLoader.getSystemResources("META-INF/spring.factories");
+            Enumeration\<URL> urls = classLoader != null ? classLoader.getResources("META-INF/spring.factories") : ClassLoader.getSystemResources("META-INF/spring.factories");
             LinkedMultiValueMap result = new LinkedMultiValueMap();
 
             while(urls.hasMoreElements()) {
@@ -454,12 +455,12 @@ private static Map<String, List<String>> loadSpringFactories(@Nullable ClassLoad
                 Iterator var6 = properties.entrySet().iterator();
 
                 while(var6.hasNext()) {
-                    Entry<?, ?> entry = (Entry)var6.next();
+                    Entry\<?, ?> entry = (Entry)var6.next();
                     String factoryTypeName = ((String)entry.getKey()).trim();
                     String[] var9 = StringUtils.commaDelimitedListToStringArray((String)entry.getValue());
                     int var10 = var9.length;
 
-                    for(int var11 = 0; var11 < var10; ++var11) {
+                    for(int var11 = 0; var11 \< var10; ++var11) {
                         String factoryImplementationName = var9[var11];
                         result.add(factoryTypeName, factoryImplementationName.trim());
                     }
@@ -722,11 +723,11 @@ SpringBoot默认会在底层配好所有的组件。但是如果用户自己配�
 ctrl+f9 自动重启
 
 ```xml
- <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
-        </dependency>
+ \<dependency>
+            \<groupId>org.springframework.boot\</groupId>
+            \<artifactId>spring-boot-devtools\</artifactId>
+            \<optional>true\</optional>
+        \</dependency>
 ```
 
 ## 3.Spring Initailizr（项目初始化向导）
@@ -791,10 +792,10 @@ public class Person {
     private Integer age;
     private Pet pet;
     private String[] interests;
-    private List<String> animal;
-    private Map<String, Object> score;
-    private Set<Double> salarys;
-    private Map<String, List<Pet>> allPets;
+    private List\<String> animal;
+    private Map\<String, Object> score;
+    private Set\<Double> salarys;
+    private Map\<String, List\<Pet>> allPets;
 }
 
 @Data
@@ -835,29 +836,29 @@ person:
 ```xml
 
 <!--让自定义类在配置类中有提示-->
-		<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
+		\<dependency>
+            \<groupId>org.springframework.boot\</groupId>
+            \<artifactId>spring-boot-configuration-processor\</artifactId>
+            \<optional>true\</optional>
+        \</dependency>
 
 <!--打包时去除业务无关依赖processor-->
- <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.springframework.boot</groupId>
-                            <artifactId>spring-boot-configuration-processor</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+ \<build>
+        \<plugins>
+            \<plugin>
+                \<groupId>org.springframework.boot\</groupId>
+                \<artifactId>spring-boot-maven-plugin\</artifactId>
+                \<configuration>
+                    \<excludes>
+                        \<exclude>
+                            \<groupId>org.springframework.boot\</groupId>
+                            \<artifactId>spring-boot-configuration-processor\</artifactId>
+                        \</exclude>
+                    \</excludes>
+                \</configuration>
+            \</plugin>
+        \</plugins>
+    \</build>
 ```
 
 ### 1.4 bootstrap
@@ -935,11 +936,11 @@ https://www.webjars.org/
 
 访问地址：http://localhost:8080/webjars/jquery/3.5.1/jquery.js   后面地址要按照依赖里面的包路径
 ```xml
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>jquery</artifactId>
-            <version>3.5.1</version>
-        </dependency>
+        \<dependency>
+            \<groupId>org.webjars\</groupId>
+            \<artifactId>jquery\</artifactId>
+            \<version>3.5.1\</version>
+        \</dependency>
 ```
 
 
@@ -976,10 +977,10 @@ spring:
 不生效则首页添加
 
 ```html
-<!--    <link rel="shortcut icon" th:href="@{/favicon.ico}"/>-->
-<!--    <link rel="bookmark" th:href="@{/favicon.ico}"/>-->
-    <link rel="shortcut icon" href="/favicon.ico"/>
-    <link rel="bookmark" href="/favicon.ico"/>
+<!--    \<link rel="shortcut icon" th:href="@{/favicon.ico}"/>-->
+<!--    \<link rel="bookmark" th:href="@{/favicon.ico}"/>-->
+    \<link rel="shortcut icon" href="/favicon.ico"/>
+    \<link rel="bookmark" href="/favicon.ico"/>
 ```
 
 停用缓存，谷歌ctrl+F5强制刷新
@@ -1024,10 +1025,10 @@ public class WebMvcAutoConfiguration {}
 //DispatcherServletPath  
 //ServletRegistrationBean   给应用注册Servlet、Filter....
 	public WebMvcAutoConfigurationAdapter(ResourceProperties resourceProperties, WebMvcProperties mvcProperties,
-				ListableBeanFactory beanFactory, ObjectProvider<HttpMessageConverters> messageConvertersProvider,
-				ObjectProvider<ResourceHandlerRegistrationCustomizer> resourceHandlerRegistrationCustomizerProvider,
-				ObjectProvider<DispatcherServletPath> dispatcherServletPath,
-				ObjectProvider<ServletRegistrationBean<?>> servletRegistrations) {
+				ListableBeanFactory beanFactory, ObjectProvider\<HttpMessageConverters> messageConvertersProvider,
+				ObjectProvider\<ResourceHandlerRegistrationCustomizer> resourceHandlerRegistrationCustomizerProvider,
+				ObjectProvider\<DispatcherServletPath> dispatcherServletPath,
+				ObjectProvider\<ServletRegistrationBean\<?>> servletRegistrations) {
 			this.resourceProperties = resourceProperties;
 			this.mvcProperties = mvcProperties;
 			this.beanFactory = beanFactory;
@@ -1106,7 +1107,7 @@ public class ResourceProperties {
 		}
 
 	WelcomePageHandlerMapping(TemplateAvailabilityProviders templateAvailabilityProviders,
-			ApplicationContext applicationContext, Optional<Resource> welcomePage, String staticPathPattern) {
+			ApplicationContext applicationContext, Optional\<Resource> welcomePage, String staticPathPattern) {
 		if (welcomePage.isPresent() && "/**".equals(staticPathPattern)) {
             //要用欢迎页功能，必须是/**
 			logger.info("Adding welcome page: " + welcomePage.get());
@@ -1289,19 +1290,19 @@ public class ParameterTestController {
 
     //  car/2/owner/zhangsan
     @GetMapping("/car/{id}/owner/{username}")
-    public Map<String,Object> getCar(@PathVariable("id") Integer id,
+    public Map\<String,Object> getCar(@PathVariable("id") Integer id,
                                      @PathVariable("username") String name,
-                                     @PathVariable Map<String,String> pv,
+                                     @PathVariable Map\<String,String> pv,
                                      @RequestHeader("User-Agent") String userAgent,
-                                     @RequestHeader Map<String,String> header,
+                                     @RequestHeader Map\<String,String> header,
                                      @RequestParam("age") Integer age,
-                                     @RequestParam("inters") List<String> inters,
-                                     @RequestParam Map<String,String> params,
+                                     @RequestParam("inters") List\<String> inters,
+                                     @RequestParam Map\<String,String> params,
                                      @CookieValue("_ga") String _ga,
                                      @CookieValue("_ga") Cookie cookie){
 
 
-        Map<String,Object> map = new HashMap<>();
+        Map\<String,Object> map = new HashMap\<>();
 
 //        map.put("id",id);
 //        map.put("name",name);
@@ -1319,7 +1320,7 @@ public class ParameterTestController {
 
     @PostMapping("/save")
     public Map postMethod(@RequestBody String content){
-        Map<String,Object> map = new HashMap<>();
+        Map\<String,Object> map = new HashMap\<>();
         map.put("content",content);
         return map;
     }
@@ -1332,9 +1333,9 @@ public class ParameterTestController {
     //3、矩阵变量必须有url路径变量才能被解析
     @GetMapping("/cars/{path}")
     public Map carsSell(@MatrixVariable("low") Integer low,
-                        @MatrixVariable("brand") List<String> brand,
+                        @MatrixVariable("brand") List\<String> brand,
                         @PathVariable("path") String path){
-        Map<String,Object> map = new HashMap<>();
+        Map\<String,Object> map = new HashMap\<>();
 
         map.put("low",low);
         map.put("brand",brand);
@@ -1347,7 +1348,7 @@ public class ParameterTestController {
     @GetMapping("/boss/{bossId}/{empId}")
     public Map boss(@MatrixVariable(value = "age",pathVar = "bossId") Integer bossAge,
                     @MatrixVariable(value = "age",pathVar = "empId") Integer empAge){
-        Map<String,Object> map = new HashMap<>();
+        Map\<String,Object> map = new HashMap\<>();
 
         map.put("bossAge",bossAge);
         map.put("empAge",empAge);
@@ -1362,19 +1363,19 @@ public class ParameterTestController {
 
     //  car/2/owner/zhangsan
     @GetMapping("/car/{id}/owner/{username}")
-    public Map<String,Object> getCar(@PathVariable("id") Integer id,
+    public Map\<String,Object> getCar(@PathVariable("id") Integer id,
                                      @PathVariable("username") String name,
-                                     @PathVariable Map<String,String> pv,
+                                     @PathVariable Map\<String,String> pv,
                                      @RequestHeader("User-Agent") String userAgent,
-                                     @RequestHeader Map<String,String> header,
+                                     @RequestHeader Map\<String,String> header,
                                      @RequestParam("age") Integer age,
-                                     @RequestParam("inters") List<String> inters,
-                                     @RequestParam Map<String,String> params,
+                                     @RequestParam("inters") List\<String> inters,
+                                     @RequestParam Map\<String,String> params,
                                      @CookieValue("_ga") String _ga,
                                      @CookieValue("_ga") Cookie cookie){
 
 
-        Map<String,Object> map = new HashMap<>();
+        Map\<String,Object> map = new HashMap\<>();
 
 //        map.put("id",id);
 //        map.put("name",name);
@@ -1392,7 +1393,7 @@ public class ParameterTestController {
 
     @PostMapping("/save")
     public Map postMethod(@RequestBody String content){
-        Map<String,Object> map = new HashMap<>();
+        Map\<String,Object> map = new HashMap\<>();
         map.put("content",content);
         return map;
     }
@@ -1405,9 +1406,9 @@ public class ParameterTestController {
     //3、矩阵变量必须有url路径变量才能被解析
     @GetMapping("/cars/{path}")
     public Map carsSell(@MatrixVariable("low") Integer low,
-                        @MatrixVariable("brand") List<String> brand,
+                        @MatrixVariable("brand") List\<String> brand,
                         @PathVariable("path") String path){
-        Map<String,Object> map = new HashMap<>();
+        Map\<String,Object> map = new HashMap\<>();
 
         map.put("low",low);
         map.put("brand",brand);
@@ -1420,7 +1421,7 @@ public class ParameterTestController {
     @GetMapping("/boss/{bossId}/{empId}")
     public Map boss(@MatrixVariable(value = "age",pathVar = "bossId") Integer bossAge,
                     @MatrixVariable(value = "age",pathVar = "empId") Integer empAge){
-        Map<String,Object> map = new HashMap<>();
+        Map\<String,Object> map = new HashMap\<>();
 
         map.put("bossAge",bossAge);
         map.put("empAge",empAge);
@@ -1440,7 +1441,7 @@ WebRequest、ServletRequest、MultipartRequest、 HttpSession、javax.servlet.ht
 ```java
 @Override
 	public boolean supportsParameter(MethodParameter parameter) {
-		Class<?> paramType = parameter.getParameterType();
+		Class\<?> paramType = parameter.getParameterType();
 		return (WebRequest.class.isAssignableFrom(paramType) ||
 				ServletRequest.class.isAssignableFrom(paramType) ||
 				MultipartRequest.class.isAssignableFrom(paramType) ||
@@ -1461,7 +1462,7 @@ WebRequest、ServletRequest、MultipartRequest、 HttpSession、javax.servlet.ht
 **Map**、**Model（map、model里面的数据会被放在request的请求域  request.setAttribute）、**Errors/BindingResult、**RedirectAttributes（ 重定向携带数据）**、**ServletResponse（response）**、SessionStatus、UriComponentsBuilder、ServletUriComponentsBuilder
 
 ```java
-Map<String,Object> map,  Model model, HttpServletRequest request 都是可以给request域中放数据，
+Map\<String,Object> map,  Model model, HttpServletRequest request 都是可以给request域中放数据，
 request.getAttribute();
 ```
 
@@ -1552,7 +1553,7 @@ protected Object[] getMethodArgumentValues(NativeWebRequest request, @Nullable M
 		}
 
 		Object[] args = new Object[parameters.length];
-		for (int i = 0; i < parameters.length; i++) {
+		for (int i = 0; i \< parameters.length; i++) {
 			MethodParameter parameter = parameters[i];
 			parameter.initParameterNameDiscovery(this.parameterNameDiscoverer);
 			args[i] = findProvidedArgument(parameter, providedArgs);
@@ -1612,7 +1613,7 @@ protected Object[] getMethodArgumentValues(NativeWebRequest request, @Nullable M
  **是否为简单类型。**
 
 ```java
-public static boolean isSimpleValueType(Class<?> type) {
+public static boolean isSimpleValueType(Class\<?> type) {
 		return (Void.class != type && void.class != type &&
 				(ClassUtils.isPrimitiveOrWrapper(type) ||
 				Enum.class.isAssignableFrom(type) ||
@@ -1684,7 +1685,7 @@ public static boolean isSimpleValueType(Class<?> type) {
 		}
 
 		// Add resolved attribute and BindingResult at the end of the model
-		Map<String, Object> bindingResultModel = bindingResult.getModel();
+		Map\<String, Object> bindingResultModel = bindingResult.getModel();
 		mavContainer.removeAttributes(bindingResultModel);
 		mavContainer.addAllAttributes(bindingResultModel);
 
@@ -1702,7 +1703,7 @@ public static boolean isSimpleValueType(Class<?> type) {
 
 **byte -- > file**
 
-@FunctionalInterface**public interface** Converter<S, T>
+@FunctionalInterface**public interface** Converter\<S, T>
 
 ![img](http://rcy276gfy.hd-bkt.clouddn.com/work/1603337871521-25fc1aa1-133a-4ce0-a146-d565633d7658.png)
 
@@ -1714,7 +1715,7 @@ public static boolean isSimpleValueType(Class<?> type) {
 
 未来我们可以给WebDataBinder里面放自己的Converter；
 
-**private static final class** StringToNumber<T **extends** Number> **implements** Converter<String, T>
+**private static final class** StringToNumber\<T **extends** Number> **implements** Converter\<String, T>
 
 
 
@@ -1735,7 +1736,7 @@ public static boolean isSimpleValueType(Class<?> type) {
 
             @Override
             public void addFormatters(FormatterRegistry registry) {
-                registry.addConverter(new Converter<String, Pet>() {
+                registry.addConverter(new Converter\<String, Pet>() {
 
                     @Override
                     public Pet convert(String source) {
@@ -1779,7 +1780,7 @@ renderMergedOutputModel(mergedModel, getRequestToExpose(request), response);
 InternalResourceView：
 @Override
 	protected void renderMergedOutputModel(
-			Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+			Map\<String, Object> model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		// Expose the model object as request attributes.
 		exposeModelAsRequestAttributes(model, request);
@@ -1823,7 +1824,7 @@ InternalResourceView：
 ```
 
 ```java
-protected void exposeModelAsRequestAttributes(Map<String, Object> model,
+protected void exposeModelAsRequestAttributes(Map\<String, Object> model,
 			HttpServletRequest request) throws Exception {
 
     //model中的所有数据遍历挨个放在请求域中
@@ -1851,17 +1852,17 @@ protected void exposeModelAsRequestAttributes(Map<String, Object> model,
 ##### 1.1、jackson.jar+@ResponseBody
 
 ```xml
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+        \<dependency>
+            \<groupId>org.springframework.boot\</groupId>
+            \<artifactId>spring-boot-starter-web\</artifactId>
+        \</dependency>
 web场景自动引入了json场景
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-json</artifactId>
-      <version>2.3.4.RELEASE</version>
-      <scope>compile</scope>
-    </dependency>
+    \<dependency>
+      \<groupId>org.springframework.boot\</groupId>
+      \<artifactId>spring-boot-starter-json\</artifactId>
+      \<version>2.3.4.RELEASE\</version>
+      \<scope>compile\</scope>
+    \</dependency>
 ```
 
 ![img](http://rcy276gfy.hd-bkt.clouddn.com/work/1605151090728-f7c60e6f-d0c0-4541-bfa3-8cc805dfd5d6.png)
@@ -1999,10 +2000,10 @@ HttpMessageConverter: 看是否支持将 此 Class类型的对象，转为MediaT
 ##### 1、引入xml依赖
 
 ```xml
- <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-xml</artifactId>
-</dependency>
+ \<dependency>
+            \<groupId>com.fasterxml.jackson.dataformat\</groupId>
+            \<artifactId>jackson-dataformat-xml\</artifactId>
+\</dependency>
 ```
 
 ##### 2、postman分别测试返回json和xml
@@ -2093,7 +2094,7 @@ SpringMVC的什么功能。一个入口给容器中添加一个  WebMvcConfigure
         return new WebMvcConfigurer() {
 
             @Override
-            public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+            public void extendMessageConverters(List\<HttpMessageConverter\<?>> converters) {
 
             }
         }
@@ -2235,7 +2236,7 @@ Thymeleaf is a modern server-side Java template engine for both web and standalo
 
 ###### 6、比较运算
 
-比较: **>** **,** **<** **,** **>=** **,** **<=** **(** **gt** **,** **lt** **,** **ge** **,** **le** **)**等式: **==** **,** **!=** **(** **eq** **,** **ne** **)** 
+比较: **>** **,** **\<** **,** **>=** **,** **\<=** **(** **gt** **,** **lt** **,** **ge** **,** **le** **)**等式: **==** **,** **!=** **(** **eq** **,** **ne** **)** 
 
 
 
@@ -2262,12 +2263,12 @@ Default: (value) **?: (defaultvalue)**
 设置单个值
 
 ```html
-<form action="subscribe.html" th:attr="action=@{/subscribe}">
-  <fieldset>
-    <input type="text" name="email" />
-    <input type="submit" value="Subscribe!" th:attr="value=#{subscribe.submit}"/>
-  </fieldset>
-</form>
+\<form action="subscribe.html" th:attr="action=@{/subscribe}">
+  \<fieldset>
+    \<input type="text" name="email" />
+    \<input type="submit" value="Subscribe!" th:attr="value=#{subscribe.submit}"/>
+  \</fieldset>
+\</form>
 ```
 
 设置多个值
@@ -2281,8 +2282,8 @@ Default: (value) **?: (defaultvalue)**
 以上两个的代替写法 th:xxxx
 
 ```html
-<input type="submit" value="Subscribe!" th:value="#{subscribe.submit}"/>
-<form action="subscribe.html" th:action="@{/subscribe}">
+\<input type="submit" value="Subscribe!" th:value="#{subscribe.submit}"/>
+\<form action="subscribe.html" th:action="@{/subscribe}">
 ```
 
 
@@ -2296,21 +2297,21 @@ https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#setting-value-to
 ##### 4、迭代
 
 ```html
-<tr th:each="prod : ${prods}">
-        <td th:text="${prod.name}">Onions</td>
-        <td th:text="${prod.price}">2.41</td>
-        <td th:text="${prod.inStock}? #{true} : #{false}">yes</td>
-</tr>
+\<tr th:each="prod : ${prods}">
+        \<td th:text="${prod.name}">Onions\</td>
+        \<td th:text="${prod.price}">2.41\</td>
+        \<td th:text="${prod.inStock}? #{true} : #{false}">yes\</td>
+\</tr>
 ```
 
 
 
 ```html
-<tr th:each="prod,iterStat : ${prods}" th:class="${iterStat.odd}? 'odd'">
-  <td th:text="${prod.name}">Onions</td>
-  <td th:text="${prod.price}">2.41</td>
-  <td th:text="${prod.inStock}? #{true} : #{false}">yes</td>
-</tr>
+\<tr th:each="prod,iterStat : ${prods}" th:class="${iterStat.odd}? 'odd'">
+  \<td th:text="${prod.name}">Onions\</td>
+  \<td th:text="${prod.price}">2.41\</td>
+  \<td th:text="${prod.inStock}? #{true} : #{false}">yes\</td>
+\</tr>
 ```
 
 
@@ -2318,19 +2319,19 @@ https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#setting-value-to
 ##### 5、条件运算
 
 ```html
-<a href="comments.html"
+\<a href="comments.html"
 th:href="@{/product/comments(prodId=${prod.id})}"
-th:if="${not #lists.isEmpty(prod.comments)}">view</a>
+th:if="${not #lists.isEmpty(prod.comments)}">view\</a>
 ```
 
 
 
 ```html
-<div th:switch="${user.role}">
-  <p th:case="'admin'">User is an administrator</p>
-  <p th:case="#{roles.manager}">User is a manager</p>
-  <p th:case="*">User is some other thing</p>
-</div>
+\<div th:switch="${user.role}">
+  \<p th:case="'admin'">User is an administrator\</p>
+  \<p th:case="#{roles.manager}">User is a manager\</p>
+  \<p th:case="*">User is some other thing\</p>
+\</div>
 ```
 
 ##### 6、属性优先级
@@ -2342,10 +2343,10 @@ th:if="${not #lists.isEmpty(prod.comments)}">view</a>
 ###### 1、引入Starter
 
 ```java
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
+        \<dependency>
+            \<groupId>org.springframework.boot\</groupId>
+            \<artifactId>spring-boot-starter-thymeleaf\</artifactId>
+        \</dependency>
 ```
 
 ###### 2、自动配置好了thymeleaf
@@ -2374,20 +2375,20 @@ public class ThymeleafAutoConfiguration { }
 ###### 3、页面开发
 
 ```java
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1 th:text="${msg}">哈哈</h1>
-<h2>
-    <a href="www.atguigu.com" th:href="${link}">去百度</a>  <br/>
-    <a href="www.atguigu.com" th:href="@{link}">去百度2</a>
-</h2>
-</body>
-</html>
+\<!DOCTYPE html>
+\<html lang="en" xmlns:th="http://www.thymeleaf.org">
+\<head>
+    \<meta charset="UTF-8">
+    \<title>Title\</title>
+\</head>
+\<body>
+\<h1 th:text="${msg}">哈哈\</h1>
+\<h2>
+    \<a href="www.atguigu.com" th:href="${link}">去百度\</a>  \<br/>
+    \<a href="www.atguigu.com" th:href="@{link}">去百度2\</a>
+\</h2>
+\</body>
+\</html>
 ```
 
 #### 4、构建后台管理系统
@@ -2442,7 +2443,7 @@ th:insert/replace/include
     @GetMapping("/dynamic_table")
     public String dynamic_table(Model model){
         //表格内容的遍历
-        List<User> users = Arrays.asList(new User("zhangsan", "123456"),
+        List\<User> users = Arrays.asList(new User("zhangsan", "123456"),
                 new User("lisi", "123444"),
                 new User("haha", "aaaaa"),
                 new User("hehe ", "aaddd"));
@@ -2450,22 +2451,22 @@ th:insert/replace/include
 
         return "table/dynamic_table";
     }
-        <table class="display table table-bordered" id="hidden-table-info">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>用户名</th>
-            <th>密码</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr class="gradeX" th:each="user,stats:${users}">
-            <td th:text="${stats.count}">Trident</td>
-            <td th:text="${user.userName}">Internet</td>
-            <td >[[${user.password}]]</td>
-        </tr>
-        </tbody>
-        </table>
+        \<table class="display table table-bordered" id="hidden-table-info">
+        \<thead>
+        \<tr>
+            \<th>#\</th>
+            \<th>用户名\</th>
+            \<th>密码\</th>
+        \</tr>
+        \</thead>
+        \<tbody>
+        \<tr class="gradeX" th:each="user,stats:${users}">
+            \<td th:text="${stats.count}">Trident\</td>
+            \<td th:text="${user.userName}">Internet\</td>
+            \<td >[[${user.password}]]\</td>
+        \</tr>
+        \</tbody>
+        \</table>
 ```
 
 
@@ -2600,10 +2601,10 @@ public class AdminWebConfig implements WebMvcConfigurer {
 #### 1、页面表单
 
 ```html
-<form method="post" action="/upload" enctype="multipart/form-data">
-    <input type="file" name="file"><br>
-    <input type="submit" value="提交">
-</form>
+\<form method="post" action="/upload" enctype="multipart/form-data">
+    \<input type="file" name="file">\<br>
+    \<input type="submit" value="提交">
+\</form>
 ```
 
 
@@ -2659,7 +2660,7 @@ public class AdminWebConfig implements WebMvcConfigurer {
 
 - - **1、请求进来使用文件上传解析器判断（**isMultipart**）并封装（**resolveMultipart，**返回**MultipartHttpServletRequest**）文件上传请求**
   - **2、参数解析器来解析请求中的文件内容封装成MultipartFile**
-  - **3、将request中文件信息封装为一个Map；**MultiValueMap<String, MultipartFile>
+  - **3、将request中文件信息封装为一个Map；**MultiValueMap\<String, MultipartFile>
 
 **FileCopyUtils**。实现文件流的拷贝
 
@@ -2816,7 +2817,7 @@ processDispatchResult(processedRequest, response, mappedHandler, **mv**, **dispa
 扩展：DispatchServlet 如何注册进来
 
 - 容器中自动配置了  DispatcherServlet  属性绑定到 WebMvcProperties；对应的配置文件配置项是 **spring.mvc。**
-- **通过** **ServletRegistrationBean**<DispatcherServlet> 把 DispatcherServlet  配置进来。
+- **通过** **ServletRegistrationBean**\<DispatcherServlet> 把 DispatcherServlet  配置进来。
 - 默认映射的是 / 路径。
 
 ![img](http://rcy276gfy.hd-bkt.clouddn.com/work/1606284869220-8b63d54b-39c4-40f6-b226-f5f095ef9304.png)
@@ -2882,16 +2883,16 @@ public class MyRegistConfig {
 ![img](http://rcy276gfy.hd-bkt.clouddn.com/work/1606280937533-504d0889-b893-4a01-af68-2fc31ffce9fc.png)
 
 ```xml
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-web</artifactId>
-    <exclusions>
-        <exclusion>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-        </exclusion>
-    </exclusions>
-</dependency>
+\<dependency>
+    \<groupId>org.springframework.boot\</groupId>
+    \<artifactId>spring-boot-starter-web\</artifactId>
+    \<exclusions>
+        \<exclusion>
+            \<groupId>org.springframework.boot\</groupId>
+            \<artifactId>spring-boot-starter-tomcat\</artifactId>
+        \</exclusion>
+    \</exclusions>
+\</dependency>
 ```
 
 
@@ -2914,7 +2915,7 @@ public class MyRegistConfig {
 
 #### 2、定制Servlet容器
 
-- 实现  **WebServerFactoryCu**stomizer<ConfigurableServletWebServerFactory> 
+- 实现  **WebServerFactoryCu**stomizer\<ConfigurableServletWebServerFactory> 
 
 - - 把配置文件的值和`**ServletWebServerFactory 进行绑定**`
 
@@ -2931,7 +2932,7 @@ import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerF
 import org.springframework.stereotype.Component;
 
 @Component
-public class CustomizationBean implements WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> {
+public class CustomizationBean implements WebServerFactoryCustomizer\<ConfigurableServletWebServerFactory> {
 
     @Override
     public void customize(ConfigurableServletWebServerFactory server) {
@@ -2986,10 +2987,10 @@ public class AdminWebConfig implements WebMvcConfigurer
 ##### 1、导入JDBC场景
 
 ```xml
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jdbc</artifactId>
-        </dependency>
+        \<dependency>
+            \<groupId>org.springframework.boot\</groupId>
+            \<artifactId>spring-boot-starter-data-jdbc\</artifactId>
+        \</dependency>
         
 ```
 
@@ -3002,20 +3003,20 @@ public class AdminWebConfig implements WebMvcConfigurer
 数据库版本和驱动版本对应
 
 ```xml
-默认版本：<mysql.version>8.0.22</mysql.version>
+默认版本：\<mysql.version>8.0.22\</mysql.version>
 
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-<!--            <version>5.1.49</version>-->
-        </dependency>
+        \<dependency>
+            \<groupId>mysql\</groupId>
+            \<artifactId>mysql-connector-java\</artifactId>
+<!--            \<version>5.1.49\</version>-->
+        \</dependency>
 想要修改版本
 1、直接依赖引入具体版本（maven的就近依赖原则）
 2、重新声明版本（maven的属性的就近优先原则）
-    <properties>
-        <java.version>1.8</java.version>
-        <mysql.version>5.1.49</mysql.version>
-    </properties>
+    \<properties>
+        \<java.version>1.8\</java.version>
+        \<mysql.version>5.1.49\</mysql.version>
+    \</properties>
 ```
 
 
@@ -3117,28 +3118,28 @@ https://github.com/alibaba/druid
 
 
 ```xml
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.1.17</version>
-        </dependency>
+        \<dependency>
+            \<groupId>com.alibaba\</groupId>
+            \<artifactId>druid\</artifactId>
+            \<version>1.1.17\</version>
+        \</dependency>
 
-<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+\<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		destroy-method="close">
-		<property name="url" value="${jdbc.url}" />
-		<property name="username" value="${jdbc.username}" />
-		<property name="password" value="${jdbc.password}" />
-		<property name="maxActive" value="20" />
-		<property name="initialSize" value="1" />
-		<property name="maxWait" value="60000" />
-		<property name="minIdle" value="1" />
-		<property name="timeBetweenEvictionRunsMillis" value="60000" />
-		<property name="minEvictableIdleTimeMillis" value="300000" />
-		<property name="testWhileIdle" value="true" />
-		<property name="testOnBorrow" value="false" />
-		<property name="testOnReturn" value="false" />
-		<property name="poolPreparedStatements" value="true" />
-		<property name="maxOpenPreparedStatements" value="20" />
+		\<property name="url" value="${jdbc.url}" />
+		\<property name="username" value="${jdbc.username}" />
+		\<property name="password" value="${jdbc.password}" />
+		\<property name="maxActive" value="20" />
+		\<property name="initialSize" value="1" />
+		\<property name="maxWait" value="60000" />
+		\<property name="minIdle" value="1" />
+		\<property name="timeBetweenEvictionRunsMillis" value="60000" />
+		\<property name="minEvictableIdleTimeMillis" value="300000" />
+		\<property name="testWhileIdle" value="true" />
+		\<property name="testOnBorrow" value="false" />
+		\<property name="testOnReturn" value="false" />
+		\<property name="poolPreparedStatements" value="true" />
+		\<property name="maxOpenPreparedStatements" value="20" />
 ```
 
 
@@ -3151,14 +3152,14 @@ StatViewServlet的用途包括：
 - 提供监控信息的JSON API
 
 ```xml
-	<servlet>
-		<servlet-name>DruidStatView</servlet-name>
-		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>DruidStatView</servlet-name>
-		<url-pattern>/druid/*</url-pattern>
-	</servlet-mapping>
+	\<servlet>
+		\<servlet-name>DruidStatView\</servlet-name>
+		\<servlet-class>com.alibaba.druid.support.http.StatViewServlet\</servlet-class>
+	\</servlet>
+	\<servlet-mapping>
+		\<servlet-name>DruidStatView\</servlet-name>
+		\<url-pattern>/druid/*\</url-pattern>
+	\</servlet-mapping>
 ```
 
 
@@ -3170,7 +3171,7 @@ StatViewServlet的用途包括：
 ```xml
 需要给数据源中配置如下属性；可以允许多个filter，多个用，分割；如：
 
-<property name="filters" value="stat,slf4j" />
+\<property name="filters" value="stat,slf4j" />
 ```
 
 系统中所有filter：
@@ -3189,10 +3190,10 @@ StatViewServlet的用途包括：
 **慢SQL记录配置**
 
 ```xml
-<bean id="stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
-    <property name="slowSqlMillis" value="10000" />
-    <property name="logSlowSql" value="true" />
-</bean>
+\<bean id="stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
+    \<property name="slowSqlMillis" value="10000" />
+    \<property name="logSlowSql" value="true" />
+\</bean>
 
 使用 slowSqlMillis 定义慢SQL的时长
 ```
@@ -3202,11 +3203,11 @@ StatViewServlet的用途包括：
 ###### 1、引入druid-starter
 
 ```xml
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.1.17</version>
-        </dependency>
+        \<dependency>
+            \<groupId>com.alibaba\</groupId>
+            \<artifactId>druid-spring-boot-starter\</artifactId>
+            \<version>1.1.17\</version>
+        \</dependency>
 ```
 
 
@@ -3290,11 +3291,11 @@ SpringBoot官方的Starter：spring-boot-starter-*
 第三方的： *-spring-boot-starter
 
 ```xml
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>2.1.4</version>
-        </dependency>
+        \<dependency>
+            \<groupId>org.mybatis.spring.boot\</groupId>
+            \<artifactId>mybatis-spring-boot-starter\</artifactId>
+            \<version>2.1.4\</version>
+        \</dependency>
 ```
 
 ![img](http://rcy276gfy.hd-bkt.clouddn.com/work/1606704096118-53001250-a04a-4210-80ee-6de6a370be2e.png)
@@ -3327,16 +3328,16 @@ mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml  #sql映射文件位置
   
 Mapper接口--->绑定Xml
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
+\<?xml version="1.0" encoding="UTF-8" ?>
+\<!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.atguigu.admin.mapper.AccountMapper">
+\<mapper namespace="com.atguigu.admin.mapper.AccountMapper">
 <!--    public Account getAcct(Long id); -->
-    <select id="getAcct" resultType="com.atguigu.admin.bean.Account">
+    \<select id="getAcct" resultType="com.atguigu.admin.bean.Account">
         select * from  account_tbl where  id=#{id}
-    </select>
-</mapper>
+    \</select>
+\</mapper>
 ```
 
 
@@ -3433,11 +3434,11 @@ public interface CityMapper {
 ##### 2、整合MyBatis-Plus
 
 ```xml
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.4.1</version>
-        </dependency>
+        \<dependency>
+            \<groupId>com.baomidou\</groupId>
+            \<artifactId>mybatis-plus-boot-starter\</artifactId>
+            \<version>3.4.1\</version>
+        \</dependency>
 ```
 
 自动配置
@@ -3481,7 +3482,7 @@ public interface CityMapper {
     public String dynamic_table(@RequestParam(value="pn",defaultValue = "1") Integer pn,Model model){
         //表格内容的遍历
 //        response.sendError
-//     List<User> users = Arrays.asList(new User("zhangsan", "123456"),
+//     List\<User> users = Arrays.asList(new User("zhangsan", "123456"),
 //                new User("lisi", "123444"),
 //                new User("haha", "aaaaa"),
 //                new User("hehe ", "aaddd"));
@@ -3493,9 +3494,9 @@ public interface CityMapper {
         //从数据库中查出user表中的用户进行展示
 
         //构造分页参数
-        Page<User> page = new Page<>(pn, 2);
+        Page\<User> page = new Page\<>(pn, 2);
         //调用page进行分页
-        Page<User> userPage = userService.page(page, null);
+        Page\<User> userPage = userService.page(page, null);
 
 
 //        userPage.getRecords()
@@ -3513,12 +3514,12 @@ public interface CityMapper {
 
 ```java
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper,User> implements UserService {
+public class UserServiceImpl extends ServiceImpl\<UserMapper,User> implements UserService {
 
 
 }
 
-public interface UserService extends IService<User> {
+public interface UserService extends IService\<User> {
 
 }
 ```
@@ -3530,10 +3531,10 @@ Redis 是一个开源（BSD许可）的，内存中的数据结构存储系统�
 #### 1、Redis自动配置
 
 ```xml
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
+        \<dependency>
+            \<groupId>org.springframework.boot\</groupId>
+            \<artifactId>spring-boot-starter-data-redis\</artifactId>
+        \</dependency>
 ```
 
 ![img](http://rcy276gfy.hd-bkt.clouddn.com/work/1606745732785-17d1227a-75b9-4f00-a3f1-7fc4137b5113.png)
@@ -3544,7 +3545,7 @@ Redis 是一个开源（BSD许可）的，内存中的数据结构存储系统�
 
 - RedisAutoConfiguration 自动配置类。RedisProperties 属性类 --> **spring.redis.xxx是对redis的配置**
 - 连接工厂是准备好的。**Lettuce**ConnectionConfiguration、**Jedis**ConnectionConfiguration
-- **自动注入了RedisTemplate**<**Object**, **Object**> ： xxxTemplate；
+- **自动注入了RedisTemplate**\<**Object**, **Object**> ： xxxTemplate；
 - **自动注入了StringRedisTemplate；k：v都是String**
 - **key：value**
 - **底层只要我们使用** **StringRedisTemplate、****RedisTemplate就可以操作redis**
@@ -3566,7 +3567,7 @@ Redis 是一个开源（BSD许可）的，内存中的数据结构存储系统�
 ```java
     @Test
     void testRedis(){
-        ValueOperations<String, String> operations = redisTemplate.opsForValue();
+        ValueOperations\<String, String> operations = redisTemplate.opsForValue();
 
         operations.set("hello","world");
 
@@ -3578,16 +3579,16 @@ Redis 是一个开源（BSD许可）的，内存中的数据结构存储系统�
 #### 3、切换至jedis
 
 ```xml
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
+        \<dependency>
+            \<groupId>org.springframework.boot\</groupId>
+            \<artifactId>spring-boot-starter-data-redis\</artifactId>
+        \</dependency>
 
 <!--        导入jedis-->
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-        </dependency>
+        \<dependency>
+            \<groupId>redis.clients\</groupId>
+            \<artifactId>jedis\</artifactId>
+        \</dependency>
 spring:
   redis:
       host: r-bp1nc7reqesxisgxpipd.redis.rds.aliyuncs.com
@@ -3624,27 +3625,27 @@ spring:
 **JUnit 5’s Vintage Engine Removed from** `**spring-boot-starter-test,如果需要继续兼容junit4需要自行引入vintage**`
 
 ```xml
-<dependency>
-    <groupId>org.junit.vintage</groupId>
-    <artifactId>junit-vintage-engine</artifactId>
-    <scope>test</scope>
-    <exclusions>
-        <exclusion>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>
-        </exclusion>
-    </exclusions>
-</dependency>
+\<dependency>
+    \<groupId>org.junit.vintage\</groupId>
+    \<artifactId>junit-vintage-engine\</artifactId>
+    \<scope>test\</scope>
+    \<exclusions>
+        \<exclusion>
+            \<groupId>org.hamcrest\</groupId>
+            \<artifactId>hamcrest-core\</artifactId>
+        \</exclusion>
+    \</exclusions>
+\</dependency>
 ```
 
 ![img](http://rcy276gfy.hd-bkt.clouddn.com/work/1606797616337-e73010e9-9cac-496d-a177-64b677af5a3d.png)
 
 ```xml
-<dependency>
-  <groupId>org.springframework.boot</groupId>
-  <artifactId>spring-boot-starter-test</artifactId>
-  <scope>test</scope>
-</dependency>
+\<dependency>
+  \<groupId>org.springframework.boot\</groupId>
+  \<artifactId>spring-boot-starter-test\</artifactId>
+  \<scope>test\</scope>
+\</dependency>
 ```
 
 现在版本：
@@ -3739,7 +3740,7 @@ public void simple() {
      assertSame(obj, obj);
 
      assertFalse(1 > 2);
-     assertTrue(1 < 2);
+     assertTrue(1 \< 2);
 
      assertNull(null);
      assertNotNull(new Object());
@@ -3868,12 +3869,12 @@ JUnit 5 可以通过 Java 中的内部类和@Nested 注解实现嵌套测试，�
 @DisplayName("A stack")
 class TestingAStackDemo {
 
-    Stack<Object> stack;
+    Stack\<Object> stack;
 
     @Test
     @DisplayName("is instantiated with new Stack()")
     void isInstantiatedWithNew() {
-        new Stack<>();
+        new Stack\<>();
     }
 
     @Nested
@@ -3882,7 +3883,7 @@ class TestingAStackDemo {
 
         @BeforeEach
         void createNewStack() {
-            stack = new Stack<>();
+            stack = new Stack\<>();
         }
 
         @Test
@@ -3976,7 +3977,7 @@ public void testWithExplicitLocalMethodSource(String name) {
     Assertions.assertNotNull(name);
 }
 
-static Stream<String> method() {
+static Stream\<String> method() {
     return Stream.of("apple", "banana");
 }
 ```
@@ -4001,10 +4002,10 @@ static Stream<String> method() {
 未来每一个微服务在云上部署以后，我们都需要对其进行监控、追踪、审计、控制等。SpringBoot就抽取了Actuator场景，使得我们每个微服务快速引用即可获得生产级别的应用监控、审计等功能。
 
 ```xml
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
+        \<dependency>
+            \<groupId>org.springframework.boot\</groupId>
+            \<artifactId>spring-boot-starter-actuator\</artifactId>
+        \</dependency>
 ```
 
 ![img](http://rcy276gfy.hd-bkt.clouddn.com/work/1606886483335-697ee1c1-2f69-43ab-bddc-3a038382319c.png)
@@ -4118,7 +4119,7 @@ https://github.com/codecentric/spring-boot-admin
 ##### 1、开启与禁用Endpoints
 
 - 默认所有的Endpoint除过shutdown都是开启的。
-- 需要开启或者禁用某个Endpoint。配置模式为  **management.endpoint.****<endpointName>****.enabled = true**
+- 需要开启或者禁用某个Endpoint。配置模式为  **management.endpoint.****\<endpointName>****.enabled = true**
 
 ```yaml
 management:
@@ -4224,7 +4225,7 @@ public class MyComHealthIndicator extends AbstractHealthIndicator {
     @Override
     protected void doHealthCheck(Health.Builder builder) throws Exception {
         //mongodb。  获取连接进行测试
-        Map<String,Object> map = new HashMap<>();
+        Map\<String,Object> map = new HashMap\<>();
         // 检查完成
         if(1 == 2){
 //            builder.up(); //健康
@@ -4488,14 +4489,14 @@ Spring原理【[Spring注解](https://www.bilibili.com/video/BV1gW411W7wy?p=1)�
 
 - - 保存一些信息。
   - 判定当前应用的类型。ClassUtils。Servlet
-  - **bootstrappers****：初始启动引导器（**List<Bootstrapper>**）：去spring.factories文件中找** org.springframework.boot.**Bootstrapper**
+  - **bootstrappers****：初始启动引导器（**List\<Bootstrapper>**）：去spring.factories文件中找** org.springframework.boot.**Bootstrapper**
   - 找 **ApplicationContextInitializer**；去**spring.factories****找** **ApplicationContextInitializer**
 
-- - - List<ApplicationContextInitializer<?>> **initializers**
+- - - List\<ApplicationContextInitializer\<?>> **initializers**
 
 - - **找** **ApplicationListener  ；应用监听器。**去**spring.factories****找** **ApplicationListener**
 
-- - - List<ApplicationListener<?>> **listeners**
+- - - List\<ApplicationListener\<?>> **listeners**
 
 - 运行 **SpringApplication**
 
@@ -4696,7 +4697,7 @@ application-test.properties
 
 问题：卡在
 
-Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity\<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
 
 解决：把项目下的  .idea 文件删除，然后关闭idea，重新导入
 

@@ -2,6 +2,7 @@
 index: 2
 icon: markdown
 title: Python 学习
+date: 2022-06-06
 category:
   - Python 学习
 tag:
@@ -170,7 +171,7 @@ Python3 的六个标准数据类型中：
 # 函数	    返回值 ( 描述 )
 # abs(x)	返回数字的绝对值，如abs(-10) 返回 10
 # ceil(x)	返回数字的上入整数，如math.ceil(4.1) 返回 5
-# cmp(x, y) 如果 x < y 返回 -1, 如果 x == y 返回 0, 如果 x > y 返回 1。 Python 3 已废弃，使用 (x>y)-(x<y) 替换。
+# cmp(x, y) 如果 x \< y 返回 -1, 如果 x == y 返回 0, 如果 x > y 返回 1。 Python 3 已废弃，使用 (x>y)-(x\<y) 替换。
 # exp(x)	返回e的x次幂(ex),如math.exp(1) 返回2.718281828459045
 # fabs(x)	返回数字的绝对值，如math.fabs(-10) 返回10.0
 # floor(x)	返回数字的下舍整数，如math.floor(4.9)返回 4
@@ -315,7 +316,7 @@ print(Division2, 'Division2')
 # *	定义宽度或者小数点精度
 # -	用做左对齐
 # +	在正数前面显示加号( + )
-# <sp>	在正数前面显示空格
+# \<sp>	在正数前面显示空格
 # #	在八进制数前面显示零('0')，在十六进制前面显示'0x'或者'0X'(取决于用的是'x'还是'X')
 # 0	显示的数字前面填充'0'而不是默认的空格
 # %	'%%'输出一个单一的'%'
@@ -698,9 +699,9 @@ del tinydict         # 删除字典
 # ==	等于 - 比较对象是否相等	        (a == b) 返回 False。
 # !=	不等于 - 比较两个对象是否不相等	(a != b) 返回 True。
 # >	    大于 - 返回x是否大于y	        (a > b) 返回 False。
-# <	    小于 - 返回x是否小于y。所有比较运算符返回1表示真，返回0表示假。这分别与特殊的变量True和False等价。注意，这些变量名的大写。	(a < b) 返回 True。
+# \<	    小于 - 返回x是否小于y。所有比较运算符返回1表示真，返回0表示假。这分别与特殊的变量True和False等价。注意，这些变量名的大写。	(a \< b) 返回 True。
 # >=	大于等于 - 返回x是否大于等于y。	(a >= b) 返回 False。
-# <=	小于等于 - 返回x是否小于等于y。	(a <= b) 返回 True。
+# \<=	小于等于 - 返回x是否小于等于y。	(a \<= b) 返回 True。
 
 # 赋值运算符【a为10，b为20】----------------------------------
 # =	简单的赋值运算符	c = a + b 将 a + b 的运算结果赋值为 c
@@ -714,7 +715,7 @@ del tinydict         # 删除字典
 # :=    海象运算符，可在表达式内部为变量赋值。Python3.8 版本新增运算符。
 # 在这个示例中，赋值表达式可以避免调用 len() 两次:
 # if (n := len(a)) > 10:
-#     print(f"List is too long ({n} elements, expected <= 10)")
+#     print(f"List is too long ({n} elements, expected \<= 10)")
 
 # 逻辑运算符-----------------------------------------------------
 # and	x and y	布尔"与" - 如果 x 为 False，x and y 返回 x 的值，否则返回 y 的计算值。	(a and b) 返回 20。
@@ -726,7 +727,7 @@ del tinydict         # 删除字典
 # |	按位或运算符：只要对应的二个二进位有一个为1时，结果位就为1。	(a | b) 输出结果 61 ，二进制解释： 0011 1101
 # ^	按位异或运算符：当两对应的二进位相异时，结果为1	(a ^ b) 输出结果 49 ，二进制解释： 0011 0001
 # ~	按位取反运算符：对数据的每个二进制位取反,即把1变为0,把0变为1。~x 类似于 -x-1	(~a ) 输出结果 -61 ，二进制解释： 1100 0011， 在一个有符号二进制数的补码形式。
-# <<	左移动运算符：运算数的各二进位全部左移若干位，由"<<"右边的数指定移动的位数，高位丢弃，低位补0。	a << 2 输出结果 240 ，二进制解释： 1111 0000
+# \<\<	左移动运算符：运算数的各二进位全部左移若干位，由"\<\<"右边的数指定移动的位数，高位丢弃，低位补0。	a \<\< 2 输出结果 240 ，二进制解释： 1111 0000
 # >>	右移动运算符：把">>"左边的运算数的各二进位全部右移若干位，">>"右边的数指定移动的位数	a >> 2 输出结果 15 ，二进制解释： 0000 1111
 
 # 成员运算符----------------------------------------------------------
@@ -742,10 +743,10 @@ del tinydict         # 删除字典
 # ~ + -	按位翻转, 一元加号和减号 (最后两个的方法名为 +@ 和 -@)
 # * / % //	乘，除，求余数和取整除
 # + -	加法减法
-# >> <<	右移，左移运算符
+# >> \<\<	右移，左移运算符
 # &	位 'AND'
 # ^ |	位运算符
-# <= < > >=	比较运算符
+# \<= \< > >=	比较运算符
 # == !=	等于运算符
 # = %= /= //= -= += *= **=	赋值运算符
 # is is not	身份运算符
@@ -769,7 +770,7 @@ else:
     statement_block_3
 
 # while whlie后面为false时则执行else语句块
-while counter <= n:
+while counter \<= n:
     sum = sum + counter
     counter += 1
 else:
@@ -803,7 +804,7 @@ class MyNumbers:
         return self
 
     def __next__(self):
-        if self.a <= 20:
+        if self.a \<= 20:
             x = self.a
             self.a += 1
             return x
@@ -1094,10 +1095,10 @@ OOP
 
 # ===类===
 # class ClassName:
-#     <statement-1>
+#     \<statement-1>
 #     .
 #     .
-#     <statement-N>
+#     \<statement-N>
 # ===类对象===
 # 属性引用和实例化
 class MyClass:
@@ -1160,18 +1161,18 @@ p.speak()
 # ===继承===
 # 子类（派生类 DerivedClassName）会继承父类（基类 BaseClassName）的属性和方法。
 # class DerivedClassName(BaseClassName):
-#     <statement-1>
+#     \<statement-1>
 #     .
 #     .
 #     .
-#     <statement-N>
+#     \<statement-N>
 # ===多继承===
 # class DerivedClassName(Base1, Base2, Base3):
-#     <statement-1>
+#     \<statement-1>
 #     .
 #     .
 #     .
-#     <statement-N>
+#     \<statement-N>
 # 若是父类中有相同的方法名，而在子类使用时未指定，python从左至右搜索 即方法在子类中未找到时，从左到右查找父类中是否包含方法
 # ===方法重写===
 class Parent:  # 定义父类
@@ -1660,8 +1661,8 @@ msgRoot['Subject'] = Header(subject, 'utf-8')
 
 # 发送html内容
 mail_msg = """
-<p>Python 邮件发送测试...</p>
-<p><a href="http://www.runoob.com">这是一个链接</a></p>
+\<p>Python 邮件发送测试...\</p>
+\<p>\<a href="http://www.runoob.com">这是一个链接\</a>\</p>
 """
 message = MIMEText(mail_msg, 'html', 'utf-8')
 
@@ -1694,10 +1695,10 @@ message['Subject'] = Header(subject, 'utf-8')
 # msgAlternative = MIMEMultipart('alternative')
 # msgRoot.attach(msgAlternative)
 # mail_msg = """
-# <p>Python 邮件发送测试...</p>
-# <p><a href="http://www.runoob.com">菜鸟教程链接</a></p>
-# <p>图片演示：</p>
-# <p><img src="cid:image1"></p>
+# \<p>Python 邮件发送测试...\</p>
+# \<p>\<a href="http://www.runoob.com">菜鸟教程链接\</a>\</p>
+# \<p>图片演示：\</p>
+# \<p><img src="cid:image1">\</p>
 # """
 # msgAlternative.attach(MIMEText(mail_msg, 'html', 'utf-8'))
 #
@@ -1707,7 +1708,7 @@ message['Subject'] = Header(subject, 'utf-8')
 # fp.close()
 #
 # # 定义图片 ID，在 HTML 文本中引用
-# msgImage.add_header('Content-ID', '<image1>')
+# msgImage.add_header('Content-ID', '\<image1>')
 # msgRoot.attach(msgImage)
 
 
@@ -1741,7 +1742,7 @@ import time
 # 为线程定义一个函数
 def print_time( threadName, delay):
    count = 0
-   while count < 5:
+   while count \< 5:
       time.sleep(delay)
       count += 1
       print ("%s: %s" % ( threadName, time.ctime(time.time()) ))
