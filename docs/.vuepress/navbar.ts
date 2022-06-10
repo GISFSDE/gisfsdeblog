@@ -3,14 +3,14 @@ import { navbar } from "vuepress-theme-hope";
 export default navbar([
   "/",
   "/home",
-  { text: "使用指南", icon: "creative", link: "/guide/" },
+  { text: "艺术", icon: "creative", link: "/guide/" },
   {
-    text: "博文",
+    text: "技术",
     icon: "edit",
     prefix: "/posts/",
     children: [
       {
-        text: "文章 1-4",
+        text: "后端",
         icon: "edit",
         prefix: "article/",
         children: [
@@ -21,7 +21,47 @@ export default navbar([
         ],
       },
       {
-        text: "文章 5-12",
+        text: "分布式",
+        icon: "edit",
+        prefix: "article/",
+        children: [
+          { text: "文章 1", icon: "edit", link: "article1" },
+          { text: "文章 2", icon: "edit", link: "article2" },
+          "article3",
+          "article4",
+        ],
+      },
+      {
+        text: "大数据",
+        icon: "edit",
+        prefix: "article/",
+        children: [
+          { text: "文章 1", icon: "edit", link: "article1" },
+          { text: "文章 2", icon: "edit", link: "article2" },
+          "article3",
+          "article4",
+        ],
+      },
+      {
+        text: "前端",
+        icon: "edit",
+        children: [
+          {
+            text: "文章 5",
+            icon: "edit",
+            link: "article/article5",
+          },
+          {
+            text: "文章 6",
+            icon: "edit",
+            link: "article/article6",
+          },
+          "article/article7",
+          "article/article8",
+        ],
+      },
+      {
+        text: "GIS",
         icon: "edit",
         children: [
           {
@@ -45,8 +85,83 @@ export default navbar([
     ],
   },
   {
-    text: "主题文档",
-    icon: "note",
-    link: "https://vuepress-theme-hope.github.io/v2/zh/",
+    text: "生活",
+    icon: "hot",
+    prefix: "/posts/",
+    children: [
+      {
+        text: "TODO",
+        icon: "edit",
+        prefix: "article/",
+        children: [
+          { text: "文章 1", icon: "edit", link: "article1" },
+          { text: "文章 2", icon: "edit", link: "article2" },
+          "article3",
+          "article4",
+        ],
+      },
+      {
+        text: "书影音",
+        icon: "edit",
+        prefix: "article/",
+        children: [
+          { text: "文章 1", icon: "edit", link: "article1" },
+          { text: "文章 2", icon: "edit", link: "article2" },
+          "article3",
+          "article4",
+        ],
+      },
+      {
+        text: "年月日",
+        icon: "edit",
+        prefix: "article/",
+        children: [
+          { text: "文章 1", icon: "edit", link: "article1" },
+          { text: "文章 2", icon: "edit", link: "article2" },
+          "article3",
+          "article4",
+        ],
+      },
+      {
+        text: "健康",
+        icon: "edit",
+        children: [
+          {
+            text: "文章 5",
+            icon: "edit",
+            link: "article/article5",
+          },
+          {
+            text: "文章 6",
+            icon: "edit",
+            link: "article/article6",
+          },
+          "article/article7",
+          "article/article8",
+        ],
+      },
+      {
+        text: "GIS",
+        icon: "edit",
+        children: [
+          {
+            text: "文章 5",
+            icon: "edit",
+            link: "article/article5",
+          },
+          {
+            text: "文章 6",
+            icon: "edit",
+            link: "article/article6",
+          },
+          "article/article7",
+          "article/article8",
+        ],
+      },
+      { text: "文章 9", icon: "edit", link: "article9" },
+      { text: "文章 10", icon: "edit", link: "article10" },
+      "article11",
+      "article12",
+    ],
   },
 ]);
