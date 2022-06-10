@@ -6,7 +6,7 @@ title: 主页
 heroImage: /logo.svg
 heroText: GIS-FSDE(GIS Full Stack Developer)
 heroFullScreen: true
-tagline: GIS开发、JAVA全栈开发。
+tagline: GIS开发、JAVA全栈开发。做最热爱的自己!
 projects:
   - icon: project
     name: GISFSDE
