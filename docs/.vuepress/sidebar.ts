@@ -11,36 +11,167 @@ export default sidebar([
     link: "/guide/",
     children: "structure",
   },
+
   {
-    text: "文章",
-    icon: "note",
+    text: "技术",
+    icon: "edit",
     prefix: "/posts/",
     children: [
       {
-        text: "文章 1-4",
-        icon: "note",
-        collapsable: true,
+        text: "后端",
+        icon: "edit",
         prefix: "article/",
-        children: ["article1", "article2", "article3", "article4"],
-      },
-      {
-        text: "文章 5-12",
-        icon: "note",
         children: [
-          {
-            text: "文章 5-8",
-            icon: "note",
-            collapsable: true,
-            prefix: "article/",
-            children: ["article5", "article6", "article7", "article8"],
-          },
-          {
-            text: "文章 9-12",
-            icon: "note",
-            children: ["article9", "article10", "article11", "article12"],
-          },
+          { text: "文章 1", icon: "edit", link: "article1" },
+          { text: "文章 2", icon: "edit", link: "article2" },
+          "article3",
+          "article4",
         ],
       },
+      {
+        text: "分布式",
+        icon: "edit",
+        prefix: "article/",
+        children: [
+          { text: "文章 1", icon: "edit", link: "article1" },
+          { text: "文章 2", icon: "edit", link: "article2" },
+          "article3",
+          "article4",
+        ],
+      },
+      {
+        text: "大数据",
+        icon: "edit",
+        prefix: "article/",
+        children: [
+          { text: "文章 1", icon: "edit", link: "article1" },
+          { text: "文章 2", icon: "edit", link: "article2" },
+          "article3",
+          "article4",
+        ],
+      },
+      {
+        text: "前端",
+        icon: "edit",
+        children: [
+          {
+            text: "文章 5",
+            icon: "edit",
+            link: "article/article5",
+          },
+          {
+            text: "文章 6",
+            icon: "edit",
+            link: "article/article6",
+          },
+          "article/article7",
+          "article/article8",
+        ],
+      },
+      {
+        text: "GIS",
+        icon: "edit",
+        children: [
+          {
+            text: "文章 5",
+            icon: "edit",
+            link: "article/article5",
+          },
+          {
+            text: "文章 6",
+            icon: "edit",
+            link: "article/article6",
+          },
+          "article/article7",
+          "article/article8",
+        ],
+      },
+      { text: "文章 9", icon: "edit", link: "article9" },
+      { text: "文章 10", icon: "edit", link: "article10" },
+      "article11",
+      "article12",
     ],
   },
+  {
+    text: "生活",
+    icon: "hot",
+    prefix: "/posts/",
+    children: [
+      {
+        text: "TODO",
+        icon: "edit",
+        prefix: "article/",
+        children: [
+          { text: "文章 1", icon: "edit", link: "article1" },
+          { text: "文章 2", icon: "edit", link: "article2" },
+          "article3",
+          "article4",
+        ],
+      },
+      {
+        text: "书影音",
+        icon: "edit",
+        prefix: "article/",
+        children: [
+          { text: "文章 1", icon: "edit", link: "article1" },
+          { text: "文章 2", icon: "edit", link: "article2" },
+          "article3",
+          "article4",
+        ],
+      },
+      {
+        text: "年月日",
+        icon: "edit",
+        prefix: "article/",
+        children: [
+          { text: "文章 1", icon: "edit", link: "article1" },
+          { text: "文章 2", icon: "edit", link: "article2" },
+          "article3",
+          "article4",
+        ],
+      },
+      {
+        text: "健康",
+        icon: "edit",
+        children: [
+          {
+            text: "文章 5",
+            icon: "edit",
+            link: "article/article5",
+          },
+          {
+            text: "文章 6",
+            icon: "edit",
+            link: "article/article6",
+          },
+          "article/article7",
+          "article/article8",
+        ],
+      },
+      {
+        text: "GIS",
+        icon: "edit",
+        children: [
+          {
+            text: "文章 5",
+            icon: "edit",
+            link: "article/article5",
+          },
+          {
+            text: "文章 6",
+            icon: "edit",
+            link: "article/article6",
+          },
+          "article/article7",
+          "article/article8",
+        ],
+      },
+      { text: "文章 9", icon: "edit", link: "article9" },
+      { text: "文章 10", icon: "edit", link: "article10" },
+      "article11",
+      "article12",
+    ],
+  },
+  { text: "艺术", icon: "creative", link: "/guide/" },
+  { text: "关于我", icon: "emoji", link: "/guide/" },
 ]);

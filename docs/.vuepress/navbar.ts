@@ -3,7 +3,6 @@ import { navbar } from "vuepress-theme-hope";
 export default navbar([
   "/",
   "/home",
-  { text: "艺术", icon: "creative", link: "/guide/" },
   {
     text: "技术",
     icon: "edit",
@@ -164,4 +163,6 @@ export default navbar([
       "article12",
     ],
   },
+  { text: "艺术", icon: "creative", link: "/guide/" },
+  { text: "关于我", icon: "emoji", link: "/guide/" },
 ]);

@@ -99,7 +99,7 @@ features:
     details: 包括图标支持、全屏按钮、返回顶部按钮等
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/feature/
 copyright: false
-footer: MIT Licensed | Copyright © 2019-present GIS-FSDE
+footer: <a href="https://beian.miit.gov.cn">浙ICP备2022017274号</a> | Copyright © 2022-present GIS-FSDE
 ---
 
 这是普通主页的案例。你可以在这里放置你的主体内容。
