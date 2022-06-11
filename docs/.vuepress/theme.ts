@@ -12,20 +12,20 @@ export default hopeTheme({
     green: "#3eaf7c",
     orange: "#fb9b5f",
   },
-  hostname: "https://vuepress-theme-hope-v2-demo.mrhope.site",
+  hostname: "https://www.gisfsde.com",
 
   author: {
     name: "GIS-FSDE",
-    url: "https://mrhope.site",
+    url: "https://www.gisfsde.com",
   },
 
   iconPrefix: "iconfont icon-",
 
   logo: "/logo.svg",
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  repo: "GISFSDE/",
 
-  docsDir: "demo/src",
+  docsDir: "docs",
 
   // navbar
   navbar: navbar,
@@ -33,15 +33,17 @@ export default hopeTheme({
   // sidebar
   sidebar: sidebar,
 
-  footer: "默认页脚",
+  footer: '<a href="https://beian.miit.gov.cn">浙ICP备2022017274号</a>',
 
   displayFooter: true,
 
-  pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime"],
+  pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime", "Word"],
 
   blog: {
     description: "-----GISFSDE(GIS Full Stack Developer)-----GIS开发、JAVA全栈开发",
-    intro: "/intro.html",
+    // 个人介绍地址
+    intro: "https://www.gisfsde.com/guide/",
+    // 自媒体矩阵
     medias: {
       Baidu: "https://example.com",
       Bitbucket: "https://example.com",
@@ -73,11 +75,14 @@ export default hopeTheme({
       Youtube: "https://example.com",
       Zhihu: "https://example.com",
     },
+    sidebarDisplay: "always",
+    timeline: "光阴似箭",
+    // articlePerPage:10   分页数
   },
 
   encrypt: {
     config: {
-      "/guide/encrypt.html": ["1234"],
+      "/guide/encrypt.html": ["724111"],
     },
   },
 

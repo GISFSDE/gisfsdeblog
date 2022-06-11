@@ -1,9 +1,6 @@
 ---
 index: false
-icon: creative
-date: 2022-06-06
-category:
-  - 使用指南
+article: false
 ---
 # 【关于我】
 
@@ -70,8 +67,6 @@ category:
 ### 如有任何交流需求，请添加个人公众号留言
 
 ### 添加前请备注来由。(๑‾ ꇴ ‾๑)
-
-![](http://qnimg.gisfsde.com/个人二维码.jpg)
 
 <img src="http://qnimg.gisfsde.com/%E9%BB%98%E8%AE%A4%E6%A0%87%E9%A2%98_%E5%8A%A8%E6%80%81%E6%A8%AA%E7%89%88%E4%BA%8C%E7%BB%B4%E7%A0%81_2020-12-25-0%20(2).gif" style="zoom:80%;" />
 

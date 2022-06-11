@@ -9,6 +9,7 @@ export default sidebar([
     icon: "creative",
     prefix: "/guide/",
     link: "/guide/",
+    // structure自动根据明文件目录结构生成侧边目录
     children: "structure",
   },
   {

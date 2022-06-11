@@ -38,7 +38,7 @@ projects:
     desc: 自定义详细介绍
     link: https://你的自定义链接
 
-footer: 浙ICP备2022017274号
+footer: <a href="https://beian.miit.gov.cn">浙ICP备2022017274号</a>
 ---
 
 这是一个主页。

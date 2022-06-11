@@ -1,7 +1,11 @@
 ---
-index: 2
+index: 1
 icon: markdown
 title: 博客模板
+author: lxl
+isOriginal: true
+stick: true
+star: true
 date: 2022-06-06
 category:
   - 博客模板
@@ -70,11 +74,27 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 
 ## CodePen
 
-<CodePenuser="kowlor"slug-hash="ZYYQoy"title="Solar System animation - Pure CSS":default-tab="['css','result']":theme="$isDarkMode? 'dark': 'light'"/>
+<CodePen
+  link="https://codepen.io/kowlor/pen/ZYYQoy"
+  title="Solar System animation - Pure CSS"
+  :default-tab="['css','result']"
+  :theme="$isDarkMode? 'dark': 'light'"
+/>
 
-<CodePenlink="https://codepen.io/kowlor/pen/ZYYQoy"title="Solar System animation - Pure CSS":default-tab="['css','result']":theme="$isDarkMode? 'dark':'light'"/>
+<CodePen
+  link="https://codepen.io/kowlor/pen/ZYYQoy"
+  title="Envelope w/ Hearts"
+  status="clicktorun"
+  :theme="$isDarkMode? 'dark': 'light'"
+/>
 
-<CodePenlink="https://codepen.io/kowlor/pen/ZYYQoy"title="Envelope w/ Hearts"status="clicktorun":theme="$isDarkMode? 'dark': 'light'"/>
+<CodePen
+  user="kowlor"
+  slug-hash="ZYYQoy"
+  title="Solar System animation - Pure CSS"
+  :default-tab="['css','result']"
+  :theme="$isDarkMode? 'dark': 'light'"
+/>
 
 ## FontIcon
 
@@ -91,6 +111,8 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 ## StackBlitz
 
 <StackBlitz id="vuepress-theme-hope" />
+
+<StackBlitz id="vuepress-theme-hope" hideExplorer hideNavigation hidedevtools />
 
 # 幻灯片
 
