@@ -9,9 +9,19 @@ heroFullScreen: true
 tagline: GIS开发、JAVA全栈开发者。做最热爱的自己!
 projects:
   - icon: project
-    name: GISFSDE
-    desc: GIS开发、JAVA全栈开发。
-    link: https://你的项目链接
+    name: GIS-DEMO
+    desc: GIS方面的DEMO,包含Leaflet、Mapbox、Cesium。
+    link: https://github.com/GISFSDE/giser
+
+  - icon: project
+    name: JAVA-DEMO
+    desc: JAVA方面的DEMO,包含所有基础知识、算法。
+    link: https://github.com/GISFSDE/mylearnproject
+
+  - icon: project
+    name: 前端-DEMO
+    desc: 前端方面的DEMO,包含VUE、ES6、three.js、WebGL等。
+    link: https://github.com/GISFSDE/vuelearn
 
   - icon: link
     name: 链接名称
