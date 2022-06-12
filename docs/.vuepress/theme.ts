@@ -75,7 +75,8 @@ export default hopeTheme({
       Youtube: "https://example.com",
       Zhihu: "https://example.com",
     },
-    sidebarDisplay: "always",
+    // 侧边栏显示
+    // sidebarDisplay: "always",
     timeline: "光阴似箭",
     // articlePerPage:10   分页数
   },

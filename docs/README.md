@@ -40,9 +40,7 @@ projects:
 
 footer: <a href="https://beian.miit.gov.cn">浙ICP备2022017274号</a>
 ---
-
-这是一个主页。
-
-要使用此布局，你应该在页面前端设置 `layout: Blog` 和 `home: true`。
-
-相关配置文档请见 [主页](https://vuepress-theme-hope.github.io/v2/zh/guide/blog/home/)。
+<Meting server="netease"
+        type="playlist"
+        mid="2539599584"
+        :lrc-type="3"/>

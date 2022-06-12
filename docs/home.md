@@ -5,6 +5,7 @@ title: GIS-FSDE
 heroImage: /logo.svg
 heroText: GIS-FSDE
 tagline: GISFSDE(GIS Full Stack Developer) GIS开发、JAVA全栈开发。
+# 按钮
 actions:
   - text: 使用指南 💡
     link: /guide/
@@ -12,7 +13,7 @@ actions:
   - text: 主页 🏠
     link: /
     type: secondary
-
+# 介绍板块
 features:
   - title: Markdown 增强
     icon: markdown
@@ -101,9 +102,3 @@ features:
 copyright: false
 footer: <a href="https://beian.miit.gov.cn">浙ICP备2022017274号</a> | Copyright © 2022-present GIS-FSDE
 ---
-
-这是普通主页的案例。你可以在这里放置你的主体内容。
-
-想要使用此布局，你需要在页面 front matter 中设置 `home: true`。
-
-配置项的相关说明详见 [项目主页配置](https://vuepress-theme-hope.github.io/v2/zh/guide/layout/home/)。
