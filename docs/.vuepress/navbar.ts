@@ -17,11 +17,11 @@ export default navbar([
           { text: "JVM", icon: "edit", link: "JVM 与上层技术" },
           { text: "Python", icon: "edit", link: "Python3学习" },
           { text: "MYSQL", icon: "edit", link: "MYSQL优化" },
-          { text: "PostgreSQL", icon: "edit", link: "article2" },
+          { text: "PostgreSQL", icon: "edit", link: "inconstruction" },
           { text: "MongoDB", icon: "edit", link: "MongoDB" },
-          { text: "系统优化", icon: "edit", link: "article2" },
-          { text: "系统设计", icon: "edit", link: "article2" },
-          { text: "功能DEMO", icon: "edit", link: "article2" },
+          { text: "系统优化", icon: "edit", link: "inconstruction" },
+          { text: "系统设计", icon: "edit", link: "inconstruction" },
+          { text: "功能DEMO", icon: "edit", link: "inconstruction" },
         ],
       },
       {
@@ -31,21 +31,21 @@ export default navbar([
         children: [
           { text: "项目管理", icon: "edit", link: "项目管理" },
           { text: "架构师", icon: "edit", link: "架构师" },
-          { text: "软件工程", icon: "edit", link: "article2" },
+          { text: "软件工程", icon: "edit", link: "inconstruction" },
           { text: "网络", icon: "edit", link: "计算机网络" },
-          { text: "安全", icon: "edit", link: "article2" },
+          { text: "安全", icon: "edit", link: "inconstruction" },
           { text: "算法", icon: "edit", link: "每日算法" },
           { text: "设计模式", icon: "edit", link: "设计模式" },
-          { text: "测试", icon: "edit", link: "article1" },
+          { text: "测试", icon: "edit", link: "inconstruction" },
           { text: "程序员修电脑", icon: "edit", link: "开发修电脑" },
-          { text: "数学", icon: "edit", link: "article2" },
+          { text: "数学", icon: "edit", link: "inconstruction" },
           { text: "英语", icon: "edit", link: "每日英语" },
         ],
       },
       {
         text: "框架-中间件",
         icon: "edit",
-        prefix: "article/",
+        prefix: "2021/",
         children: [
           { text: "Spring", icon: "edit", link: "Spring" },
           { text: "SpringMVC", icon: "edit", link: "SpringMVC" },
@@ -57,7 +57,7 @@ export default navbar([
           { text: "RabbitMQ", icon: "edit", link: "RabbitMQ" },
           { text: "Redis", icon: "edit", link: "Redis" },
           { text: "Nginx", icon: "edit", link: "Nginx" },
-          { text: "Maven", icon: "edit", link: "article1" },
+          { text: "Maven", icon: "edit", link: "inconstruction" },
 
         ],
       },
@@ -69,9 +69,9 @@ export default navbar([
 
           { text: "Linux", icon: "edit", link: "Linux" },
           { text: "Docker", icon: "edit", link: "Docker" },
-          { text: "IIS", icon: "edit", link: "article2" },
-          { text: "Jenkins", icon: "edit", link: "article2" },
-          { text: "从零网站上线", icon: "edit", link: "article2" },
+          { text: "IIS", icon: "edit", link: "inconstruction" },
+          { text: "Jenkins", icon: "edit", link: "inconstruction" },
+          { text: "从零网站上线", icon: "edit", link: "inconstruction" },
 
         ],
       },
@@ -102,9 +102,9 @@ export default navbar([
       {
         text: "技术前沿",
         icon: "edit",
-        prefix: "article/",
+        prefix: "2021/",
         children: [
-          { text: "项目管理", icon: "edit", link: "article1" },
+          { text: "项目管理", icon: "edit", link: "inconstruction" },
         ],
       },
       {
@@ -112,23 +112,23 @@ export default navbar([
         icon: "edit",
         prefix: "2021/",
         children: [
-          { text: "大数据", icon: "edit", link: "article1" },
+          { text: "大数据", icon: "edit", link: "inconstruction" },
         ],
       },
       {
         text: "AI",
         icon: "edit",
-        prefix: "article/",
+        prefix: "2021/",
         children: [
-          { text: "深度学习", icon: "edit", link: "article1" },
+          { text: "深度学习", icon: "edit", link: "inconstruction" },
         ],
       },
       {
         text: "GAME",
         icon: "edit",
-        prefix: "article/",
+        prefix: "2021/",
         children: [
-          { text: "UE4", icon: "edit", link: "article1" },
+          { text: "UE4", icon: "edit", link: "inconstruction" },
         ],
       },
       {
@@ -177,9 +177,9 @@ export default navbar([
       {
         text: "技术思考",
         icon: "edit",
-        prefix: "article/",
+        prefix: "2021/",
         children: [
-          { text: "项目管理", icon: "edit", link: "article1" },
+          { text: "项目管理", icon: "edit", link: "inconstruction" },
         ],
       },
       {
@@ -248,17 +248,17 @@ export default navbar([
           {
             text: "健身知识",
             icon: "edit",
-            link: "article/article5",
+            link: "2021/inconstruction",
           },
           {
             text: "营养搭配",
             icon: "edit",
-            link: "article/article6",
+            link: "2021/inconstruction",
           },
           {
             text: "美食制作",
             icon: "edit",
-            link: "article/article6",
+            link: "2021/inconstruction",
           },
         ],
       },
@@ -269,12 +269,12 @@ export default navbar([
           {
             text: "电脑工具",
             icon: "edit",
-            link: "article/article5",
+            link: "2021/inconstruction",
           },
           {
             text: "",
             icon: "edit",
-            link: "article/article6",
+            link: "2021/inconstruction",
           },
         ],
       },
@@ -285,17 +285,17 @@ export default navbar([
           {
             text: "PS",
             icon: "edit",
-            link: "article/article5",
+            link: "2021/inconstruction",
           },
           {
             text: "AE",
             icon: "edit",
-            link: "article/article6",
+            link: "2021/inconstruction",
           },
           {
             text: "平面设计",
             icon: "edit",
-            link: "article/article6",
+            link: "2021/inconstruction",
           }
         ],
       },
@@ -306,7 +306,7 @@ export default navbar([
           {
             text: "C4D",
             icon: "edit",
-            link: "article/article5",
+            link: "2021/inconstruction",
           },
         ],
       },
@@ -320,31 +320,31 @@ export default navbar([
       {
         text: "音乐",
         icon: "edit",
-        prefix: "article/",
+        prefix: "2021/",
         children: [
-          { text: "乐理", icon: "edit", link: "article1" },
-          { text: "吉他谱", icon: "edit", link: "article2" },
-          { text: "钢琴谱", icon: "edit", link: "article2" },
-          { text: "其他谱", icon: "edit", link: "article2" },
-          { text: "作词编曲", icon: "edit", link: "article2" },
+          { text: "乐理", icon: "edit", link: "inconstruction" },
+          { text: "吉他谱", icon: "edit", link: "inconstruction" },
+          { text: "钢琴谱", icon: "edit", link: "inconstruction" },
+          { text: "其他谱", icon: "edit", link: "inconstruction" },
+          { text: "作词编曲", icon: "edit", link: "inconstruction" },
         ],
       },
       {
         text: "摄影",
         icon: "edit",
-        prefix: "article/",
+        prefix: "2021/",
         children: [
           { text: "审美提高", icon: "edit", link: "album" },
-          { text: "摄影", icon: "edit", link: "article2" },
+          { text: "摄影", icon: "edit", link: "inconstruction" },
         ],
       },
       {
         text: "数绘",
         icon: "edit",
-        prefix: "article/",
+        prefix: "2021/",
         children: [
-          { text: "审美提高", icon: "edit", link: "article1" },
-          { text: "数绘", icon: "edit", link: "article2" },
+          { text: "审美提高", icon: "edit", link: "inconstruction" },
+          { text: "数绘", icon: "edit", link: "inconstruction" },
         ],
       },
       {
@@ -354,22 +354,22 @@ export default navbar([
           {
             text: "摄影记录",
             icon: "edit",
-            link: "article/article5",
+            link: "2021/inconstruction",
           },
           {
             text: "绘画记录",
             icon: "edit",
-            link: "article/article6",
+            link: "2021/inconstruction",
           },
           {
             text: "音乐记录",
             icon: "edit",
-            link: "article/article6",
+            link: "2021/inconstruction",
           },
           {
             text: "视频记录",
             icon: "edit",
-            link: "article/article6",
+            link: "2021/inconstruction",
           },
         ],
       },

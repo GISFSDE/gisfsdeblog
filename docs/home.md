@@ -3,8 +3,9 @@ home: true
 icon: home
 title: GIS-FSDE
 heroImage: /logo.svg
-heroText: GIS-FSDE
-tagline: GISFSDE(GIS Full Stack Developer) GIS开发、JAVA全栈开发。
+heroText: GISER
+bgImage: C:\Users\Dcjczx\Desktop\hero.jpg | false
+tagline: 【GISER】 GIS开发者一站式学习平台
 # 按钮
 actions:
   - text: 使用指南 💡
@@ -15,90 +16,92 @@ actions:
     type: secondary
 # 介绍板块
 features:
-  - title: Markdown 增强
+  - title: Leaflet
     icon: markdown
-    details: 新增文字对齐、上下角标、脚注、标记、任务列表、数学公式、流程图、图表与幻灯片支持
+    details: an open-source JavaScript library for mobile-friendly interactive maps
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/markdown/
 
-  - title: 幻灯片页面
+  - title:   Mapbox
     icon: slides
-    details: 添加幻灯片页面以显示你喜欢的内容
+    details: Mapbox powers navigation for people, packages, and vehicles everywhere.
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/layout/slides
 
-  - title: 布局增强
+  - title: Cesium  
     icon: layout
-    details: 添加路径导航、页脚、改进的导航栏、改进的页面导航等。
+    details: Cesium is the open platform for software applications designed to unleash the power of 3D data.
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/layout/
 
-  - title: 浏览量与评论
+  - title: ArcGIS  
     icon: comment
-    details: 配合 Waline 来开启阅读量统计与评论支持
+    details: ArcGIS offers unique capabilities and flexible licensing for applying location-based analytics to your business practices. Gain greater insights using contextual tools to visualize and analyze your data. Collaborate and share via maps, apps, dashboards and reports.
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/feature/comment.html
 
-  - title: 文章信息
+  - title: QGIS
     icon: info
-    details: 为你的文章添加作者、写作日期、预计阅读时间、字数统计等信息
+    details: Create, edit, visualise, analyse and publish geospatial information on Windows, Mac, Linux, BSD and mobile devices
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/feature/page-info.html
 
-  - title: 博客支持
+  - title: SuperMap
     icon: blog
     details: 使用一些很棒的布局提供博客功能，通过文章的日期、标签和分类，自动生成文章、分类、标签与时间轴列表
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/blog/intro.html
 
-  - title: 主题色切换
+  - title: OGC
     icon: palette
     details: 支持自定义主题色并允许用户在预设的主题颜色之间切换
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/interface/theme-color.html
 
-  - title: 深色模式
+  - title: 《地理信息系统导论》
     icon: contrast
-    details: 可以自由切换浅色模式与深色模式
+    details: GIS基础理论
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/interface/darkmode.html
 
-  - title: 完整的无障碍支持
+  - title: 数据相关
     icon: support
-    details: 为你的网站带来完整的无障碍支持
+    details: 数据收集转换运用
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/interface/accessibility.html
 
-  - title: 文章加密
+  - title: 相关算法
     icon: lock
-    details: 你可以为你的特定页面或特定目录进行加密，以便陌生人不能随意访问它们
+    details: 相关算法
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/feature/encrypt.html
 
-  - title: 复制按钮
+  - title: JAVA
     icon: copy
-    details: 一键复制代码块中的代码
+    details: 后台服务
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/feature/copy-code.html
 
-  - title: 图片预览
+  - title: Geoserver
     icon: pic
-    details: 像相册一样允许你浏览、缩放并分享你的页面图片
+    details: GeoServer 是 OpenGIS Web 服务器规范的 J2EE 实现，利用 GeoServer 可以方便的发布地图数据，允许用户对特征数据进行更新、删除、插入操作
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/feature/photo-swipe.html
 
-  - title: SEO 增强
+  - title: Python django
     icon: config
-    details: 将最终生成的网页针对搜索引擎进行优化。
+    details: Django是高水准的Python编程语言驱动的一个开源模型．视图，控制器风格的Web应用程序框架，它起源于开源社区。
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/advanced/seo.html
 
-  - title: Sitemap
+  - title: arcgis server
     icon: sitemap
-    details: 自动为你的网站生成 Sitemap
+    details: ArcGISServer 是ESRI 发布的提供面向Web 空间数据服务的一个企业级GIS软件平台,提供创建和配置GIS应用程序和服务的框架，这样可以满足不同客户的各种需求。自9.2 版起ArcGIS Server包含了ArcSDE 空间数据引擎,用于通过多种关系型数据库来管理基于多用户和多事务的地理空间数据库。
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/advanced/sitemap.html
 
-  - title: Feed 支持
+  - title: Supermap Server
     icon: rss
-    details: 生成你的 Feed，并通知你的用户订阅它
+    details: Supermap Server
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/advanced/feed.html
 
-  - title: PWA 支持
+  - title: 行业最新咨询与实际运用
     icon: mobile
-    details: 让你的网站更像一个 APP
+    details: 行业最新咨询与实际运用
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/advanced/pwa.html
 
-  - title: 更多新特性
-    icon: more
-    details: 包括图标支持、全屏按钮、返回顶部按钮等
-    link: https://vuepress-theme-hope.github.io/v2/zh/guide/feature/
 copyright: false
 footer: <a href="https://beian.miit.gov.cn">浙ICP备2022017274号</a> | Copyright © 2022-present GIS-FSDE
 ---
+# 资源导航
+https://leafletjs.com/  
+https://www.mapbox.cn/  
+https://www.cesium.com/  
+https://www.esri.com/en-us/home  
+https://qgis.org/en/site/#
