@@ -50,7 +50,3 @@ projects:
 
 footer: <a href="https://beian.miit.gov.cn">浙ICP备2022017274号</a>
 ---
-<Meting server="netease"
-        type="playlist"
-        mid="2539599584"
-        :lrc-type="3"/>
