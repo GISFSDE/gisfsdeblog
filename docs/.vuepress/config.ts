@@ -1,6 +1,8 @@
 import { defineUserConfig } from "vuepress";
 import { componentsPlugin } from "vuepress-plugin-components";
 import theme from "./theme";
+import { sitemapPlugin } from "vuepress-plugin-sitemap2";
+import { seoPlugin } from "vuepress-plugin-seo2";
 
 export default defineUserConfig({
   lang: "zh-CN",
@@ -21,6 +23,15 @@ export default defineUserConfig({
 
   theme,
   plugins: [
+    // https://vuepress-theme-hope.github.io/v2/seo/zh/config.html
+    seoPlugin({
+      hostname: "www.gisfsde.com",
+      author: "GIS-FSDE"
+    }),
+    // https://vuepress-theme-hope.github.io/v2/sitemap/zh/config.html
+    sitemapPlugin({
+      hostname: "www.gisfsde.com"
+    }),
     componentsPlugin({
       addThis: "ra-62a4a48ea8503a62",
       backToTop: true,

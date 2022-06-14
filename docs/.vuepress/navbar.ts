@@ -14,9 +14,9 @@ export default navbar([
         prefix: "2021/",
         children: [
           { text: "JAVA", icon: "edit", link: "Java" },
-          { text: "JVM", icon: "edit", link: "JVM 与上层技术" },
-          { text: "Python", icon: "edit", link: "Python3学习" },
-          { text: "MYSQL", icon: "edit", link: "MYSQL优化" },
+          { text: "JVM", icon: "edit", link: "JVM" },
+          { text: "Python", icon: "edit", link: "Python3" },
+          { text: "MYSQL", icon: "edit", link: "MYSQLOptimize" },
           { text: "PostgreSQL", icon: "edit", link: "inconstruction" },
           { text: "MongoDB", icon: "edit", link: "MongoDB" },
           { text: "系统优化", icon: "edit", link: "inconstruction" },
@@ -29,17 +29,17 @@ export default navbar([
         icon: "edit",
         prefix: "2021/",
         children: [
-          { text: "项目管理", icon: "edit", link: "项目管理" },
-          { text: "架构师", icon: "edit", link: "架构师" },
+          { text: "项目管理", icon: "edit", link: "PM" },
+          { text: "架构师", icon: "edit", link: "Architect" },
           { text: "软件工程", icon: "edit", link: "inconstruction" },
-          { text: "网络", icon: "edit", link: "计算机网络" },
+          { text: "网络", icon: "edit", link: "Network" },
           { text: "安全", icon: "edit", link: "inconstruction" },
-          { text: "算法", icon: "edit", link: "每日算法" },
-          { text: "设计模式", icon: "edit", link: "设计模式" },
+          { text: "算法", icon: "edit", link: "Algorithm" },
+          { text: "设计模式", icon: "edit", link: "DesignPatterns" },
           { text: "测试", icon: "edit", link: "inconstruction" },
-          { text: "程序员修电脑", icon: "edit", link: "开发修电脑" },
+          { text: "程序员修电脑", icon: "edit", link: "DevelopersFixComputer" },
           { text: "数学", icon: "edit", link: "inconstruction" },
-          { text: "英语", icon: "edit", link: "每日英语" },
+          { text: "英语", icon: "edit", link: "EnglishDay" },
         ],
       },
       {
@@ -82,12 +82,17 @@ export default navbar([
           {
             text: "前端",
             icon: "edit",
-            link: "2021/前端",
+            link: "2021/FrontEnd",
           },
           {
             text: "UI设计",
             icon: "edit",
-            link: "2021/前端",
+            link: "2021/FrontEnd",
+          },
+          {
+            text: "小程序",
+            icon: "edit",
+            link: "2021/WMP",
           },
         ],
       },
@@ -187,7 +192,7 @@ export default navbar([
         icon: "edit",
         prefix: "2021/",
         children: [
-          { text: "如何学习一个新知识", icon: "edit", link: "如何学习一个新知识" },
+          { text: "如何学习一个新知识", icon: "edit", link: "HowToLearn" },
         ],
       },
     ],
@@ -210,8 +215,8 @@ export default navbar([
         icon: "edit",
         prefix: "2021/",
         children: [
-          { text: "穿搭", icon: "edit", link: "健身穿搭" },
-          { text: "护肤", icon: "edit", link: "健身穿搭" },
+          { text: "穿搭", icon: "edit", link: "Health" },
+          { text: "护肤", icon: "edit", link: "Health" },
         ],
       },
       {
@@ -219,9 +224,9 @@ export default navbar([
         icon: "edit",
         prefix: "2021/",
         children: [
-          { text: "自媒体规划", icon: "edit", link: "自媒体" },
-          { text: "自媒体矩阵", icon: "edit", link: "自媒体" },
-          { text: "自媒体知识", icon: "edit", link: "自媒体" },
+          { text: "自媒体规划", icon: "edit", link: "We-Media" },
+          { text: "自媒体矩阵", icon: "edit", link: "We-Media" },
+          { text: "自媒体知识", icon: "edit", link: "We-Media" },
         ],
       },
       {
@@ -229,8 +234,8 @@ export default navbar([
         icon: "edit",
         prefix: "2021/",
         children: [
-          { text: "读后感", icon: "edit", link: "书影音" },
-          { text: "观后感", icon: "edit", link: "书影音" },
+          { text: "读后感", icon: "edit", link: "BMM" },
+          { text: "观后感", icon: "edit", link: "BMM" },
         ],
       },
       {
@@ -238,7 +243,7 @@ export default navbar([
         icon: "edit",
         prefix: "2021/",
         children: [
-          { text: "年月日", icon: "edit", link: "年月总结" },
+          { text: "年月日", icon: "edit", link: "Summarize" },
         ],
       },
       {
