@@ -3,9 +3,9 @@ index: 1
 icon: markdown
 title: 博客模板
 author: lxl
-isOriginal: true
-stick: true
-star: true
+# isOriginal: true
+# sticky: true
+# star: true
 date: 2022-06-06
 category:
   - 博客模板

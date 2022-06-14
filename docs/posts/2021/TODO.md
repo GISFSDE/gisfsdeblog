@@ -1,8 +1,12 @@
 ---
-index: 2
-icon: markdown
+index: 1
+icon: lock
 title: TODO
 date: 2022-06-06
+author: lxl
+isOriginal: true
+# sticky: true
+star: true
 category:
   - TODO
 tag:
@@ -12,12 +16,10 @@ tag:
 
 
 > **所有生活、技术 拟计划**
->
 > **工具：时光序**
->
 > **流程：拟计划 —》时光序 —》简化记录 —》固定开展**
 
-<!--more-->
+<!-- more -->
 
 1. > **睡前只能看kindel**
 2. > **有时候需要仰望天空**

@@ -11,7 +11,7 @@ tag:
 
 > Linux常用知识、服务器选择、搭建个人网盘、JAVA开发相关软件配置、博客搭建、域名配置、相关软件推荐。
 
-<!--more-->
+<!-- more -->
 
 ![image-20211027122241544](http://qnimg.gisfsde.com/work/image-20211027122241544.png)
 

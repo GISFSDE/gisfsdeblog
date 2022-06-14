@@ -1,5 +1,5 @@
 ---
-index: 2
+index: 1
 icon: markdown
 title: BUG
 date: 2022-06-06
@@ -8,11 +8,10 @@ category:
 tag:
   - BUG
 ---
-### 一次相见，绝不再见
-
+> 一次相见，绝不再见
 > BUG分类解决记录，常见排查方法，常见避免方法总结。
 
-<!--more-->
+<!-- more -->
 
 # MYSQL
 

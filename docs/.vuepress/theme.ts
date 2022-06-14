@@ -83,7 +83,8 @@ export default hopeTheme({
 
   encrypt: {
     config: {
-      "/guide/encrypt.html": ["724111"],
+      "/posts/2021/TODO.html": ["724111"],
+      "/posts/2021/Life.html": ["724111"],
     },
   },
 

@@ -3,6 +3,7 @@ index: 2
 icon: markdown
 title: Life
 date: 2022-06-06
+article: false
 category:
   - Life
 tag:

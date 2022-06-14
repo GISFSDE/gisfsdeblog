@@ -20,6 +20,7 @@ YAML Frontmatter  markdown文件YAML配置头用两个---包裹
 node：https://nodejs.org/zh-cn/
 corepack enable
 corepack prepare pnpm@7.1.0 --activate
+set-ExecutionPolicy RemoteSigned
 #安装
 （或 npm) pnpm create vuepress-theme-hope@next （或@具体版本)  docs
 #升级

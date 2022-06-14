@@ -11,12 +11,12 @@ tag:
 
 > # 新学四问
 >
-> WHY【与前代优化了什么，弥补了什么空白】微服务，主流
-> WHAT【框架，思维导图，主题框架】eureka注册中心，Gateway网关，Ribbon负载均衡，Feign服务调用，Hystrix熔断器等，springcloudalibaba
-> HOW【如何记忆，学习资源】:[bilibili](https://www.bilibili.com/video/BV18E411x7eT?from=search&seid=14879779334617797619)，[官网](https://spring.io/projects/spring-cloud#overview)
-> LEVEL【不是每个都学精】当前阶段熟练运用
+> WHY【与前代优化了什么，弥补了什么空白】微服务，主流  
+> WHAT【框架，思维导图，主题框架】eureka注册中心，Gateway网关，Ribbon负载均衡，Feign服务调用，Hystrix熔断器等，springcloudalibaba  
+> HOW【如何记忆，学习资源】:[bilibili](https://www.bilibili.com/video/BV18E411x7eT?from=search&seid=14879779334617797619)，[官网](https://spring.io/projects/spring-cloud#overview)  
+> LEVEL【不是每个都学精】当前阶段熟练运用  
 
-<!--more-->
+<!-- more -->
 
 # Spring Cloud 【[Hoxton](https://github.com/spring-cloud/spring-cloud-release/wiki/Spring-Cloud-Hoxton-Release-Notes)】
 

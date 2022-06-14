@@ -20,13 +20,15 @@ tag:
   - template
 # 此页面会在文章列表置顶
 sticky: false
+#幻灯片全屏布局
+# layout: Slide
 # 此页面会出现在首页的文章板块中
-star: true
+# star: true
 # 你可以自定义页脚
 footer: 这是测试显示的页脚
 ---
 
-> 介绍
+> 博客模板
 
 <!-- more -->
 
@@ -67,7 +69,21 @@ contributors: true
 copyright: true
 backToTop: true
 copy.disableCopy: true
-copy.disableSelection: true -->
+copy.disableSelection: true
+#组件禁用
+navbar: false
+sidebar: false
+breadcrumb: false
+pageInfo: false
+contributors: false
+editLink: false
+lastUpdated: false
+prev: false
+next: false
+comment: false
+footer: false
+backtotop: false
+ -->
 # 进度： 【】
 
 # 快查

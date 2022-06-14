@@ -11,7 +11,7 @@ tag:
 
 > Spring5  轻量级的开源的 JavaEE 框架
 
-<!--more-->
+<!-- more -->
 
 # 进度【55，Webflux】
 
@@ -2388,14 +2388,14 @@ public void accountMoney() {
 
 ​	（2）Spring中七种事务传播行为
 
-| 事务传播( propagation )行为类型 | 说明                                                         |
-| ------------------------------- | ------------------------------------------------------------ |
+| 事务传播( propagation )行为类型 | 说明                                                                                                    |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | PROPAGATION_REQUIRED            | requirde 如果当前没有事务，就新建一个事务，如果已经存在一个事务中，加入到这个事务中。这是最常见的选择。 |
-| PROPAGATION_SUPPORTS            | supports 支持当前事务，如果当前没有事务，就以非事务方式执行。 |
-| PROPAGATION_MANDATORY           | mandatory 使用当前的事务，如果当前没有事务，就抛出异常。     |
-| PROPAGATION_REQUIRES_NEW        | requirde _new 新建事务，如果当前存在事务，把当前事务挂起。   |
-| PROPAGATION_NOT_SUPPORTED       | not_supported以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。 |
-| PROPAGATION_NEVER               | never 以非事务方式执行，如果当前存在事务，则抛出异常。       |
+| PROPAGATION_SUPPORTS            | supports 支持当前事务，如果当前没有事务，就以非事务方式执行。                                           |
+| PROPAGATION_MANDATORY           | mandatory 使用当前的事务，如果当前没有事务，就抛出异常。                                                |
+| PROPAGATION_REQUIRES_NEW        | requirde _new 新建事务，如果当前存在事务，把当前事务挂起。                                              |
+| PROPAGATION_NOT_SUPPORTED       | not_supported以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。                                 |
+| PROPAGATION_NEVER               | never 以非事务方式执行，如果当前存在事务，则抛出异常。                                                  |
 | PROPAGATION_NESTED              | nested 如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与PROPAGATION_REQUIRED类似的操作。 |
 
 #### ioslation：[事务隔离级别，传播属性](https://www.cnblogs.com/eunice-sun/p/11024584.html)
