@@ -33,7 +33,7 @@ features:
 
   - title: ArcGIS  
     icon: comment
-    details: ArcGIS offers unique capabilities and flexible licensing for applying location-based analytics to your business practices. Gain greater insights using contextual tools to visualize and analyze your data. Collaborate and share via maps, apps, dashboards and reports.
+    details: ArcGIS offers unique capabilities and flexible licensing for applying location-based analytics to your business practices. 
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/feature/comment.html
 
   - title: QGIS
@@ -53,12 +53,12 @@ features:
 
   - title: 《地理信息系统导论》
     icon: contrast
-    details: GIS基础理论
+    details: GIS基础理论掌握，深入更多业务以实现项目价值
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/interface/darkmode.html
 
   - title: 数据相关
     icon: support
-    details: 数据收集转换运用
+    details: 了解数据收集，转换，实际的运用
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/interface/accessibility.html
 
   - title: 相关算法
@@ -83,7 +83,7 @@ features:
 
   - title: arcgis server
     icon: sitemap
-    details: ArcGISServer 是ESRI 发布的提供面向Web 空间数据服务的一个企业级GIS软件平台,提供创建和配置GIS应用程序和服务的框架，这样可以满足不同客户的各种需求。自9.2 版起ArcGIS Server包含了ArcSDE 空间数据引擎,用于通过多种关系型数据库来管理基于多用户和多事务的地理空间数据库。
+    details: ArcGISServer 是ESRI 发布的提供面向Web 空间数据服务的一个企业级GIS软件平台,提供创建和配置GIS应用程序和服务的框架，9.2 版包含了ArcSDE 空间数据引擎,用于通过多种关系型数据库来管理基于多用户和多事务的地理空间数据库。
     link: https://vuepress-theme-hope.github.io/v2/zh/guide/advanced/sitemap.html
 
   - title: Supermap Server
