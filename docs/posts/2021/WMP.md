@@ -341,14 +341,14 @@ Component({
 
 对于路由的触发方式以及页面生命周期函数如下：
 
-| 路由方式   | 触发时机                                                     | 路由前页面 | 路由后页面         |
-| :--------- | :----------------------------------------------------------- | :--------- | :----------------- |
-| 初始化     | 小程序打开的第一个页面                                       |            | onLoad, onShow     |
-| 打开新页面 | 调用 API [wx.navigateTo](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateTo.html) 使用组件 [``](https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html) | onHide     | onLoad, onShow     |
-| 页面重定向 | 调用 API [wx.redirectTo](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.redirectTo.html) 使用组件 [``](https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html) | onUnload   | onLoad, onShow     |
+| 路由方式   | 触发时机                                                                                                                                                                                                                 | 路由前页面 | 路由后页面         |
+| :--------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------- | :----------------- |
+| 初始化     | 小程序打开的第一个页面                                                                                                                                                                                                   |            | onLoad, onShow     |
+| 打开新页面 | 调用 API [wx.navigateTo](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateTo.html) 使用组件 [``](https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html)                         | onHide     | onLoad, onShow     |
+| 页面重定向 | 调用 API [wx.redirectTo](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.redirectTo.html) 使用组件 [``](https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html)                         | onUnload   | onLoad, onShow     |
 | 页面返回   | 调用 API [wx.navigateBack](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateBack.html) 使用组件[``](https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html) 用户按左上角返回按钮 | onUnload   | onShow             |
-| Tab 切换   | 调用 API [wx.switchTab](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.switchTab.html) 使用组件 [``](https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html) 用户切换 Tab |            | 各种情况请参考下表 |
-| 重启动     | 调用 API [wx.reLaunch](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.reLaunch.html) 使用组件 [``](https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html) | onUnload   | onLoad, onShow     |
+| Tab 切换   | 调用 API [wx.switchTab](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.switchTab.html) 使用组件 [``](https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html) 用户切换 Tab              |            | 各种情况请参考下表 |
+| 重启动     | 调用 API [wx.reLaunch](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.reLaunch.html) 使用组件 [``](https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html)                             | onUnload   | onLoad, onShow     |
 
 Tab 切换对应的生命周期（以 A、B 页面为 Tabbar 页面，C 是从 A 页面打开的页面，D 页面是从 C 页面打开的页面为例）：
 
@@ -1175,11 +1175,11 @@ Component({
 
 触发事件的选项包括：
 
-| 选项名       | 类型    | 是否必填 | 默认值 | 描述                                                         |
-| :----------- | :------ | :------- | :----- | :----------------------------------------------------------- |
-| bubbles      | Boolean | 否       | false  | 事件是否冒泡                                                 |
+| 选项名       | 类型    | 是否必填 | 默认值 | 描述                                                                                            |
+| :----------- | :------ | :------- | :----- | :---------------------------------------------------------------------------------------------- |
+| bubbles      | Boolean | 否       | false  | 事件是否冒泡                                                                                    |
 | composed     | Boolean | 否       | false  | 事件是否可以穿越组件边界，为false时，事件将只能在引用组件的节点树上触发，不进入其他任何组件内部 |
-| capturePhase | Boolean | 否       | false  | 事件是否拥有捕获阶段                                         |
+| capturePhase | Boolean | 否       | false  | 事件是否拥有捕获阶段                                                                            |
 
 关于冒泡和捕获阶段的概念，请阅读 [事件](https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html) 章节中的相关说明。
 

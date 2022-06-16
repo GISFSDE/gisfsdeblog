@@ -2009,15 +2009,11 @@ foreign  key (外建名) references 外建字段所在表名 (外建字段名) o
 ## 数据
 
 ```mysql
-#增
-#删
-#改
-#查
+INSERT INTO 表名(列1,列2,...,列N) values(值1,值2,...,值N)
+DELETE语法：DELETE FROM 表名 WHERE 条件
+UPDATE 表名 set 列1=值1,列2=值2,... WHERE 条件
+SELECT * FROM 表名 WHERE 条件
 ```
-
-
-
-
 
 ## 连接
 

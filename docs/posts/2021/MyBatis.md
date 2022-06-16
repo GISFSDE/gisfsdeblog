@@ -15,10 +15,10 @@ tag:
 >
 > > # 新学四问
 > >
-> > **WHY【与前代优化了什么，弥补了什么空白】：**
-> > **WHAT【框架，思维导图，主题框架】：**
-> > **HOW【如何记忆，学习资源】**：[Bili](https://www.bilibili.com/video/BV1NE411Q7Nx?spm_id_from=333.999.0.0)、[官方文档](https://mybatis.org/mybatis-3/zh/statement-builders.html)、[源码](https://github.com/mybatis/mybatis-3)
-> > **LEVEL【不是每个都学精】：**速看速记
+> > **WHY【与前代优化了什么，弥补了什么空白】：**  
+> > **WHAT【框架，思维导图，主题框架】：**  
+> > **HOW【如何记忆，学习资源】**：[Bili](https://www.bilibili.com/video/BV1NE411Q7Nx?spm_id_from=333.999.0.0)、[官方文档](https://mybatis.org/mybatis-3/zh/statement-builders.html)、[源码](https://github.com/mybatis/mybatis-3)  
+> > **LEVEL【不是每个都学精】：**速看速记  
 
 # 进度：【17】两天
 

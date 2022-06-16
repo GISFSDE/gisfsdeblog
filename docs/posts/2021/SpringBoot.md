@@ -15,10 +15,10 @@ tag:
 >
 > # 新学四问
 > 
-> **WHY【与前代优化了什么，弥补了什么空白】：**
-> **WHAT【框架，思维导图，主题框架】：**
-> **HOW【如何记忆，学习资源】**：[尚硅谷学习笔记](https://www.yuque.com/atguigu/springboot)、[springboot官方文档](https://docs.spring.io/spring-boot/docs/current/reference/html/)、[视频](https://www.bilibili.com/video/BV19K4y1L7MT?p=4&spm_id_from=pageDriver)、项目里面做笔记，最后进行综合优化
-> **LEVEL【不是每个都学精】：** 路上随便看看
+> **WHY【与前代优化了什么，弥补了什么空白】：**  
+> **WHAT【框架，思维导图，主题框架】：**  
+> **HOW【如何记忆，学习资源】**：[尚硅谷学习笔记](https://www.yuque.com/atguigu/springboot)、[springboot官方文档](https://docs.spring.io/spring-boot/docs/current/reference/html/)、[视频](https://www.bilibili.com/video/BV19K4y1L7MT?p=4&spm_id_from=pageDriver)、项目里面做笔记，最后进行综合优化  
+> **LEVEL【不是每个都学精】：** 路上随便看看  
 # 进度：【完】路上看补笔记
 
 # 综合问题
@@ -4052,37 +4052,37 @@ https://github.com/codecentric/spring-boot-admin
 
 
 
-| ID                 | 描述                                                         |
-| ------------------ | ------------------------------------------------------------ |
-| `auditevents`      | 暴露当前应用程序的审核事件信息。需要一个`AuditEventRepository组件`。 |
-| `beans`            | 显示应用程序中所有Spring Bean的完整列表。                    |
-| `caches`           | 暴露可用的缓存。                                             |
-| `conditions`       | 显示自动配置的所有条件信息，包括匹配或不匹配的原因。         |
-| `configprops`      | 显示所有`@ConfigurationProperties`。                         |
-| `env`              | 暴露Spring的属性`ConfigurableEnvironment`                    |
-| `flyway`           | 显示已应用的所有Flyway数据库迁移。 需要一个或多个`Flyway`组件。 |
-| `health`           | 显示应用程序运行状况信息。                                   |
-| `httptrace`        | 显示HTTP跟踪信息（默认情况下，最近100个HTTP请求-响应）。需要一个`HttpTraceRepository`组件。 |
-| `info`             | 显示应用程序信息。                                           |
-| `integrationgraph` | 显示Spring `integrationgraph` 。需要依赖`spring-integration-core`。 |
-| `loggers`          | 显示和修改应用程序中日志的配置。                             |
-| `liquibase`        | 显示已应用的所有Liquibase数据库迁移。需要一个或多个`Liquibase`组件。 |
-| `metrics`          | 显示当前应用程序的“指标”信息。                               |
-| `mappings`         | 显示所有`@RequestMapping`路径列表。                          |
-| `scheduledtasks`   | 显示应用程序中的计划任务。                                   |
-| `sessions`         | 允许从Spring Session支持的会话存储中检索和删除用户会话。需要使用Spring Session的基于Servlet的Web应用程序。 |
-| `shutdown`         | 使应用程序正常关闭。默认禁用。                               |
+| ID                 | 描述                                                                                                             |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| `auditevents`      | 暴露当前应用程序的审核事件信息。需要一个`AuditEventRepository组件`。                                             |
+| `beans`            | 显示应用程序中所有Spring Bean的完整列表。                                                                        |
+| `caches`           | 暴露可用的缓存。                                                                                                 |
+| `conditions`       | 显示自动配置的所有条件信息，包括匹配或不匹配的原因。                                                             |
+| `configprops`      | 显示所有`@ConfigurationProperties`。                                                                             |
+| `env`              | 暴露Spring的属性`ConfigurableEnvironment`                                                                        |
+| `flyway`           | 显示已应用的所有Flyway数据库迁移。 需要一个或多个`Flyway`组件。                                                  |
+| `health`           | 显示应用程序运行状况信息。                                                                                       |
+| `httptrace`        | 显示HTTP跟踪信息（默认情况下，最近100个HTTP请求-响应）。需要一个`HttpTraceRepository`组件。                      |
+| `info`             | 显示应用程序信息。                                                                                               |
+| `integrationgraph` | 显示Spring `integrationgraph` 。需要依赖`spring-integration-core`。                                              |
+| `loggers`          | 显示和修改应用程序中日志的配置。                                                                                 |
+| `liquibase`        | 显示已应用的所有Liquibase数据库迁移。需要一个或多个`Liquibase`组件。                                             |
+| `metrics`          | 显示当前应用程序的“指标”信息。                                                                                   |
+| `mappings`         | 显示所有`@RequestMapping`路径列表。                                                                              |
+| `scheduledtasks`   | 显示应用程序中的计划任务。                                                                                       |
+| `sessions`         | 允许从Spring Session支持的会话存储中检索和删除用户会话。需要使用Spring Session的基于Servlet的Web应用程序。       |
+| `shutdown`         | 使应用程序正常关闭。默认禁用。                                                                                   |
 | `startup`          | 显示由`ApplicationStartup`收集的启动步骤数据。需要使用`SpringApplication`进行配置`BufferingApplicationStartup`。 |
-| `threaddump`       | 执行线程转储。                                               |
+| `threaddump`       | 执行线程转储。                                                                                                   |
 
 如果您的应用程序是Web应用程序（Spring MVC，Spring WebFlux或Jersey），则可以使用以下附加端点：
 
-| ID           | 描述                                                         |
-| ------------ | ------------------------------------------------------------ |
-| `heapdump`   | 返回`hprof`堆转储文件。                                      |
-| `jolokia`    | 通过HTTP暴露JMX bean（需要引入Jolokia，不适用于WebFlux）。需要引入依赖`jolokia-core`。 |
+| ID           | 描述                                                                                                                            |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| `heapdump`   | 返回`hprof`堆转储文件。                                                                                                         |
+| `jolokia`    | 通过HTTP暴露JMX bean（需要引入Jolokia，不适用于WebFlux）。需要引入依赖`jolokia-core`。                                          |
 | `logfile`    | 返回日志文件的内容（如果已设置`logging.file.name`或`logging.file.path`属性）。支持使用HTTP`Range`标头来检索部分日志文件的内容。 |
-| `prometheus` | 以Prometheus服务器可以抓取的格式公开指标。需要依赖`micrometer-registry-prometheus`。 |
+| `prometheus` | 以Prometheus服务器可以抓取的格式公开指标。需要依赖`micrometer-registry-prometheus`。                                            |
 
 最常用的Endpoint
 
@@ -4149,32 +4149,32 @@ management:
 - **JMX**：默认暴露所有Endpoint
 - 除过health和info，剩下的Endpoint都应该进行保护访问。如果引入SpringSecurity，则会默认配置安全访问规则
 
-| ID                 | JMX  | Web  |
-| ------------------ | ---- | ---- |
-| `auditevents`      | Yes  | No   |
-| `beans`            | Yes  | No   |
-| `caches`           | Yes  | No   |
-| `conditions`       | Yes  | No   |
-| `configprops`      | Yes  | No   |
-| `env`              | Yes  | No   |
-| `flyway`           | Yes  | No   |
-| `health`           | Yes  | Yes  |
-| `heapdump`         | N/A  | No   |
-| `httptrace`        | Yes  | No   |
-| `info`             | Yes  | Yes  |
-| `integrationgraph` | Yes  | No   |
-| `jolokia`          | N/A  | No   |
-| `logfile`          | N/A  | No   |
-| `loggers`          | Yes  | No   |
-| `liquibase`        | Yes  | No   |
-| `metrics`          | Yes  | No   |
-| `mappings`         | Yes  | No   |
-| `prometheus`       | N/A  | No   |
-| `scheduledtasks`   | Yes  | No   |
-| `sessions`         | Yes  | No   |
-| `shutdown`         | Yes  | No   |
-| `startup`          | Yes  | No   |
-| `threaddump`       | Yes  | No   |
+| ID                 | JMX | Web |
+| ------------------ | --- | --- |
+| `auditevents`      | Yes | No  |
+| `beans`            | Yes | No  |
+| `caches`           | Yes | No  |
+| `conditions`       | Yes | No  |
+| `configprops`      | Yes | No  |
+| `env`              | Yes | No  |
+| `flyway`           | Yes | No  |
+| `health`           | Yes | Yes |
+| `heapdump`         | N/A | No  |
+| `httptrace`        | Yes | No  |
+| `info`             | Yes | Yes |
+| `integrationgraph` | Yes | No  |
+| `jolokia`          | N/A | No  |
+| `logfile`          | N/A | No  |
+| `loggers`          | Yes | No  |
+| `liquibase`        | Yes | No  |
+| `metrics`          | Yes | No  |
+| `mappings`         | Yes | No  |
+| `prometheus`       | N/A | No  |
+| `scheduledtasks`   | Yes | No  |
+| `sessions`         | Yes | No  |
+| `shutdown`         | Yes | No  |
+| `startup`          | Yes | No  |
+| `threaddump`       | Yes | No  |
 
 ### 3、定制 Endpoint
 

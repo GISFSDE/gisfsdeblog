@@ -22,9 +22,9 @@ tag:
 
 # 学前准备
 
-[labuladong/fucking-algorithm: 刷算法全靠套路，认准 labuladong 就够了！English version supported! Crack LeetCode, not only how, but also why. (github.com)](https://github.com/labuladong/fucking-algorithm)
+[labuladong](https://github.com/labuladong/fucking-algorithm)
 
-[MisterBooo/LeetCodeAnimation: Demonstrate all the questions on LeetCode in the form of animation.（用动画的形式呈现解LeetCode题目的思路） (github.com)](https://github.com/MisterBooo/LeetCodeAnimation)
+[MisterBooo](https://github.com/MisterBooo/LeetCodeAnimation)
 
 # 一.基本数据结构
 

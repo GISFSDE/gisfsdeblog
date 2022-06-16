@@ -15,11 +15,11 @@ tag:
 
 > # 新学四问
 >
-> **WHY【与前代优化了什么，弥补了什么空白】：**
-> **WHAT【框架，思维导图，主题框架】：**
-> **HOW【如何记忆，学习资源】**：[菜鸟](https://www.runoob.com/mongodb/mongodb-intro.html)、[官方文档](https://docs.mongodb.com/manual/introduction/)
-> **LEVEL【不是每个都学精】：**
-
+> **WHY【与前代优化了什么，弥补了什么空白】：**  
+> **WHAT【框架，思维导图，主题框架】：**  
+> **HOW【如何记忆，学习资源】**：[菜鸟](https://www.runoob.com/mongodb/mongodb-intro.html)、[官方文档](https://docs.mongodb.com/manual/introduction/)  
+> **LEVEL【不是每个都学精】：**  
+  
 # 进度：【[一天](https://www.runoob.com/mongodb/mongodb-operators.html)】
 
 # 快查
@@ -189,23 +189,23 @@ system.users是可修改的。 system.profile是可删除的。
 
 下表为MongoDB中常用的几种数据类型。
 
-| 数据类型           | 描述                                                         |
-| :----------------- | :----------------------------------------------------------- |
-| String             | 字符串。存储数据常用的数据类型。在 MongoDB 中，UTF-8 编码的字符串才是合法的。 |
-| Integer            | 整型数值。用于存储数值。根据你所采用的服务器，可分为 32 位或 64 位。 |
-| Boolean            | 布尔值。用于存储布尔值（真/假）。                            |
-| Double             | 双精度浮点值。用于存储浮点值。                               |
-| Min/Max keys       | 将一个值与 BSON（二进制的 JSON）元素的最低值和最高值相对比。 |
-| Array              | 用于将数组或列表或多个值存储为一个键。                       |
-| Timestamp          | 时间戳。记录文档修改或添加的具体时间。                       |
-| Object             | **用于内嵌文档。**                                           |
-| Null               | 用于创建空值。                                               |
-| Symbol             | 符号。该数据类型基本上等同于字符串类型，但不同的是，它一般用于采用特殊符号类型的语言。 |
+| 数据类型           | 描述                                                                                                       |
+| :----------------- | :--------------------------------------------------------------------------------------------------------- |
+| String             | 字符串。存储数据常用的数据类型。在 MongoDB 中，UTF-8 编码的字符串才是合法的。                              |
+| Integer            | 整型数值。用于存储数值。根据你所采用的服务器，可分为 32 位或 64 位。                                       |
+| Boolean            | 布尔值。用于存储布尔值（真/假）。                                                                          |
+| Double             | 双精度浮点值。用于存储浮点值。                                                                             |
+| Min/Max keys       | 将一个值与 BSON（二进制的 JSON）元素的最低值和最高值相对比。                                               |
+| Array              | 用于将数组或列表或多个值存储为一个键。                                                                     |
+| Timestamp          | 时间戳。记录文档修改或添加的具体时间。                                                                     |
+| Object             | **用于内嵌文档。**                                                                                         |
+| Null               | 用于创建空值。                                                                                             |
+| Symbol             | 符号。该数据类型基本上等同于字符串类型，但不同的是，它一般用于采用特殊符号类型的语言。                     |
 | Date               | 日期时间。用 UNIX 时间格式来存储当前日期或时间。你可以指定自己的日期时间：创建 Date 对象，传入年月日信息。 |
-| Object ID          | 对象 ID。用于创建文档的 ID。                                 |
-| Binary Data        | 二进制数据。用于存储二进制数据。                             |
-| Code               | **代码类型。用于在文档中存储 JavaScript 代码。**             |
-| Regular expression | **正则表达式类型。用于存储正则表达式。**                     |
+| Object ID          | 对象 ID。用于创建文档的 ID。                                                                               |
+| Binary Data        | 二进制数据。用于存储二进制数据。                                                                           |
+| Code               | **代码类型。用于在文档中存储 JavaScript 代码。**                                                           |
+| Regular expression | **正则表达式类型。用于存储正则表达式。**                                                                   |
 
 下面说明下几种重要的数据类型。
 
@@ -407,12 +407,12 @@ true
 
 options 参数：
 
-| 字段        | 类型 | 描述                                                         |
-| :---------- | :--- | :----------------------------------------------------------- |
+| 字段        | 类型 | 描述                                                                                                                                                     |
+| :---------- | :--- | :------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | capped      | 布尔 | （可选）如果为 true，则创建固定集合。固定集合是指有着固定大小的集合，当达到最大值时，它会自动覆盖最早的文档。 **当该值为 true 时，必须指定 size 参数。** |
-| autoIndexId | 布尔 | 3.2 之后不再支持该参数。（可选）如为 true，自动在 _id 字段创建索引。默认为 false。 |
-| size        | 数值 | （可选）为固定集合指定一个最大值，即字节数。 **如果 capped 为 true，也需要指定该字段。** |
-| max         | 数值 | （可选）指定固定集合中包含文档的最大数量。                   |
+| autoIndexId | 布尔 | 3.2 之后不再支持该参数。（可选）如为 true，自动在 _id 字段创建索引。默认为 false。                                                                       |
+| size        | 数值 | （可选）为固定集合指定一个最大值，即字节数。 **如果 capped 为 true，也需要指定该字段。**                                                                 |
+| max         | 数值 | （可选）指定固定集合中包含文档的最大数量。                                                                                                               |
 
 # 七、文档
 
@@ -898,18 +898,18 @@ uncaught exception: ReferenceError: double is not defined :
 >
 ```
 
-| Parameter          | Type          | Description                                                  |
-| :----------------- | :------------ | :----------------------------------------------------------- |
-| background         | Boolean       | 建索引过程会阻塞其它数据库操作，background可指定以后台方式创建索引，即增加 "background" 可选参数。 "background" 默认值为**false**。 |
-| unique             | Boolean       | 建立的索引是否唯一。指定为true创建唯一索引。默认值为**false**. |
-| name               | string        | 索引的名称。如果未指定，MongoDB的通过连接索引的字段名和排序顺序生成一个索引名称。 |
-| dropDups           | Boolean       | **3.0+版本已废弃。**在建立唯一索引时是否删除重复记录,指定 true 创建唯一索引。默认值为 **false**. |
+| Parameter          | Type          | Description                                                                                                                                    |
+| :----------------- | :------------ | :--------------------------------------------------------------------------------------------------------------------------------------------- |
+| background         | Boolean       | 建索引过程会阻塞其它数据库操作，background可指定以后台方式创建索引，即增加 "background" 可选参数。 "background" 默认值为**false**。            |
+| unique             | Boolean       | 建立的索引是否唯一。指定为true创建唯一索引。默认值为**false**.                                                                                 |
+| name               | string        | 索引的名称。如果未指定，MongoDB的通过连接索引的字段名和排序顺序生成一个索引名称。                                                              |
+| dropDups           | Boolean       | **3.0+版本已废弃。**在建立唯一索引时是否删除重复记录,指定 true 创建唯一索引。默认值为 **false**.                                               |
 | sparse             | Boolean       | 对文档中不存在的字段数据不启用索引；这个参数需要特别注意，如果设置为true的话，在索引字段中不会查询出不包含对应字段的文档.。默认值为 **false**. |
-| expireAfterSeconds | integer       | 指定一个以秒为单位的数值，完成 TTL设定，设定集合的生存时间。 |
-| v                  | index version | 索引的版本号。默认的索引版本取决于mongod创建索引时运行的版本。 |
-| weights            | document      | 索引权重值，数值在 1 到 99,999 之间，表示该索引相对于其他索引字段的得分权重。 |
-| default_language   | string        | 对于文本索引，该参数决定了停用词及词干和词器的规则的列表。 默认为英语 |
-| language_override  | string        | 对于文本索引，该参数指定了包含在文档中的字段名，语言覆盖默认的language，默认值为 language. |
+| expireAfterSeconds | integer       | 指定一个以秒为单位的数值，完成 TTL设定，设定集合的生存时间。                                                                                   |
+| v                  | index version | 索引的版本号。默认的索引版本取决于mongod创建索引时运行的版本。                                                                                 |
+| weights            | document      | 索引权重值，数值在 1 到 99,999 之间，表示该索引相对于其他索引字段的得分权重。                                                                  |
+| default_language   | string        | 对于文本索引，该参数决定了停用词及词干和词器的规则的列表。 默认为英语                                                                          |
+| language_override  | string        | 对于文本索引，该参数指定了包含在文档中的字段名，语言覆盖默认的language，默认值为 language.                                                     |
 
 
 
@@ -937,16 +937,16 @@ uncaught exception: ReferenceError: double is not defined :
 
 聚合的表达式:
 
-| 表达式    | 描述                                                         | 实例                                                         |
-| :-------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| $sum      | 计算总和。                                                   | db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$sum : "$likes"}}}]) |
-| $avg      | 计算平均值                                                   | db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$avg : "$likes"}}}]) |
-| $min      | 获取集合中所有文档对应值得最小值。                           | db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$min : "$likes"}}}]) |
-| $max      | 获取集合中所有文档对应值得最大值。                           | db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$max : "$likes"}}}]) |
-| $push     | 将值加入一个数组中，不会判断是否有重复的值。                 | db.mycol.aggregate([{$group : {_id : "$by_user", url : {$push: "$url"}}}]) |
-| $addToSet | 将值加入一个数组中，会判断是否有重复的值，若相同的值在数组中已经存在了，则不加入。 | db.mycol.aggregate([{$group : {_id : "$by_user", url : {$addToSet : "$url"}}}]) |
-| $first    | 根据资源文档的排序获取第一个文档数据。                       | db.mycol.aggregate([{$group : {_id : "$by_user", first_url : {$first : "$url"}}}]) |
-| $last     | 根据资源文档的排序获取最后一个文档数据                       | db.mycol.aggregate([{$group : {_id : "$by_user", last_url : {$last : "$url"}}}]) |
+| 表达式    | 描述                                                                               | 实例                                                                                  |
+| :-------- | :--------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------ |
+| $sum      | 计算总和。                                                                         | db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$sum : "$likes"}}}]) |
+| $avg      | 计算平均值                                                                         | db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$avg : "$likes"}}}]) |
+| $min      | 获取集合中所有文档对应值得最小值。                                                 | db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$min : "$likes"}}}]) |
+| $max      | 获取集合中所有文档对应值得最大值。                                                 | db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$max : "$likes"}}}]) |
+| $push     | 将值加入一个数组中，不会判断是否有重复的值。                                       | db.mycol.aggregate([{$group : {_id : "$by_user", url : {$push: "$url"}}}])            |
+| $addToSet | 将值加入一个数组中，会判断是否有重复的值，若相同的值在数组中已经存在了，则不加入。 | db.mycol.aggregate([{$group : {_id : "$by_user", url : {$addToSet : "$url"}}}])       |
+| $first    | 根据资源文档的排序获取第一个文档数据。                                             | db.mycol.aggregate([{$group : {_id : "$by_user", first_url : {$first : "$url"}}}])    |
+| $last     | 根据资源文档的排序获取最后一个文档数据                                             | db.mycol.aggregate([{$group : {_id : "$by_user", last_url : {$last : "$url"}}}])      |
 
 ## 管道
 

@@ -14,10 +14,10 @@ tag:
 
 > # 新学四问
 >
-> **WHY【与前代优化了什么，弥补了什么空白】**：学习实践分布式组件，高并发等业务
-> **WHAT【框架，思维导图，主题框架】**：通过项目扎实技术，SpringBoot+SpringCloud+Docker+VUE+Element-UI
-> **HOW【如何记忆，学习资源（官方文档、视频资源、项目地址）】**：[谷粒商城源码和软件](https://share.weiyun.com/z0DElpTd)、[在线教程](https://www.bilibili.com/video/BV1np4y1C7Yf?spm_id_from=333.999.0.0)
-> **LEVEL【不是每个都学精】**：清晰明了
+> **WHY【与前代优化了什么，弥补了什么空白】**：学习实践分布式组件，高并发等业务  
+> **WHAT【框架，思维导图，主题框架】**：通过项目扎实技术，SpringBoot+SpringCloud+Docker+VUE+Element-UI  
+> **HOW【如何记忆，学习资源（官方文档、视频资源、项目地址）】**：[谷粒商城源码和软件](https://share.weiyun.com/z0DElpTd)、[在线教程](https://www.bilibili.com/video/BV1np4y1C7Yf?spm_id_from=333.999.0.0)  
+> **LEVEL【不是每个都学精】**：清晰明了  
 
 # 进度： 【85 -5.25】
 

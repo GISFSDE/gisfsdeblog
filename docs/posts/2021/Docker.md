@@ -15,10 +15,10 @@ tag:
 
 > # 新学四问
 >
-> **WHY【与前代优化了什么，弥补了什么空白】**：自动化开发部署流程，环境
-> **WHAT【框架，思维导图，主题框架】**：安装实例，
-> **HOW【如何记忆，学习资源（官方文档、视频资源、项目地址）】**：[Docker 教程 ](https://www.runoob.com/docker/docker-tutorial.html)
-> **LEVEL【不是每个都学精】**：熟练操作
+> **WHY【与前代优化了什么，弥补了什么空白】**：自动化开发部署流程，环境  
+> **WHAT【框架，思维导图，主题框架】**：安装实例，  
+> **HOW【如何记忆，学习资源（官方文档、视频资源、项目地址）】**：[Docker 教程 ](https://www.runoob.com/docker/docker-tutorial.html)  
+> **LEVEL【不是每个都学精】**：熟练操作  
 
 # 进度： 【】
 
