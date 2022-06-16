@@ -4,6 +4,8 @@ import theme from "./theme";
 import { sitemapPlugin } from "vuepress-plugin-sitemap2";
 import { seoPlugin } from "vuepress-plugin-seo2";
 
+import { path } from "@vuepress/utils";
+import { addViteOptimizeDepsInclude } from "vuepress-shared";
 export default defineUserConfig({
   lang: "zh-CN",
   title: "GIS-FSDE",
@@ -39,4 +41,38 @@ export default defineUserConfig({
       iconAssets: "//at.alicdn.com/t/font_2410206_a0xb9hku9iu.css",
     }),
   ],
+
+
+  // ---------三维LOGO------
+  pagePatterns: ["**/*.md", "!**/*.snippet.md", "!.vuepress", "!node_modules"],
+  alias: {
+    "@IconDisplay": path.resolve(__dirname, "./components/IconDisplay"),
+    "@KatexPlayground": path.resolve(__dirname, "./components/KatexPlayground"),
+    "@theme-hope/components/HomeHero": path.resolve(
+      __dirname,
+      "./components/HopeHero"
+    ),
+  },
+  define: () => ({
+    IS_NETLIFY: "NETLIFY" in process.env,
+  }),
+  extendsBundlerOptions: (config: unknown, app): void => {
+    if (app.env.isDev)
+      addViteOptimizeDepsInclude({ app, config }, [
+        "dayjs",
+        "dayjs/plugin/localizedFormat",
+        "dayjs/plugin/objectSupport",
+        "dayjs/plugin/timezone",
+        "dayjs/plugin/utc",
+        "vuepress-shared/lib/client",
+      ]);
+    addViteOptimizeDepsInclude({ app, config }, [
+      "axios",
+      "three",
+      "three/examples/jsm/controls/OrbitControls",
+      "three/examples/jsm/loaders/STLLoader",
+    ]);
+  },
+  shouldPrefetch: false,
+  // ---------------------
 });
