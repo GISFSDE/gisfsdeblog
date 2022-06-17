@@ -84,7 +84,7 @@ export default defineComponent({
               logo2.castShadow = true;
               logo2.receiveShadow = true;
               logo2.rotation.z = 0;
-              logo2.scale.set(0.3, 0.3, 0.3);
+              logo2.scale.set(0.1, 0.1, 0.1);
 
               scene.add(logo2);
 
@@ -164,9 +164,9 @@ export default defineComponent({
     return (): VNode[] => [
       !ready.value
         ? h("img", {
-            src: withBase(frontmatter.value.heroImage),
-            alt: "vuepress-theme-hope",
-          })
+          src: withBase(frontmatter.value.heroImage),
+          alt: "vuepress-theme-hope",
+        })
         : null,
 
       h("canvas", {
