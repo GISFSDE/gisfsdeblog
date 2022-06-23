@@ -30,6 +30,9 @@ pnpm add vuepress@next vuepress-theme-hope@next && pnpm i && pnpm up
 pnpm docs:dev
 pnpm docs:clean-dev
 pnpm docs:build
+
+#项目依赖冲突
+pnpm i && pnpm up  
 ```
 
 # 配置

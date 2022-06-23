@@ -5,7 +5,6 @@ import { sitemapPlugin } from "vuepress-plugin-sitemap2";
 import { seoPlugin } from "vuepress-plugin-seo2";
 
 import { path } from "@vuepress/utils";
-import { addViteOptimizeDepsInclude } from "vuepress-shared";
 export default defineUserConfig({
   lang: "zh-CN",
   title: "GIS-FSDE",
@@ -26,14 +25,14 @@ export default defineUserConfig({
   theme,
   plugins: [
     // https://vuepress-theme-hope.github.io/v2/seo/zh/config.html
-    seoPlugin({
-      hostname: "www.gisfsde.com",
-      author: "GIS-FSDE"
-    }),
-    // https://vuepress-theme-hope.github.io/v2/sitemap/zh/config.html
-    sitemapPlugin({
-      hostname: "www.gisfsde.com"
-    }),
+    // seoPlugin({
+    //   hostname: "https://www.gisfsde.com",
+    //   author: "GIS-FSDE"
+    // }),
+    // // https://vuepress-theme-hope.github.io/v2/sitemap/zh/config.html
+    // sitemapPlugin({
+    //   hostname: "https://www.gisfsde.com",
+    // }),
     componentsPlugin({
       addThis: "ra-62a4a48ea8503a62",
       backToTop: true,
@@ -56,23 +55,4 @@ export default defineUserConfig({
   define: () => ({
     IS_NETLIFY: "NETLIFY" in process.env,
   }),
-  extendsBundlerOptions: (config: unknown, app): void => {
-    if (app.env.isDev)
-      addViteOptimizeDepsInclude({ app, config }, [
-        "dayjs",
-        "dayjs/plugin/localizedFormat",
-        "dayjs/plugin/objectSupport",
-        "dayjs/plugin/timezone",
-        "dayjs/plugin/utc",
-        "vuepress-shared/lib/client",
-      ]);
-    addViteOptimizeDepsInclude({ app, config }, [
-      "axios",
-      "three",
-      "three/examples/jsm/controls/OrbitControls",
-      "three/examples/jsm/loaders/STLLoader",
-    ]);
-  },
-  shouldPrefetch: false,
-  // ---------------------
 });

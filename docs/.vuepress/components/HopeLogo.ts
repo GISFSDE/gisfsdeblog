@@ -160,11 +160,10 @@ export default defineComponent({
         tick();
       })
     );
-
-    return (): VNode[] => [
+    return (): (VNode | null)[] => [
       !ready.value
         ? h("img", {
-          src: withBase(frontmatter.value.heroImage),
+          src: withBase(frontmatter.value.heroImage!),
           alt: "vuepress-theme-hope",
         })
         : null,
