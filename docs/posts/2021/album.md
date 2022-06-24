@@ -23,7 +23,11 @@ thumbnail: http://qnimg.gisfsde.com/q6koql.jpg
 
 
 
+<gistravel />
 
+<script setup lang="ts">
+import gistravel from "@gistravel";
+</script>
 
 
 

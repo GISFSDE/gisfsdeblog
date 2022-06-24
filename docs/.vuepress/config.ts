@@ -5,6 +5,9 @@ import { sitemapPlugin } from "vuepress-plugin-sitemap2";
 import { seoPlugin } from "vuepress-plugin-seo2";
 
 import { path } from "@vuepress/utils";
+import { path } from "@vuepress/utils";
+
+
 export default defineUserConfig({
   lang: "zh-CN",
   title: "GIS-FSDE",
@@ -21,6 +24,7 @@ export default defineUserConfig({
       },
     ],
   ],
+
 
   theme,
   plugins: [
@@ -50,8 +54,10 @@ export default defineUserConfig({
     "@KatexPlayground": path.resolve(__dirname, "./components/KatexPlayground"),
     "@theme-hope/components/HomeHero": path.resolve(
       __dirname,
-      "./components/HopeHero"
+      "./components/HopeHero",
     ),
+    "@gistravel": path.resolve(__dirname, "components/vuepages/gistravel.vue"),
+
   },
   define: () => ({
     IS_NETLIFY: "NETLIFY" in process.env,
