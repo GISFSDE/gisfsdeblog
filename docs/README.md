@@ -4,6 +4,7 @@ layout: Blog
 icon: home
 title: 主页
 heroImage: /logo.svg
+bgImage: http://qnimg.gisfsde.com/markdown/heros.jpg
 heroText: GIS-FSDE(GIS Full Stack Developer)
 heroFullScreen: true
 tagline: GIS开发、JAVA全栈开发者。做最热爱的自己!

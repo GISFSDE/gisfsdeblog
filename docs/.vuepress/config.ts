@@ -24,21 +24,22 @@ export default defineUserConfig({
 
   theme,
   plugins: [
-    // https://vuepress-theme-hope.github.io/v2/seo/zh/config.html
-    // seoPlugin({
-    //   hostname: "https://www.gisfsde.com",
-    //   author: "GIS-FSDE"
-    // }),
-    // // https://vuepress-theme-hope.github.io/v2/sitemap/zh/config.html
-    // sitemapPlugin({
-    //   hostname: "https://www.gisfsde.com",
-    // }),
     componentsPlugin({
       addThis: "ra-62a4a48ea8503a62",
       backToTop: true,
       components: ["Badge", "CodePen", "FontIcon", "PDF", "StackBlitz"],
       iconAssets: "//at.alicdn.com/t/font_2410206_a0xb9hku9iu.css",
     }),
+    // https://vuepress-theme-hope.github.io/v2/seo/zh/config.html
+    seoPlugin({
+      hostname: "https://www.gisfsde.com",
+      author: "GIS-FSDE"
+    }),
+    // https://vuepress-theme-hope.github.io/v2/sitemap/zh/config.html
+    sitemapPlugin({
+      hostname: "https://www.gisfsde.com",
+    }),
+
   ],
 
 
