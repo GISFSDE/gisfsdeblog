@@ -44,7 +44,6 @@ article: false
 
 <img src="http://qnimg.gisfsde.com/avatarpng.png" style="zoom:30%;" />
 
-@YYu
 
 ## (GIS Full Stack Developer)--GIS开发、JAVA全栈开发。
 

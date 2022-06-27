@@ -1830,7 +1830,7 @@ packages:
         optional: true
     dependencies:
       browserslist: 4.21.0
-      caniuse-lite: 1.0.30001358
+      caniuse-lite: 1.0.30001359
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -1944,10 +1944,10 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001358
-      electron-to-chromium: 1.4.167
+      caniuse-lite: 1.0.30001359
+      electron-to-chromium: 1.4.169
       node-releases: 2.0.5
-      update-browserslist-db: 1.0.3_browserslist@4.21.0
+      update-browserslist-db: 1.0.4_browserslist@4.21.0
     dev: true
 
   /buffer-from/1.1.2:
@@ -1977,8 +1977,8 @@ packages:
       get-intrinsic: 1.1.2
     dev: true
 
-  /caniuse-lite/1.0.30001358:
-    resolution: {integrity: sha512-hvp8PSRymk85R20bsDra7ZTCpSVGN/PAz9pSAjPSjKC+rNmnUk5vCRgJwiTT/O4feQ/yu/drvZYpKxxhbFuChw==}
+  /caniuse-lite/1.0.30001359:
+    resolution: {integrity: sha512-Xln/BAsPzEuiVLgJ2/45IaqD9jShtk3Y33anKb4+yLwQzws3+v6odKfpgES/cDEaZMLzSChpIGdbOYtH9MyuHw==}
     dev: true
 
   /chalk/2.4.2:
@@ -2188,8 +2188,8 @@ packages:
       d3-array: 1.2.4
     dev: true
 
-  /d3-contour/3.0.1:
-    resolution: {integrity: sha512-0Oc4D0KyhwhM7ZL0RMnfGycLN7hxHB8CMmwZ3+H26PWAG0ozNuYG5hXSDNgmP1SgJkQMrlG6cP20HoaSbvcJTQ==}
+  /d3-contour/3.0.2:
+    resolution: {integrity: sha512-n0zP1c2sqsdZEGStDhYXpzihrzmQHFcKXsXatX2jc+uJx9Va0kKB5qepJ9V0hbgFWM+05wrJ0Npo+dXKP3GZ8Q==}
     engines: {node: '>=12'}
     dependencies:
       d3-array: 3.1.6
@@ -2543,8 +2543,8 @@ packages:
       d3-zoom: 1.8.3
     dev: true
 
-  /d3/7.4.4:
-    resolution: {integrity: sha512-97FE+MYdAlV3R9P74+R3Uar7wUKkIFu89UWMjEaDhiJ9VxKvqaMxauImy8PC2DdBkdM2BxJOIoLxPrcZUyrKoQ==}
+  /d3/7.4.5:
+    resolution: {integrity: sha512-Jl349p+A0oTrTeoSFSD6oIlKVDi2B4eJDOhn2kFSE+Fq7wRABBTWLwbG8IZKKdUFI3/fBgMxjUYwTjyoAB0EJg==}
     engines: {node: '>=12'}
     dependencies:
       d3-array: 3.1.6
@@ -2552,7 +2552,7 @@ packages:
       d3-brush: 3.0.0
       d3-chord: 3.0.1
       d3-color: 3.1.0
-      d3-contour: 3.0.1
+      d3-contour: 3.0.2
       d3-delaunay: 6.0.2
       d3-dispatch: 3.0.1
       d3-drag: 3.0.0
@@ -2664,8 +2664,8 @@ packages:
       jake: 10.8.5
     dev: true
 
-  /electron-to-chromium/1.4.167:
-    resolution: {integrity: sha512-lPHuHXBwpkr4RcfaZBKm6TKOWG/1N9mVggUpP4fY3l1JIUU2x4fkM8928smYdZ5lF+6KCTAxo1aK9JmqT+X71Q==}
+  /electron-to-chromium/1.4.169:
+    resolution: {integrity: sha512-Yb7UFva1sLlAaRyCkgoFF3qWvwZacFDtsGKi44rZsk8vnhL0DMhsUdhI4Dz9CCJQfftncDMGSI3AYiDtg8mD/w==}
     dev: true
 
   /entities/3.0.1:
@@ -3598,7 +3598,7 @@ packages:
     resolution: {integrity: sha512-RVf3hBKqiMfyORHboCaEjOAK1TomLO50hYRPvlTrZCXlCniM5pRpe8UlkHBjjpaLtioZnbdYv/vEVj7iKnwkJQ==}
     dependencies:
       '@braintree/sanitize-url': 6.0.0
-      d3: 7.4.4
+      d3: 7.4.5
       dagre: 0.8.5
       dagre-d3: 0.6.4
       dompurify: 2.3.8
@@ -4253,8 +4253,8 @@ packages:
     resolution: {integrity: sha512-1uEe95xksV1O0CYKXo8vQvN1JEbtJp7lb7C5U9HMsIp6IVwntkH/oNUzyVNQSd4S1sYk2FpSSW44FqMc8qee5w==}
     engines: {node: '>=4'}
 
-  /update-browserslist-db/1.0.3_browserslist@4.21.0:
-    resolution: {integrity: sha512-ufSazemeh9Gty0qiWtoRpJ9F5Q5W3xdIPm1UZQqYQv/q0Nyb9EMHUB2lu+O9x1re9WsorpMAUu4Y6Lxcs5n+XQ==}
+  /update-browserslist-db/1.0.4_browserslist@4.21.0:
+    resolution: {integrity: sha512-jnmO2BEGUjsMOe/Fg9u0oczOe/ppIDZPebzccl1yDWGLFP16Pa1/RM5wEoKYPG2zstNcDuAStejyxsOuKINdGA==}
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
