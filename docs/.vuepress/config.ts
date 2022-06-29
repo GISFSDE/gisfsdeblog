@@ -5,7 +5,6 @@ import { sitemapPlugin } from "vuepress-plugin-sitemap2";
 import { seoPlugin } from "vuepress-plugin-seo2";
 
 import { path } from "@vuepress/utils";
-import { path } from "@vuepress/utils";
 
 
 export default defineUserConfig({

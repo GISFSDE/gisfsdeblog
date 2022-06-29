@@ -281,3 +281,21 @@ http {
        常用于前后端分离，Nginx提供的动静分离是指把动态请求和静态请求分离开，合适的服务器处理相应的请求，使整个服务器系统的性能、效率更高。
     
        Nginx可以根据配置对不同的请求做不同转发，这是动态分离的基础。静态请求对应的静态资源可以直接放在Nginx上做缓冲，更好的做法是放在相应的缓冲服务器上。动态请求由相应的后端服务器处理。
+
+## 4）跨域
+
+```
+add_header Cache-Control "no-catche,no-store";
+		if ($request_method = 'OPTIONS') {
+            	add_header 'Access-Control-Allow-Origin' '*';
+            	add_header 'Access-Control-Allow-Credentials' 'true';
+            	add_header 'Access-Control-Allow-Methods' 'GET, POST, PATCH, DELETE, PUT, OPTIONS';
+             	add_header 'Access-Control-Allow-Headers' 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,  Access-Control-Expose-Headers, Token, Authorization';
+            	add_header 'Access-Control-Max-Age' 1728000;
+            	add_header 'Content-Type' 'text/plain charset=UTF-8';
+            	add_header 'Content-Length' 0;
+            	return 204;
+        	}
+        	add_header 'Access-Control-Allow-Origin' '*';
+```
+

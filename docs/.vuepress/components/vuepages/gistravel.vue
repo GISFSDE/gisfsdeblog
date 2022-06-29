@@ -3,8 +3,8 @@
 </template>
 
 <script>
+// import * as L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import * as L from "leaflet";
 export default {
   name: "gistravel",
 
@@ -28,7 +28,6 @@ export default {
     });
     this.map = map;
     L.tileLayer(
-      // "https://t0.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={z}&TILEROW={x}&TILECOL={y}&tk=ff66ac21d08ff40f0a31266e9266f6f8"
       "http://webrd01.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=7&x={x}&y={y}&z={z}"
     ).addTo(map);
     // 标点
@@ -37,7 +36,7 @@ export default {
     var popup = L.popup()
       .setLatLng([30.217985, 120.138313])
       .setContent(
-        "<p>杭州动物园<br />杭州动物园游玩很开心.</p><img src='https://gd-hbimg.huaban.com/98a01243deb029185e2b1b730d3c212bfb73fef04409c-CjaE8C_fw658' alt='some_text'>"
+        "<p>杭州动物园<br />杭州动物园游玩很开心,有小西挤.</p><img src='http://qnimg.gisfsde.com/markdown/98a01243deb029185e2b1b730d3c212bfb73fef04409c-CjaE8C_fw658' alt='some_text'>"
       )
       .openOn(map);
     //
