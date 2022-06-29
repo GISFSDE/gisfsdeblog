@@ -36,7 +36,7 @@ export default {
     var popup = L.popup()
       .setLatLng([30.217985, 120.138313])
       .setContent(
-        "<p>杭州动物园<br />杭州动物园游玩很开心,有小西挤.</p><img src='http://qnimg.gisfsde.com/markdown/98a01243deb029185e2b1b730d3c212bfb73fef04409c-CjaE8C_fw658' alt='some_text'>"
+        "<p>杭州动物园<br />杭州动物园游玩很开心,有小西挤.</p><img src='https://qnimg.gisfsde.com/markdown/20220629143045.png' alt='some_text'>"
       )
       .openOn(map);
     //
