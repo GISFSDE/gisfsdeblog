@@ -5,7 +5,7 @@ import { sitemapPlugin } from "vuepress-plugin-sitemap2";
 import { seoPlugin } from "vuepress-plugin-seo2";
 
 import { path } from "@vuepress/utils";
-
+import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 
 export default defineUserConfig({
   lang: "zh-CN",
@@ -27,6 +27,11 @@ export default defineUserConfig({
 
   theme,
   plugins: [
+    docsearchPlugin({
+      appId: "LTZGG0WZIE",
+      apiKey: "5dff9de50652488d0636b7c72e75cdc5",
+      indexName: "gisfsde",
+    }),
     componentsPlugin({
       addThis: "ra-62a4a48ea8503a62",
       backToTop: true,
