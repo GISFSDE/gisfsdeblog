@@ -45,34 +45,10 @@ export default hopeTheme({
     intro: "https://www.gisfsde.com/guide/",
     // 自媒体矩阵
     medias: {
-      Baidu: "https://example.com",
-      Bitbucket: "https://example.com",
-      Dingding: "https://example.com",
-      Discord: "https://example.com",
-      Dribbble: "https://example.com",
-      Email: "https://example.com",
-      Evernote: "https://example.com",
-      Facebook: "https://example.com",
-      Flipboard: "https://example.com",
       Gitee: "https://gitee.com/gisfsde",
       GitHub: "https://github.com/GISFSDE",
-      Gitlab: "https://example.com",
-      Gmail: "https://example.com",
-      Instagram: "https://example.com",
-      Lines: "https://example.com",
-      Linkedin: "https://example.com",
-      Pinterest: "https://example.com",
-      Pocket: "https://example.com",
-      QQ: "https://example.com",
-      Qzone: "https://example.com",
-      Reddit: "https://example.com",
-      Rss: "https://example.com",
-      Steam: "https://example.com",
-      Twitter: "https://example.com",
-      Wechat: "https://example.com",
+      Wechat: "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI5NDc0MDg1Mg==#wechat_redirect",
       Weibo: "https://example.com",
-      Whatsapp: "https://example.com",
-      Youtube: "https://example.com",
       Zhihu: "https://example.com",
     },
     // 侧边栏显示
@@ -89,6 +65,7 @@ export default hopeTheme({
   },
 
   plugins: {
+    copyright: true,
     blog: {
       autoExcerpt: true,
     },
