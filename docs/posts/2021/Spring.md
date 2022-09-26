@@ -17,6 +17,12 @@ tag:
 
 # 源码解析笔记加入  进度【】
 
+# 实际应用
+
+## 如何注入相同类型中指定的 Bean ？
+
+
+
 # 综合问题
 
 1. ## [IOC?DI?AOP?](#IOC【Inversion of Control】)
@@ -34,6 +40,46 @@ tag:
 3. ## [常用注解？](https://blog.csdn.net/guorui_java/article/details/107347754)
 
 4. ## Spring中设计模式（工厂，代理）
+
+# 注解速查
+
+![Spring 模块](https://qnimg.gisfsde.com/markdown/image-20211220203220699.png)
+
+常用注解，以 spring 分块：
+
+## AOP
+
+## Aspects
+
+
+
+## Core Container
+
+### Beans
+
+### Core
+
+### Context
+
+### Expression
+
+
+
+## Test
+
+## Web
+
+### WebMVC
+
+### Web
+
+
+
+## Data
+
+### JDBC
+
+### Transations
 
 # [Spring5框架概述](https://spring.io/why-spring)
 

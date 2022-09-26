@@ -4,7 +4,7 @@ index: 2
 # 这是页面的图标
 icon: page
 # 这是文章的标题
-title: template
+title: Maven
 # 设置作者
 author: GIS-FSDE
 # 设置写作时间
@@ -13,11 +13,10 @@ date: 2022-06-06
 # 不显示在文章列表
 # article: false
 category:
-  - template
+  - Maven
 # 一个页面可以有多个标签
 tag:
-  - template
-  - template
+  - Maven
 # 此页面会在文章列表置顶
 sticky: false
 #幻灯片全屏布局
@@ -38,16 +37,15 @@ footer: 这是测试显示的页脚
 > **WHAT【框架，思维导图，主题框架】**:  
 > **HOW【如何记忆，学习资源（官方文档、视频资源、项目地址）】**:  
 > **LEVEL【不是每个都学精】**:  
-
-
-
 <!-- index: 2
 icon: markdown
 title: template
 category:
-	- template
+  - template
 tag:
-	- template
+  - template
+
+
 shortTitle: "template"
 description: "template"
 author: "template"
@@ -59,6 +57,7 @@ article: true
 timeline: true
 image: ""
 banner: ""
+
 breadcrumb: true
 breadcrumbIcon: true
 headerDepth: 2
@@ -84,7 +83,6 @@ comment: false
 footer: false
 backtotop: false
  -->
-
 # 进度： 【】
 
 # 快查
@@ -102,7 +100,17 @@ backtotop: false
 
 
 
-# 二、
+# 二、引入外部 jar 包
+
+ mvn install:install-file "-Dfile=gt-shapefile-17.1.jar" "-DgroupId=org.geotools" "-DartifactId=gt-shapefile" "-Dversion=17.1" "-Dpackaging=jar"
+
+当出现此错误，检查语法错误后可添加引号尝试
+
+The goal you specified requires a project to execute but there is no POM
+
+
+
+
 
 # 引用：
 

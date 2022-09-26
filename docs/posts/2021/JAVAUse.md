@@ -21,57 +21,60 @@ tag:
 > + [ ] **进行中**
 > + [x] **完成**
 >
+> 目录可参考[kuangstudy](https://www.kuangstudy.com/course?cid=1)
+
+## 业务
 
 
++ [ ] 工作流
++ [ ] 各种日志
++ [ ] 什么是接口幂等性，不可变，无状态应用程序，水平缩放、重试机制（缓存加锁情况）
 + [ ] JSR303数据校验：javax.validation.constraints
 + [ ] UV、PV统计
 + [ ] cron表达式、正则表达式
 + [ ] 日志记录（tomcat、mysql）
-+ [ ] Excel数据操作
-+ [ ] 文件上传下载解析到数据库
-+ [ ] 集成自己的Java前后台框架
++ [ ] OFFICE数据操作解析
++ [ ] 文件处理
++ [x] Long型id  精度缺失  
 + [ ] CURD（所有框架）
 + [ ] 网络通信
 + [ ] 单元测试
-+ [ ] 常用工具类
-+ [ ] 实际业务
++ [ ] 常用工具类（网络、文件【OFFICE、视频】、日志、格式转换、安全加解密、短信、）
 + [ ] 加密解密【AES(CBC)】
-+ [ ] 缓存
++ [ ] 缓存相关
 + [ ] 自定义注解
-+ [ ] 单个配置类型
-+ [ ] hutool（JAVA工具类包）
++ [ ] 开关配置
 + [ ] 扫码登录
-+ [ ] JAVA常用专业名词
-+ [ ] 图片处理
 + [ ] jeekins与部署实施
 + [ ] 动态表单设计与实现
++ [ ] 加密如何模糊匹配
 + [ ] 验证码
 + [ ] 外部接口应用
-+ [ ] 工作流
 + [ ] JWT
 + [ ] spring security
 + [ ] 代码生成
 + [ ] 数据库设计(见MySQL优化)
-+ [ ] 文件格式转换（word--》pdf）
-+ [ ] 数据格式转换
-+ [ ] 工具类合集
-+ [ ] 分页
-+ [ ] 跨域
++ [x] 分页
++ [x] 跨域
 + [ ] 单点登录
 + [ ] 外发接口规范token验证
 + [ ] 支付
-+ [ ] 短信
 + [ ] 后台创建数据【创建时间，id，初始数据】
-+ [ ] 目录可参考[kuangstudy](https://www.kuangstudy.com/course?cid=1)
-+ [ ] 数据格式
-+ [ ] 权限管理
 + [ ] JDK高版本
 + [ ] 序列化反序列化
++ [ ] MAVEN 如何引入外部 JAR 包
 + [ ] 开源相关
-+ [ ] 常用组件：日志（登录、操作）记录、角色权限、性能监控（在线用户、数据流转、服务器性能）、字典管理、参数设置、公告聊天系统、代码生成、定时任务
-+ [ ] 开源项目研究：[JEECG BOOT 低代码开发平台](https://github.com/jeecgboot/jeecg-boot)【学习业务：代码生成，工作流，文件管理，单点登录，数据性能监控，消息中心】[文档](http://www.jeecg.com/)
-+ [ ] 工具类【文件【Excel、图片、Word等】、网络、安全【[Xss](https://www.jianshu.com/p/4fcb4b411a66)】、格式、线程、文本【日期，json】、日志、】
-+ [ ] 前端：大屏，常用组件（）
++ [ ] 常用组件：日志（登录、操作）记录、角色权限、性能监控（在线用户、数据流转、服务器性能）、字典管理、参数设置、公告聊天系统、代码生成、定时任务。[JEECG BOOT 低代码开发平台](https://github.com/jeecgboot/jeecg-boot)【学习业务：代码生成，工作流，文件管理，单点登录，数据性能监控，消息中心】[文档](http://www.jeecg.com/)
++ [ ] 前端：大屏，常用组件
+
+
+## 工具
+
++ [ ] hutool（JAVA工具类包）
+
+## 理论
+
++ [x] JAVA常用专业名词
 
 ![image-20211221110052586](http://qnimg.gisfsde.com/work/image-20211221110052586.png)
 
@@ -118,7 +121,6 @@ yarn global add xxx 等同于 npm install xxx -g 全局安装指定包
 
 ```java
 MultipartFile
-    
 ```
 
 ## 文件路径：
@@ -161,6 +163,10 @@ Resources.getResourceAsStream()
 
 以上三个条件中有一个条件不同就会产生跨域问题。
 
+94版本chrome后，当目标站点的ip地址比请求发起者的ip地址更加私密时，会进行阻止
+
+The request client is not a secure context and the resource is in more-private address space private
+
 ### [解决方案](https://www.cnblogs.com/zyndev/p/13697313.html)
 
 #### 前端解决方案
@@ -171,9 +177,44 @@ Resources.getResourceAsStream()
 #### 后端解决方案
 
 - nginx反向代理解决跨域
+
+  ```json
+          location ^~/prod-api/ {
+  		rewrite  ^/prod-api/(.*)$ /$1 break;
+  		add_header Cache-Control "no-catche,no-store";
+  		if ($request_method = 'OPTIONS') {
+              	add_header 'Access-Control-Allow-Origin' '*';
+              	add_header 'Access-Control-Allow-Credentials' 'true';
+              	add_header 'Access-Control-Allow-Methods' 'GET, POST, PATCH, DELETE, PUT, OPTIONS';
+               	add_header 'Access-Control-Allow-Headers' 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,  Access-Control-Expose-Headers, Token, Authorization';
+              	add_header 'Access-Control-Max-Age' 1728000;
+              	add_header 'Content-Type' 'text/plain charset=UTF-8';
+              	add_header 'Content-Length' 0;
+              	return 204;
+          	}
+          	add_header 'Access-Control-Allow-Origin' '*';
+              proxy_pass http://11.1.1.1:8086;
+              proxy_buffering off;
+              proxy_request_buffering off;
+          }
+  //私密跨域解决
+  //1:两种资源都改成https
+  //2:配置chrome选项为disable  chrome://flags/#block-insecure-private-network-requests或者访问者资源加响应头  Access-Control-Allow-Private-Network
+  //3:做代理或改dns  两种资源都改成  内网或者外网ip
+  		location /prod-map {
+  			rewrite  ^/prod-map/(.*)$ /$1 break;
+  			proxy_pass    http://1.1.1.1:8080;
+          }
+  ```
+
+  
+
 - 服务端设置Response Header(响应头部)的Access-Control-Allow-Origin
+
 - 在需要跨域访问的类和方法中设置允许跨域访问（如Spring中使用@CrossOrigin注解）；
+
 - 继承使用Spring Web的CorsFilter（适用于Spring MVC、Spring Boot）
+
 - 实现WebMvcConfigurer接口（适用于Spring Boot）
 
 ## WebService
@@ -271,6 +312,18 @@ static Map analysisJsonResultMap = new HashMap();
     }
 ```
 
+# 分页
+
+### 根据参数截取List
+
+list.subList(firstIndex, lastIndex)  lastIndex是结束元素但不包括lastIndex。 
+
+### [PageHelper](https://pagehelper.github.io/docs/howtouse/)
+
+### SQL限制  limit
+
+
+
 # 开源相关
 
 https://www.runoob.com/w3cnote/open-source-license.html
@@ -285,7 +338,9 @@ https://www.runoob.com/w3cnote/open-source-license.html
 
 鼠标放在要测试的类名上command+shift+T
 
-### DAO
+### DAO/Mapper
+
+
 
 ### Service
 
@@ -962,6 +1017,92 @@ Warning: ALREADY_ENABLED: 3306:tcp（说明3306端口通过成功）
 
 # 多数据源，主从复制
 
+# MAVEN 如何引入外部 JAR 包
+
+## MVN导入maven仓库
+
+优点：
+
+缺点：每次拉项目需要重复手动导入
+
+```bash
+mvn install:install-file
+ -Dfile=D:\software\maven_repo\org\postgresql\hgjdbc\6.0.3-SNAPSHOT\hgjdbc-6.2.0.jar   jar包文件绝对路径
+ -DgroupId=org.postgresql     对应下面自定义
+ -DartifactId=hgjdbc
+ -Dversion=6.0.3-SNAPSHOT
+ -Dpackaging=jar
+ 
+
+
+<dependency>
+   <groupId>org.postgresql</groupId>
+   <artifactId>hgjdbc</artifactId>
+   <version>6.0.3-SNAPSHOT</version>
+</dependency>
+```
+
+## 放入项目中
+
+### 1.将所有 jar 包放入 lib文件夹 放 到项目根目录
+
+### 2.项目设置添加  lib 到 library
+
+### 3.修改pom文件
+
+```xml
+ <dependencies>
+		<dependency>
+            <!-- 自定义-->
+			<groupId>com.sms</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.3</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/masmgc.sdk.sms-1.0.3-SNAPSHOT.jar</systemPath>
+		</dependency>
+</dependencies>
+。。。。
+
+<build>
+      <plugins>
+         <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <executions>
+               <execution>
+                  <goals>
+                     <!--https://blog.csdn.net/weixin_45433031/article/details/125284806-->
+                     <goal>repackage</goal>
+                  </goals>
+               </execution>
+            </executions>
+            <configuration>
+               <fork>true</fork>
+               <includeSystemScope>true</includeSystemScope>
+            </configuration>
+         </plugin>
+      </plugins>
+      <resources>
+         <!-- 打包src同目录下的lib内的jar-->
+<!--         <resource>-->
+<!--            <directory>lib</directory>-->
+<!--            <targetPath>BOOT-INF/lib/</targetPath>-->
+<!--            <includes>-->
+<!--               <include>**/*.jar</include>-->
+<!--            </includes>-->
+<!--         </resource>-->
+<!--         &lt;!&ndash;打包resources目录下全部文件&ndash;&gt;-->
+<!--         <resource>-->
+<!--            <directory>src/main/resources</directory>-->
+<!--            <includes>-->
+<!--               <include>**/*.*</include>-->
+<!--            </includes>-->
+<!--         </resource>-->
+      </resources>
+
+   </build>
+```
+
 # [序列化反序列化](https://blog.csdn.net/qq_44713454/article/details/108418218)
 
 ```java
@@ -974,6 +1115,73 @@ public class BaseEntity implements Serializable
     private static final long serialVersionUID = 1L;
 }
 ```
+
+# Long型 ID精度缺失
+
+1，实体类的id字段加
+
+```java
+@JsonSerialize(using = LongJsonSerializer.class)
+@JsonDeserialize(using = LongJsonDeserializer.class)
+
+
+/**
+ * Long 类型字段序列化时转为字符串，避免js丢失精度
+ *
+ */
+
+public class LongJsonSerializer extends JsonSerializer<Long> {
+
+    @Override
+
+    public void serialize(Long value, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException, JsonProcessingException {
+
+        String text = (value == null ? null : String.valueOf(value));
+
+        if (text != null) {
+
+            jsonGenerator.writeString(text);
+
+        }
+
+    }
+
+}
+/**
+ * 将字符串转为Long
+ *
+ */
+
+public class LongJsonDeserializer extends JsonDeserializer<Long> {
+
+    private static final Logger logger = LoggerFactory.getLogger(LongJsonDeserializer.class);
+
+
+
+    @Override
+
+    public Long deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
+
+        String value = jsonParser.getText();
+
+        try {
+
+            return value == null ? null : Long.parseLong(value);
+
+        } catch (NumberFormatException e) {
+
+            logger.error("解析长整形错误", e);
+
+            return null;
+
+        }
+
+    }
+
+}
+```
+
+2，在前台js方法中传递long类型的数值时未加引号，或者对类型进行了转换，导致在前台方法传递参数时精度就已经丧失
 
 # JAVA常用专业名词
 
@@ -1091,6 +1299,108 @@ tomcat 的 catalina.out 文件 tomcat 是不会进行日志切割的，当这个
 第三种：使用用cronolog分割tomcat的catalina.out文件 。
 
 以上三种方法见：https://www.cnblogs.com/happy-king/p/9193401.html
+
+
+
+## 代码日志
+
+![image-20220901200036339](https://qnimg.gisfsde.com/markdown/image-20220901200036339.png)
+
+[为什么要用Log4j来替代System.out.println](https://blog.csdn.net/someby/article/details/85058653)
+
+[ 为什么阿里巴巴禁止工程师直接使用日志系统(Log4j、Logback)中的 API](https://hollis.blog.csdn.net/article/details/84560482?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-84560482-blog-85058653.topnsimilarv1&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-3-84560482-blog-85058653.topnsimilarv1&utm_relevant_index=4)
+
+更加灵活控制日志级别，格式，存储以及展示方式
+
+#### 门面模式
+
+
+
+### log4j
+
+### slf4j
+
+```xml
+<!--sl4fj-->
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.11</version>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>ch.qos.logback</groupId>
+    <artifactId>logback-classic</artifactId>
+    <version>1.2.3</version>
+</dependency>
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>1.7.25</version>
+</dependency>
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-simple</artifactId>
+    <version>1.7.25</version>
+</dependency>
+<dependency>
+    <groupId>log4j</groupId>
+    <artifactId>log4j</artifactId>
+    <version>1.2.17</version>
+</dependency>
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-log4j12</artifactId>
+    <version>1.7.21</version>
+</dependency>
+<dependency>
+    <groupId>org.bouncycastle</groupId>
+    <artifactId>bcprov-jdk15on</artifactId>
+    <version>1.59</version>
+</dependency>
+```
+
+有sl4j多个实现的时候会报错：
+
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/D:/Dependence/MAVEN/repos/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/D:/Dependence/MAVEN/repos/org/slf4j/slf4j-simple/1.7.25/slf4j-simple-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/D:/Dependence/MAVEN/repos/org/slf4j/slf4j-log4j12/1.7.21/slf4j-log4j12-1.7.21.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [ch.qos.logback.classic.util.ContextSelectorStaticBinder]
+
+```xml
+<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.2.0</version>
+            <scope>test</scope>
+        </dependency>
+```
+
+
 
 # 常用工具类
 
@@ -2673,5 +2983,17 @@ class CPUTestThread implements Runnable {
 # [vo2dto](https://mp.weixin.qq.com/s/Xq7oQg7dYESMYxHVnxX8Dw)
 
 BeanUtil.copyProperties
+
+# 验证码
+
+
+
+# JSR303
+
+```
+javax.validation.constraints
+```
+
+![Package constraints](https://qnimg.gisfsde.com/markdown/Package%20constraints.png)
 
 # 技术细节思考

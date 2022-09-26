@@ -91,7 +91,7 @@ public class TomcatServerConfig {
 
 # JAVA
 
-不编译到target问题
+外部jar包不编译到target问题
 
 ```xml
 <!--引入本地资源-->
@@ -127,3 +127,100 @@ public class TomcatServerConfig {
 
 
 [(1条消息) SpringBoot项目报错解决：“Error starting ApplicationContext. To display the conditions report re-run ...”_牛·云说的博客-CSDN博客](https://blog.csdn.net/m0_50762431/article/details/122143601)
+
+
+
+## java.security.cert.CertificateException: No subject alternative names present
+
+```java
+public class HttpClientUtils {
+
+    public static CloseableHttpClient acceptsUntrustedCertsHttpClient() throws KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
+        HttpClientBuilder b = HttpClientBuilder.create();
+
+        // setup a Trust Strategy that allows all certificates.
+        //
+        SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, new TrustStrategy() {
+            @Override
+            public boolean isTrusted(X509Certificate[] arg0, String arg1) throws CertificateException {
+                return true;
+            }
+        }).build();
+        b.setSSLContext(sslContext);
+
+        // don't check Hostnames, either.
+        //      -- use SSLConnectionSocketFactory.getDefaultHostnameVerifier(), if you don't want to weaken
+        HostnameVerifier hostnameVerifier = NoopHostnameVerifier.INSTANCE;
+
+        // here's the special part:
+        //      -- need to create an SSL Socket Factory, to use our weakened "trust strategy";
+        //      -- and create a Registry, to register it.
+        //
+        SSLConnectionSocketFactory sslSocketFactory = new SSLConnectionSocketFactory(sslContext, hostnameVerifier);
+        Registry socketFactoryRegistry = RegistryBuilder.create()
+                .register("http", PlainConnectionSocketFactory.getSocketFactory())
+                .register("https", sslSocketFactory)
+                .build();
+
+        // now, we create connection-manager using our Registry.
+        //      -- allows multi-threaded use
+        PoolingHttpClientConnectionManager connMgr = new PoolingHttpClientConnectionManager( socketFactoryRegistry);
+        connMgr.setMaxTotal(200);
+        connMgr.setDefaultMaxPerRoute(100);
+        b.setConnectionManager( connMgr);
+
+        // finally, build the HttpClient;
+        //      -- done!
+        CloseableHttpClient client = b.build();
+
+        return client;
+    }
+
+}
+```
+
+```java
+@Configuration
+public class RestTemplateConfig {
+
+    @Bean
+    public RestTemplate httpsRestTemplate(HttpComponentsClientHttpRequestFactory httpsFactory){
+        RestTemplate restTemplate = new RestTemplate(httpsFactory);
+        restTemplate.setErrorHandler(new ResponseErrorHandler() {
+            @Override
+            public boolean hasError(ClientHttpResponse clientHttpResponse) {
+                return false;
+            }
+
+            @Override
+            public void handleError(ClientHttpResponse clientHttpResponse) {
+                //默认处理非200的返回，会抛异常
+            }
+        });
+        return restTemplate;
+    }
+
+    @Bean(name = "httpsFactory")
+    public HttpComponentsClientHttpRequestFactory httpComponentsClientHttpRequestFactory() throws Exception{
+        CloseableHttpClient httpClient = HttpClientUtils.acceptsUntrustedCertsHttpClient();
+        HttpComponentsClientHttpRequestFactory httpsFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
+        httpsFactory.setReadTimeout(2000);
+        httpsFactory.setConnectTimeout(2000);
+        return httpsFactory;
+    }
+```
+
+```java
+@Qualifier("httpsRestTemplate")
+@Autowired
+RestTemplate restTemplate;
+```
+
+## Bad Request This combination of host and port requires TLS
+
+配置https但访问地址为http
+
+如果是postman，关闭证书校验
+
+# 前端
+

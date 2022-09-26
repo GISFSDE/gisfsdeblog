@@ -24,10 +24,15 @@ tag:
 
 ```c
 start nginx//启动服务
+nginx -c /usr/local/nginx/conf/nginx.conf//指定配置文件启动
 nginx -s reload//重新加载配置并启动
 nginx -s stop//  快速停止
 nginx -s quit//完整有序的关闭
 nginx -t  // 检查配置是否正确
+    //查看nginx位置
+ps -aux | grep nginx
+    //linux查看配置文件位置
+    /usr/sbin/nginx -t
 ```
 
 # 配置自定义nginx.conf

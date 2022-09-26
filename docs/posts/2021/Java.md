@@ -17,6 +17,10 @@ tag:
 
 <!-- more -->
 
+[TOC]
+
+
+
 # 综合问题
 
 ## 增强for和普通for区别？
@@ -5813,6 +5817,131 @@ MappedByteBuffer mbb = fc.map(FileChannel.MapMode.READ_WRITE, 0, 1024);
 
 ## 一次请求的过程
 
+# JDK新版本特征
+
+## [Lambda 表达式](https://mbd.baidu.com/newspage/data/landingsuper?third=baijiahao&baijiahao_id=1685401324435208513&c_source=duedge&p_tk=7164XVbr93kEf9ebx0OCzJEBUC%2FSHtSm0HlbQtXUZnwLWsjL7uvd3VtqGMu6%2BPCP1nEnkpjkthOA%2Fges4OjPt98pqpAcTnKrjR0H1SBkWqMgO7awH2MmJkS5erhN2ZKz%2Bqas&p_timestamp=1646483138&p_sign=39698dd00b7d66b85d43028d11209e58&p_signature=b95e00362b799da95380ab116026ade1&__pc2ps_ab=7164XVbr93kEf9ebx0OCzJEBUC%2FSHtSm0HlbQtXUZnwLWsjL7uvd3VtqGMu6%2BPCP1nEnkpjkthOA%2Fges4OjPt98pqpAcTnKrjR0H1SBkWqMgO7awH2MmJkS5erhN2ZKz%2Bqas|1646483138|b95e00362b799da95380ab116026ade1|39698dd00b7d66b85d43028d11209e58)
+
+![](http://qnimg.gisfsde.com/c8ea15ce36d3d5399cf621bd58615a57372ab0f6.jpeg)
+
+## [流Stream（）](https://www.runoob.com/java/java8-streams.html)
+
+```java
+package pers.lxl.mylearnproject.programbase.newjdk;
+
+import java.util.Arrays;
+import java.util.IntSummaryStatistics;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+
+/**
+ * JDK8 新特性stream（）
+ 源可以是数组、文件、集合、函数
+ * 以声明的方式处理数据，类似用sql从数据库查询数据的方式来提供对集合的运算和表达的高阶抽象
+ * 其将要处理的数据看成一种流，流在管道中传输，其可以再管道的节点中进行筛选排序聚合等一系列操作
+ * Stream（流）是一个来自数据源的元素队列并支持聚合操作
+ * 元素是特定类型的对象，形成一个队列。 Java中的Stream并不会存储元素，而是按需计算。
+ * 数据源 流的来源。 可以是集合，数组，I/O channel， 产生器generator 等。
+ * 聚合操作 类似SQL语句一样的操作， 比如filter, map, reduce, find, match, sorted等。
+ * 和以前的Collection操作不同， Stream操作还有两个基础的特征：
+ * Pipelining: 中间操作都会返回流对象本身。 这样多个操作可以串联成一个管道， 如同流式风格（fluent style）。 这样做可以对操作进行优化， 比如延迟执行(laziness)和短路(short-circuiting)。
+ * 内部迭代： 以前对集合遍历都是通过Iterator或者For-Each的方式, 显式的在集合外部进行迭代， 这叫做外部迭代。 Stream提供了内部迭代的方式， 通过访问者模式(Visitor)实现。
+ */
+public class StreamL {
+    public static void main(String[] args) {
+
+
+//      1.生成流
+        //stream() − 为集合创建串行流。
+        //parallelStream() − 为集合创建并行流。
+        List\<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd", "", "jkl");
+        List\<String> filtered = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.toList());
+        List\<String> filteredParallelStream = strings.parallelStream().filter(string -> !string.isEmpty()).collect(Collectors.toList());
+//      2.聚合操作
+//      迭代数据foreach(),limit() 获取指定数量的流,sorted() 对流进行排序。
+        Random random = new Random();
+        random.ints().limit(10).sorted().forEach(System.out::println);
+//       map() 映射每个元素到对应的结果
+        List\<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
+//      获取对应的平方数
+        List\<Integer> squaresList = numbers.stream().map( i -> i*i).distinct().collect(Collectors.toList());
+//      filter() 通过设置的条件过滤出元素
+//      获取空字符串的数量
+        long count = strings.stream().filter(string -> string.isEmpty()).count();
+//        并行（parallel）程序
+//        parallelStream 是流并行处理程序的代替方法。以下实例我们使用 parallelStream 来输出空字符串的数量：
+//      获取空字符串的数量
+
+//        3.Collectors
+//        Collectors 类实现归约操作，例如将流转换成集合和聚合元素。Collectors 可用于返回列表或字符串：
+        System.out.println("筛选列表: " + filtered);
+        String mergedString = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.joining(", "));
+        System.out.println("合并字符串: " + mergedString);
+//        4.统计
+//        一些产生统计结果的收集器也非常有用。它们主要用于int、double、long等基本类型上，它们可以用来产生类似如下的统计结果。
+        IntSummaryStatistics stats = numbers.stream().mapToInt((x) -> x).summaryStatistics();
+        System.out.println("列表中最大的数 : " + stats.getMax());
+        System.out.println("列表中最小的数 : " + stats.getMin());
+        System.out.println("所有数之和 : " + stats.getSum());
+        System.out.println("平均数 : " + stats.getAverage());
+
+    }
+}
+```
+
+
+
+# 基本类型及类型转换
+
+## 基本类型及其包装类
+
+| **数据类型**           | 大小【bits】 | **默认值** | 最小值    | 最大值         | 包装类    | [对应数据库Mysql](https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-type-conversions.html) | 应用 |
+| :--------------------- | :----------: | :--------- | --------- | -------------- | --------- | ------------------------------------------------------------ | ---- |
+| byte                   |      8       | 0          | -128      | +127           | Byte      |                                                              |      |
+| short                  |      16      | 0          | -2^15     | +2^15-1        | Short     |                                                              |      |
+| int                    |      32      | 0          | -2^31     | +2^31-1        | Integer   |                                                              |      |
+| long                   |      64      | 0L         | -2^63     | +2^63-1        | Long      |                                                              |      |
+| float                  |      32      | 0.0f       | IEEE754   | IEEE754        | Float     |                                                              |      |
+| double                 |      64      | 0.0d       | IEEE754   | IEEE754        | Double    |                                                              |      |
+| char                   |      16      | 'u0000'    | Unicode 0 | Unicode 2^16-1 | Character |                                                              |      |
+| String (or any object) |              | null       |           |                |           |                                                              |      |
+| boolean                |              | false      |           |                | Boolean   |                                                              |      |
+
+
+
+## 存储在哪
+
+![image-20220801195040477](https://qnimg.gisfsde.com/markdown/image-20220801195040477.png)
+
+## 相互转换
+
+### 基本类型精度比较？
+
+char —> int —> long —> float —> double
+
+byte —> short —> int —> long —> float —> double
+
+### 转换规则
+
+- 多种类型混合运算自动转换为容量最大的
+- 小可转大，大转小需小括号强制转换，可能造成精度缺失
+- char 、byte 、short 之间不可相互转换，相互计算时转换为int
+- 基本数据类型转换为String：基本数据类型+"",String转换为正确的基本类型：基本数据类型对应包装类.parse...()
+
+### 什么是精度缺失？
+
+计算机二进制计算导致无限循环以致精度缺失。
+
+### 如何解决精度缺失？
+
+使用 BigDecimal+字符串、BigInteger
+
+
+
+
+
+
+
 # 面向对象
 
 # JDK新特性
@@ -5982,79 +6111,6 @@ Son s1 = (Son)f1;   // 这就叫 downcasting (向下转型)
 ## CAP、BASE理论
 
 ## AQS
-
-## JDK新版本特征
-
-### [Lambda 表达式](https://mbd.baidu.com/newspage/data/landingsuper?third=baijiahao&baijiahao_id=1685401324435208513&c_source=duedge&p_tk=7164XVbr93kEf9ebx0OCzJEBUC%2FSHtSm0HlbQtXUZnwLWsjL7uvd3VtqGMu6%2BPCP1nEnkpjkthOA%2Fges4OjPt98pqpAcTnKrjR0H1SBkWqMgO7awH2MmJkS5erhN2ZKz%2Bqas&p_timestamp=1646483138&p_sign=39698dd00b7d66b85d43028d11209e58&p_signature=b95e00362b799da95380ab116026ade1&__pc2ps_ab=7164XVbr93kEf9ebx0OCzJEBUC%2FSHtSm0HlbQtXUZnwLWsjL7uvd3VtqGMu6%2BPCP1nEnkpjkthOA%2Fges4OjPt98pqpAcTnKrjR0H1SBkWqMgO7awH2MmJkS5erhN2ZKz%2Bqas|1646483138|b95e00362b799da95380ab116026ade1|39698dd00b7d66b85d43028d11209e58)
-
-![](http://qnimg.gisfsde.com/c8ea15ce36d3d5399cf621bd58615a57372ab0f6.jpeg)
-
-### [流Stream（）](https://www.runoob.com/java/java8-streams.html)
-
-```java
-package pers.lxl.mylearnproject.programbase.newjdk;
-
-import java.util.Arrays;
-import java.util.IntSummaryStatistics;
-import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
-
-/**
- * JDK8 新特性stream（）
- * 以声明的方式处理数据，类似用sql从数据库查询数据的方式来提供对集合的运算和表达的高阶抽象
- * 其将要处理的数据看成一种流，流在管道中传输，其可以再管道的节点中进行筛选排序聚合等一系列操作
- * Stream（流）是一个来自数据源的元素队列并支持聚合操作
- * 元素是特定类型的对象，形成一个队列。 Java中的Stream并不会存储元素，而是按需计算。
- * 数据源 流的来源。 可以是集合，数组，I/O channel， 产生器generator 等。
- * 聚合操作 类似SQL语句一样的操作， 比如filter, map, reduce, find, match, sorted等。
- * 和以前的Collection操作不同， Stream操作还有两个基础的特征：
- * Pipelining: 中间操作都会返回流对象本身。 这样多个操作可以串联成一个管道， 如同流式风格（fluent style）。 这样做可以对操作进行优化， 比如延迟执行(laziness)和短路(short-circuiting)。
- * 内部迭代： 以前对集合遍历都是通过Iterator或者For-Each的方式, 显式的在集合外部进行迭代， 这叫做外部迭代。 Stream提供了内部迭代的方式， 通过访问者模式(Visitor)实现。
- */
-public class StreamL {
-    public static void main(String[] args) {
-
-
-//      1.生成流
-        //stream() − 为集合创建串行流。
-        //parallelStream() − 为集合创建并行流。
-        List\<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd", "", "jkl");
-        List\<String> filtered = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.toList());
-        List\<String> filteredParallelStream = strings.parallelStream().filter(string -> !string.isEmpty()).collect(Collectors.toList());
-//      2.聚合操作
-//      迭代数据foreach(),limit() 获取指定数量的流,sorted() 对流进行排序。
-        Random random = new Random();
-        random.ints().limit(10).sorted().forEach(System.out::println);
-//       map() 映射每个元素到对应的结果
-        List\<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
-//      获取对应的平方数
-        List\<Integer> squaresList = numbers.stream().map( i -> i*i).distinct().collect(Collectors.toList());
-//      filter() 通过设置的条件过滤出元素
-//      获取空字符串的数量
-        long count = strings.stream().filter(string -> string.isEmpty()).count();
-//        并行（parallel）程序
-//        parallelStream 是流并行处理程序的代替方法。以下实例我们使用 parallelStream 来输出空字符串的数量：
-//      获取空字符串的数量
-
-//        3.Collectors
-//        Collectors 类实现归约操作，例如将流转换成集合和聚合元素。Collectors 可用于返回列表或字符串：
-        System.out.println("筛选列表: " + filtered);
-        String mergedString = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.joining(", "));
-        System.out.println("合并字符串: " + mergedString);
-//        4.统计
-//        一些产生统计结果的收集器也非常有用。它们主要用于int、double、long等基本类型上，它们可以用来产生类似如下的统计结果。
-        IntSummaryStatistics stats = numbers.stream().mapToInt((x) -> x).summaryStatistics();
-        System.out.println("列表中最大的数 : " + stats.getMax());
-        System.out.println("列表中最小的数 : " + stats.getMin());
-        System.out.println("所有数之和 : " + stats.getSum());
-        System.out.println("平均数 : " + stats.getAverage());
-
-    }
-}
-```
-
-
 
 ## 其他
 

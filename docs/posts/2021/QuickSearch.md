@@ -81,6 +81,9 @@ java -verbose
 systeminfo
 #查看开机启动文件夹
 shell:common startup
+fuwu
+services.msc
+taskmgr
 ```
 
 文件信息
@@ -98,10 +101,11 @@ cmd窗口点击内容会暂停，右键属性关闭快速编辑即可，但是�
 
 ```bash
 #查找对应端口pid
-netstat  -aon|findstr  "59207"
+netstat -ano #全部
+netstat -ano|findstr  "59207"
 #查看对应pid程序
 tasklist|findstr "1396"
-#关闭对应端口
+#强制关闭对应端口的进程及其子进程
 taskkill /t /f /pid "8888"
 #启动远程桌面
 mstsc  

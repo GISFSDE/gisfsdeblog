@@ -11,7 +11,9 @@ tag:
 
 > VUE、HTML、JS、、、、
 
-<!-- more -->
+<!-- more -->c
+
+[TOC]
 
 
 
@@ -23,9 +25,16 @@ tag:
 
 ## 简介
 
+## 环境
+
+
+
 ## 安装
 
 #### [创建新项目](https://cli.vuejs.org/zh/guide/creating-a-project.html)
+
+vue-cli版本是2.0左右的就会有webpack的config目录
+vue-cli版本是3.0以上的就会有[vue.config.js](https://cli.vuejs.org/zh/config/)没有config目录
 
 ### vue init
 
@@ -135,6 +144,40 @@ electron-vue的模板
 │  └─views
 ```
 
+### [vue create 和vue init webpack的区别](https://blog.csdn.net/weixin_42617917/article/details/115774159)
+
+vue create 是vue-cli3.x的初始化方式
+
+vue init 是vue-cli2.x的初始化方式，可以使用[github](https://so.csdn.net/so/search?q=github)上面的一些模板来初始化项目，webpack是官方推荐的标准模板名。
+
+#### vue cli2升级到vue cli3
+
+1.先升级npm的版本
+
+npm install -g npm
+
+2.再卸载之前的vue cli 2.9.6
+
+npm uninstall -g @vue/cli
+
+3.下载最新的vue cli版本
+
+npm install -g @vue/cli
+
+#### 区别
+
+1.打包方式：
+cli2 运行:npm run dev
+cli3 运行：npm run serve
+至于为什么会变，来看一下package.json
+2.文件夹目录：
+3.cli3 文件目录：取消掉了config目录、build目录、static目录 ,还有最重要的一点，3.0的安装项目时自动下载node-model，vue.config.js也没了，需要手动添加。
+3.创建项目方式：
+3.cli3的安装：vue create project
+2.cli2的安装：vue init webpack project
+
+## 常用插件
+
 
 
 ## 页面跳转
@@ -158,9 +201,9 @@ electron-vue的模板
 
 # [ES6](https://blog.csdn.net/itzhongzi/article/details/73330681)
 
-## 变量定义
+ECMAScript 6
 
-
+## 变量定义 5 vs 6
 
 ES5
 
@@ -171,6 +214,12 @@ ES6
 1. let定义的变量，只能在块作用域里访问，不能跨块访问，也不能跨函数访问，不可多次重复定义相同变量，定义的变量提前用显示报错未定义
 2. const用来定义只读常量，使用时必须初始化(即必须赋值)，只能在块作用域里访问，而且不能修改指针。
 3. this.$nextTick(()=>{创建地图对象代码})顺序加载DOM
+
+## 常用方法
+
+reverse()   数组翻转
+
+# HTML5
 
 # WEBGL
 
@@ -186,9 +235,7 @@ https://uniapp.dcloud.io/
 
 # MiniProgram
 
-# HTML5
 
-# Javascript
 
 # Bootstrap
 
@@ -271,7 +318,9 @@ npm_mirror: https://npm.taobao.org/mirrors/npm/
 - `nvm root [path]` ：设置存储不同版本node的目录。如果未设置，默认使用当前目录。
 - `nvm version` ：显示nvm版本。version可简化为v
 
-# webpack 
+# Webpack 
+
+![img](https://qnimg.gisfsde.com/markdown/32af52ff9594b121517ecdd932644da4.png)
 
 # [querystring](https://github.com/ljharb/qs)
 
@@ -322,37 +371,7 @@ new Vue({
 
 
 
-# [vue create 和vue init webpack的区别](https://blog.csdn.net/weixin_42617917/article/details/115774159)
 
-vue create 是vue-cli3.x的初始化方式
-
-vue init 是vue-cli2.x的初始化方式，可以使用[github](https://so.csdn.net/so/search?q=github)上面的一些模板来初始化项目，webpack是官方推荐的标准模板名。
-
-## vue cli2升级到vue cli3
-
-1.先升级npm的版本
-
-npm install -g npm
-
-2.再卸载之前的vue cli 2.9.6
-
-npm uninstall -g @vue/cli
-
-3.下载最新的vue cli版本
-
-npm install -g @vue/cli
-
-## 区别
-
-1.打包方式：
-cli2 运行:npm run dev
-cli3 运行：npm run serve
-至于为什么会变，来看一下package.json
-2.文件夹目录：
-3.cli3 文件目录：取消掉了config目录、build目录、static目录 ,还有最重要的一点，3.0的安装项目时自动下载node-model，vue.config.js也没了，需要手动添加。
-3.创建项目方式：
-3.cli3的安装：vue create project
-2.cli2的安装：vue init webpack project
 
 # 其他
 
@@ -466,9 +485,11 @@ cli3 运行：npm run serve
 
 ctrl+F5强制刷新缓存
 
+
+
 # 设计之美
 
-# 技术应用
+# 综合应用
 
 ## iframe
 
@@ -478,7 +499,7 @@ ctrl+F5强制刷新缓存
 
 （1）父页面
 
-```
+```html
 \<html>
 \<head>
     \<script type="text/javascript">
@@ -500,7 +521,7 @@ ctrl+F5强制刷新缓存
 
 （2）子页面
 
-```
+```html
 \<html>
 \<head>
     \<script type="text/javascript">
@@ -531,7 +552,7 @@ ctrl+F5强制刷新缓存
 
 （1）父页面
 
-```
+```html
 \<template>
     \<div>
         \<iframe 
@@ -570,7 +591,7 @@ export default {
 
 （2）子页面
 
-```
+```html
 \<template>
     \<div>
         \<div id="b-page">\</div>
@@ -593,6 +614,14 @@ export default {
 }
 \</script>
 ```
+
+### 取消边框
+
+```html
+\<iframe src="https://blog.csdn.net/qq_33583069/article/details/111240367" style="width:100%;height:1100px" name="iframe_a"  frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes">\</iframe>
+```
+
+​    
 
 ## 接口
 
@@ -621,3 +650,232 @@ axios.patch(url[, data[, config]])
 
 ## VUE深拷贝浅拷贝
 
+## 缓存
+
+### cookie 
+
+Cookie是存储在用户计算机上的小文件，保存特定客户端和网站的适量数据，并可以有Web服务器或客户端浏览器访问，允许服务器提供针对特定用户定制的页面，或者页面本身可以包含一些知道cookie中的数据的脚本。
+
+#### 存取
+
+```js
+//根据名称获取Cookie
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i].trim();
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+    }
+    return null;
+};
+ 
+//设置Cookie； 参数cname名称，cvalue值，exdays天数
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + "; " + expires + ";path=/;domain=.xxxxx.com";
+};
+//使用时一定要修改 .xxxxx.com 为你的域名，  如www.baidu.com 改为.baidu.com
+```
+
+#### 常规
+
+```js
+function setCookie(cname,cvalue,exdays){
+    var d = new Date();
+    d.setTime(d.getTime()+(exdays*24*60*60*1000));
+    var expires = "expires="+d.toGMTString();
+    document.cookie = cname+"="+cvalue+"; "+expires;
+}
+function getCookie(cname){
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i].trim();
+        if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+    }
+    return "";
+}
+function checkCookie(){
+    var user=getCookie("username");
+    if (user!=""){
+        alert("欢迎 " + user + " 再次访问");
+    }
+    else {
+        user = prompt("请输入你的名字:","");
+          if (user!="" && user!=null){
+            setCookie("username",user,30);
+        }
+    }
+}
+```
+
+
+
+#### 跨域cookie 
+
+```js
+function setCookie(c_name, value, expiredays) {
+		var exdate = new Date();
+		exdate.setDate(exdate.getDate() + expiredays);
+		document.cookie = c_name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString() + ";path=/;domain=.testdomain.com")
+	}
+ 
+	var AdTime = new Date(); 
+	if (AdTime != "") {
+ 
+		setCookie("AdTime", AdTime, 1);
+	}
+```
+
+### sessionStorage:临时的会话存储
+
+​    只要当前的会话窗口未关闭，存储的信息就不会丢失，即便刷新了页面，或者在编辑器中更改了代码，存储的会话信息也不会丢失。
+
+### localStorage:永久存储
+
+ 会一直将数据存储在客户端的储存方式，即使关闭了浏览器，下次打开的时候仍然可以看到之前存储的未主动清楚的数据(即便是杀毒软件或者浏览器自带的清除功能，也不能将localStorage存储的数据清除掉)
+
+#### 相关操作
+
+```js
+		//设置缓存
+        localStorage.setItem('name', '张三')
+        sessionStorage.setItem('name', '李四')
+        //删除缓存
+        localStorage.removeItem('name')
+        sessionStorage.removeItem('name')
+        //获取缓存
+        console.log(localStorage.getItem('name'))
+        console.log(sessionStorage.getItem('name'))
+
+        //设置json类数据
+        localStorage.jsonData = JSON.stringify(jsonData)
+        sessionStorage.jsonData = JSON.stringify(jsonData)
+        //获取
+        console.log(localStorage.jsonData)
+        console.log(sessionStorage.jsonData)
+
+
+
+        localStorage.setItem('name', '张三')
+        localStorage.age = '18'
+        sessionStorage.setItem('name', '李四')
+        sessionStorage.age = '20'
+ 
+        //清除所有数据
+        localStorage.clear()
+        sessionStorage.clear()
+ 
+        console.log(localStorage.getItem('name'), localStorage.age)
+        console.log(sessionStorage.getItem('name'), sessionStorage.age)
+```
+
+## 数据类型转换
+
+## 判断终端类型
+
+```js
+//判断终端类型
+      function systemType() {
+        let agent = navigator.userAgent.toLowerCase();
+        let windows = agent.indexOf("win") > -1 || agent.indexOf("wow") > -1;
+        let mac = /macintosh|mac x/i.test(agent);
+        let iOS = !!agent.match(/\(i[^;]+;( u;)? cpu.+mac os x/);
+        let android =
+          agent.indexOf("android") > -1 || agent.indexOf("adr") > -1;
+
+        if (windows) return "Windows";
+        if (mac) return "mac";
+        if (iOS) return "iOS";
+        if (android) return "Android";
+      }
+```
+
+## VUE项目局域网访问
+
+1.开启对应端口的防火墙
+
+2.在 config 文件中，将 host 设置为 0.0.0.0
+
+module.exports = {
+    dev: {
+        host: "0.0.0.0",
+        port: 8080, 
+2.在 webpack.dev.conf.js 文件，devServer中加入 useLocalIp: true,
+
+防止运行项目时地址为0.0.0.0，设置后无需手动更改ip地址
+
+devServer: {
+    useLocalIp: true,
+    clientLogLevel: 'warning',
+
+## Cannot find module '@/views/dgrh/project/index
+
+```js
+export const loadView = (view) => { // 路由懒加载
+  return () => import(`@/views/${view}`)
+   //return (resolve) => require([`@/views/${view}.vue`], resolve)
+}
+```
+
+## 未操作监听
+
+```js
+    actionListener() {
+      var count = 0;
+      var outTime = 0.1; //分钟
+      function go() {
+        count++;
+        if (count == outTime * 60) {
+          alert("您长时间未操作页面");
+          // 此处处理后续操作
+        }
+      }
+      //页面倒计时
+      window.setInterval(go, 1000);
+      //监听鼠标
+      var x;
+      var y;
+      document.onmousemove = function (event) {
+        /* Act on the event */
+        var x1 = event.clientX;
+        var y1 = event.clientY;
+        if (x != x1 || y != y1) {
+          count = 0;
+        }
+        x = x1;
+        y = y1;
+      };
+      document.onkeydown = function (event) {
+        count = 0;
+      };
+    },
+```
+
+## 获取url相关参数
+
+```
+var url      = window.location.href;  // 返回完整 URL (https://www.runoob.com/html/html-tutorial.html)
+var pathname = window.location.pathname; // 返回路径部分 (/html/html-tutorial.html)
+var origin   = window.location.origin;   // 返回基础 URL (https://www.runoob.com/)
+var domain = document.domain;  // 返回域名部分 (www.runoob.com)
+
+//获取参数
+function getQueryVariable(variable)
+{
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+        if(pair[0] == variable){return pair[1];}
+    }
+    return(false);
+}
+```
+
+## 同步异步
+
+JS是**单线程**的，**同步**是几件事一个事做完再做下个事，**异步**是几件事中间一件事可先跳过，剩下的事全部执行完后执行跳过的事。异步比如：定时器、事件绑定、Ajax读取数据、回调函数。

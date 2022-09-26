@@ -154,7 +154,7 @@ Postgresql,VMware,Ubuntu镜像（官方指定），Navicat（方便查看数据�
 
    ```sql
    #where确定级别
-   ogr2ogr -f "GeoJSON" ./veg_py.json PG:"host=126.10.9.16 dbname=postgres user=postgres password=724111" -sql "select * from veg_py fscale=10" 
+   ogr2ogr -f "GeoJSON" ./veg_py.json PG:"host=1.1.1.1 dbname=postgres user=postgres password=724111" -sql "select * from veg_py fscale=10" 
    tippecanoe -e tracenln -pC -Z0 -z20 -f tracenln1.json tracenln2.json tracenln3.json
    ```
 
@@ -539,7 +539,7 @@ $ http-server -c-1 (如果只输入http-server，更新代码后，页面不会�
 
 方法三：VSCode 插件运行
 
-## 获取Token
+### 获取Token
 
 ![image-20220113093336025](http://qnimg.gisfsde.com/work/image-20220113093336025.png)
 
@@ -549,6 +549,33 @@ $ http-server -c-1 (如果只输入http-server，更新代码后，页面不会�
     Cesium.Ion.defaultAccessToken = 'token';
     var viewer = new Cesium.Viewer("cesiumContainer", {})
 ```
+
+### [源码目录结构说明](https://blog.csdn.net/dvs_2018/article/details/124895995)
+
+Apps	测试目录
+Build	打包存放目录，源码是不包含这个目录的
+Documentation	API文档，很有用，是Cesium工具箱
+launches	Eclipse外部工具环境构建配置，直接为服务器运行node
+Source	功能源码，核心部分
+
+- Assets	纹理、图片等静态资源模块
+  Core	基础核心类、事件、颜色、矩阵、几何对象等
+  DataSources	数据源、数据对象、数据集合等
+  Renderer	渲染类、调度纹理、shader、缓冲区、顶点属性等
+  Scene	场景类、相机、模型加载器、地球、大气、相机、图层等
+  Shaders	静态Shader文件、shader模板
+  ThirdParty	第三方插件
+  Widgets	Cesium的UI控件、时间轴、信息框、地图选择器等
+  Workers	工作线程、主要用于几何体的创建 ，支持多线程开发渲染
+
+Specs	单元测试集
+ThirdParty	第三方插件
+Tools	打包、代码检查、jsdoc工具等
+gulpfile.cjs	打包配置，包括GLSL语法的转义、压缩和未压缩库文件的打包、API文档的生成以及自动化单位测试等；
+package.json	描述这个NPM包的所有相关信息、包括版本、依赖库、构建等信息；
+index.html	Cesium导航首页
+
+
 
 
 
@@ -568,12 +595,12 @@ Cesium ion is your hub for discovering 3D content and tiling your own data for s
 
 ### Local links
 
-| [Documentation](http://126.10.1.204:8081/Build/Documentation/index.html) | The complete API documentation and reference.                |
+| [Documentation](http://1.1.1.1:8081/Build/Documentation/index.html) | The complete API documentation and reference.                |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Hello World](http://126.10.1.204:8081/Apps/HelloWorld.html) | The simplest possible Cesium application.                    |
-| [Cesium Viewer](http://126.10.1.204:8081/Apps/CesiumViewer/index.html) | A sample Cesium reference application which allows you to browse the globe and select from a variety of imagery and terrain layers as well as load CZML, GeoJSON, and other formats supported by Cesium. |
-| [Sandcastle](http://126.10.1.204:8081/Apps/Sandcastle/index.html) | Cesium's live code editor and example gallery. Browse examples highlighting features of the Cesium API and edit and run them all in your web browser. Cesium applications created in Sandcastle can be saved and downloaded. |
-| [Run tests](http://126.10.1.204:8081/Specs/SpecRunner.html)  | Run Cesium's full suite of unit tests                        |
+| [Hello World](http://1.1.1.1:8081/Apps/HelloWorld.html)      | The simplest possible Cesium application.                    |
+| [Cesium Viewer](http://1.1.1.1:8081/Apps/CesiumViewer/index.html) | A sample Cesium reference application which allows you to browse the globe and select from a variety of imagery and terrain layers as well as load CZML, GeoJSON, and other formats supported by Cesium. |
+| [Sandcastle](http://1.1.1.1:8081/Apps/Sandcastle/index.html) | Cesium's live code editor and example gallery. Browse examples highlighting features of the Cesium API and edit and run them all in your web browser. Cesium applications created in Sandcastle can be saved and downloaded. |
+| [Run tests](http://1.1.1.1:8081/Specs/SpecRunner.html)       | Run Cesium's full suite of unit tests                        |
 
 ### External links
 
@@ -1493,10 +1520,10 @@ module.exports = {
       accessToken:
         "pk.eyJ1IjoibGltbiIsImEiOiJja2t1bG1na2IxZGU0MnZvNmlzY3FhZXM4In0.oQx4VguycOR4TK80Pyusmw",
     });
-    viewer.imageryLayers.addImageryProvider(mapbox);
+    viewer.imageryLayers.addImageryProvider(mapbox); 
 ```
 
-
+   
 
 
 
@@ -1518,12 +1545,12 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
   \<meta charset="UTF-8">
   \<title>添加电子地图\</title>
   <!--添加leaflet样式-->
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/leaflet/V1.3/leaflet/leaflet.css" />
   <!--添加leafletjs包-->
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
   <!--添加坐标库-->
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
   \<style>
     html {
       height: 100%
@@ -1566,7 +1593,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     var map = L.map('mapid', {
       crs: crs
     });
-    var url = "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver";
+    var url = "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver";
     var attrib = "&copy 杭州市规划资源局";
     var basemap = new L.TileLayer(url + "/tile/{z}/{y}/{x}", {
       tileSize: 256,
@@ -1589,10 +1616,10 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
 \<head>
   \<meta charset="UTF-8">
   \<title>添加影像地图\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/leaflet/V1.3/leaflet/leaflet.css" />
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
   \<style>
     html {
       height: 100%
@@ -1635,7 +1662,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     var map = L.map('mapid', {
       crs: crs
     });
-    var url = "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyraster/Mapserver";
+    var url = "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyraster/Mapserver";
     var attrib = "&copy 杭州市规划资源局";
     var basemap = new L.TileLayer(url + "/tile/{z}/{y}/{x}", {
       tileSize: 256,
@@ -1662,12 +1689,12 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
   \<meta charset="UTF-8">
   \<title>添加电子地图\</title>
   <!--添加leaflet样式-->
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/leaflet/V1.3/leaflet/leaflet.css" />
   <!--添加leafletjs包-->
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
   <!--添加坐标库-->
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
   \<style>
     html {
       height: 100%
@@ -1710,7 +1737,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     var map = L.map('mapid', {
       crs: crs
     });
-    var url = "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver";
+    var url = "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver";
     var attrib = "&copy 杭州市规划资源局";
     var basemap = new L.TileLayer(url + "/tile/{z}/{y}/{x}", {
       tileSize: 256,
@@ -1726,7 +1753,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
 
  
 
-#### 3.3.2.2矢量图层（wms）
+### 3.3.2.2矢量图层（wms）
 
 加载WMS地图服务，支持filter筛选
 
@@ -1736,11 +1763,11 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
 \<head>
   \<meta charset="UTF-8">
   \<title>调用WMS\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet.wms.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/leaflet/V1.3/leaflet/leaflet.css" />
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/leaflet/Plugins/leaflet.wms.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
   \<style>
     html {
       height: 100%
@@ -1783,7 +1810,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     var map = L.map('mapid', {
       crs: crs
     });
-    var url = "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver";
+    var url = "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver";
     var attrib = "&copy 杭州市规划资源局";
     var basemap = new L.TileLayer(url + "/tile/{z}/{y}/{x}", {
       tileSize: 256,
@@ -1792,7 +1819,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     map.addLayer(basemap);
     map.setView([30, 120], 4); //设置比例尺和中心点级别
     // L.WMS.source
-    var wmsurl = L.WMS.overlay("http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_csbj0619/MapServer/wms",
+    var wmsurl = L.WMS.overlay("http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_csbj0619/MapServer/wms",
       {
         "transparent": true,
         "srs": "EPSG:4490",
@@ -1809,7 +1836,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
 \</html>
 ```
 
-#### 3.3.2.3矢量图层（wfs）
+### 3.3.2.3矢量图层（wfs）
 
 ```html
 \<!DOCTYPE html>
@@ -1817,12 +1844,12 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
 \<head>
   \<meta charset="UTF-8" />
   \<title>加载WFS电子地图\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/leaflet/V1.3/leaflet/leaflet.css" />
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
   \<style>
     html {
       height: 100%;
@@ -1867,7 +1894,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
       crs: crs,
     });
     var url =
-      "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver";
+      "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver";
     var attrib = "&copy 杭州市规划资源局";
     var basemap = new L.TileLayer(url + "/tile/{z}/{y}/{x}", {
       tileSize: 256,
@@ -1887,7 +1914,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     var mblayer;
     $.ajax({
       url:
-        "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json",
+        "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json",
       success: function (data) {
         var geojson = JSON.parse(data);
         mblayer = L.geoJSON(geojson, {
@@ -1900,7 +1927,59 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
 \</html>
 ```
 
- 
+###  3.3.2.4 图片图层
+
+```js
+    let gjyjstgy = esri.dynamicMapLayer({
+      url: "http://1.1.1.1:6080/arcgis/rest/services/DGRH/MapServer",
+      layers: [4],
+    });
+
+    self.gjyjstgylGroup = L.layerGroup([gjyjstgy]);
+
+    var overlayMaps = {
+      行政界限: layer,
+      国家一级生态公益林: self.gjyjstgylGroup,
+    };
+
+    self.map.addLayer(layer);
+ 	L.control.layers(baseMaps, overlayMaps).addTo(self.map);
+```
+
+
+
+### 3.3.2.5图层控制
+
+```js
+    var basemap1 = new L.TileLayer( //    hzsyvector_dark
+      "http://1.1.1.1:8887/740D333CAD2D0DD9786474D39D072E3364077B08F2ED472F7FAF0322F549E4CBE1C70DDF272573B6DD48875FF21CD703/PBS/rest/services/202112cavector/Mapserver/tile/{z}/{y}/{x}",
+      //this.mapYxUrl+"/tile/{z}/{y}/{x}",
+      {
+        tileSize: 256,
+        minZoom: 0,
+        maxZoom: 12,
+      }
+    );
+    let gjyjstgy = esri.dynamicMapLayer({
+      url: "http://10.33.237.149:6080/arcgis/rest/services/DGRH/MapServer",
+      layers: [4],
+    });
+
+    self.gjyjstgylGroup = L.layerGroup([gjyjstgy]);
+
+    var overlayMaps = {
+      行政界限: layer,
+      国家一级生态公益林: self.gjyjstgylGroup,
+    };
+    var baseMaps = {
+      电子地图: basemap1,
+      影像地图: basemap,
+    };
+
+    L.control.layers(baseMaps, overlayMaps).addTo(self.map);
+```
+
+
 
  
 
@@ -1914,12 +1993,12 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
 \<head>
   \<meta charset="UTF-8" />
   \<title>点查询\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/leaflet/V1.3/leaflet/leaflet.css" />
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
   \<style>
     html {
       height: 100%;
@@ -1967,7 +2046,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
       },*/
     });
     var url =
-      "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver";
+      "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver";
     var attrib = "&copy 杭州市规划资源局";
     var basemap = new L.TileLayer(url + "/tile/{z}/{y}/{x}", {
       tileSize: 256,
@@ -1979,7 +2058,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
       // alert("You clicked the map at " + e.latlng);
       var point = e.latlng.lng + "," + e.latlng.lat + "," + e.latlng.lng + "," + e.latlng.lat;// "120.16271670916996,30.251675868508478,120.1713094144393,30.25591314629446";
       var qurl =
-        "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," + point + ")";
+        "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," + point + ")";
       $.ajax({
         url: qurl,
         success: function (data) {
@@ -1998,7 +2077,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     var mblayer;
     $.ajax({
       url:
-        "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json",
+        "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json",
       success: function (data) {
         var geojson = JSON.parse(data);
         mblayer = L.geoJSON(geojson, {
@@ -2021,14 +2100,14 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
 \<head>
   \<meta charset="UTF-8" />
   \<title>面查询\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-draw/leaflet.draw.css" />
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-draw/leaflet.draw.js">\</script>
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/leaflet/V1.3/leaflet/leaflet.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/leaflet/V1.3/leaflet/Plugins/leaflet-draw/leaflet.draw.css" />
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/leaflet/Plugins/leaflet-draw/leaflet.draw.js">\</script>
   \<style>
     html {
       height: 100%;
@@ -2076,7 +2155,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
       },*/
     });
     var url =
-      "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver";
+      "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver";
     var attrib = "&copy 杭州市规划资源局";
     var basemap = new L.TileLayer(url + "/tile/{z}/{y}/{x}", {
       tileSize: 256,
@@ -2115,7 +2194,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
           "," +
           bound._northEast.lat; // "120.16271670916996,30.251675868508478,120.1713094144393,30.25591314629446";
         var qurl =
-          "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," +
+          "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," +
           point +
           ")";
         $.ajax({
@@ -2139,7 +2218,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     var mblayer;
     $.ajax({
       url:
-        "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json",
+        "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json",
       success: function (data) {
         var geojson = JSON.parse(data);
         mblayer = L.geoJSON(geojson, {
@@ -2164,12 +2243,12 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
 \<head>
   \<meta charset="UTF-8" />
   \<title>点查询\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/leaflet/V1.3/leaflet/leaflet.css" />
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
   \<style>
     html {
       height: 100%;
@@ -2224,7 +2303,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
       },*/
     });
     var url =
-      "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver";
+      "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver";
     var attrib = "&copy 杭州市规划资源局";
     var basemap = new L.TileLayer(url + "/tile/{z}/{y}/{x}", {
       tileSize: 256,
@@ -2242,7 +2321,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
         "," +
         e.latlng.lat; // "120.16271670916996,30.251675868508478,120.1713094144393,30.25591314629446";
       var qurl =
-        "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=";
+        "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=";
       qurl += " quxian='上城区'";
       $.ajax({
         url: qurl,
@@ -2262,7 +2341,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     var mblayer;
     $.ajax({
       url:
-        "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json",
+        "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json",
       success: function (data) {
         var geojson = JSON.parse(data);
         mblayer = L.geoJSON(geojson, {
@@ -2287,14 +2366,14 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
 \<head>
   \<meta charset="UTF-8" />
   \<title>面查询\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.css" />
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-draw/leaflet.draw.css" />
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
-  \<script src="http://172.18.109.232:8082/leaflet/V1.3/leaflet/Plugins/leaflet-draw/leaflet.draw.js">\</script>
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/leaflet/V1.3/leaflet/leaflet.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/leaflet/V1.3/leaflet/Plugins/leaflet-draw/leaflet.draw.css" />
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/leaflet/leaflet.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/leaflet/Plugins/leaflet-wfs.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/pro/proj4-compressed.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/pro/proj4leaflet.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
+  \<script src="http://1.1.1.1:8082/leaflet/V1.3/leaflet/Plugins/leaflet-draw/leaflet.draw.js">\</script>
   \<style>
     html {
       height: 100%;
@@ -2342,7 +2421,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
       },*/
     });
     var url =
-      "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver";
+      "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver";
     var attrib = "&copy 杭州市规划资源局";
     var basemap = new L.TileLayer(url + "/tile/{z}/{y}/{x}", {
       tileSize: 256,
@@ -2381,7 +2460,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
           "," +
           bound._northEast.lat; // "120.16271670916996,30.251675868508478,120.1713094144393,30.25591314629446";
         var qurl =
-          "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," +
+          "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," +
           point +
           ")";
         qurl += " and quxian='上城区'";
@@ -2408,7 +2487,7 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
     var mblayer;
     $.ajax({
       url:
-        "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json",
+        "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json",
       success: function (data) {
         var geojson = JSON.parse(data);
         mblayer = L.geoJSON(geojson, {
@@ -2421,9 +2500,130 @@ Leaflet 是一个为建设移动设备友好的互动地图，而开发的现代
 \</html>
 ```
 
- 
+##  3.3.4 [Esri Leaflet](http://esri.github.io/esri-leaflet/)
 
- 
+##  3.3.5弹框
+
+```js
+showPoupo(polygon) {
+      polygon.on("click", function (e) {
+        console.log("点击坐标：", e.latlng);
+        console.log("点击了polygon", polygon);
+        console.log("点击了polygon.projectId", polygon.options.projectId);
+        var latlngs = polygon._latlngs;
+        let html = "";
+        let query = {
+          projectId: polygon.options.projectId,
+        };
+        listWithProject(query).then((res) => {
+          console.log("查询结果", res);
+          let property = res.rows[0];
+          console.log("基础属性查询结果", property);
+          let transition = {
+            createTime: "创建时间",
+            mph: "门牌号",
+            zu: "组",
+            cun: "村",
+            xz: "乡镇",
+            xzq: "区",
+            city: "市",
+            province: "省",
+            xmbh: "项目编号",
+            projectId: " 项目ID",
+            attributeId: "属性ID",
+            administerEndTime: "核查结束时间",
+            checkEndTime: "整改结束时间",
+            projectStep: "项目阶段",
+          };
+          for (const key in property) {
+            if (
+              property[key] != null &&
+              transition[key] != null &&
+              !(property[key] instanceof Object)
+            ) {
+              let value = property[key];
+
+              html = html + transition[key] + ":" + value + "<br>";
+            }
+          }
+          polygon.bindPopup(html).openPopup();
+        });
+      });
+    },
+
+```
+
+## 3.3.6 定位
+
+```js
+    localtion(projectId) {
+      if (this.localtionPolygon) {
+        this.map.removeLayer(this.localtionPolygon);
+      }
+      let query = {
+        projectId: projectId,
+      };
+      listMap(query).then((response) => {
+        console.log("查询结果", response);
+        response.rows = this.revert(response.rows);
+        response.rows.forEach((item) => {
+          this.localtionPolygon = L.polygon(item.mapPolygon[0], {
+            color: "black",
+          }).addTo(this.map);
+          this.showPoupo(this.localtionPolygon);
+          this.map.fitBounds(this.localtionPolygon.getBounds());
+        });
+      });
+    },
+```
+
+## 3.3.7 坐标经纬度调换
+
+```js
+    revert(polygons) {
+      polygons.forEach((item) => {
+        console.log(" item.mapPolygon", item.mapPolygon);
+        let polygonArray = JSON.parse(item.mapPolygon);
+        for (let i = 0; i < polygonArray.length; i++) {
+          let coor = polygonArray[i];
+          polygonArray[i] = coor.map((mapitem) => {
+            return [mapitem[1], mapitem[0]];
+          });
+        }
+        item.mapPolygon = polygonArray;
+      });
+
+      console.log("转换后地图数据", polygons);
+      return polygons;
+    },
+   revert(rings) {
+      return rings.map((ring) => ring.map((point) => [point[1], point[0]]));
+    },
+```
+
+## 3.3.8VUE常用依赖
+
+```js
+//引入样式文件
+import 'leaflet/dist/leaflet.css'
+//引入Leaflet对象 挂载到Vue上，便于全局使用，也可以单独页面中单独引用
+import * as L from 'leaflet'
+Vue.L = Vue.prototype.$L = L;
+import "proj4leaflet";
+var esri = require("esri-leaflet");
+
+
+
+
+
+//引用esri-leaflet
+let esri = require("esri-leaflet");
+import proj4 from 'proj4';
+window.proj4 = proj4; // 用于leaflet切片
+import 'leaflet.chinatmsproviders' // 用于leaflet   引用天地图
+```
+
+
 
  
 
@@ -2444,8 +2644,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
   \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
   \<title>Map with Vertor\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/esri/css/esri.css" />
   \<style>
     html,
     body,
@@ -2459,8 +2659,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       ​ display: none;
     }
   \</style>
-  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script src="http://1.1.1.1:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
   \<script>
     var map;
     require([
@@ -2497,7 +2697,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
         zoom: 3,
       });
       var layer = new ArcGISTiledMapServiceLayer(
-        "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver",
+        "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver",
         {
           id: "vector",
         }
@@ -2529,8 +2729,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
   \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
   \<title>Map with Raster\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/esri/css/esri.css" />
   \<style>
     html,
     body,
@@ -2544,8 +2744,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       ​ display: none;
     }
   \</style>
-  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script src="http://1.1.1.1:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
   \<script>
     var map;
     require([
@@ -2582,7 +2782,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
         zoom: 3,
       });
       var layer = new ArcGISTiledMapServiceLayer(
-        "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyraster/Mapserver",
+        "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyraster/Mapserver",
         {
           id: "raster",
         }
@@ -2614,8 +2814,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
   \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
   \<title>Map with Control\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/esri/css/esri.css" />
   \<style>
     html,
     body,
@@ -2632,8 +2832,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       ​ cursor: pointer;
     }
   \</style>
-  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script src="http://1.1.1.1:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
   \<script>
     var map;
     require([
@@ -2670,14 +2870,14 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
         zoom: 3,
       });
       var vector = new ArcGISTiledMapServiceLayer(
-        "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver",
+        "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver",
         {
           id: "vector",
         }
       );
       // map.addLayer(vector);
       var raster = new ArcGISTiledMapServiceLayer(
-        "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyraster/Mapserver",
+        "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyraster/Mapserver",
         {
           id: "raster",
         }
@@ -2737,8 +2937,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
   \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
   \<title>Map with infoWindow\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/esri/css/esri.css" />
   \<style>
     html,
     body,
@@ -2752,8 +2952,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       ​ display: none;
     }
   \</style>
-  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script src="http://1.1.1.1:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
   \<script>
     var map;
     require([
@@ -2790,7 +2990,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
         zoom: 3,
       });
       var layer = new ArcGISTiledMapServiceLayer(
-        "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver",
+        "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver",
         {
           id: "vector",
         }
@@ -2827,8 +3027,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
   \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
   \<title>Map with wmslayer\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/esri/css/esri.css" />
   \<style>
     html,
     body,
@@ -2842,8 +3042,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       ​ display: none;
     }
   \</style>
-  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script src="http://1.1.1.1:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
   \<script>
     var map;
     require([
@@ -2880,7 +3080,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
         zoom: 3,
       });
       var layer = new ArcGISTiledMapServiceLayer(
-        "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver",
+        "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver",
         {
           id: "vector",
         }
@@ -2889,7 +3089,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       map.on("load", function () {
         var extent = map.extent;
         var url =
-          "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wms";
+          "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wms";
         var resourceInfo = {
           extent: extent,
           layerInfos: [],
@@ -2929,8 +3129,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
   \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
   \<title>Map with wfslayer\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/esri/css/esri.css" />
   \<style>
     html,
     body,
@@ -2944,8 +3144,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       ​ display: none;
     }
   \</style>
-  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script src="http://1.1.1.1:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
   \<script>
     var map, symbol;
     require([
@@ -2990,7 +3190,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
         zoom: 3,
       });
       var layer = new ArcGISTiledMapServiceLayer(
-        "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver",
+        "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver",
         {
           id: "vector",
         }
@@ -2999,7 +3199,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       map.on("load", function () {
         var extent = map.extent;
         var url =
-          "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json";
+          "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json";
         $.ajax({
           url: url,
           success: function (data) {
@@ -3058,8 +3258,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
   \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
   \<title>Query By Point\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/esri/css/esri.css" />
   \<style>
     html,
     body,
@@ -3070,8 +3270,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       ​ padding: 0;
     }
   \</style>
-  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script src="http://1.1.1.1:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
   \<script>
     var map;
     require([
@@ -3110,7 +3310,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
         zoom: 3,
       });
       var layer2 = new ArcGISTiledMapServiceLayer(
-        "http://21.15.116.31/e8b4611714092ac7bc35cb5e8d476e4824f85f3a/Tile/ArcGISREST/hzsyvector.gis",
+        "http://1.1.1.1/e8b4611714092ac7bc35cb5e8d476e4824f85f3a/Tile/ArcGISREST/hzsyvector.gis",
         {
           // id: layerInfo.LayerName,
           id: "底图",
@@ -3120,7 +3320,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       map.on("load", function () {
         var extent = map.extent;
         var url =
-          "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wms";
+          "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wms";
         var resourceInfo = {
           extent: extent,
           layerInfos: [],
@@ -3138,7 +3338,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
         console.log("获取到的点" + e);
         var point = e.mapPoint.x + "," + e.mapPoint.y + "," + e.mapPoint.x + "," + e.mapPoint.y;// "120.16271670916996,30.251675868508478,120.1713094144393,30.25591314629446";
         var qurl =
-          "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," + point + ")";
+          "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," + point + ")";
         $.ajax({
           url: qurl,
           success: function (data) {
@@ -3174,8 +3374,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
   \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
   \<title>Query By Rectangle\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/esri/css/esri.css" />
   \<style>
     html,
     body,
@@ -3186,8 +3386,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       ​ padding: 0;
     }
   \</style>
-  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script src="http://1.1.1.1:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
   \<script>
     var map, toolbar;
     require([
@@ -3234,7 +3434,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
         zoom: 3,
       });
       var layer2 = new ArcGISTiledMapServiceLayer(
-        "http://21.15.116.31/e8b4611714092ac7bc35cb5e8d476e4824f85f3a/Tile/ArcGISREST/hzsyvector.gis",
+        "http://1.1.1.1/e8b4611714092ac7bc35cb5e8d476e4824f85f3a/Tile/ArcGISREST/hzsyvector.gis",
         {
           // id: layerInfo.LayerName,
           id: "底图",
@@ -3244,7 +3444,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       map.on("load", function () {
         var extent = map.extent;
         var url =
-          "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wms";
+          "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wms";
         var resourceInfo = {
           extent: extent,
           layerInfos: [],
@@ -3279,7 +3479,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
           geo.cache._extent.xmax +
           "," +
           geo.cache._extent.ymax; // "120.16271670916996,30.251675868508478,120.1713094144393,30.25591314629446";
-        var qurl = "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," + point + ")";
+        var qurl = "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," + point + ")";
         $.ajax({
           url: qurl,
           success: function (data) {
@@ -3318,8 +3518,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
   \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
   \<title>Query by Attr\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/esri/css/esri.css" />
   \<style>
     html,
     body,
@@ -3330,8 +3530,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       ​ padding: 0;
     }
   \</style>
-  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script src="http://1.1.1.1:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
   \<script>
     var map;
     require([
@@ -3368,7 +3568,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
         zoom: 3,
       });
       var layer2 = new ArcGISTiledMapServiceLayer(
-        "http://21.15.116.31/e8b4611714092ac7bc35cb5e8d476e4824f85f3a/Tile/ArcGISREST/hzsyvector.gis",
+        "http://1.1.1.1/e8b4611714092ac7bc35cb5e8d476e4824f85f3a/Tile/ArcGISREST/hzsyvector.gis",
         {
           id: "底图",
         }
@@ -3377,7 +3577,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       map.on("load", function () {
         var extent = map.extent;
         var url =
-          "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wms";
+          "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wms";
         var resourceInfo = {
           extent: extent,
           layerInfos: [],
@@ -3396,7 +3596,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
         var point =
           "120.16271670916996,30.251675868508478,120.1713094144393,30.25591314629446"; // "120.16271670916996,30.251675868508478,120.1713094144393,30.25591314629446";
         var qurl =
-          "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," +
+          "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," +
           point +
           ")";
         qurl += " and quxian='上城区'";
@@ -3436,8 +3636,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
   \<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   \<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no" />
   \<title>Query\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/arcgis_js_api/3.24/esri/css/esri.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/dijit/themes/claro/claro.css" />
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/arcgis_js_api/3.24/esri/css/esri.css" />
   \<style>
     html,
     body,
@@ -3448,8 +3648,8 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       ​ padding: 0;
     }
   \</style>
-  \<script src="http://172.18.109.232:8082/arcgis_js_api/3.24/init.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<script src="http://1.1.1.1:8082/arcgis_js_api/3.24/init.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
   \<script>
     var map, toolbar;
     require([
@@ -3494,7 +3694,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
         zoom: 3,
       });
       var layer2 = new ArcGISTiledMapServiceLayer(
-        "http://21.15.116.31/e8b4611714092ac7bc35cb5e8d476e4824f85f3a/Tile/ArcGISREST/hzsyvector.gis",
+        "http://1.1.1.1/e8b4611714092ac7bc35cb5e8d476e4824f85f3a/Tile/ArcGISREST/hzsyvector.gis",
         {
           id: "底图",
         }
@@ -3503,7 +3703,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
       map.on("load", function () {
         var extent = map.extent;
         var url =
-          "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wms";
+          "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wms";
         var resourceInfo = {
           extent: extent,
           layerInfos: [],
@@ -3539,7 +3739,7 @@ ArcGIS API for JavaScript就是ESRI公司用JavaScipt语言编写的一套程序
           "," +
           geo.cache._extent.ymax; // "120.16271670916996,30.251675868508478,120.1713094144393,30.25591314629446";
         var qurl =
-          "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," +
+          "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," +
           point +
           ")";
         qurl += " and quxian='上城区'";
@@ -3588,8 +3788,8 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
 \<head>
   \<meta charset="UTF-8">
   \<title>添加电子地图\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css">
-  \<script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js">\</script>
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/openlayer/v3.20.1/css/ol.css" type="text/css">
+  \<script src="http://1.1.1.1:8082/openlayer/v3.20.1/build/ol.js">\</script>
 \</head>
 \<body>
   \<div id="map" class="map">\</div>
@@ -3634,7 +3834,7 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
           var z = tileCoord[0];
           var x = tileCoord[1];
           var y = (-tileCoord[2] - 1);
-          var url = 'http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/tile/' +
+          var url = 'http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/tile/' +
             z + '/' + y + '/' + x;
           console.log(url);
           return url;
@@ -3666,8 +3866,8 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
 \<head>
   \<meta charset="UTF-8">
   \<title>添加电子地图\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css">
-  \<script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js">\</script>
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/openlayer/v3.20.1/css/ol.css" type="text/css">
+  \<script src="http://1.1.1.1:8082/openlayer/v3.20.1/build/ol.js">\</script>
 \</head>
 \<body>
   \<div id="map" class="map">\</div>
@@ -3712,7 +3912,7 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
           var z = tileCoord[0];
           var x = tileCoord[1];
           var y = (-tileCoord[2] - 1);
-          var url = 'http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyraster/Mapserver/tile/' +
+          var url = 'http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyraster/Mapserver/tile/' +
             z + '/' + y + '/' + x;
           console.log(url);
           return url;
@@ -3744,9 +3944,9 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
 \<head>
   \<meta charset="UTF-8" />
   \<title>弹出信息框\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
-  \<script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
+  \<script src="http://1.1.1.1:8082/openlayer/v3.20.1/build/ol.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
 \</head>
 \<style>
   #map {
@@ -3813,7 +4013,7 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
           var x = tileCoord[1];
           var y = -tileCoord[2] - 1;
           var url =
-            "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/tile/" +
+            "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/tile/" +
             z +
             "/" +
             y +
@@ -3870,8 +4070,8 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
 \<head>
   \<meta charset="UTF-8">
   \<title>添加电子地图\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css">
-  \<script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js">\</script>
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/openlayer/v3.20.1/css/ol.css" type="text/css">
+  \<script src="http://1.1.1.1:8082/openlayer/v3.20.1/build/ol.js">\</script>
 \</head>
 \<body>
   \<div id="map" class="map">\</div>
@@ -3916,7 +4116,7 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
           var z = tileCoord[0];
           var x = tileCoord[1];
           var y = (-tileCoord[2] - 1);
-          var url = 'http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/tile/' +
+          var url = 'http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/tile/' +
             z + '/' + y + '/' + x;
           console.log(url);
           return url;
@@ -3928,7 +4128,7 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
       source: new ol.source.ImageWMS({
         ratio: 1,
         //url: 'http://126.10.2.27:8080/geoserver/gpserver/wms',
-        url: 'http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wms?',
+        url: 'http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wms?',
         params: {
           'FORMAT': format,
           'VERSION': '1.1.1',
@@ -3963,8 +4163,8 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
 \<head>
   \<meta charset="UTF-8" />
   \<title>添加WFS电子地图\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
-  \<script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js">\</script>
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
+  \<script src="http://1.1.1.1:8082/openlayer/v3.20.1/build/ol.js">\</script>
 \</head>
 \<body>
   \<div id="map" class="map">\</div>
@@ -4018,7 +4218,7 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
           var x = tileCoord[1];
           var y = -tileCoord[2] - 1;
           var url =
-            "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/tile/" +
+            "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/tile/" +
             z +
             "/" +
             y +
@@ -4033,7 +4233,7 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
     var vectorSource = new ol.source.Vector({
       format: new ol.format.GeoJSON(),
       url: function (extent) {
-        return "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json";
+        return "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json";
       },
       //strategy: bboxStrategy,
     });
@@ -4071,9 +4271,9 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
 \<head>
   \<meta charset="UTF-8" />
   \<title>点查询\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
-  \<script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
+  \<script src="http://1.1.1.1:8082/openlayer/v3.20.1/build/ol.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
 \</head>
 \<body>
   \<div id="map" class="map">\</div>
@@ -4127,7 +4327,7 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
           var x = tileCoord[1];
           var y = -tileCoord[2] - 1;
           var url =
-            "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/tile/" +
+            "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/tile/" +
             z +
             "/" +
             y +
@@ -4142,7 +4342,7 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
     var vectorSource = new ol.source.Vector({
       format: new ol.format.GeoJSON(),
       url: function (extent) {
-        return "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json";
+        return "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json";
       },
       //strategy: bboxStrategy,
     });
@@ -4167,7 +4367,7 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
       var location = e.coordinate;
       var point = location[0] + "," + location[1] + "," + location[0] + "," + location[1];// "120.16271670916996,30.251675868508478,120.1713094144393,30.25591314629446";
       var qurl =
-        "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," + point + ")";
+        "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," + point + ")";
       $.ajax({
         url: qurl,
         success: function (data) {
@@ -4190,9 +4390,9 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
 \<head>
   \<meta charset="UTF-8" />
   \<title>框选查询\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
-  \<script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
+  \<script src="http://1.1.1.1:8082/openlayer/v3.20.1/build/ol.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
 \</head>
 \<body>
   \<div id="map" class="map">\</div>
@@ -4246,7 +4446,7 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
           var x = tileCoord[1];
           var y = -tileCoord[2] - 1;
           var url =
-            "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/tile/" +
+            "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/tile/" +
             z +
             "/" +
             y +
@@ -4261,7 +4461,7 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
     var vectorSource = new ol.source.Vector({
       format: new ol.format.GeoJSON(),
       url: function (extent) {
-        return "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json";
+        return "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json";
       },
       //strategy: bboxStrategy,
     });
@@ -4288,7 +4488,7 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
       var extent = dragbox.getGeometry().getExtent();
       var point = extent[0] + "," + extent[1] + "," + extent[0] + "," + extent[1];// "120.16271670916996,30.251675868508478,120.1713094144393,30.25591314629446";
       var qurl =
-        "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," + point + ")";
+        "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," + point + ")";
       $.ajax({
         url: qurl,
         success: function (data) {
@@ -4315,9 +4515,9 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
 \<head>
   \<meta charset="UTF-8" />
   \<title>属性查询\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
-  \<script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
+  \<script src="http://1.1.1.1:8082/openlayer/v3.20.1/build/ol.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
 \</head>
 \<body>
   \<div id="map" class="map">\</div>
@@ -4371,7 +4571,7 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
           var x = tileCoord[1];
           var y = -tileCoord[2] - 1;
           var url =
-            "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/tile/" +
+            "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/tile/" +
             z +
             "/" +
             y +
@@ -4386,7 +4586,7 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
     var vectorSource = new ol.source.Vector({
       format: new ol.format.GeoJSON(),
       url: function (extent) {
-        return "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json";
+        return "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json";
       },
       //strategy: bboxStrategy,
     });
@@ -4411,7 +4611,7 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
       var location = e.coordinate;
       var point = location[0] + "," + location[1] + "," + location[0] + "," + location[1];// "120.16271670916996,30.251675868508478,120.1713094144393,30.25591314629446";
       var qurl =
-        "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=";
+        "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=";
       qurl += " quxian='上城区'";
       $.ajax({
         url: qurl,
@@ -4435,9 +4635,9 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
 \<head>
   \<meta charset="UTF-8" />
   \<title>组合查询\</title>
-  \<link rel="stylesheet" href="http://172.18.109.232:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
-  \<script src="http://172.18.109.232:8082/openlayer/v3.20.1/build/ol.js">\</script>
-  \<script src="http://172.18.109.232:8082/jquery/jquery.js">\</script>
+  \<link rel="stylesheet" href="http://1.1.1.1:8082/openlayer/v3.20.1/css/ol.css" type="text/css" />
+  \<script src="http://1.1.1.1:8082/openlayer/v3.20.1/build/ol.js">\</script>
+  \<script src="http://1.1.1.1:8082/jquery/jquery.js">\</script>
 \</head>
 \<body>
   \<div id="map" class="map">\</div>
@@ -4491,7 +4691,7 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
           var x = tileCoord[1];
           var y = -tileCoord[2] - 1;
           var url =
-            "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/tile/" +
+            "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/tile/" +
             z +
             "/" +
             y +
@@ -4506,7 +4706,7 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
     var vectorSource = new ol.source.Vector({
       format: new ol.format.GeoJSON(),
       url: function (extent) {
-        return "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json";
+        return "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json";
       },
       //strategy: bboxStrategy,
     });
@@ -4531,7 +4731,7 @@ OpenLayers 是一个专为Web GIS 客户端开发提供的JavaScript 类库包�
       var location = e.coordinate;
       var point = location[0] + "," + location[1] + "," + location[0] + "," + location[1];// "120.16271670916996,30.251675868508478,120.1713094144393,30.25591314629446";
       var qurl =
-        "http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," + point + ")";
+        "http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.0.0&request=getfeature&typename=lsyt_dmdz_qxbj0619&outputFormat=application/json&CQL_FILTER=BBOX(geom," + point + ")";
       qurl += " and quxian='上城区'";
       $.ajax({
         url: qurl,
@@ -4644,7 +4844,7 @@ GetMap操作请求方法实现参数
 | 实例名称        | 调用实例                                                     |
 | --------------- | ------------------------------------------------------------ |
 | GetCapabilities | 暂关闭                                                       |
-| GetMap          | http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_csbj0619/MapServer/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=gpserver%3Alsyt_dmdz_csbj0619&CQL_FILTER=quxian%3D%27%E6%BB%A8%E6%B1%9F%E5%8C%BA%27&SRS=EPSG%3A4490&STYLES=&WIDTH=768&HEIGHT=546&BBOX=120.05413055419922%2C30.084686279296875%2C120.31780242919922%2C30.272140502929688 |
+| GetMap          | http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_csbj0619/MapServer/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&FORMAT=image%2Fpng&TRANSPARENT=true&LAYERS=gpserver%3Alsyt_dmdz_csbj0619&CQL_FILTER=quxian%3D%27%E6%BB%A8%E6%B1%9F%E5%8C%BA%27&SRS=EPSG%3A4490&STYLES=&WIDTH=768&HEIGHT=546&BBOX=120.05413055419922%2C30.084686279296875%2C120.31780242919922%2C30.272140502929688 |
 
 ## WFS
 
@@ -4707,9 +4907,9 @@ GetFeature操作请求方法实现参数
 
 | 实例名称            | 调用实例                                                     |
 | ------------------- | ------------------------------------------------------------ |
-| GetCapabilities     | http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_csbj0619/MapServer/wfs?service=wfs&version=1.1.0&request=getcapabilities |
-| DescribeFeatureType | http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.1.0&request=describefeaturetype&typename=lsyt_dmdz_csbj0619 |
-| GetFeature          | http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_csbj0619/MapServer/wfs?service=wfs&version=1.1.0&request=getfeature&typename=lsyt_dmdz_csbj0619&outputFormat=json&CQL_FILTER=zhenjie=%27%E9%97%B2%E6%9E%97%E8%A1%97%E9%81%93%27 |
+| GetCapabilities     | http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_csbj0619/MapServer/wfs?service=wfs&version=1.1.0&request=getcapabilities |
+| DescribeFeatureType | http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_qxbj0619/MapServer/wfs?service=wfs&version=1.1.0&request=describefeaturetype&typename=lsyt_dmdz_csbj0619 |
+| GetFeature          | http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/lsyt_dmdz_csbj0619/MapServer/wfs?service=wfs&version=1.1.0&request=getfeature&typename=lsyt_dmdz_csbj0619&outputFormat=json&CQL_FILTER=zhenjie=%27%E9%97%B2%E6%9E%97%E8%A1%97%E9%81%93%27 |
 
 # WMTS
 
@@ -4763,12 +4963,20 @@ GetTile操作请求方法实现参数
 
 | 实例名称            | 调用实例                                                     |
 | ------------------- | ------------------------------------------------------------ |
-| GetCapabilities操作 | http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/WMTS?service=wmts&request=GetCapabilities |
-| GetTile操作         | http://172.18.109.232:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/WMTS?service=wmts&request=getTile&version=1.0.0&layer=hzsyvector&Style=&tilematrixset=hzsyvector&tilematrix=3&tilerow=5&tilecol=7&format=png  **** |
+| GetCapabilities操作 | http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/WMTS?service=wmts&request=GetCapabilities |
+| GetTile操作         | http://1.1.1.1:8080/68DE38F71E38CD8C508FAB3035752EA8ED8F9221EDE18FDBE593B01FCDD12BD296F09FE27CD7D2733AD075EAF994851B/PBS/rest/services/hzsyvector/Mapserver/WMTS?service=wmts&request=getTile&version=1.0.0&layer=hzsyvector&Style=&tilematrixset=hzsyvector&tilematrix=3&tilerow=5&tilecol=7&format=png  **** |
+
+# GIS基础概念
 
 
 
+# 学习资源
 
+## 书籍
+
+
+
+## 视频
 
 
 
