@@ -22,3 +22,8 @@ tag:
 
 ![img](http://qnimg.gisfsde.com/img/v2-48ab7f93d5979b17dd6bdf5c76c65a89_b.jpg)
 
+# 嘌呤过高
+
+![image-20221009214504420](https://qnimg.gisfsde.com/markdown/image-20221009214504420.png)
+
+![image-20221009214527978](https://qnimg.gisfsde.com/markdown/image-20221009214527978.png)

@@ -26,6 +26,10 @@ tag:
 ## 业务
 
 
++ [x] 文件压解
++ [ ] 如何调试BUG
++ [ ] 深拷贝
++ [ ] JAVAFX
 + [ ] 工作流
 + [ ] 各种日志
 + [ ] 什么是接口幂等性，不可变，无状态应用程序，水平缩放、重试机制（缓存加锁情况）
@@ -109,6 +113,14 @@ yarn global add xxx 等同于 npm install xxx -g 全局安装指定包
 
 ## SpringCloud
 
+# 如何调试BUG
+
+1.不要放过错误提示的每一行
+
+# 深拷贝
+
+
+
 # 文件上传下载
 
 ## 相关对象：
@@ -146,6 +158,45 @@ req.getServletContext().getRealPath();
 ```
 Resources.getResourceAsStream()
 ```
+
+# 文件压缩解缩 ZipOutputStream
+
+```java
+    // 	压缩
+    //  photos，文件路径列表，目标文件路径，name zip文件名
+    public static void zipShapeFile(List<String> photos, String shpPath, String name) {
+        try {
+            //File shpFile = new File(shpPath);
+            //String shpRoot = shpFile.getParentFile().getPath();
+            //String shpName = shpFile.getName().substring(0, shpFile.getName().lastIndexOf("."));
+
+            String zipPath = shpPath + File.separator + name + ".zip";
+            File zipFile = new File(zipPath);
+            InputStream input = null;
+            ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(zipFile));
+            // zip的名称为
+            zipOut.setComment(name);
+
+            for (int i = 0; i < photos.size(); i++) {
+                String filePath =  photos.get(i).split("profile/upload")[1];
+                filePath = JeeThinkConfig.getUploadPath() + filePath;
+                File file = new File(filePath);
+                input = new FileInputStream(file);
+                zipOut.putNextEntry(new ZipEntry(file.getName()));
+                int temp = 0;
+                while ((temp = input.read()) != -1) {
+                    zipOut.write(temp);
+                }
+                input.close();
+            }
+            zipOut.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+```
+
+
 
 # 前后端交互：
 
@@ -314,9 +365,9 @@ static Map analysisJsonResultMap = new HashMap();
 
 # 分页
 
-### 根据参数截取List
+### 前段处理-根据参数截取List
 
-list.subList(firstIndex, lastIndex)  lastIndex是结束元素但不包括lastIndex。 
+list.subList(firstIndex, lastIndex)  lastIndex是结束元素但不包括lastIndex。优点，适合中间处理，只需请求一次，仅数据量少情况 。
 
 ### [PageHelper](https://pagehelper.github.io/docs/howtouse/)
 
@@ -1003,13 +1054,806 @@ Warning: ALREADY_ENABLED: 3306:tcp（说明3306端口通过成功）
 
 @Scheduled注解，接口SchedulingConfigurer,Quartz 
 
+# [JAVAFX](https://blog.csdn.net/qq_45295475/article/details/125736509)
 
+## 简介
 
-# 工作流
+![在这里插入图片描述](https://qnimg.gisfsde.com/markdown/78edc9d44f6d43a29d9ce12bf399f84a.png)
 
-## Activit
+![在这里插入图片描述](https://qnimg.gisfsde.com/markdown/ed440f7e80264bb1bbb285c371706c12.png)
 
+### 生命周期
 
+每个 JavaFX 应用都继承自 Application 类，该类的子类必须声明为公共的，并且必须有一个公共的无参数构造函数。当 JavaFX 应用启动时，会按顺序执行以下步骤：
+
+- 启动 JavaFX 运行时环境。
+- 构造 Application 类的实例。
+- 执行`init()`方法。
+- 执行 `start(javafx.stage.Stage)` 方法。
+- 在调用`Platform.exit()`方法或最后一个窗口关闭并且`implicitExit`属性为`true`时执行`exit()`方法。
+
+![img](https://qnimg.gisfsde.com/markdown/21631d7dfc18440f9c3c1aaab426b4ee.png)
+
+# [工作流 Activiti 6.0](https://www.activiti.org/userguide/)
+
+## 简介
+
+### 数据库表说明
+
+运行项目后会自动创建28张工作流相关表
+
+![image-20230425092628270](https://qnimg.gisfsde.com/markdown/image-20230425092628270.png)
+
+Activiti的后台是有数据库的支持，所有的表都以ACT_开头。
+ 第二部分是表示表的用途的两个字母标识。用途也和服务的API对应。
+ act_re_*: 'RE’表示repository。 这个前缀的表包含了流程定义和流程静态资源（图片，规则，等等）。
+ act_ru_*: 'RU’表示runtime。 这些运行时的表，包含流程实例，任务，变量，异步任务，等运行中的数据。 Activiti只在流程实例执行过程中保存这些数据，在流程结束时就会删除这些记录。 这样运行时表可以一直很小速度很快。
+ act_id_*: 'ID’表示identity。 这些表包含身份信息，比如用户，组等等。
+ act_hi_*: 'HI’表示history。 这些表包含历史数据，比如历史流程实例，变量，任务等等。
+ act_ge_*: 通用数据，用于不同场景下，如存放资源文件。
+
+####  `资源库流程规则表`
+
+#####  act_re_deployment 部署信息表
+
+|   字段名称   | 字段描述 |   数据类型    | 主键 | 为空 |  取值说明  |
+| :----------: | :------: | :-----------: | :--: | :--: | :--------: |
+|     ID_      |   ID_    | nvarchar(64)  |  √   |      |   主键ID   |
+|    NAME_     | 部署名称 | nvarchar(255) |      |  √   | 部署文件名 |
+|  CATEGORY_   |   分类   | nvarchar(255) |      |  √   |    类别    |
+| DEPLOY_TIME_ | 部署时间 |   datetime    |      |  √   |  部署时间  |
+
+#####  act_re_model 流程设计模型部署表
+
+|           字段名称            |   字段描述   |   数据类型    | 主键 | 为空 |           取值说明           |
+| :---------------------------: | :----------: | :-----------: | :--: | :--: | :--------------------------: |
+|              ID_              |     ID_      | nvarchar(64)  |  √   |      |             ID_              |
+|             REV_              |    乐观锁    |      int      |      |  √   |            乐观锁            |
+|             NAME_             |     名称     | nvarchar(255) |      |  √   |             名称             |
+|             KEY_              |     KEY_     | nvarchar(255) |      |  √   |             分类             |
+|           CATEGORY_           |     分类     | nvarchar(255) |      |  √   |             分类             |
+|         CREATE_TIME_          |   创建时间   |   datetime    |      |  √   |           创建时间           |
+|       LAST_UPDATE_TIME_       | 最新修改时间 |   datetime    |      |  √   |         最新修改时间         |
+|           VERSION_            |     版本     |      int      |      |  √   |             版本             |
+|          META_INFO_           |  META_INFO_  | nvarchar(255) |      |  √   | 以json格式保存流程定义的信息 |
+|        DEPLOYMENT_ID_         |    部署ID    | nvarchar(255) |      |  √   |            部署ID            |
+|    EDITOR_SOURCE_VALUE_ID_    |              |   datetime    |      |  √   |                              |
+| EDITOR_SOURCE_EXTRA_VALUE_ID_ |              |   datetime    |      |  √   |                              |
+
+#####  act_re_procdef 流程定义数据表
+
+|      字段名称       |        字段描述         |    数据类型    | 主键 | 为空 |             取值说明             |
+| :-----------------: | :---------------------: | :------------: | :--: | :--: | :------------------------------: |
+|         ID_         |           ID_           |  nvarchar(64)  |  √   |      |               ID_                |
+|        REV_         |         乐观锁          |      int       |      |  √   |              乐观锁              |
+|      CATEGORY_      |          分类           | nvarchar(255)  |      |  √   |   流程定义的Namespace就是类别    |
+|        NAME_        |          名称           | nvarchar(255)  |      |  √   |               名称               |
+|        KEY_         |        定义的KEY        | nvarchar(255)  |      |      |            流程定义ID            |
+|      VERSION_       |          版本           |      int       |      |      |               版本               |
+|   DEPLOYMENT_ID_    |        部署表ID         |  nvarchar(64)  |      |  √   |             部署表ID             |
+|   RESOURCE_NAME_    |      bpmn文件名称       | nvarchar(4000) |      |  √   |         流程bpmn文件名称         |
+| DGRM_RESOURCE_NAME_ |       png图片名称       | nvarchar(4000) |      |  √   |           流程图片名称           |
+|    DESCRIPTION_     |          描述           | nvarchar(4000) |      |  √   |               描述               |
+| HAS_START_FORM_KEY_ | 是否存在开始节点formKey |    tinyint     |      |  √   | start节点是否存在formKey 0否 1是 |
+|  SUSPENSION_STATE_  |        是否挂起         |    tinyint     |      |  √   |           1 激活 2挂起           |
+
+####  `运行时数据库表`
+
+#####  act_ru_execution 运行时流程执行实例表
+
+|     字段名称      |    字段描述     |   数据类型    | 主键 | 为空 |            取值说明            |
+| :---------------: | :-------------: | :-----------: | :--: | :--: | :----------------------------: |
+|        ID_        |       ID_       | nvarchar(64)  |  √   |      |              ID_               |
+|       REV_        |     乐观锁      |      int      |      |  √   |             乐观锁             |
+|   PROC_INST_ID_   |   流程实例ID    | nvarchar(64)  |      |      |           流程实例ID           |
+|   BUSINESS_KEY_   |   业务主键ID    | nvarchar(255) |      |  √   |           业务主键ID           |
+|    PARENT_ID_     |  父节点实例ID   | nvarchar(64)  |      |  √   |          父节点实例ID          |
+|   PROC_DEF_ID_    |   流程定义ID    | nvarchar(64)  |      |  √   |           流程定义ID           |
+|    SUPER_EXEC_    |   SUPER_EXEC_   | nvarchar(64)  |      |  √   |          SUPER_EXEC_           |
+|      ACT_ID_      |   节点实例ID    | nvarchar(255) |      |  √   | 节点实例ID即ACT_HI_ACTINST中ID |
+|    IS_ACTIVE_     |    是否存活     |    tinyint    |      |  √   |            是否存活            |
+|  IS_CONCURRENT_   |    是否并行     |    tinyint    |      |  √   |    是否为并行(true/false）     |
+|     IS_SCOPE_     |    IS_SCOPE_    |    tinyint    |      |  √   |           IS_SCOPE_            |
+|  IS_EVENT_SCOPE_  | IS_EVENT_SCOPE_ |    tinyint    |      |  √   |        IS_EVENT_SCOPE_         |
+| SUSPENSION_STATE_ |    是否挂起     |    tinyint    |      |  √   |      挂起状态 1激活 2挂起      |
+| CACHED_ENT_STATE_ |                 |      int      |      |  √   |                                |
+
+#####  act_ru_identitylink 运行时流程人员表，主要存储任务节点与参与者的相关信息
+
+|   字段名称    |  字段描述  |   数据类型    | 主键 | 为空 |  取值说明  |
+| :-----------: | :--------: | :-----------: | :--: | :--: | :--------: |
+|      ID_      |    ID_     | nvarchar(64)  |  √   |      |    ID_     |
+|     REV_      |   乐观锁   |      int      |      |  √   |   乐观锁   |
+|   GROUP_ID_   |    组ID    | nvarchar(64)  |      |  √   |    组ID    |
+|     TYPE_     |    类型    | nvarchar(255) |      |  √   |   备注7    |
+|   USER_ID_    |   用户ID   | nvarchar(64)  |      |  √   |   用户ID   |
+|   TASK_ID_    | 节点实例ID | nvarchar(64)  |      |  √   | 节点实例ID |
+| PROC_INST_ID_ | 流程实例ID | nvarchar(64)  |      |  √   | 流程实例ID |
+| PROC_DEF_ID_  | 流程定义ID | nvarchar(255) |      |  √   | 流程定义ID |
+
+#####  act_ru_task 运行时任务节点表
+
+|     字段名称      |    字段描述    |    数据类型    | 主键 | 为空 |                   取值说明                   |
+| :---------------: | :------------: | :------------: | :--: | :--: | :------------------------------------------: |
+|        ID_        |      ID_       |  nvarchar(64)  |  √   |      |                     ID_                      |
+|       REV_        |     乐观锁     |      int       |      |  √   |                    乐观锁                    |
+|   EXECUTION_ID_   |   执行实例ID   |  nvarchar(64)  |      |  √   |                  执行实例ID                  |
+|   PROC_INST_ID_   |   流程实例ID   |  nvarchar(64)  |      |  √   |                  流程实例ID                  |
+|   PROC_DEF_ID_    |   流程定义ID   |  nvarchar(64)  |      |  √   |                  流程定义ID                  |
+|       NAME_       |  节点定义名称  | nvarchar(255)  |      |  √   |                 节点定义名称                 |
+|  PARENT_TASK_ID_  |  父节点实例ID  |  nvarchar(64)  |      |  √   |                 父节点实例ID                 |
+|   DESCRIPTION_    |  节点定义描述  | nvarchar(4000) |      |  √   |                 节点定义描述                 |
+|   TASK_DEF_KEY_   | 节点定义的KEY  | nvarchar(255)  |      |  √   |                 任务定义的ID                 |
+|      OWNER_       |   实际签收人   | nvarchar(255)  |      |  √   | 拥有者（一般情况下为空，只有在委托时才有值） |
+|     ASSIGNEE_     | 签收人或委托人 | nvarchar(255)  |      |  √   |                签收人或委托人                |
+|    DELEGATION_    |    委托类型    |  nvarchar(64)  |      |  √   |                    备注8                     |
+|     PRIORITY_     |    优先级别    |      int       |      |  √   |             优先级别，默认为：50             |
+|   CREATE_TIME_    |    创建时间    |    datetime    |      |  √   |                   创建时间                   |
+|     DUE_DATE_     |    过期时间    |    datetime    |      |  √   |                     耗时                     |
+| SUSPENSION_STATE_ |    是否挂起    |      int       |      |  √   |             1代表激活 2代表挂起              |
+
+#####  act_ru_variable 运行时流程变量数据表
+
+|   字段名称    |  字段描述  |    数据类型    | 主键 | 为空 |                           取值说明                           |
+| :-----------: | :--------: | :------------: | :--: | :--: | :----------------------------------------------------------: |
+|      ID_      |    ID_     |  nvarchar(64)  |  √   |      |                           主键标识                           |
+|     REV_      |   乐观锁   |      int       |      |  √   |                            乐观锁                            |
+|     TYPE_     |    类型    | nvarchar(255)  |      |      |                            备注9                             |
+|     NAME_     |    名称    | nvarchar(255)  |      |      |                           变量名称                           |
+| EXECUTION_ID_ | 执行实例ID |  nvarchar(64)  |      |  √   |                           执行的ID                           |
+| PROC_INST_ID_ | 流程实例ID |  nvarchar(64)  |      |  √   |                          流程实例ID                          |
+|   TASK_ID_    | 节点实例ID |  nvarchar(64)  |      |  √   |                      节点实例ID(Local）                      |
+| BYTEARRAY_ID_ |  字节表ID  |  nvarchar(64)  |      |  √   |                字节表的ID（ACT_GE_BYTEARRAY）                |
+|    DOUBLE_    |  DOUBLE_   |     float      |      |  √   |                     存储变量类型为Double                     |
+|     LONG_     |   LONG_    |  numeric(19)   |      |  √   |                      存储变量类型为long                      |
+|     TEXT_     |   TEXT_    | nvarchar(4000) |      |  √   | ‘存储变量值类型为String 如此处存储持久化对象时，值jpa对象的class |
+|    TEXT2_     |   TEXT2_   | nvarchar(4000) |      |  √   |     此处存储的是JPA持久化对象时，才会有值。此值为对象ID      |
+
+####  `历史数据库表`
+
+#####  act_hi_actinst 历史节点表
+
+|      字段名称      |       字段描述       |   数据类型    | 主键 | 为空 |                取值说明                 |
+| :----------------: | :------------------: | :-----------: | :--: | :--: | :-------------------------------------: |
+|        ID_         |         ID_          | nvarchar(64)  |  √   |      |                                         |
+|    PROC_DEF_ID_    |      流程定义ID      | nvarchar(64)  |      |      |                                         |
+|   PROC_INST_ID_    |      流程实例ID      | nvarchar(64)  |      |      |                                         |
+|   EXECUTION_ID_    |      执行实例ID      | nvarchar(64)  |      |      |                                         |
+|      ACT_ID_       |        节点ID        | nvarchar(225) |      |      |               节点定义ID                |
+|      TASK_ID_      |      任务实例ID      | nvarchar(64)  |      |  √   | 任务实例ID 其他节点类型实例ID在这里为空 |
+| CALL_PROC_INST_ID_ | 调用外部的流程实例ID | nvarchar(64)  |      |  √   |        调用外部流程的流程实例ID’        |
+|     ACT_NAME_      |       节点名称       | nvarchar(225) |      |  √   |              节点定义名称               |
+|     ACT_TYPE_      |       节点类型       | nvarchar(225) |      |      |         如startEvent、userTask          |
+|     ASSIGNEE_      |        签收人        | nvarchar(64)  |      |  √   |               节点签收人                |
+|    START_TIME_     |       开始时间       |   datetime    |      |      |           2013-09-15 11:30:00           |
+|     END_TIME_      |       结束时间       |   datetime    |      |  √   |           2013-09-15 11:30:00           |
+|     DURATION_      |         耗时         | numeric(19,0) |      |  √   |                 毫秒值                  |
+
+#####  act_hi_attachment 历史附件表
+
+|   字段名称    |  字段描述  |    数据类型    | 主键 | 为空 |       取值说明       |
+| :-----------: | :--------: | :------------: | :--: | :--: | :------------------: |
+|      ID_      |    ID_     |  nvarchar(64)  |  √   |      |        主键ID        |
+|     REV_      |   乐观锁   |    integer     |      |  √   |       Version        |
+|   USER_ID_    |   用户ID   | nvarchar(255)  |      |  √   |        用户ID        |
+|     NAME_     |    名称    | nvarchar(255)  |      |  √   |       附件名称       |
+| DESCRIPTION_  |    描述    | nvarchar(4000) |      |  √   |         描述         |
+|     TYPE_     |    类型    | nvarchar(255)  |      |  √   |       附件类型       |
+|   TASK_ID_    | 任务实例ID |  nvarchar(64)  |      |  √   |      节点实例ID      |
+| PROC_INST_ID_ | 流程实例ID |  nvarchar(64)  |      |  √   |      流程实例ID      |
+|     URL_      |    URL_    | nvarchar(4000) |      |  √   |       附件地址       |
+|  CONTENT_ID_  | 字节表的ID |  nvarchar(64)  |      |  √   | ACT_GE_BYTEARRAY的ID |
+
+#####  act_hi_comment 历史意见表
+
+|   字段名称    |  字段描述  |    数据类型    | 主键 | 为空 |               取值说明               |
+| :-----------: | :--------: | :------------: | :--: | :--: | :----------------------------------: |
+|      ID_      |    ID_     |  nvarchar(64)  |  √   |      |                主键ID                |
+|     TYPE_     |    类型    | nvarchar(255)  |      |  √   |  类型：event（事件）comment（意见）  |
+|     TIME_     |    时间    |    datetime    |      |      |              填写时间’               |
+|   USER_ID_    |   用户ID   |  nvarchar(64)  |      |  √   |                填写人                |
+|   TASK_ID_    | 节点任务ID |  nvarchar(64)  |      |  √   |              节点实例ID              |
+| PROC_INST_ID_ | 流程实例ID | nvarchar(255)  |      |  √   |              流程实例ID              |
+|    ACTION_    |  行为类型  |  nvarchar(64)  |      |  √   |               见备注1                |
+|   MESSAGE_    |  基本内容  | nvarchar(4000) |      |  √   | 用于存放流程产生的信息，比如审批意见 |
+|   FULL_MSG_   |  全部内容  | varbinary(max) |      |  √   |               附件地址               |
+
+#####  act_hi_identitylink 历史流程人员表
+
+|   字段名称    |  字段描述  |   数据类型    | 主键 | 为空 |  取值说明  |
+| :-----------: | :--------: | :-----------: | :--: | :--: | :--------: |
+|      ID_      |    ID_     | nvarchar(64)  |  √   |      |    ID_     |
+|   GROUP_ID_   |    组ID    | nvarchar(255) |      |  √   |    组ID    |
+|     TYPE_     |    类型    | nvarchar(255) |      |  √   |   备注4    |
+|   USER_ID_    |   用户ID   | nvarchar(255) |      |  √   |   用户ID   |
+|   TASK_ID_    | 节点实例ID | nvarchar(64)  |      |  √   | 节点实例ID |
+| PROC_INST_ID_ | 流程实例ID | nvarchar(64)  |      |  √   | 流程实例ID |
+
+#####  act_hi_detail 历史详情表，提供历史变量的查询
+
+|   字段名称    |  字段描述  |     数据类型     | 主键 | 为空 |                      取值说明                       |
+| :-----------: | :--------: | :--------------: | :--: | :--: | :-------------------------------------------------: |
+|      ID_      |    ID_     |   nvarchar(64)   |  √   |      |                        主键                         |
+|     TYPE_     |    类型    |  nvarchar(255)   |      |      |                       见备注2                       |
+| PROC_INST_ID_ | 流程实例ID |   nvarchar(64)   |      |  √   |                     流程实例ID                      |
+| EXECUTION_ID_ | 执行实例ID |   nvarchar(64)   |      |  √   |                     执行实例ID                      |
+|   TASK_ID_    | 任务实例ID |   nvarchar(64)   |      |  √   |                     任务实例ID                      |
+| ACT_INST_ID_  | 节点实例ID |   nvarchar(64)   |      |  √   |                ACT_HI_ACTINST表的ID                 |
+|     NAME_     |    名称    |  nvarchar(255)   |      |      |                        名称                         |
+|   VAR_TYPE_   |  参数类型  |  nvarchar(255)   |      |  √   |                       见备注3                       |
+|     REV_      |   乐观锁   |       int        |      |  √   |                       Version                       |
+|     TIME_     |   时间戳   |     datetime     |      |      |                      创建时间                       |
+| BYTEARRAY_ID_ |  字节表ID  |     nvarchar     |      |  √   |               ACT_GE_BYTEARRAY表的ID                |
+|    DOUBLE_    |  DOUBLE_   | double precision |      |  √   |                存储变量类型为Double                 |
+|     LONG_     |   LONG_    |     numeric      |      |  √   |                 存储变量类型为long                  |
+|     TEXT_     |   TEXT_    |     nvarchar     |      |  √   |               存储变量值类型为String                |
+|    TEXT2_     |   TEXT2_   |     nvarchar     |      |  √   | 此处存储的是JPA持久化对象时，才会有值。此值为对象ID |
+
+#####  act_hi_procinst 历史流程实例表
+
+|          字段名称          |   字段描述   |    数据类型    | 主键 | 为空 |        取值说明        |
+| :------------------------: | :----------: | :------------: | :--: | :--: | :--------------------: |
+|            ID_             |     ID_      |  nvarchar(64)  |  √   |      |         主键ID         |
+|       PROC_INST_ID_        |  流程实例ID  |  nvarchar(64)  |      |      |       流程实例ID       |
+|       BUSINESS_KEY_        |   业务主键   | nvarchar(255)  |      |  √   | 业务主键，业务表单的ID |
+|        PROC_DEF_ID_        |  流程定义ID  |  nvarchar(64)  |      |      |       流程定义ID       |
+|        START_TIME_         |   开始时间   |    datetime    |      |      |        开始时间        |
+|         END_TIME_          |   结束时间   |    datetime    |      |  √   |        结束时间        |
+|         DURATION_          |     耗时     |  Numeric(19)   |      |  √   |          耗时          |
+|       START_USER_ID_       |    起草人    | nvarchar(255)  |      |  √   |         起草人         |
+|       START_ACT_ID_        |  开始节点ID  | nvarchar(255)  |      |  √   |       起草环节ID       |
+|        END_ACT_ID_         |  结束节点ID  | nvarchar(255)  |      |  √   |       结束环节ID       |
+| SUPER_PROCESS_INSTANCE_ID_ | 父流程实例ID |  nvarchar(64)  |      |  √   |      父流程实例ID      |
+|       DELETE_REASON_       |   删除原因   | nvarchar(4000) |      |  √   |        删除原因        |
+
+#####  act_hi_taskinst 历史任务实例表
+
+|    字段名称     |        字段描述         |    数据类型    | 主键 | 为空 |                取值说明                |
+| :-------------: | :---------------------: | :------------: | :--: | :--: | :------------------------------------: |
+|       ID_       |           ID_           |  nvarchar(64)  |  √   |      |                 主键ID                 |
+|  PROC_DEF_ID_   |       流程定义ID        |  nvarchar(64)  |      |  √   |               流程定义ID               |
+|  TASK_DEF_KEY_  |       节点定义ID        | nvarchar(255)  |      |  √   |               节点定义ID               |
+|  PROC_INST_ID_  |       流程实例ID        |  nvarchar(64)  |      |  √   |               流程实例ID               |
+|  EXECUTION_ID_  |       执行实例ID        |  nvarchar(64)  |      |  √   |               执行实例ID               |
+|      NAME_      |          名称           |  varchar(255)  |      |  √   |                  名称                  |
+| PARENT_TASK_ID_ |      父节点实例ID       |  nvarchar(64)  |      |  √   |              父节点实例ID              |
+|  DESCRIPTION_   |          描述           | nvarchar(400)  |      |  √   |                  描述                  |
+|     OWNER_      | 实际签收人 任务的拥有者 | nvarchar(255)  |      |  √   | 签收人（默认为空，只有在委托时才有值） |
+|    ASSIGNEE_    |     签收人或被委托      | nvarchar(255)  |      |  √   |             签收人或被委托             |
+|   START_TIME_   |        开始时间         |    datetime    |      |      |                开始时间                |
+|   CLAIM_TIME_   |        提醒时间         |    datetime    |      |  √   |                提醒时间                |
+|    END_TIME_    |        结束时间         |    datetime    |      |  √   |                结束时间                |
+|    DURATION_    |          耗时           |  numeric(19)   |      |  √   |                  耗时                  |
+| DELETE_REASON_  |        删除原因         | nvarchar(4000) |      |  √   |      删除原因(completed,deleted)       |
+|    PRIORITY_    |        优先级别         |      int       |      |  √   |                优先级别                |
+|    DUE_DATE_    |        过期时间         |    datetime    |      |  √   |  过期时间，表明任务应在多长时间内完成  |
+|    FORM_KEY_    |    节点定义的formkey    | nvarchar(255)  |      |  √   |     desinger节点定义的form_key属性     |
+
+#####  act_hi_varinst 历史变量表
+
+|   字段名称    |  字段描述  |   数据类型    | 主键 | 为空 |                      取值说明                       |
+| :-----------: | :--------: | :-----------: | :--: | :--: | :-------------------------------------------------: |
+|      ID_      |    ID_     | nvarchar(64)  |  √   |      |                         ID_                         |
+| PROC_INST_ID_ | 流程实例ID | nvarchar(64)  |      |  √   |                     流程实例ID                      |
+| EXECUTION_ID_ | 执行实例ID | nvarchar(255) |      |  √   |                     执行实例ID                      |
+|   TASK_ID_    | 任务实例ID | nvarchar(64)  |      |  √   |                     任务实例ID                      |
+|     NAME_     |    名称    | nvarchar(64)  |      |      |                   参数名称(英文)                    |
+|   VAR_TYPE_   |  参数类型  | varchar(255)  |      |  √   |                        备注5                        |
+|     REV_      |   乐观锁   | nvarchar(64)  |      |  √   |                   乐观锁 Version                    |
+| BYTEARRAY_ID_ |  字节表ID  | nvarchar(400) |      |  √   |              ACT_GE_BYTEARRAY表的主键               |
+|    DOUBLE_    |  DOUBLE_   | nvarchar(255) |      |  √   |              存储DoubleType类型的数据               |
+|     LONG_     |   LONG_    | nvarchar(255) |      |  √   |               存储LongType类型的数据                |
+|     TEXT_     |   TEXT_    |   datetime    |      |  √   |                        备注6                        |
+|    TEXT2_     |   TEXT2_   |   datetime    |      |  √   | 此处存储的是JPA持久化对象时，才会有值。此值为对象ID |
+
+####  `组织机构表`
+
+#####  act_id_group 用户组信息表
+
+| 字段名称 | 字段描述 |   数据类型    | 主键 | 为空 |   取值说明    |
+| :------: | :------: | :-----------: | :--: | :--: | :-----------: |
+|   ID_    |   ID_    | nvarchar(64)  |  √   |      |    主键ID     |
+|   REV_   |  乐观锁  |      int      |      |  √   | 乐观锁Version |
+|  NAME_   |   名称   | nvarchar(255) |      |  √   |    组名称     |
+|  TYPE_   |   类型   | nvarchar(255) |      |  √   |     类型      |
+
+#####  act_id_info 用户扩展信息表
+
+|            |          |               |      |      |               |
+| :--------: | :------: | :-----------: | :--: | :--: | :-----------: |
+|  字段名称  | 字段描述 |   数据类型    | 主键 | 为空 |   取值说明    |
+|    ID_     |   ID_    | nvarchar(64)  |  √   |      |    主键ID     |
+|    REV_    |  乐观锁  |      int      |      |  √   | 乐观锁Version |
+|  USER_ID_  |  用户ID  | nvarchar(64)  |      |  √   |               |
+|   TYPE_    |   类型   | nvarchar(64)  |      |  √   |               |
+|    KEY_    |          | nvarchar(255) |      |  √   |               |
+|   VALUE_   |          | nvarchar(255) |      |  √   |               |
+| PASSWORD_  |          |     Image     |      |  √   |               |
+| PARENT_ID_ |          | nvarchar(255) |      |  √   |               |
+
+#####  act_id_membership 用户与用户组对应信息表
+
+| 字段名称 | 字段描述 |   数据类型   | 主键 | 为空 | 取值说明 |
+| :------: | :------: | :----------: | :--: | :--: | :------: |
+| USER_ID  |  用户ID  | nvarchar(64) |  √   |      |          |
+| GROUP_ID | 用户组ID | nvarchar(64) |  √   |      |          |
+
+#####  act_id_user 用户信息表
+
+|  字段名称   | 字段描述 |   数据类型    | 主键 | 为空 |   取值说明    |
+| :---------: | :------: | :-----------: | :--: | :--: | :-----------: |
+|     ID_     |   ID_    | nvarchar(64)  |  √   |      |    主键ID     |
+|    REV_     |  乐观锁  |      int      |      |  √   | 乐观锁Version |
+|   FIRST_    |    姓    | nvarchar(255) |      |  √   |               |
+|    LAST_    |    名    | nvarchar(255) |      |  √   |               |
+|   EMAIL_    |  EMAIL_  | nvarchar(255) |      |  √   |               |
+|    PWD_     |   密码   | nvarchar(255) |      |  √   |               |
+| PICTURE_ID_ |  图片ID  | nvarchar(64)  |      |  √   |               |
+
+ 这四张表很常见，基本的组织机构管理，关于用户认证方面建议还是自己开发一套，组件自带的功能太简单，使用中有很多需求难以满足
+
+####  `通用数据表`
+
+#####  act_ge_bytearray 二进制数据表
+
+|    字段名称    |    字段描述    |    数据类型    | 主键 | 为空 |                      取值说明                       |
+| :------------: | :------------: | :------------: | :--: | :--: | :-------------------------------------------------: |
+|      ID_       |      ID_       |  nvarchar(64)  |  Y   |      |                       主键ID                        |
+|      REV_      |     乐观锁     |      int       |      |  Y   |                    Version(版本)                    |
+|     NAME_      |      名称      | nvarchar(255)  |      |  Y   | 部署的文件名称，如：leave.bpmn.png,leave.bpmn20.xml |
+| DEPLOYMENT_ID_ |     部署ID     |  nvarchar(64)  |      |  Y   |                      部署表ID                       |
+|     BYTES_     |      字节      | varbinary(max) |      |  Y   |                      部署文件                       |
+|   GENERATED_   | 是否是引擎生成 |    tinyint     |      |  Y   |            0为用户生成，1为activiti生成             |
+
+#####  act_ge_property 属性数据表存储整个流程引擎级别的数据,初始化表结构时，会默认插入三条记录
+
+| 字段名称 | 字段描述 |   数据类型    | 主键 | 为空 |               取值说明                |
+| :------: | :------: | :-----------: | :--: | :--: | :-----------------------------------: |
+|  NAME_   |   名称   | nvarchar(64)  |  √   |      | schema.versionschema.historynext.dbid |
+|  VALUE_  |    值    | nvarchar(300) |      |  √   |            5.*create(5.*)             |
+|   REV_   |  乐观锁  |      int      |      |  √   |                version                |
+
+### 常用api说明
+
+![image-20230509143006003](https://qnimg.gisfsde.com/markdown/image-20230509143006003.png)
+
+#### `RepositoryService`
+
+ Activiti 中每一个不同版本的业务**流程的定义**都需要使用一些定义文件，部署文件和支持数据 ( 例如 BPMN2.0 XML 文件，表单定义文件，流程定义图像文件等 )，这些文件都存储在 Activiti 内建的 Repository 中。Repository Service 提供了对 repository 的存取服务。
+
+#### `RuntimeService`
+
+ Activiti 中，**流程对象示例控制**,每当一个流程定义被启动一次之后，都会生成一个相应的流程对象实例。Runtime Service 提供了启动流程、查询流程实例、设置获取流程实例变量等功能。此外它还提供了对流程部署，流程定义和流程实例的存取服务。
+
+#### `TaskService`
+
+ 在 Activiti 中业务流程定义中的每一个执行节点被称为一个 Task，对流程中的数据存取，状态变更等操作均需要在 Task 中完成。Task Service 提供了对用户 Task 和 Form相关的操作。它提供了运行时任务查询、领取、完成、删除以及变量设置等**任务管理**功能。
+
+#### `IdentityService`
+
+ Activiti 中内置了用户以及组管理的功能，必须使用这些用户和组的信息才能获取到相应的 Task。Identity Service 提供了对 Activiti 系统中的**用户和组的管理**功能。
+
+#### `ManagementService `
+
+ Management Service 提供了对 Activiti **流程引擎的管理和维护**功能，这些功能不在工作流驱动的应用程序中使用，主要用于 Activiti 系统的日常维护。
+
+#### `HistoryService`
+
+ History Service **管理流程历史数据**，用于获取正在运行或已经完成的流程实例的信息，与 Runtime Service 中获取的流程信息不同，历史信息包含已经持久化存储的永久信息，并已经被针对查询优化。
+
+#### `FormService`
+
+ Activiti 中的流程和状态 Task 均可以关联业务相关的数据。通过使用 Form Service可以存取启动和完成任务所需的表单数据并且根据需要来渲染**表单**。
+
+#### `DynamicBpmnService`
+
+ 一个新增的服务，用于动态修改流程中的一些参数信息等，是引擎中的一个辅助的服务
+
+#### `FormRepositoryService`
+
+ 部署表单等
+
+### [BPMN](https://www.activiti.org/userguide/#bpmnConstructs)
+
+#### 任务
+
+##### UserTask
+
+![image-20230504150227384](https://qnimg.gisfsde.com/markdown/image-20230504150227384.png)
+
+##### ScriptTask
+
+##### ServiceTask
+
+##### MailTask
+
+##### ManualTask
+
+##### ReceiveTask
+
+##### BusinessRuleTask
+
+##### CallActivityTask
+
+#### 事件
+
+##### StartEvent
+
+##### EndEvent
+
+##### SubProcess
+
+##### Pool
+
+##### Lane
+
+#### 网关
+
+##### ParallelGateway
+
+##### ExclusiveGateway
+
+##### InclusiveGateway
+
+##### EventGateway
+
+##### BoundaryEvent
+
+##### IntermediateCatchingEvent
+
+##### IntermediateThrowingEvent
+
+##### Annotation
+
+## 创建SpringBoot项目
+
+### 准备
+
+官网：https://www.activiti.org/before-you-start
+
+1.2019 IDEA 安装 actiBPM插件:[IDEA插件市场下载安装](https://plugins.jetbrains.com/idea)，IDEA 2019 以上版本安装Activiti BPMN visualizer插件
+
+2.安装activity官方插件：将 activiti-6.0.0 (1).zip\activiti-6.0.0\wars 放入Tomcat 中运行 
+
+### maven依赖
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.dongmen</groupId>
+    <artifactId>testActSpringBoot</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.0.RELEASE</version>
+    </parent>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <activiti.version>6.0.0</activiti.version>
+
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-spring-boot-starter-rest-api</artifactId>
+            <version>${activiti.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.22</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+```
+
+### 创建流程文件
+
+Springboot默认使用processes下的.bpmn20.xml或.bpmn格式流程文件
+
+路径：src/main/resources/processes/test.bpmn 或 配置文件指定：spring.activiti.process-definition-location-prefix 
+
+通过spring.activiti.process-definition-location-suffixes 修改支持的文件格式
+
+```properties
+# 流程定义文件存放目录
+spring.activiti.process-definition-location-prefix=classpath:/processes
+# 流程文件格式后缀 **.bpmn20.xml **.bpmn 自定义(**.bpmn.zip)
+#spring.activiti.process-definition-location-suffixes=**.bpmn.zip
+```
+
+![image-20230411110429021](https://qnimg.gisfsde.com/markdown/image-20230411110429021.png)
+
+![image-20230411110815159](https://qnimg.gisfsde.com/markdown/image-20230411110815159.png)
+
+乱码解决
+
+打开Settings，找到File Encodings，把encoding的选项都选择UTF-8
+
+![image-20230411110656863](https://qnimg.gisfsde.com/markdown/image-20230411110656863.png)
+
+### 创建配置文件
+
+src/main/resources/application.properties
+
+```properties
+server.port=8888
+# 自动检查、部署流程定义文件
+spring.activiti.check-process-definitions=true
+# 流程定义文件存放目录
+spring.activiti.process-definition-location-prefix=classpath:/processes
+# 流程文件格式后缀 **.bpmn20.xml **.bpmn 自定义(**.bpmn.zip)
+#spring.activiti.process-definition-location-suffixes=**.bpmn.zip
+
+# JDBC
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/activitylearn?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+spring.datasource.username=root
+spring.datasource.password=root
+# 数据库连接池
+spring.datasource.type=com.zaxxer.hikari.HikariDataSource
+# 最小空闲连接数量
+spring.datasource.hikari.minimum-idle=5
+# 连接池最大连接数，默认是10
+spring.datasource.hikari.maximum-pool-size=15
+#此属性控制从池返回的连接的默认自动提交行为,默认值：true
+spring.datasource.hikari.auto-commit=true
+spring.datasource.hikari.idle-timeout=30000
+spring.datasource.hikari.pool-name=UserHikariCP
+# 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+spring.datasource.hikari.max-lifetime=1800000
+#数据库连接超时时间,默认30秒，即30000
+spring.datasource.hikari.connection-timeout=30000
+#指定校验连接合法性执行的sql语句
+spring.datasource.hikari.connection-test-query=SELECT 1
+
+# 配置JPA，用于初始化数据结构
+spring.jpa.properties.hibernate.hbm2ddl.auto=update
+spring.jpa.show-sql=true
+
+# 每次应用启动不检查Activiti数据表是否存在及版本号是否匹配，提升应用启动速度
+#配置项可以设置流程引擎启动和关闭时数据库执行的策略，可以选择四种模式
+#false：false为默认值，设置为该值后，Activiti在启动时，会对比数据库表中保存的版本，如果没有表或者版本不匹配时，将在启动时抛出异常。
+#true：设置为该值后，Activiti会对数据库中所有的表进行更新，如果表不存在，则Activiti会自动创建。
+#create-drop：Activiti启动时，会执行数据库表的创建操作，在Activiti关闭时，执行数据库表的删除操作。
+#drop-create：Activiti启动时，执行数据库表的删除操作在Activiti关闭时，会执行数据库表的创建操作。
+spring.activiti.database-schema-update=false
+
+#对于历史数据，保存到何种粒度，Activiti提供了history-level属性对其进行配置。history-level属性有点像log4j的日志输出级别，该属性有以下四个值：
+#none：不保存任何的历史数据，因此，在流程执行过程中，这是最高效的。
+#activity：级别高于none，保存流程实例与流程行为，其他数据不保存。
+#audit：除activity级别会保存的数据外，还会保存全部的流程任务及其属性。audit为history的默认值。
+#full：保存历史数据的最高级别，除了会保存audit级别的数据外，还会保存其他全部流程相关的细节数据，包括一些流程参数等。
+#spring.activiti.history-level=none
+```
+
+## 简单测试代码
+
+```java
+package com.gisfsde.activitylearn;
+
+import org.activiti.engine.HistoryService;
+import org.activiti.engine.RepositoryService;
+import org.activiti.engine.RuntimeService;
+import org.activiti.engine.TaskService;
+import org.activiti.engine.history.HistoricActivityInstance;
+import org.activiti.engine.history.HistoricTaskInstance;
+import org.activiti.engine.repository.Deployment;
+import org.activiti.engine.repository.DeploymentBuilder;
+import org.activiti.engine.repository.ProcessDefinition;
+import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.engine.task.Task;
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import javax.annotation.Resource;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * https://www.jianshu.com/p/c4976da56ba7
+ **/
+@SpringBootTest
+class ActivitylearnApplicationTests {
+    private static final Logger log = LoggerFactory.getLogger(ActivitylearnApplicationTests.class);
+    /**
+     * 数据存储服务
+     */
+    @Resource
+    private RepositoryService repositoryService;
+    /**
+     * 运行服务
+     */
+    @Resource
+    private RuntimeService runtimeService;
+    /**
+     * 任务服务
+     */
+    @Resource
+    private TaskService taskService;
+    /**
+     * 历史服务
+     */
+    @Resource
+    private HistoryService historyService;
+
+    /**
+     * 1. 部署流程
+     * 部署之后就可以在act_re_procdef表中看到对相应的流程信息
+     */
+    @Test
+    public void deployProcess() {
+        DeploymentBuilder builder = repositoryService.createDeployment();
+        // bpmn文件的名称
+        builder.addClasspathResource("processes/test.bpmn");
+        // 设置key
+        builder.key("myProcess_1");
+        // 设定名称，也可以在图中定义
+        builder.name("请假流程");
+        // 进行布署
+        Deployment deployment = builder.deploy();
+        // 获取deployment的ID
+        String deploymentId = deployment.getId();
+        // 根据deploymentId来获取流程定义对象
+        ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery()
+                .deploymentId(deploymentId).singleResult();
+        log.info("流程定义文件 [{}] , 流程ID [{}]", processDefinition.getName(), processDefinition.getId());
+    }
+
+    /**
+     * 2. 启动流程
+     * 启动流程之后就会有相应的任务产生，存在act_ru_task表中，可以查看任务节点
+     */
+    @Test
+    public void startProcess() {
+        // 流程的名称，也可以使用ByID来启动流程
+        // key为流程图的ID,
+        ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("myProcess_1");
+        log.info("流程启动成功，流程id:" + processInstance.getId());
+    }
+
+    /**
+     * 3. 查看任务节点
+     */
+    @Test
+    public void queryTask() {
+        //  根据assignee(代理人)查询任务
+        String assignee = "admin";
+        // 注意所在包。
+        List<Task> tasks = taskService.createTaskQuery().taskAssignee(assignee).list();
+
+        int size = tasks.size();
+        for (int i = 0; i < size; i++) {
+            Task task = tasks.get(i);
+        }
+        // 首次运行的时候这个没有输出，因为第一次运行的时候扫描act_ru_task的表里面是空的，
+        // 但第一次运行完成之后里面会添加一条记录，之后每次运行里面都会添加一条记录
+        for (Task task : tasks) {
+            log.info("taskId:" + task.getId() +
+                    ",taskName:" + task.getName() +
+                    ",assignee:" + task.getAssignee() +
+                    ",createTime:" + task.getCreateTime());
+        }
+    }
+
+    /**
+     * 4. 完成流程，admin通过审核
+     */
+    @Test
+    public void completeTasks() {
+        // 审批后，任务列表数据减少
+        Map<String, Object> vars = new HashMap<>();
+        //  按配置的任务id填写
+        vars.put("_5", "true");
+        taskService.complete("32505", vars);
+//审批不通过，结束流程
+//    runtimeService.deleteProcessInstance(vacationAudit.getProcessInstanceId(), auditId);
+
+    }
+
+    /**
+     * 历史任务查询
+     *
+     * @throws ParseException
+     */
+    @Test
+    public void findHistoricTasks() throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        List<HistoricTaskInstance> list = historyService.createHistoricTaskInstanceQuery() // 创建历史任务实例查询
+                .taskAssignee("admin") // 指定办理人
+//                .finished() // 查询已经完成的任务
+                .list();
+        for (HistoricTaskInstance hti : list) {
+            log.info("任务ID:" + hti.getId());
+            log.info("流程实例ID:" + hti.getProcessInstanceId());
+            log.info("班里人：" + hti.getAssignee());
+            log.info("创建时间：" + sdf.format(hti.getCreateTime()));
+            log.info("结束时间：" + sdf.format(hti.getEndTime()));
+            log.info("===========================");
+        }
+    }
+    /**
+     * 历史活动查询
+     * 指定流程实例id,启动流程时，获取的实例ID
+     */
+    @Test
+    public void historyActInstanceList(){
+        List<HistoricActivityInstance> list = historyService // 历史任务Service
+                .createHistoricActivityInstanceQuery() // 创建历史活动实例查询
+                .processInstanceId("32501") // 指定流程实例id
+//                .finished() // 查询已经完成的任务
+                .list();
+        for (HistoricActivityInstance hai : list) {
+            log.info("任务ID:" + hai.getId());
+            log.info("流程实例ID:" + hai.getProcessInstanceId());
+            log.info("活动名称：" + hai.getActivityName());
+            log.info("办理人：" + hai.getAssignee());
+            log.info("开始时间：" + hai.getStartTime());
+            log.info("结束时间：" + hai.getEndTime());
+            log.info("===========================");
+        }
+    }
+}
+```
+
+## 复杂流程示例
+
+## 过程问题
+
+1. org.activiti.engine.ActivitiException: no activiti tables in db. set <property name="databaseSchemaUpdate" to value="true" or value="create-drop" (use create-drop for testing only!) in bean processEngineConfiguration in activiti.cfg.xml for automatic schema creation
+
+   ```properties
+   spring.activiti.database-schema-update=true
+   ```
+
+2. 发现了以元素 'process' 开头的无效内容。应以..
+
+   将bpmn以xml方式打开文件，删除 <process xmlns="" id="myProcess_1" 处的 xmlns=""
 
 # 分库分表
 
@@ -2985,6 +3829,8 @@ class CPUTestThread implements Runnable {
 BeanUtil.copyProperties
 
 # 验证码
+
+# 文件压解
 
 
 

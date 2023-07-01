@@ -33,7 +33,21 @@ tag:
 9. > **难点多接触，多熟悉**
 [TOC]
 
+# 计划优先级
 
+- 高级职称
+- JAVA底层（结合业务）
+- 算法
+- 表达能力与欲望
+- 分布式
+- 综合调优
+- 自媒体
+- VUE底层（结合GIS）
+- 设计模式
+- 网络
+- **紧急计划**
+- **固定计划**
+- **拟计划**
 
 # **紧急计划：**
 
@@ -51,20 +65,59 @@ tag:
 
 **日**
 
-+ [ ] [英语【流利说、技术英文文档、电影】](EnglishDay.md)  **晚上**
-  + [ ] [单词，读阅写说](http://www.aboboo.com/g/#/account/overview)
-+ [ ] [MySQL调优](MYSQLOptimize.md) [基础](https://www.bilibili.com/video/BV1iq4y1u7vj?p=2&spm_id_from=pageDriver&vd_source=10bfbb2d4bb1646ac73508c202d5f815)  **中午**
-  + [x] 基础篇：
-  + [ ] 高级篇：132
++ [ ] 高级软件工程师
+  + [x] 资料准备
+  + [x] 报名  3月初
+  + [x] 基础一轮
+  + [ ] 基础两轮
+  + [ ] 原题一轮
+  + [ ] 原题两轮
+  + [ ] 模拟注意手写速度与整洁
+  + [ ] 考试  5月27、28
+  + [ ] ![image-20230209234824715](https://qnimg.gisfsde.com/markdown/image-20230209234824715.png)
+  + [ ] ![image-20230320205436746](https://qnimg.gisfsde.com/markdown/image-20230320205436746.png)
++ [ ] 实践
++ [ ] 提高文墨能力
 + [ ] [GuLimall](GuLimall.md)  **晚上**
   + [x] 初级篇
-  + [ ] 高级篇：151
-+ [ ] [前端](FrontEnd.md)【VUE、Cesium】
+  + [ ] **高级篇：170** 第二遍：109
++ [ ] 后端
+  + [ ] 学习项目升级为SpringCloud
+  + [x] [**Linux**](https://www.bilibili.com/video/BV1WY4y1H7d3/?spm_id_from=333.999.0.0)  
+    + [x] 理论 
+    + [ ] linux java 端口，防火墙，环境，部署，运维，日志等流程操作
+    + [ ] shell所有综合写一个脚本
+    + [ ] 所有命令实践时整理表格打印
+  + [ ] **分布式**
+    + [x] vagrant 笔记本部署一套
+    + [ ] docker 迁移
+    + [ ] 环境完善
+  + [ ] **工作流**
+  + [ ] 加解密
+  + [ ] office生成
+  + [ ] JAVA常用类梳理
+  + [ ] 框架原理
+  + [ ] 分布原理与应用
+  + [ ] 多线程、高并发
+  + [ ] 代码优雅规范
+  + [ ] 实际业务范例
++ [ ] [英语【流利说、技术英文文档、电影】](EnglishDay.md)  **晚上**
+  + [ ] [单词，读阅写说](http://www.aboboo.com/g/#/account/overview)
++ [ ] [GISER](GIS.md)
+  + [ ] [前端](FrontEnd.md)
+    + [ ] 常用api:对象数组map
+    + [ ] [ES6](http://es6.ruanyifeng.com/) 【异步同步，数组操作】
+    + [ ] [HTML5](https://www.runoob.com/html/html5-intro.html)，[CSS3](https://www.xp.cn/css3/)【速复、大概印象】
+  + [ ] 开发框架【Cesium、Leaflet、Mapbox、OpenLayers】
+  + [ ] 地理信息开发所需知识(地理信息基础、数据制作、服务发布、部署)，
+  + [ ] 所需软件【制图软件（QGSI/ArcGIS），地图服务器（GeoServer/ArcGISServer），空间数据库引擎（PotGIS/ArcSDE），前端GIS库（leaflet.j/openlayer.j/ArcGISAPIforJavaScript）】
+  + [ ] 不同数据格式（OGC规范）【[wfts](https://zhuanlan.zhihu.com/p/543257223)、wms、3DTiles、】以及加载、转换【MapProxy】方式
+  + [ ] 常见业务【占用分析，数据加载，】
+  + [ ] 计算机图形学以及三维
 + [ ] [业务](JAVAUse.md)
 + [ ] [**源码解析结合设计模式【JAVA底层—–>新语言特性—>框架】**](#源码解析结合设计模式)  **晚上**
-  + [ ] 基础概念
   + [ ] 8以上新特性
-  + [ ] OFFICE导入导出
+  + [ ] OFFICE导入导出，多级表头，样式
 
 ---
 
@@ -76,14 +129,22 @@ tag:
   + [ ] 排序
   + [ ] 查找
   + [ ] 算法题
++ [ ] [自媒体升级](We-Media.md)   **周天**
+  + [ ] 知识专栏【后端、前端、GIS、Python等趣味】
+  + [ ] 流量架构分析
+  + [ ] 引流
+  + [ ] 知识付费与变现
 + [ ] [设计模式JAVA实例完善DEMO](DesignPatterns.md)   **周天**
   + [ ] 设计原则
   + [ ] 行为型
   + [ ] 结构型
   + [ ] 创建型
 + [ ] [运动健康【睡眠检测、跳绳、卷腹、篮球、跑步】](Health.md)    **周二、周四、周六**
-+ [ ] [自媒体升级](We-Media.md)   **周天**
-+ [ ] [艺术提升【摄影、乐理、钢琴、吉他、写歌】 ](Music.md)  **周末**
++ [ ] [艺术提升【乐理、钢琴、吉他、写歌】 ](Music.md)  **周末**
++ [ ] 摄影摄像后期  **周末**
+  + [ ] [学习AE后期  驱动摄像摄影](Photography.md)
+  + [ ] 摄影知识系统化
+  + [ ] 摄像知识系统化
 
 ---
 
@@ -101,7 +162,7 @@ tag:
 + [ ] 存款5W
 + [ ] [七本书籍](BMM.md)
 + [ ] [腹肌胸肌](Health.md)
-+ [ ] 涨薪翻倍
++ [x] 涨薪翻倍
 + [ ] 求婚订婚
 + [ ] 升级装备
 + [x] 旅游一次
@@ -125,12 +186,24 @@ tag:
 
   + [x] GuLimall基础篇
 
-  ![image-20220726133626282](https://qnimg.gisfsde.com/markdown/image-20220726133626282.png)
+  <img src="https://qnimg.gisfsde.com/markdown/image-20220726133626282.png" alt="image-20220726133626282" style="zoom:50%;" />
 
   + [ ] **微服务架构篇**
   + [ ] 高可用集群篇
 
 + [ ] **Docker**
+
++ [ ] 构建学习系统（以学习为主导）
+
++ [ ] 搭建JAVAFX小案例并插件化项目
+
++ [ ] 文件路径问题
+
++ [ ] CSS预处理器
+
++ [ ] .idea 与.iml作用
+
++ [ ] jdk9模块化
 
 + [ ] 权限标识注释
 
@@ -147,6 +220,10 @@ tag:
 + [ ] 自媒体模仿总结
 
 + [ ] JAVA程序性能检测小程序
+
++ [ ] linux auditd占用内存较大，
+
++ [ ] [JVM致命错误日志(hs_err_pid.log)分析_chenssy的博客-CSDN博客_hs_err_pid](https://blog.csdn.net/chenssy/article/details/78271744)
 
 + [ ] RestTemplte与文件
 
@@ -243,12 +320,12 @@ tag:
 + [ ] Pageoffice
 + [ ] 投资理财
 + [ ] 三维建模【[Three.js – JavaScript 3D Library (threejs.org)](https://threejs.org/)】
-+ [ ] 阿里云盘资源利用
-+ [ ] 博客完善
-+ [ ] 博客GIS模块
++ [x] 阿里云盘资源利用
++ [x] 博客完善
++ [x] 博客GIS模块
 + [ ] 博客旅游模块
 + [ ] 博客书籍模块
-+ [ ] 准备描述
++ [x] 准备描述
 
 # DETAILS：
 
@@ -266,7 +343,7 @@ tag:
 + [ ] 多态
 + [ ] 接口
 + [ ] 内部类
-+ [ ] 容器及其工具比如stream
++ [x] 容器及其工具比如stream
 + [ ] 异常
 + [ ] 字符串
 + [ ] 正则表达式
@@ -293,6 +370,10 @@ tag:
 
 > 完成情况记录
 
++ [x] [MySQL调优](MYSQLOptimize.md) [基础](https://www.bilibili.com/video/BV1iq4y1u7vj?p=2&spm_id_from=pageDriver&vd_source=10bfbb2d4bb1646ac73508c202d5f815)  **中午**
+  + [x] 基础篇：
+  + [x] 高级篇：
++ [x] VUE143 暂完
 + [x] 阶段计划整理20220726
 + [x] **完善GIT体系**
 + [x] SpringBoot全面覆盖【路上看，中午笔记】

@@ -22,11 +22,13 @@ tag:
 
 # 一、设计
 
-## 系统设计
+## 系统架构设计
 
 ### 系统设计工具
 
 [Visual Paradigm](https://www.visual-paradigm.com/cn/download/?platform=windows&arch=64bit)
+
+## UI设计
 
 
 
@@ -35,8 +37,6 @@ tag:
 ## 数据库设计
 
 [Navicat](http://www.navicat.com.cn/manual/online_manual/cn/navicat/win_manual/#/model_window)  
-
-# 
 
 # 二、管理
 
@@ -76,6 +76,28 @@ tag:
 - 中间件
 - 静态资源
 - 网络等硬件
+
+# 七、新技术探索
+
+# 八、思考
+
+## 微服务
+
+- 服务粒度如何确定
+
+- 什么样的项目适合微服务，为什么使用微服务
+
+## 前端
+
+- 
+
+# 九、法律
+
+- ## 隐私保护
+
+# 十、项目开发流程
+
+项目分析、确定开发、需求分析、设计、编程、软件测试、软件交付、验收、维护
 
 
 

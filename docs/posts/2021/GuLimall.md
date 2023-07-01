@@ -19,7 +19,7 @@ tag:
 > **HOW【如何记忆，学习资源（官方文档、视频资源、项目地址）】**：[谷粒商城源码和软件](https://share.weiyun.com/z0DElpTd)、[在线教程](https://www.bilibili.com/video/BV1np4y1C7Yf?spm_id_from=333.999.0.0)  
 > **LEVEL【不是每个都学精】**：清晰明了  
 
-# 进度： 【基础篇完成--7.26，高级篇[151](https://www.bilibili.com/video/BV1np4y1C7Yf?p=104&spm_id_from=pageDriver&vd_source=10bfbb2d4bb1646ac73508c202d5f815)，集群篇】
+# 进度： 【基础篇完成--7.26，高级篇[170](https://www.bilibili.com/video/BV1np4y1C7Yf?p=104&spm_id_from=pageDriver&vd_source=10bfbb2d4bb1646ac73508c202d5f815)，集群篇】
 
 重点片段：55集附近树相关操作、66-69统一异常处理相关，156解决缓存击穿问题，158分布式锁原理与使用
 
@@ -259,6 +259,24 @@ Vagrant ssh
 vi /etc/ssh/sshd_config
 修改  PasswordAuthentication yes
 重启服务 service sshd restart
+```
+
+
+
+#### 打包虚拟机及其环境
+
+在VirtualBox工作文件夹下 ，比如：C:\Users\aaa\VirtualBox VMs
+
+```
+vagrant package --base  虚拟机文件夹名 --output 导出box名字.box
+另一台导入
+vagrant box add 新box名 导出的box文件路径
+vagrant box list 
+删除旧配置文件 .vagrant 与 Vagrantfile 不删除会创建没有软件的初始化虚拟机
+init 命令会在box文件所在目录创建.vagrant 与 Vagrantfile，创建后复制到用户目录下会更加便捷
+vagrant init 新box名
+vagrant up
+vagrant ssh
 ```
 
 
@@ -1004,7 +1022,7 @@ set MODE="cluster"  =》  set MODE="standalone"
  \</dependency>
 ```
 
-### 2.下载Nacos Server
+### 2.下载 Nacos Server
 
 ###   [Releases · alibaba/nacos (github.com)](https://github.com/alibaba/nacos/releases)并点击文件夹下的startup.bat启动服务,启动不了可能未配JAVA_HOME环境变量
 
@@ -5260,7 +5278,7 @@ chmod -R 777 /mydata/elasticsearch/ ## 设置elasticsearch文件可读写权限
 ```bash
 docker run --name  elasticsearch -p 9200:9200 -p 9300:9300 \ # 容器名  9200 rest接口使用 9300 分布式之间访问接口
 -e  "discovery.type=single-node" \  # 单节点运行
--e ES_JAVA_OPTS="-Xms64m -Xmx512m" \  #不指定占用全部内存
+-e ES_JAVA_OPTS="-Xms64m -Xmx512m" \  #不指定会占用全部内存
 -v   /mydata/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml \   #目录挂载
 -v /mydata/elasticsearch/data:/usr/share/elasticsearch/data \
 -v  /mydata/elasticsearch/plugins:/usr/share/elasticsearch/plugins \   #挂载插件目录
@@ -5356,12 +5374,22 @@ GET /_cat/incices：查看所有索引 show databases;
 
 #### 1.3.2 索引一个文档（保存）
 
+```
+数据格式
+{
+    "name": "John Doe2"
+}
+```
+
 保存一个数据，保存在哪个索引的哪个类型下，指定用哪个唯一标识
 
 PUT customer/external/1; 在 customer 索引下的 external 类型下保存 1号数据为
 
 ```http
+新增 put 需带 id 保存    索引/类型/id
 PUT customer/external/1
+新增  post 不带id 且id之前没数据    修改  带id且之前有数据
+POST customer/external/    
 ```
 
 #### 1.3.3、查询文档
@@ -5382,18 +5410,21 @@ GET custome/external/1
     "_primary_term": 1, //同上，主分片重新分配，如重启，就会变化
     "found": true, 
     "_source": {
-        "name": "John Doe" // 真正的内容
+        "name": "John Doe" // 存储数据
     }
 }
 ```
 
 ```
-更新携带：?if_seq_no=4&if_primary_term=1
+更新携带：?if_seq_no=4&if_primary_term=1   形成乐观锁
+192.168.56.10:9200/customer/external/1?if_seq_no=0&if_primary_term=1
 ```
 
 
 
 #### 1.3.4 更新文档
+
+更新  post （带__update ）都会检查数据，数据没变化不会更新版本号
 
 ```http
 POST customer/external/1/_update
@@ -5402,30 +5433,57 @@ POST customer/external/1/_update
 		"name":"John Doew"
 	}
 }
-或者
+
+返回
+{
+    "_index": "customer",
+    "_type": "external",
+    "_id": "1",
+    "_version": 6, 数据没变化不会更新版本号
+    "result": "noop",
+    "_shards": {
+        "total": 0,
+        "successful": 0,
+        "failed": 0
+    },
+    "_seq_no": 7,
+    "_primary_term": 22
+}
+```
+
+更新 put和post （不带__update ）都会直接更新数据不检查
+
+不同：
+
+- Post操作会对比源文档数据，如果相同不会有什么操作，文档 version 不增加 PUT操作总会将数据重新保存并增加 version 版本
+- 带 _update 对比元数据如果一样就不进行任何操作
+- 场景
+  - 对于大并发更新，不带update
+  - 对于大并发查询并偶尔更新，带update 对比更新，重新计算分配规则
+
+```http
 POST customer/external/1
 {
 	"name":"John Doe2"
 }
+
 或者
 PUT customer/external/1
 {
 	"name":"jack"
 }
-不同：Post操作会对比源文档数据，如果相同不会有什么操作，文档 version 不增加 PUT操作总会将数据重新保存并增加 version 版本
-带 _update 对比元数据如果一样就不进行任何操作
-看场景
-对于大并发更新，不带update
-对于大并发查询并偶尔更新，带update 对比更新，重新计算分配规则
+```
+
 更新同时增加属性
 POS customer/external/1/_update
 {
 	"doc":{"name":"Jane Doe","age":20}
 }
 PUT 和 POST 不带_update也可以
-```
 
 #### 1.3.5 删除文档&索引
+
+删除  指定索引或者id  不能指定类型（表）
 
 ```http
 DELETE customer/external/1
@@ -5440,6 +5498,49 @@ POST customer/external/_bulk
 {"name":"John Doe"}
 {"index":{"_id":"2"}}
 {"name":"John Doe"}
+
+返回
+#! Deprecation: [types removal] Specifying types in bulk requests is deprecated.
+{
+  "took" : 3,
+  "errors" : false,
+  "items" : [
+    {
+      "index" : {
+        "_index" : "customer",
+        "_type" : "external",
+        "_id" : "1",
+        "_version" : 5,
+        "result" : "updated",
+        "_shards" : {
+          "total" : 2,
+          "successful" : 1,
+          "failed" : 0
+        },
+        "_seq_no" : 5,
+        "_primary_term" : 22,
+        "status" : 200
+      }
+    },
+    {
+      "index" : {
+        "_index" : "customer",
+        "_type" : "external",
+        "_id" : "2",
+        "_version" : 2,
+        "result" : "updated",
+        "_shards" : {
+          "total" : 2,
+          "successful" : 1,
+          "failed" : 0
+        },
+        "_seq_no" : 6,
+        "_primary_term" : 22,
+        "status" : 200
+      }
+    }
+  ]
+}
 ```
 
 语法格式
@@ -5489,10 +5590,6 @@ bulk API以此按顺序执行所有的action (动作)。如果一一个单个的
 https://github.com/elastic/elasticsearch/edit/master/docs/src/test/resources/accounts.json
 
 [es测试数据.json · 坐看云起时/common_content - Gitee.com](https://gitee.com/xlh_blog/common_content/blob/master/es测试数据.json)
-
-
-
-
 
 导入测试数据
 
@@ -7115,7 +7212,7 @@ TCPTimedWaitDelay:30
 - **即时性、数据一致性要求不高的**
 - **访问量大且更新频率不高的数据（读多、写少）**
 
-举例：电商类应用、商品分类，商品列表等适合缓存并加一个失效时间（根据数据更新频率来定）后台如果发布一个商品、买家需要 5 分钟才能看到新商品一般还是可以接受的
+举例：电商类应用、商品分类，商品列表等适合缓存并加一个失效时间（根据数据更新频率来定）后台如果发布一个商品、买家需要 5 分钟才能看到新商品一般还是可以接受的。
 
 ![image-20201030190425556](http://qnimg.gisfsde.com/work/image-20201030190425556.png)
 
@@ -7265,7 +7362,7 @@ public Map\<String, List\<Catelog2Vo>> getCatelogJson() {
 
 
 
-### 6.4 分布式锁
+### 6.3分布式锁
 
 #### 分布式锁原理与应用
 
@@ -7459,6 +7556,59 @@ Pom
     \<artifactId>redisson\</artifactId>
     \<version>3.12.0\</version>
 \</dependency>
+```
+
+config
+
+```java
+package com.atguigu.gulimall.product.config;
+
+import org.redisson.Redisson;
+import org.redisson.api.RedissonClient;
+import org.redisson.config.Config;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import java.io.IOException;
+
+/**
+ * Created with IntelliJ IDEA.
+ *
+ * @Author: lxl
+ * @Date: 2022/09/26/18:08
+ * @Description:
+ */
+@Configuration
+public class MyRedissonConfig {
+    /**
+     * 注入客户端实例对象
+     */
+    @Bean(destroyMethod="shutdown")
+    public RedissonClient redisson(@Value("${spring.redis.host}") String host, @Value("${spring.redis.port}")String port) throws IOException {
+        // 1.创建配置
+        Config config = new Config();
+        config.useSingleServer().setAddress("redis://192.168.56.10:6379");// 单节点模式
+//        config.useSingleServer().setAddress("redis://" + host + ":" + port);// 单节点模式
+//        config.useSingleServer().setAddress("rediss://" + host + ":" + port);// 使用安全连接
+//        config.useClusterServers().addNodeAddress("127.0.0.1:7004", "127.0.0.1:7001");// 集群模式
+        // 2.创建redisson客户端实例
+        RedissonClient redissonClient = Redisson.create(config);
+        return redissonClient;
+    }
+}
+
+```
+
+test
+
+```java
+    @Autowired
+    RedissonClient redissonClient;
+    @Test
+    public void testRedssion() {
+        System.out.println(redissonClient);
+    }
 ```
 
 ##### 2、Redisson - Lock 锁测试 & Redisson - Lock 看门狗原理 - Redisson 如何解决死锁
@@ -7688,7 +7838,7 @@ public String go() {
 
 ##### 6、Redission - 缓存一致性解决
 
-### 6.3 缓存数据一致性
+### 6.4缓存数据一致性
 
 #### 缓存数据一致性 - 双写模式
 
@@ -7712,7 +7862,7 @@ public String go() {
 
 无论是双写模式还是失效模式，都会到这缓存不一致的问题，即多个实力同时更新会出事，怎么办？
 
-- 1、如果是用户纯度数据（订单数据、用户数据），这并发几率很小，几乎不用考虑这个问题，缓存数据加上过期时间，每隔一段时间触发读的主动更新即可
+- 1、如果是用户纬度数据（订单数据、用户数据），这并发几率很小，几乎不用考虑这个问题，缓存数据加上过期时间，每隔一段时间触发读的主动更新即可
 - 2、如果是菜单，商品介绍等基础数据，也可以去使用 canal 订阅，binlog 的方式
 - 3、缓存数据 + 过期时间也足够解决大部分业务对缓存的要求
 - 4、通过加锁保证并发读写，写写的时候按照顺序排好队，读读无所谓，所以适合读写锁，（业务不关心脏数据，允许临时脏数据可忽略）
@@ -7722,12 +7872,6 @@ public String go() {
 - 我们能放入缓存的数据本来就不应该是实时性、一致性要求超高的。所以缓存数据的时候加上过期时间，保证每天拿到当前的最新值即可
 - 我们不应该过度设计，增加系统的复杂性
 - 遇到实时性、一致性要求高的数据，就应该查数据库，即使慢点
-
-
-
-![](D:\java\gitee\java-learning-note\Evan Guo\项目笔记\谷粒商城项目开发文档\分布式高级篇\image\image-20201101054937769.png)
-
-最后符上 三级分类数据 加上分布式锁
 
 
 
@@ -8789,7 +8933,7 @@ Executors.newFixedThreadPool(3);
 new ThreadPollExecutor(corePoolSize,maximumPoolSize,keepAliveTime,TimeUnit,unit,workQueue,threadFactory,handler);
 ```
 
-\<span style="color:blue;font-">通过线程池性能稳定，也可以获取执行结果，并捕获异常，但是\</span>，**在业务复杂情况下，一个异步调用可能会依赖另一个异步调用的执行结果**
+通过线程池性能稳定，也可以获取执行结果，并捕获异常，但是，**在业务复杂情况下，一个异步调用可能会依赖另一个异步调用的执行结果**
 
 #### 8.1.2 线程池的 7 大参数	
 

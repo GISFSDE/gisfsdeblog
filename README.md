@@ -16,7 +16,17 @@ YAML Frontmatter  markdown文件YAML配置头用两个---包裹
 
 
 ```bash
+node  14.16.0
 #环境
+npm install pnpm@6.35.0 -g
+#切换淘宝源
+pnpm config set registry https://registry.npmmirror.com/
+pnpm i
+pnpm docs:dev
+
+
+
+
 node：https://nodejs.org/zh-cn/
 corepack enable
 corepack prepare pnpm@7.1.0 --activate
