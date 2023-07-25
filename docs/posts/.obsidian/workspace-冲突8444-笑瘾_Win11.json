@@ -1,0 +1,227 @@
+{
+  "main": {
+    "id": "28126b41ffbe1363",
+    "type": "split",
+    "children": [
+      {
+        "id": "278db093deec71e9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fd5e52c6e63a9aa9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2023/WORK.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "stacked": true
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "dbcd266b8fe674bc",
+    "type": "split",
+    "children": [
+      {
+        "id": "dcadbd39023991e6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1df08e48960c309d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "byModifiedTime"
+              }
+            }
+          },
+          {
+            "id": "8e3339782f7d0475",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#农村乱占耕地",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "2416a7d5bedab3ac",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          },
+          {
+            "id": "4d7230fbe116f863",
+            "type": "leaf",
+            "state": {
+              "type": "mk-file-view",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f7f122fa73a54f63",
+    "type": "split",
+    "children": [
+      {
+        "id": "bbbc9932095ddf6c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0238b646942e5143",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "2023/WORK.md"
+              }
+            }
+          },
+          {
+            "id": "eff4b11136062108",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "5e891bbea11bc02d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "55e4d8ba9d0fac9c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "2023/WORK.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "d5d3b09d8664f28d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "2023/WORK.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "a35e6cca8fde8174",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "db4db306ccb0c9b5",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 284.5,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "daily-notes:打开/创建今天的日记": false,
+      "graph:查看关系图谱": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "obsidian-excalidraw-plugin:新建 Excalidraw 绘图": false,
+      "switcher:打开快速切换": false,
+      "canvas:新建白板": false,
+      "random-note:开始漫游笔记": false,
+      "audio-recorder:开始/结束录音": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "remotely-save:Remotely Save": false,
+      "custom-sort:Toggle custom sorting": false
+    }
+  },
+  "active": "fd5e52c6e63a9aa9",
+  "lastOpenFiles": [
+    "2021/JAVAUse.md",
+    "START.md",
+    "2021/album.md",
+    "2021/GIS.md",
+    "2023/WORK.md",
+    "2023/2023.md",
+    "2021/BMM.md",
+    "2021/EnglishDay.md",
+    "2021/WMP.md",
+    "2023/Adobe.md",
+    "2021/Java.md",
+    "2023/WeMedia2023.md",
+    "2021/We-Media.md",
+    "2021/VUEPressDemo.md",
+    "Day Planners/Day Planners.md",
+    "2021/2021.md",
+    "2023/obsidianTemplate.md",
+    "Context/spacesLastSync.log",
+    "2023/context.mdb",
+    "Day Planners/Day Planner-20230710.md",
+    "Templates/template.md",
+    "Templates/Templates.md",
+    "README.md",
+    "2023/ObsidianTemplate.md",
+    "Excalidraw/Drawing 2023-07-10 22.09.15.excalidraw.md",
+    "Excalidraw/Drawing 2023-07-07 15.17.36.excalidraw.md",
+    "Excalidraw/Drawing 2023-07-10 21.32.24.excalidraw.md",
+    "Excalidraw/Excalidraw.md",
+    "2021/context.mdb",
+    "context.mdb",
+    "Templates",
+    "Day Planners",
+    "Context",
+    "2023",
+    "Excalidraw"
+  ]
+}

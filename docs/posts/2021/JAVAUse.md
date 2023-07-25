@@ -29,6 +29,7 @@ tag:
 + [x] 文件压解
 + [ ] 如何调试BUG
 + [ ] 深拷贝
++ [x] SpringBoot 添加外部jar包
 + [ ] JAVAFX
 + [ ] 工作流
 + [ ] 各种日志
@@ -44,7 +45,7 @@ tag:
 + [ ] 网络通信
 + [ ] 单元测试
 + [ ] 常用工具类（网络、文件【OFFICE、视频】、日志、格式转换、安全加解密、短信、）
-+ [ ] 加密解密【AES(CBC)】
++ [x] 加密解密【AES(CBC)】
 + [ ] 缓存相关
 + [ ] 自定义注解
 + [ ] 开关配置
@@ -118,9 +119,13 @@ yarn global add xxx 等同于 npm install xxx -g 全局安装指定包
 1.不要放过错误提示的每一行
 
 # 深拷贝
-
-
-
+## 不同对象有相同字段拷贝
+BeanUtils.copyProperties(user, sysUser);
+## 深拷贝
+- 构造函数
+- 重写对象clone（）并 implements Cloneable
+- Apache Commons Lang序列化
+- JSON序列化
 # 文件上传下载
 
 ## 相关对象：
@@ -196,8 +201,260 @@ Resources.getResourceAsStream()
     }
 ```
 
+# SpringBoot 添加外部jar包
+项目根路径添加lib，将jar放进lib，项目配置中添加lib到library，modules中将lib设置为Resources文件夹类型
+pom中添加插件
 
+```xml
+ <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork> <!-- 如果没有该配置，devtools不会生效 -->
+                    <includeSystemScope>true</includeSystemScope>
+                </configuration>
+            </plugin>
 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <directory>lib</directory>
+                            <targetPath>WEB-INF/lib/</targetPath>
+                            <includes>
+                                <include>**/*.jar</include>
+                            </includes>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+        </plugins>
+        <resources>
+
+            <!--			引入本地资源-->
+            <!--			加载lib文件，特殊情况下会有lib，但大部分都靠依赖下载了-->
+            <resource>
+                <directory>lib</directory>
+                <targetPath>BOOT-INF/lib/</targetPath>
+                <includes>
+                    <include>**/*.jar</include>
+                </includes>
+            </resource>
+            <!--打包resources目录下全部文件-->
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.*</include>
+                </includes>
+            </resource>
+            <!--打jar包-->
+<!--            <resource>-->
+<!--                <directory>src/main/java</directory>-->
+<!--                <includes>-->
+<!--                    <include>**/*.yml</include>-->
+<!--                    <include>**/*.properties</include>-->
+<!--                    <include>**/*.xml</include>-->
+<!--                </includes>-->
+<!--            </resource>-->
+            <!--将properties和xml文件编译-->
+<!--            <resource>-->
+<!--                <directory>src/main/resources</directory>-->
+<!--                <includes>-->
+<!--                    <include>**/*.yml</include>-->
+<!--                    <include>**/*.*</include>-->
+<!--                    <include>**/*.properties</include>-->
+<!--                    <include>**/*.xml</include>-->
+<!--                </includes>-->
+<!--                <filtering>false</filtering>-->
+<!--            </resource>-->
+        </resources>
+```
+
+# 加密解密【AES(CBC)】
+## 基础原理
+### 加密方式
+
+## 注意事项
+## 代码示例
+### 前端
+```JS
+import CryptoJS from "crypto-js";
+export default {
+
+    // 加密
+    encrypt(word, keyStr, ivStr) {
+        keyStr = keyStr ? keyStr : "123456123456";
+        ivStr = ivStr ? ivStr : "123456123456";
+        let key = CryptoJS.enc.Utf8.parse(keyStr);
+        let iv = CryptoJS.enc.Utf8.parse(ivStr);
+        let srcs = CryptoJS.enc.Utf8.parse(word);
+
+        let encrypted = CryptoJS.AES.encrypt(srcs, key, {
+            iv,
+            mode: CryptoJS.mode.CBC,
+            padding: CryptoJS.pad.ZeroPadding
+        });
+        return encrypted.toString();
+    },
+
+    // 解密
+
+    decrypt(word, keyStr, ivStr) {
+        keyStr = keyStr ? keyStr : "123456123456";
+        ivStr = ivStr ? ivStr : "123456123456";
+        var key = CryptoJS.enc.Utf8.parse(keyStr);
+        let iv = CryptoJS.enc.Utf8.parse(ivStr);
+        let base64 = CryptoJS.enc.Base64.parse(word);
+        let src = CryptoJS.enc.Base64.stringify(base64);
+        var decrypt = CryptoJS.AES.decrypt(src, key, {
+            iv,
+            mode: CryptoJS.mode.CBC,
+            padding: CryptoJS.pad.ZeroPadding
+        });
+        return decrypt.toString(CryptoJS.enc.Utf8);
+    }
+};
+```
+### 后端
+```java
+ import org.apache.commons.codec.binary.Base64;  
+import org.bouncycastle.jce.provider.BouncyCastleProvider;  
+  
+import javax.crypto.Cipher;  
+import javax.crypto.spec.IvParameterSpec;  
+import javax.crypto.spec.SecretKeySpec;  
+import java.security.Security;  
+  
+/**  
+* @Author lxl  
+* @Description //TODO  
+* @Date 15:21 2023/7/18  
+* @param null  
+* @return  
+* @return null  
+**/  
+public class SecretUtil {  
+  
+/***  
+* key和iv值需要和前端一致  
+*/  
+public static final String KEY = "123456123456";  
+public static final String IV = "123456123456";  
+/**  
+* 解决java不支持AES/CBC/PKCS7Padding模式解密  
+*/  
+static {  
+Security.addProvider(new BouncyCastleProvider());  
+}  
+/**  
+* 加密方法  
+*  
+* @param data 要加密的数据  
+* @param key 加密key  
+* @param iv 加密iv  
+* @return 加密的结果  
+*/  
+public static String encrypt(String data, String key, String iv) {  
+try {  
+//"算法/模式/补码方式"NoPadding PkcsPadding  
+Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding");  
+int blockSize = cipher.getBlockSize();  
+  
+byte[] dataBytes = data.getBytes("utf-8");  
+int plaintextLength = dataBytes.length;  
+if (plaintextLength % blockSize != 0) {  
+plaintextLength = plaintextLength + (blockSize - (plaintextLength % blockSize));  
+}  
+  
+byte[] plaintext = new byte[plaintextLength];  
+System.arraycopy(dataBytes, 0, plaintext, 0, dataBytes.length);  
+  
+SecretKeySpec keyspec = new SecretKeySpec(key.getBytes("utf-8"), "AES");  
+IvParameterSpec ivspec = new IvParameterSpec(iv.getBytes("utf-8"));  
+  
+cipher.init(Cipher.ENCRYPT_MODE, keyspec, ivspec);  
+byte[] encrypted = cipher.doFinal(plaintext);  
+// return new Base64().encodeToString(encrypted);  
+return encodeHexString(encrypted);  
+} catch (Exception e) {  
+e.printStackTrace();  
+return null;  
+}  
+}  
+  
+/**  
+* 解密方法  
+*  
+* @param data 要解密的数据  
+* @param key 解密key  
+* @param iv 解密iv  
+* @return 解密的结果  
+*/  
+public static String desEncrypt(String data, String key, String iv) {  
+try {  
+// byte[] encrypted1 = new Base64().decode(data);  
+byte[] encrypted1 = parseHexStr2Byte(data);  
+Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding");  
+SecretKeySpec keySpec = new SecretKeySpec(key.getBytes("utf-8"), "AES");  
+IvParameterSpec ivSpec = new IvParameterSpec(iv.getBytes("utf-8"));  
+cipher.init(Cipher.DECRYPT_MODE, keySpec, ivSpec);  
+  
+byte[] original = cipher.doFinal(encrypted1);  
+return new String(original,"utf-8").trim();  
+} catch (Exception e) {  
+e.printStackTrace();  
+return null;  
+}  
+}  
+/**将16进制转换为二进制  
+* @param hexStr  
+* @return  
+*/  
+public static byte[] parseHexStr2Byte(String hexStr) {  
+if (hexStr.length() < 1)  
+return null;  
+byte[] result = new byte[hexStr.length()/2];  
+for (int i = 0;i< hexStr.length()/2; i++) {  
+int high = Integer.parseInt(hexStr.substring(i*2, i*2+1), 16);  
+int low = Integer.parseInt(hexStr.substring(i*2+1, i*2+2), 16);  
+result[i] = (byte) (high * 16 + low);  
+}  
+return result;  
+}  
+/**  
+* byte 数组转 16进制字符串  
+* @param byteArray byte数组  
+* @return String  
+*/  
+public static String encodeHexString(byte[] byteArray) {  
+StringBuffer hexStringBuffer = new StringBuffer();  
+for (int i = 0; i < byteArray.length; i++) {  
+hexStringBuffer.append(byteToHex(byteArray[i]));  
+}  
+return hexStringBuffer.toString();  
+}  
+  
+/**  
+* byte 转16进制字符串  
+* @param num byte  
+* @return String  
+*/  
+public static String byteToHex(byte num) {  
+char[] hexDigits = new char[2];  
+hexDigits[0] = Character.forDigit((num >> 4) & 0xF, 16);  
+hexDigits[1] = Character.forDigit((num & 0xF), 16);  
+return new String(hexDigits);  
+}  
+// public static void main(String[] args) {  
+// System.out.println(encrypt("GE_f968a98e0f804223bda4713c5dcd9a2b", KEY, IV));  
+// System.out.println(desEncrypt("7EB5D740882BD94653AEA68A7A4983D2DD08D40313097D8AE3A592E87AB8EFDA692876295DE075DF228CFB7704C71EE3", KEY, IV));  
+// // System.out.println(desEncrypt("2509846F16E6C46EA26A50440D0B85A6917C73144BD910FABE43C726A3E80F5CEA810BE33EE77E0259417ED9A5A96DB0", KEY, IV));  
+// }  
+}
+```
 # 前后端交互：
 
 ## 跨域
@@ -321,6 +578,10 @@ WebService服务器端首先要通过一个WSDL文件来说明自己有什么服
 ### CRUD
 
 ### 取值
+
+#### 通过表达式
+[JSONPath Online Evaluator](http://jsonpath.com/)
+#### 自写代码
 
 ```java
 static Map analysisJsonResultMap = new HashMap();
@@ -1051,9 +1312,26 @@ Warning: ALREADY_ENABLED: 3306:tcp（说明3306端口通过成功）
 # 定时任务
 
 ## SpringBoot
+@EnableScheduling
+@Scheduled（cron ="0 0 0 * * * ?"）注解，接口SchedulingConfigurer,Quartz 
+### cron说明
 
-@Scheduled注解，接口SchedulingConfigurer,Quartz 
+| 序号 | 含义         | 是否必填 | 入参范围      | 可填通配符         |
+|----|------------|------|-----------|---------------|
+| 1  | 秒          | 是    | 0-59      | , - * /       |
+| 2  | 分          | 是    | 0-59      | , - * /       |
+| 3  | 时          | 是    | 0-23      | , - * /       |
+| 4  | 日          | 是    | 1-31      | , - * ? / L W |
+| 5  | 月          | 是    | 1-12      | , - * /       |
+| 6  | 周（周一 ~ 周日） | 是    | 1-7       | , - * ? / L # |
+| 8  | 年          | 否    | 1970-2099 | , - * /       |
 
+### 常用通配符：
+
+：表示所有值 比如用在日 表示每一天。
+?：表示不指定值 比如周配置  表示不指定星期几执行。
+/：表示递增触发 比如  用在分 5/20 从第五分钟开始 每增加20分钟执行一次。
+-：表示区间 比如用在 1-6  表示一月到六月执行。
 # [JAVAFX](https://blog.csdn.net/qq_45295475/article/details/125736509)
 
 ## 简介

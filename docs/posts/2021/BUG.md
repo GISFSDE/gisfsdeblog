@@ -224,3 +224,9 @@ RestTemplate restTemplate;
 
 # 前端
 
+# 常犯bug
+
+列表不倒序
+
+搜索与分页不关联
+

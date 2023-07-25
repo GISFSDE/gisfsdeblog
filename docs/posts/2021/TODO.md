@@ -5,7 +5,6 @@ title: TODO
 date: 2022-06-06
 author: lxl
 isOriginal: true
-# sticky: true
 star: true
 category:
   - TODO

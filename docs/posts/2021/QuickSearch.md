@@ -84,6 +84,11 @@ shell:common startup
 fuwu
 services.msc
 taskmgr
+#查看CUP核心数与线程数
+wmic
+cpu get *
+NumberOfCores：CPU核心数
+NumberOfLogicalProcessors：CPU线程数
 ```
 
 文件信息

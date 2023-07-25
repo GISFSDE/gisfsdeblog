@@ -32,17 +32,17 @@ projects:
   - icon: book
     name: Reading
     desc: 正在读的书籍
-    link: /posts/2021/书影音.html
+    link: /posts/2021/BMM.html
 
   - icon: article
     name: 文章推荐
     desc: 最新好文推荐
-    link: /posts/2021/书影音.html
+    link: /posts/2021/BMM.html
 
   - icon: friend
     name: 友链
     desc: 值得信赖的伙伴
-    link: /posts/2021/书影音.html
+    link: /posts/2021/BMM.html
 
   # - icon: /logo.svg
   #   name: 自定义项目

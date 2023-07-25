@@ -13,6 +13,10 @@ tag:
 关于GIS
 
 <!-- more -->
+# ARCGIS
+### 坐标系转化
+arcToolBox-数据管理工具-投影和变换-投影
+常用坐标系 2000经纬度(GCS_China_Geodetic_Coordinate_System_2000)
 # MAPBOX
 
 ## cgcs2000 Mapbox VUE使用

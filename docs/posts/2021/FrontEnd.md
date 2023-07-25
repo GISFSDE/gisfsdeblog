@@ -1610,8 +1610,6 @@ module.exports = {
 
 #### 13.路由器的两种工作模式
 
-
-
 1. 对于一个url来说，什么是hash值？—— #及其后面的内容就是hash值。
 2. hash值不会包含在 HTTP 请求中，即：hash值不会带给服务器。
 3. hash模式：
@@ -1676,9 +1674,6 @@ ES6
 - [`some()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
 - [`sort()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
 - [`splice()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
-
-
-
 - [`entries()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/entries)
 - [`fill()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/fill)
 - [`find()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
