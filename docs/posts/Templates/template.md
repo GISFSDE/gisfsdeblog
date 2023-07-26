@@ -10,6 +10,7 @@ tag:
   - template
   - template
 sticky: false
+article: false
 footer: 这是测试显示的页脚
 description: 内容描述
 shortTitle: template
@@ -179,16 +180,16 @@ image: https://qnimg.gisfsde.com/markdown/heros.jpg
 
 `PageInfo` 可选的值和对应内容如下:
 
-|条目|对应内容|页面 frontmatter 值|
-|---|---|---|
-|`"Author"`|作者|`author`|
-|`"Date"`|写作日期|`date`|
-|`"Original"`|是否原创|`isOriginal`|
-|`"Category"`|分类|`category`|
-|`"Tag"`|标签|`tag`|
-|`"ReadingTime"`|预计阅读时间|N/A(自动生成)|
-|`"Word"`|字数|N/A(自动生成)|
-|`"PageView"`|访问量|`pageview` (仅 Waline 可用)|
+| 条目            | 对应内容     | 页面 frontmatter 值         |
+| --------------- | ------------ | --------------------------- |
+| `"Author"`      | 作者         | `author`                    |
+| `"Date"`        | 写作日期     | `date`                      |
+| `"Original"`    | 是否原创     | `isOriginal`                |
+| `"Category"`    | 分类         | `category`                  |
+| `"Tag"`         | 标签         | `tag`                       |
+| `"ReadingTime"` | 预计阅读时间 | N/A(自动生成)               |
+| `"Word"`        | 字数         | N/A(自动生成)               |
+| `"PageView"`    | 访问量       | `pageview` (仅 Waline 可用) |
 
 文章信息展示项目。
 

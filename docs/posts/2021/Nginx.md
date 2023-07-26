@@ -176,7 +176,68 @@ http {
 　　　　　　proxy_pass http://localhost:20002;
 　　　　}
 　　}
-    #配置 https   跨域解决
+    #配置 https   常用漏洞修复
+    server {
+        listen       443 ssl;
+        server_name  cyxh.hzsgis.com;
+        
+        ssl_certificate       D:\https\9539134__hzsgis.com.pem;
+        ssl_certificate_key   D:\https\9539134__hzsgis.com.key;
+        ssl_session_cache shared:SSL:1m;
+        ssl_session_timeout 20m;
+        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!aNULL:!MD5:!ADH:!RC4;
+       
+	ssl_protocols TLSv1.2 TLSv1.3;
+        ssl_prefer_server_ciphers on;
+        
+        root      D:\bw\dist;
+	add_header Strict-Transport-Security "max-age=31536000;includeSubDomains";
+	add_header X-Frame-Options SAMEORIGIN;
+	add_header                  Set-Cookie "HttpOnly";
+	add_header                  Set-Cookie "Secure";
+	add_header Set-Cookie "wzws_sessionid=oGR+i2yAMjE4LjEwOC44LjY3gWI5Y2JkOII0ODZiMmM=; Path=/; Secure; HttpOnly;";
+	
+        
+        location / {
+            try_files $uri $uri/ @router;
+            index  index.html index.htm;
+			client_max_body_size 600m;
+        }
+		
+		location @router {
+		     rewrite ^.*$ /index.html last;
+		}
+		
+		location /prod-api { 
+			rewrite  ^/prod-api/(.*)$ /$1 break;
+			proxy_pass   http://127.0.0.1:8123;
+        }
+	location /prod { 
+		rewrite  ^/prod/(.*)$ /$1 break;
+		proxy_pass   http://127.0.0.1:8123;
+		add_header Cache-Control "no-catche,no-store";
+		if ($request_method = 'OPTIONS') {
+		add_header 'Access-Control-Allow-Origin' '*';
+            	add_header 'Access-Control-Allow-Credentials' 'true';
+            	add_header 'Access-Control-Allow-Methods' 'GET, POST, PATCH, DELETE, PUT, OPTIONS';
+             	add_header 'Access-Control-Allow-Headers' 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,  Access-Control-Expose-Headers, Token, Authorization';
+            	add_header 'Access-Control-Max-Age' 1728000;
+            	add_header 'Content-Type' 'text/plain charset=UTF-8';
+            	add_header 'Content-Length' 0;
+            	return 204;
+        	}
+            proxy_buffering off;
+            proxy_request_buffering off;
+        }
+		client_max_body_size 600m;
+
+        
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+     #配置 https   跨域解决
     server {
         listen       86 ssl;
         server_name  xxx.xxx.com;

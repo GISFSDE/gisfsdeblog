@@ -35,9 +35,7 @@
   "showRibbon": true,
   "deleteFileOption": "trash",
   "expandedFolders": {
-    "posts": [
-      "Templates"
-    ]
+    "posts": []
   },
   "expandedSpaces": [
     "/",
@@ -73,7 +71,7 @@
   "spacesSyncTimeoutSeconds": 10,
   "spacesAutoBackup": true,
   "spacesAutoBackupInterval": 10,
-  "spacesAutoBackupLast": 1690283452771,
+  "spacesAutoBackupLast": 1690196606380,
   "spacesUseAlias": false,
   "precreateVaultSpace": true,
   "fmKeyAlias": "alias",

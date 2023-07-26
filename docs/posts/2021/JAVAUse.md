@@ -33,6 +33,7 @@ tag:
 + [ ] JAVAFX
 + [ ] 工作流
 + [ ] 各种日志
++ [ ] 调用第三方接口
 + [ ] 什么是接口幂等性，不可变，无状态应用程序，水平缩放、重试机制（缓存加锁情况）
 + [ ] JSR303数据校验：javax.validation.constraints
 + [ ] UV、PV统计
@@ -72,6 +73,11 @@ tag:
 + [ ] 常用组件：日志（登录、操作）记录、角色权限、性能监控（在线用户、数据流转、服务器性能）、字典管理、参数设置、公告聊天系统、代码生成、定时任务。[JEECG BOOT 低代码开发平台](https://github.com/jeecgboot/jeecg-boot)【学习业务：代码生成，工作流，文件管理，单点登录，数据性能监控，消息中心】[文档](http://www.jeecg.com/)
 + [ ] 前端：大屏，常用组件
 
+# 调用第三方接口
+## openfiegn
+## RestTemplate
+## HttpClient
+## Java.net.HttpURLConnection
 
 ## 工具
 

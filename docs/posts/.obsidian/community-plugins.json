@@ -15,5 +15,8 @@
   "obsidian-table-generator",
   "obsidian-excel-to-markdown-table",
   "media-extended",
-  "mx-bili-plugin"
+  "mx-bili-plugin",
+  "obsidian-codemirror-options",
+  "obsidian-mind-map",
+  "omnisearch"
 ]

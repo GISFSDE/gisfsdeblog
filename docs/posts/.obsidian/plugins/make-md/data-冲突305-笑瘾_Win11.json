@@ -35,9 +35,7 @@
   "showRibbon": true,
   "deleteFileOption": "trash",
   "expandedFolders": {
-    "posts": [
-      "Templates"
-    ]
+    "posts": []
   },
   "expandedSpaces": [
     "/",
