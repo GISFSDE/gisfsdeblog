@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CommonlyUsed/WORK.md",
+                "file": "Templates/template.md",
                 "mode": "source",
                 "source": false
               }
@@ -74,8 +74,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -95,7 +94,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "CommonlyUsed/WORK.md"
+                "file": "Templates/template.md"
               }
             }
           },
@@ -120,7 +119,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "CommonlyUsed/WORK.md",
+                "file": "Templates/template.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -137,7 +136,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "CommonlyUsed/WORK.md",
+                "file": "Templates/template.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": false
               }
@@ -162,8 +161,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -186,19 +184,19 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "4d7230fbe116f863",
+  "active": "0e3b96905fa4034f",
   "lastOpenFiles": [
-    "2021/2021.md",
+    "Templates/Templates.md",
+    "Templates/template.md",
     "CommonlyUsed/WORK.md",
+    "2021/2021.md",
     "CommonlyUsed/START.md",
     "2021/BMM.md",
     "2021/Algorithm.md",
     "2021/JAVAUse.md",
     "2021/Nginx.md",
     "2021/Docker.md",
-    "Templates/template.md",
     "Templates/VUEPressDemo.md",
-    "Templates/Templates.md",
     "2023/Adobe.md",
     "2023/WeMedia2023.md",
     "2023/2023.md",
