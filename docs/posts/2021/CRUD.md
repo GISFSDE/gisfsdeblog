@@ -7,9 +7,10 @@ category:
   - CRUD
 tag:
   - CRUD
+article: false
 ---
 
-> 各种 CRUD 呀，CRUD只学一次。 :small_airplane:
+> CRUD只学一次。
 
 <!-- more -->
 

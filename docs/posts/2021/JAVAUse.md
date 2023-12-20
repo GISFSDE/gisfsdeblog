@@ -7,72 +7,130 @@ category:
   - JAVA应用
 tag:
   - JAVA应用
+sticker: emoji//1f33c
 ---
 
 > **所有的技术都是为了更好的解决业务**
 
 <!-- more -->
 
-# **菜鸟一站：**
+# **TODO**
+---
+## 优先级
 
-> ### 图例：
->
-> + [ ] 记录
-> + [ ] **进行中**
-> + [x] **完成**
->
-> 目录可参考[kuangstudy](https://www.kuangstudy.com/course?cid=1)
+### 中间件
+### 业务
+### 语言基础
+- [ ] 8以上新特性
+- [x] list 循环删除 ✅ 2023-09-21
+### 软件工程
+- [ ] Lambda
+- [ ] docker
+- [ ] 学习项目升级为SpringCloud
+- [ ] 如何调试BUG
+- [ ] 框架注解速查及其原理
+- [ ] jdk9模块化
+- [ ] devops/Jenkins
+- [ ] 网络相关参数监控
+- [ ] 搭建JAVAFX小案例并插件化项目
+- [ ] 加解密
+- [ ] Maven底层以及相关冲突处理
+- [ ] office生成
+- [ ] 架构命名规范
+- [ ] JAVA程序性能检测
+- [ ] 日志过大如何处理
+- [ ] 权限标识注释
+- [ ]  文件路径问题
+- [ ] JAVA常用类梳理
+- [ ] 框架原理
+- [ ]  .idea 与.iml作用
+- [ ] 分布原理与应用
+- [ ] 代码优雅规范
+- [ ] 实际业务范例
+- [ ] JsonPath
+- [ ] 深拷贝
+- [ ] JAVAFX
+- [ ] 工作流
+- [ ] 各种日志
+- [ ] 调用第三方接口
+- [ ] 什么是接口幂等性，不可变，无状态应用程序，水平缩放、重试机制（缓存加锁情况）
+- [ ] JSR303数据校验：javax.validation.constraints
+- [ ] UV、PV统计
+- [ ] cron表达式、正则表达式
+- [ ] 日志记录（tomcat、mysql）
+- [ ] OFFICE导入导出，多级表头，样式
+- [ ] 文件处理
+- [ ] CURD（所有框架）
+- [ ] 网络通信
+- [ ] 单元测试
+- [ ] 常用工具类（网络、文件【OFFICE、视频】、日志、格式转换、安全加解密、短信、）
+- [ ] 缓存相关
+- [ ] 自定义注解
+- [ ] 开关配置
+- [ ] 扫码登录
+- [ ] jeekins与部署实施
+- [ ] 动态表单设计与实现
+- [ ] 加密如何模糊匹配
+- [ ] 验证码
+- [ ] 外部接口应用
+- [ ] JWT
+- [ ] spring security
+- [ ] 代码生成
+- [ ] 数据库设计(见MySQL优化)
+- [ ] 单点登录
+- [ ] 外发接口规范token验证
+- [ ] 支付
+- [ ] 后台创建数据【创建时间，id，初始数据】
+- [ ] JDK高版本 
+- [ ] 序列化反序列化
+- [ ] MAVEN 如何引入外部 JAR 包
+- [ ] 开源相关
+- [ ] 常用组件：日志（登录、操作）记录、角色权限、性能监控（在线用户、数据流转、服务器性能）、字典管理、参数设置、公告聊天系统、代码生成、定时任务。[JEECG BOOT 低代码开发平台](https://github.com/jeecgboot/jeecg-boot)【学习业务：代码生成，工作流，文件管理，单点登录，数据性能监控，消息中心】[文档](http://www.jeecg.com/)
+- [ ] 前端：大屏，常用组件
+- [x] 接口各种参数及使用情景 ✅ 2023-10-17
+- [x] 分页
+- [x] 加密解密【AES(CBC)】
+- [x] SpringBoot 添加外部jar包
+- [x] 文件压解
+- [x] Long型id  精度缺失  
+- [x] 跨域
+# Lambda
 
-## 业务
+# 代码命名规范
+- camelCase（小驼峰式命名法 —— 首字母小写）
+- PascalCase（大驼峰式命名法 —— 首字母大写）
+- kebab-case（短横线连接式）
+- Snake（下划线连接式）
+项目名：kebab-case
+包名：包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。包名统一使用 单数形式，但是类名如果有复数含义，类名可以使用复数形式
+类名： PascalCase
+方法名、参数名、成员变量、局部变量：camelCase
+常量：常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长。
+抽象类命名使用 Abstract 或 Base 开头
+异常类命名使用 Exception 结尾
+测试类 命名以它要测试的类的名称开始，以 Test 结尾
+其他（阿里巴巴规范）：
+- 代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束
+- 全英文
+- POJO 类中的任何布尔类型的变量，都不要加 is 前缀，否则部分框架解析会引起序列 化错误。
+- 避免在子父类的成员变量之间、或者不同代码块的局部变量之间采用完全相同的命名， 使可读性降低。
+- 杜绝完全不规范的缩写，避免望文不知义。
+- 在常量与变量的命名时，表示类型的名词放在词尾，以提升辨识度。
+- 如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式。
+- 接口类中的方法和属性不要加任何修饰符号（public 也不要加），保持代码的简洁 性，并加上有效的 Javadoc 注释。尽量不要在接口里定义变量，如果一定要定义变量，确定 与接口方法相关，并且是整个应用的基础常量。
+- 【参考】各层命名规约： A) Service/DAO 层方法命名规约 1） 获取单个对象的方法用 get 做前缀。 2） 获取多个对象的方法用 list 做前缀，复数结尾，如：listObjects。 3） 获取统计值的方法用 count 做前缀。 4） 插入的方法用 save/insert 做前缀。 5） 删除的方法用 remove/delete 做前缀。 6） 修改的方法用 update 做前缀。
+- 领域模型命名规约 1） 数据对象：xxxDO，xxx 即为数据表名。 2） 数据传输对象：xxxDTO，xxx 为业务领域相关的名称。 Java 开发手册 4/57 3） 展示对象：xxxVO，xxx 一般为网页名称
+# 数据库命名规范
+库：库名与应用名称尽量一致。
+表 ： kebab-case，无复数
+字段： kebab-case，主键索引名为 pk_字段名；唯一索引名为 uk_字段名；普通索引名则为 idx_字段名，表必备三字段：id, gmt_create, gmt_modified。
+是否   is_name(POJO不能加is,mapper映射)
+小数   decimal，禁止使用 float 和 double
 
-
-+ [x] 文件压解
-+ [ ] 如何调试BUG
-+ [ ] 深拷贝
-+ [x] SpringBoot 添加外部jar包
-+ [ ] JAVAFX
-+ [ ] 工作流
-+ [ ] 各种日志
-+ [ ] 调用第三方接口
-+ [ ] 什么是接口幂等性，不可变，无状态应用程序，水平缩放、重试机制（缓存加锁情况）
-+ [ ] JSR303数据校验：javax.validation.constraints
-+ [ ] UV、PV统计
-+ [ ] cron表达式、正则表达式
-+ [ ] 日志记录（tomcat、mysql）
-+ [ ] OFFICE数据操作解析
-+ [ ] 文件处理
-+ [x] Long型id  精度缺失  
-+ [ ] CURD（所有框架）
-+ [ ] 网络通信
-+ [ ] 单元测试
-+ [ ] 常用工具类（网络、文件【OFFICE、视频】、日志、格式转换、安全加解密、短信、）
-+ [x] 加密解密【AES(CBC)】
-+ [ ] 缓存相关
-+ [ ] 自定义注解
-+ [ ] 开关配置
-+ [ ] 扫码登录
-+ [ ] jeekins与部署实施
-+ [ ] 动态表单设计与实现
-+ [ ] 加密如何模糊匹配
-+ [ ] 验证码
-+ [ ] 外部接口应用
-+ [ ] JWT
-+ [ ] spring security
-+ [ ] 代码生成
-+ [ ] 数据库设计(见MySQL优化)
-+ [x] 分页
-+ [x] 跨域
-+ [ ] 单点登录
-+ [ ] 外发接口规范token验证
-+ [ ] 支付
-+ [ ] 后台创建数据【创建时间，id，初始数据】
-+ [ ] JDK高版本
-+ [ ] 序列化反序列化
-+ [ ] MAVEN 如何引入外部 JAR 包
-+ [ ] 开源相关
-+ [ ] 常用组件：日志（登录、操作）记录、角色权限、性能监控（在线用户、数据流转、服务器性能）、字典管理、参数设置、公告聊天系统、代码生成、定时任务。[JEECG BOOT 低代码开发平台](https://github.com/jeecgboot/jeecg-boot)【学习业务：代码生成，工作流，文件管理，单点登录，数据性能监控，消息中心】[文档](http://www.jeecg.com/)
-+ [ ] 前端：大屏，常用组件
-
+其他：
+单表行数超过 500 万行或者单表容量超过 2GB，才推荐进行分库分表。
+字段允许适当冗余，以提高查询性能，但必须考虑数据一致。冗余字段应遵循： 1） 不是频繁修改的字段。 2） 不是唯一索引的字段。 3） 不是 varchar 超长字段，更不能是 text 字段
+合适的字符存储长度，不但节约数据库表空间、节约索引存储，更重要的是提升检索 速度
 # 调用第三方接口
 ## openfiegn
 ## RestTemplate
@@ -81,11 +139,11 @@ tag:
 
 ## 工具
 
-+ [ ] hutool（JAVA工具类包）
+- [ ] hutool（JAVA工具类包）
 
 ## 理论
 
-+ [x] JAVA常用专业名词
+- [x] JAVA常用专业名词
 
 ![image-20211221110052586](http://qnimg.gisfsde.com/work/image-20211221110052586.png)
 
@@ -117,6 +175,7 @@ yarn global add xxx 等同于 npm install xxx -g 全局安装指定包
 ## SSM
 
 ## SpringBoot
+
 
 ## SpringCloud
 
@@ -279,6 +338,40 @@ pom中添加插件
         </resources>
 ```
 
+# list 循环删除　
+- 普通 for 循环删除（不可靠）
+- 普通 for 循环提取变量删除（抛异常）
+- _**普通 for 循环倒序删除（可靠）**_
+    ```JAVA
+    List<String> list = new ArrayList(initList);  
+    for (int i = list.size() - 1; i > 0; i--) {  
+        String str = list.get(i);  
+        if (str.startsWith("李")) {  
+            list.remove(i);  
+        }  
+    }  
+    System.out.println(list);
+	```
+- 增强 for 循环删除（抛异常）
+- _**迭代器循环迭代器删除（可靠）**
+    ```java
+    List<String> list = new ArrayList(initList);  
+    for (Iterator<String> iterator = list.iterator(); iterator.hasNext(); ) {  
+        String str = iterator.next();  
+        if (str.contains("李")) {  
+            iterator.remove();  
+        }  
+    }  
+    System.out.println(list);
+	```
+- 迭代器循环集合删除（抛异常）
+- 集合 forEach 方法循环删除（抛异常）
+- _**stream filter 过滤（可靠）**_
+```java
+ List<String> list = new ArrayList(initList);  
+ list = list.stream().filter(e -> !e.startsWith("李")).collect(Collectors.toList());  
+ System.out.println(list);
+```
 # 加密解密【AES(CBC)】
 ## 基础原理
 ### 加密方式

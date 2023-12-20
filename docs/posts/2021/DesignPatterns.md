@@ -7,6 +7,7 @@ category:
   - 设计模式
 tag:
   - 设计模式
+sticker: emoji//1f4d0
 ---
 
 
@@ -20,6 +21,11 @@ tag:
 > 学习目标程度：了解即可
 
 <!-- more -->
+# PLAN 
+  - [ ] 设计原则
+  - [ ] 行为型
+  - [ ] 结构型
+  - [ ] 创建型
 
 # 实际运用
 
@@ -105,67 +111,67 @@ tag:
 
 
 
->+ [x] 开闭原则
->+ [x] 里氏替换原则
->+ [x] 依赖倒置原则
->+ [x] 单一职责原则
->+ [x] 接口隔离原则
->+ [x] 迪米特法则
->+ [x] 合成复用原则
++ [ ] 开闭原则
++ [ ] 里氏替换原则
++ [ ] 依赖倒置原则
++ [ ] 单一职责原则
++ [ ] 接口隔离原则
++ [ ] 迪米特法则
++ [ ] 合成复用原则
 
 ## 行为模式
 
-> + [x] 职责链模式（Chain of Responsibility）😎😎😎😎😎
++ [ ] 职责链模式（Chain of Responsibility）😎😎😎😎😎
 
->+ [x] 命令模式（Command）
++ [ ] 命令模式（Command）
 
->+ [x] 迭代器模式（Iterator）
++ [ ] 迭代器模式（Iterator）
 
->+ [x] 调停者（中介者）模式（Mediator）
++ [ ] 调停者（中介者）模式（Mediator）
 
->+ [x] 备忘录模式（Memento）
++ [ ] 备忘录模式（Memento）
 
->+ [x] 观察者模式（Observer）
++ [ ] 观察者模式（Observer）
 
->+ [x] 状态模式（State）
++ [ ] 状态模式（State）
 
->+ [x] 策略模式（Strategy）
++ [ ] 策略模式（Strategy）
 
->+ [x] 模板方法模式（Template Method）
++ [ ] 模板方法模式（Template Method）
 
- >+ [x] 访问者模式（Visitor）
+ + [ ] 访问者模式（Visitor）
 
- >+ [x] 解释器模式（Interpreter） 
+ + [ ] 解释器模式（Interpreter）
 
 ## 结构型模式
 
- >+ [x] 适配器模式（Adapter）
+ + [ ] 适配器模式（Adapter）
 
- >+ [x] 桥接模式（Bridge）
+ + [ ] 桥接模式（Bridge）
 
- >+ [x] 组合模式（Composite）
+ + [ ] 组合模式（Composite）
 
- >+ [x] 装饰模式（Decorator）
+ + [ ] 装饰模式（Decorator）
 
- >+ [x] 外观模式（Facade）
+ + [ ] 外观模式（Facade）
 
- >+ [x] 享元模式（Flyweight）
+ + [ ] 享元模式（Flyweight）
 
- >+ [x] 代理模式（Proxy）
+ + [ ] 代理模式（Proxy）
 
 ## 创建型模式
 
- >+ [x] 简单工厂模式（Simple Factory）
++ [ ] 简单工厂模式（Simple Factory）
 
- >+ [x] 工厂方法模式（Factory Method）
++ [ ] 工厂方法模式（Factory Method）
 
- >+ [x] 抽象工厂模式（Abstract Factory）
++ [ ] 抽象工厂模式（Abstract Factory）
 
- >+ [x] 创建者（生成器）模式（Builder）
++ [ ] 创建者（生成器）模式（Builder）
 
- >+ [x] 原型模式（Prototype）
++ [ ] 原型模式（Prototype）
 
- >+ [x] 单例模式（Singleton）
++ [ ] 单例模式（Singleton）
 
 ## 进阶学习
 

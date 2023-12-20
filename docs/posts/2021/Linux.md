@@ -17,7 +17,18 @@ tag:
 
 ![image-20211027122241544](http://qnimg.gisfsde.com/work/image-20211027122241544.png)
 
+# TODO
+---
+- [x] 理论 
+- [ ] 频率最高linux命令
+- [ ] linux java 端口，防火墙，环境，部署，运维，日志等流程操作
+- [ ] shell所有综合写一个脚本
+- [ ] 所有命令实践时整理表格打印
 # 常用命令
+## 高频率
+```bash
+
+```
 
 ## 帮助命令
 
@@ -646,7 +657,8 @@ ssh userName@ip
 #查看内存占用前十进程信息
 ps aux|head -1;ps aux|grep -v PID|sort -rn -k +4|head
 #查看操作系统的版本
-cat /etc/redhat-release 
+cat /etc/redhat-release
+cat /etc/os-release
 #查看系统内核
 uname –a
 =============== CPU=======================
@@ -1365,7 +1377,43 @@ rpm -ivh *.rpm
 
  
 
- 
+### 人大金仓kingbase安装
+chmod
+- u 表示该文件的拥有者，g 表示与该文件的拥有者属于同一个群体(group)者，o 表示其他以外的人，a 表示这三者皆是。
+- + 表示增加权限、- 表示取消权限、= 表示唯一设定权限。
+- r 表示可读取，w 表示可写入，x 表示可执行，X 表示只有当该文件是个子目录或者该文件已经被设定过为可执行。
+```bash
+#创建新用户
+useradd -m kingbase
+#创建密码
+passwd kingbase
+#创建安装目录、对用户赋权，数据目录安装时指定创建 -p- p 可以是一个路径名称。此时若路径中的某些目录尚不存在，加上此选项后，系统将自动建立好那些尚不存在的目录，即一次可以建立多个目录
+mkdir -p /opt/Kingbase/ES/V8
+chmod o+rwx /opt/Kingbase/ES/V8
+#挂载与取消挂载安装包
+mount KingbaseES_V008R006C007B0024_Lin64_install.iso ./KingbaseESV8
+umount ./KingbaseESV8
+#更改命令行显示语言
+echo $LANG
+export LANG=zh_CN.UTF-8
+#进入挂载的文件夹安装数据库
+cd KingbaseESV8/
+#切换kingbase用户
+su kingbase
+sh setup.sh -i console
+#下载授权文件，解压并安装时指定 https://www.kingbase.com.cn/xzzx/index.htm
+Utf-8、Oracle、大小写不敏感
+
+#切换为root 启动数据库为服务
+su root
+运行 ${安装目录}/install/script/root.sh  /opt/Kingbase/ES/V8/install/script/root.sh
+
+# 启动服务
+sys_ctl -w start -D ${Data 文件目录} -l "${Data 文件目录}/sys_log/startup.log"
+# 停止服务
+sys_ctl stop -m fast -w -D ${Data 文件目录}
+```
+
 
 ### Postgres安装
 

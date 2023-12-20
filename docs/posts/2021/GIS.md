@@ -7,16 +7,33 @@ category:
   - GIS
 tag:
   - GIS
+sticker: emoji//1f30f
 ---
 
 
-关于GIS
+GIS概念、WEB开发框架、工具等
 
 <!-- more -->
+# TODO
+---
+  - [ ] [前端](FrontEnd.md)
+  - [ ] 开发框架【Cesium、Leaflet、Mapbox、OpenLayers】
+  - [ ] 地理信息开发所需知识(地理信息基础、数据制作、服务发布、部署)，
+  - [ ] 所需软件【制图软件（QGSI/ArcGIS），地图服务器（GeoServer/ArcGISServer），空间数据库引擎（PotGIS/ArcSDE），前端GIS库（leaflet.j/openlayer.j/ArcGISAPIforJavaScript）】
+  - [ ] 不同数据格式（OGC规范）【[wfts](https://zhuanlan.zhihu.com/p/543257223)、wms、3DTiles、】以及加载、转换【MapProxy】方式
+  - [ ] 常见业务【占用分析，数据加载，】
+  - [ ] 计算机图形学以及三维
+
+
+
+# 学习记录
+---
+
 # ARCGIS
 ### 坐标系转化
 arcToolBox-数据管理工具-投影和变换-投影
 常用坐标系 2000经纬度(GCS_China_Geodetic_Coordinate_System_2000)
+
 # MAPBOX
 
 ## cgcs2000 Mapbox VUE使用

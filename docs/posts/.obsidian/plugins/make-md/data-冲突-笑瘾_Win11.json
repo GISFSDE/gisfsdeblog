@@ -34,12 +34,22 @@
   "sidebarTabs": true,
   "showRibbon": true,
   "deleteFileOption": "trash",
-  "expandedFolders": {},
+  "expandedFolders": {
+    "posts": [
+      "CommonlyUsed",
+      "CommonlyUsed",
+      "Excalidraw",
+      "Excalidraw",
+      "2021"
+    ]
+  },
   "expandedSpaces": [
     "/",
     null,
+    "posts",
     null
   ],
+  "expandFolderOnClick": true,
   "openFolders": [],
   "fileIcons": [],
   "cachedSpaces": [
@@ -68,7 +78,7 @@
   "spacesSyncTimeoutSeconds": 10,
   "spacesAutoBackup": true,
   "spacesAutoBackupInterval": 10,
-  "spacesAutoBackupLast": 1688917133292,
+  "spacesAutoBackupLast": 1700744035987,
   "spacesUseAlias": false,
   "precreateVaultSpace": true,
   "fmKeyAlias": "alias",
@@ -76,5 +86,6 @@
   "fmKeyColor": "color",
   "fmKeySticker": "sticker",
   "openSpacesOnLaunch": true,
-  "indexSVG": false
+  "indexSVG": false,
+  "readableLineWidth": true
 }

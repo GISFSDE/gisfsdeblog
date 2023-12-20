@@ -20,8 +20,22 @@ tag:
 > **LEVEL【不是每个都学精】**：清晰明了  
 
 # 进度： 【基础篇完成--7.26，高级篇[170](https://www.bilibili.com/video/BV1np4y1C7Yf?p=104&spm_id_from=pageDriver&vd_source=10bfbb2d4bb1646ac73508c202d5f815)，集群篇】
+  + [x] GuLimall基础篇
+  + [ ] **微服务架构篇**
+  + [ ] 高可用集群篇
 
 重点片段：55集附近树相关操作、66-69统一异常处理相关，156解决缓存击穿问题，158分布式锁原理与使用
+		**【Redis缓存实践、Druid数据源监控、Jenkins自动化部署、测试】**
+		·1、分布式基础概念
+		·微服务、注册中心、配置中心、远程调用、Feign、网关
+		·2、基础开发
+		SpringBoot2.0、SpringCloud、Mybatis-PIus、Vue组件化、阿里云对象存储
+		・3、环境
+		·Vagrant、Linux、Docker、MySQL、Redis、逆向工程&人人开源
+		·4、开发规范
+		·数据校验JSR303、全局异常处理、全局统一返回、全局跨域处理
+		·枚举状态、业务状态码、VO与TO与PO划分、逻辑删除
+		·Lombok:@Data、@slf4j
 
 # =====**分布式基础篇**=====
 

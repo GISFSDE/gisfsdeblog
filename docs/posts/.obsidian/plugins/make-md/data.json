@@ -36,8 +36,13 @@
   "deleteFileOption": "trash",
   "expandedFolders": {
     "posts": [
+      "CommonlyUsed",
+      "CommonlyUsed",
+      "Excalidraw",
+      "Excalidraw",
       "Templates",
-      "Templates"
+      "2023",
+      "2023"
     ]
   },
   "expandedSpaces": [
@@ -46,6 +51,7 @@
     "posts",
     null
   ],
+  "expandFolderOnClick": true,
   "openFolders": [],
   "fileIcons": [],
   "cachedSpaces": [
@@ -74,7 +80,7 @@
   "spacesSyncTimeoutSeconds": 10,
   "spacesAutoBackup": true,
   "spacesAutoBackupInterval": 10,
-  "spacesAutoBackupLast": 1690283452771,
+  "spacesAutoBackupLast": 1703034454752,
   "spacesUseAlias": false,
   "precreateVaultSpace": true,
   "fmKeyAlias": "alias",
@@ -82,5 +88,6 @@
   "fmKeyColor": "color",
   "fmKeySticker": "sticker",
   "openSpacesOnLaunch": true,
-  "indexSVG": false
+  "indexSVG": false,
+  "readableLineWidth": true
 }

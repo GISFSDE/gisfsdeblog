@@ -7,6 +7,7 @@ category:
   - 快查
 tag:
   - 快查
+sticker: lucide//search
 ---
 
 > ### Linux,Shell,软件等常用命令快捷键

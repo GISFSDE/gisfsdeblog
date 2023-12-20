@@ -193,13 +193,6 @@ echo 'runoob.com' > test.txt#创建内容文'runoob.com'的test.txt文件
 ```
 
 
-
-
-
-
-
-
-
 ​    git config --global --list 显示 git 配置信息
 ​    git config --global [user.name](http://user.name/) “yourname”，git config --global user.email “email@email.com ”设置全局用户名和邮箱
 ​    ssh-keygen -t rsa -C “邮箱”

@@ -20523,7 +20523,41 @@ show index from 表名\G
 
 
 ## [Postgres与Mysql不同](https://blog.csdn.net/u012843873/article/details/60745287)
+id不自增需创建序列 语法：
+CREATE [ TEMPORARY | TEMP ] SEQUENCE name [ INCREMENT [ BY ] increment ]  
+[ MINVALUE minvalue | NO MINVALUE ] [ MAXVALUE maxvalue | NO MAXVALUE ]  
+[ START [ WITH ] start ] [ CACHE cache ] [ [ NO ] CYCLE ]  
+[ OWNED BY { table.column | NONE } ]
+ 示例：
+create sequence qh_test_quence 
+increment by 1 --步长 
+minvalue 1 --最小值 
+maxvalue 99999 --最大值 
+start 1 --起始值 
+cache 1 --每次生成几个值 
+cycle; --到达最大值或最小值循环(不加默认不循环)
 
+1、序列名常定义为‘seq_XXX’的形式，创建序列不能使用replace；
+2、increment by：序列每次增加的值，负数表示递减，[缺省值](https://so.csdn.net/so/search?q=%E7%BC%BA%E7%9C%81%E5%80%BC&spm=1001.2101.3001.7020)为1；
+3、start with：序列的初始值，缺省值为1；
+4、maxvalue：序列可生成的最大值，缺省值为nomaxvalue，即不设置最大值；系统能产生的最大值为10的27次方；
+5、minvalue：序列可生成的最小值，缺省值为nominvalue，即不设置最小值；
+2.查看当前序列的值
+
+```java
+select * from qh_test_quence;
+```
+
+3.删除序列
+
+```java
+drop sequence qh_test_quence;
+```
+4.使用
+```mysql
+nextval('序列名'::regclass)
+```
+create sequence user_log_id_seq start 
 ## 查询字段备注
 
 ```sql
@@ -20554,6 +20588,7 @@ SELECT st_asgeojson(geom) FROM "ygjcgd" # geojson形式
 2.执行安装扩展
 
 ```mysql
+查看支持的插件 SELECT name FROM pg_available_extensions;
 CREATE EXTENSION postgis;
 CREATE EXTENSION fuzzystrmatch;
 CREATE EXTENSION postgis_tiger_geocoder;

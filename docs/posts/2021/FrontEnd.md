@@ -7,31 +7,102 @@ category:
   - 前端
 tag:
   - 前端
+sticker: emoji//1f308
 ---
 
-> VUE、HTML、JS、、、、
+> UI、VUE、HTML、JS、、、、
 
 <!-- more -->
-
-[TOC]
-
-# 阶段目标
+进度：[07.尚硅谷\_ES6-模板字符串\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1uK411H7on/?p=7&spm_id_from=pageDriver&vd_source=10bfbb2d4bb1646ac73508c202d5f815)
+# TODO
+---
+## 优先级
 
 + [x] VUE2
++ [x] CSS3 ✅ 2023-10-15
++ [x] HTML5 ✅ 2023-10-15
++ [ ] css预处理器（Less、Sass、Stylus选前二）
 + [ ] ES6
-+ [ ] HTML5
-+ [ ] CSS3
++ [ ] 移动端（三种视口、高清显示、适配方案、事件处理）
++ [ ] 工程化（node、webpack、gulp）
++ [ ] 组件
++ [ ] VUE3
++ [ ] react、TS
++ [ ] 小程序
++ [ ] 原生应用（可安装，uni-app、Flutter、ReactNative）
++ [ ] 其他（echarts、three.js、、、）
 
-# 常用综合资源
+## 组件
 
-[Web 开发技术 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web)
+- [ ] 资源加载树（数据操作层次修改）
+- [ ] 文件操作、显示
+- [ ] FORM
+- [ ] TABLE
+- [ ] Pagination
+- [ ] Descriptions 描述列表
+- [ ] ECharts
+- [ ] MessageBox 弹框
+- [ ] Carousel 走马灯
+- [ ] 动画背景
+- [ ] 地图
+## 其他
+- [ ] 代码布局架构
+## BASE
+### [ES6](https://es6.ruanyifeng.com/#README)
+- [ ] 异步同步
+- [ ] class
+### CSS3
 
-# 技术趋势
+### HTML5
 
-## 2022
+## Frame
 
-[TS](https://www.tslang.cn/)、VUE3
+### VUE3
+### React（考虑ing）
+### 安卓（考虑ing）
+### IOS（考虑ing）
 
+## Tool
+### NODE
+### NPM
+
+### MVN
+
+### webpack
+
+## UI
++ [ ] [原型交互](https://js.design/workspace)
++ [ ] UI设计
++ [ ] 平面设计（WEB/APP/小程序/运营插画設計）
++ [ ] 设计规范
++ [ ] 审美
++ [ ] 色彩搭配
++ [ ] 排版
+
+  
+
+## 其他
+
+### ICON
+
+### 中间件
+
+- [ ] Element-UI
+- [ ] Bootstrap
+- [ ] jQuery
+- [ ] Promise
+- [ ] Node.js
+- [ ] AJAX
+- [ ] axios
+- [ ] Webpack5
+- [ ] 微信小程序
+
+## 移动端
+- [ ] Android
+- [ ] IOS
+
+# 学习记录
+---
 # VUE
 
 ## 速查 
@@ -1610,7 +1681,7 @@ module.exports = {
 
 #### 13.路由器的两种工作模式
 
-1. 对于一个url来说，什么是hash值？—— #及其后面的内容就是hash值。
+1. 对于一个url来说，什么是hash值？—— “#”及其后面的内容就是hash值。
 2. hash值不会包含在 HTTP 请求中，即：hash值不会带给服务器。
 3. hash模式：
    1. 地址中永远带着#号，不美观 。
@@ -1635,15 +1706,15 @@ src/util  包下
 
 [Vue动态引入组件_一个无所事事的美男子罢了的博客-CSDN博客_vue 动态引入组件](https://blog.csdn.net/weixin_45114462/article/details/119614980)
 
-# [ES6](https://blog.csdn.net/itzhongzi/article/details/73330681)
+# [ES（ECMAScript）](https://blog.csdn.net/itzhongzi/article/details/73330681)
 
 [JavaScript Array 对象 | 菜鸟教程 (runoob.com)](https://www.runoob.com/jsref/jsref-obj-array.html)
 
-ECMAScript 6
+
 
 ## 变量定义 5 vs 6
 
-ES5
+[ES5](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
 
 1. var定义的变量，没有块的概念，可以跨块{}访问, 不能跨函数访问，可多次重复定义相同变量，定义的变量提前用显示undefine
 
@@ -1709,14 +1780,423 @@ https://uniapp.dcloud.io/
 # Bootstrap
 
 # CSS
+进度：[172\_CSS3\_新增长度单位\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1p84y1P7Z5?p=172&spm_id_from=pageDriver&vd_source=10bfbb2d4bb1646ac73508c202d5f815)
+## css编写位置
+### 行内样式
+- ﻿﻿写在标签的 style 属性中，（又称：内联样式）。
+- ﻿语法：
 
-## CSS预处理器
+```html
+<h1 style="color:red;font-size:60px;">欢迎来到尚硅谷学习</h1>
+```
+    
+- ﻿注意点：
+
+1. ﻿﻿﻿style 属性的值不能随便写，写要符合CSS语法规范，是名：值；的形式。
+2. ﻿﻿行内样式表，只能控制当前标签的样式，对其他标签无效。
+
+•存在的问题：  
+书写繁琐、样式不能复用、并且没有体现：出结构与样式分离 的思想，不推荐大量使用，只有对当前元素添加简单样式时，才偶尔使用。
+内部样式
+### 内部样式
+
+语法： 
+```html
+<style>
+h1 {
+•写在htm1页面内部，将所有的 csS代码提取出来，单独放在<style> 标签中。
+color: red;
+font-size: 40px;
+}
+</style>
+```
+
+注意点：
+
+1. ﻿﻿﻿style标签理论上可以放在 HTML 文档的任何地方，但一般都放在 head  标签中。
+2. ﻿﻿﻿此种写法：样式可以复用、代码结构清晰。
+
+存在的问题：
+1. ﻿﻿并没有实现：结构与样式完全分离。
+2. ﻿﻿﻿多个HTML页面无法复用样式。
+
+
+### 外部样式
+
+- ﻿写在单独的.css 文件中，随后在 HTML 文件中引入使用。
+- ﻿语法:
+
+1. ﻿﻿新建一个扩展名为.css的样式文件，把所有css代码都放入此文件中。  
+
+```css
+ h1{  
+    color: red;
+	font-size: 40px;  
+    }
+```
+
+1. ﻿﻿﻿在 HTML 文件中引入.css 文件。  
+```html
+    <link rel="stylesheet" href="./xxx.css">
+```
+
+•注意点：  
+1.link标签要写在head标签中。
+2. link 标签属性说明：
+- ﻿﻿href：引入的文档来自于哪里。
+- ﻿﻿rel：（relation：关系）说明引入的文档与当前文档之间的关系。
+1. ﻿﻿外部样式的优势：样式可以复用、结构清晰、可触发浏览器的缓存机制，提高访问速度，实现了结构与样式的完全分离。
+2. ﻿﻿﻿实际开发中，几乎都使用外部样式，这是最推荐的使用方式！
+## 样式表优先级
+。优先级规则：行内样式＞内部样式=外部样式
+1. ﻿﻿﻿内部样式、外部样式，这二者的优先级相同，且：后面的 会覆盖 前面的（简记：“后来者居上”）。
+2. ﻿﻿﻿同一个样式表中，优先级也和编写顺序有关，且：后面的会覆盖前面的（简记：“后来者居上”）。
+
+|   |   |   |   |   |
+|---|---|---|---|---|
+|分类|优点|缺点|使用频率|作用范围|
+|行内样式|优先级最高|1.结构与样式未分离<br><br>2.代码结构混乱<br><br>3.样式不能复用|很低|当前标签|
+|内部样式|1.样式可复用<br><br>2.代码结构清晰|1.结构与样式未彻底分离<br><br>2.样式不能多页面复用|一般|当前页面|
+|外部样式|1.样式可多页面复用<br><br>2.代码结构清晰<br><br>3.可触发浏览器的缓存机制<br><br>4.结构与样式彻底分离|需要引入才能使用|<br><br>最高|多个页面|
+
+## CSS语法规范
+CSS 语法由两部分构成：
+- ﻿选择器：找到要添加样式的元素。
+- ﻿声明块：设置具体的样式（声明块是由一个或多个声明组成的），声明的格式为：属性名：属性值；  
+    备注1：最后一个声明后的分号理论上能省略，但最好还是写上。  
+    备注2：选择器与声明块之间，属性名与属性值之间，均有一个空格，理论上能省略，但最好还是写上。
+注释：
+```css
+/*注释*/
+```
+## 代码风格
+
+```css
+   /* - ﻿展开风格 —-开发时推荐，便于维护和调试*/  
+    h1 {  
+    color: red; font-size: 40px;  
+    }
+    /* - ﻿紧凑风格—-项目上线时推荐，可减小文件体积。*/   
+    h1 {color: red; font-size:40px;}
+```
+
+- ﻿备注
+项目上线时，我们会通过工具将【展开风格】的代码，变成【紧凑风格】，这样可以减小文件体积，节约网络流量，同时也能让用户打开网页时速度更快。
+
+## 基本选择器
+基本选择器包括：
+
+1. ﻿﻿﻿通配选择器
+2. ﻿﻿﻿元素选择器
+3. ﻿﻿﻿类选择器
+4. ﻿﻿﻿id选择器
+
+### 通配选择器
+
+- ﻿作用：可以选中所有的 HTML元素。
+- ﻿语法：
+
+*｛
+属性名：属性值；
+｝
+
+・挙例：
+
+```css
+
+*｛
+/* 选中所有元素 */
+color: orange; font-size: 40px;
+｝
+
+```
+
+备注：目前来看通配选择器貌似有点鸡肋，但后面清除样式时，会对我们有很大帮助，后面会详细讲。
+
+### 元素选择器
+
+- ﻿作用：为页面中 某种元素 统一设置样式。  
+- ﻿语法：  
+    标签名｛  
+    属性名：属性值；
+- }
+- ﻿挙例：  
+```css
+/* 选中所有h1元素 */  
+ h1 {  
+ color: orange; font-size: 40px;
+｝
+/* 选中所有p元素 */
+p {
+color: blue; font-size: 60px;
+｝
+```
+ 
+。备注：元素选择器无法实现差异化设置，例如上面的代码中，所有的p元素效果都一样。
+### 类选择器
+
+- ﻿作用：根据元素的class 值，来选中某些元素。  
+    class 翻译过来有：种类、类别的含义，所以 class 值，又称：类名。
+- ﻿语法：
+
+.类名｛属性名：属性值；
+•举例：  
+```css
+/* 选中所有class值为speak的元素 */  
+. speak {  
+color: red;  
+｝  
+/* 选中所有class值为answer的元素 */  
+.answer {  
+color: blue;
+｝
+```
+
+。注意点：
+1. ﻿﻿元素的 class 属性值不带，，但csS的类选择器要甜。
+2. ﻿﻿﻿class 值，是我们自定义的，按照标准：不要使用纯数字、不要使用中文、尽量使用英文与数字的组合，若由多个单词组成，使用-做连接，例如：left-menu，且命名要有意义，做到“见名知意”。
+﻿﻿﻿一个元素不能写多个 class 属性，下面是 错误示例：  
+```html
+    <！--该写法错误，元素的属性不能重复，后写的会失效-->  
+    <h1 class="speak" class="big">你好啊</h1>
+
+
+```
+﻿﻿﻿一个元素的 class 属性，能写多个值，要用空格隔开，例如： 
+```html
+     <！-— 该写法正确，class属性，能写多个值-->  
+    <h1 class="speak big">你好啊</h1> 
+```
+ 
+### ID选择器
+
+- ﻿作用：根据元素的 id属性值，来精准的选中某个元素。
+- ﻿语法：
+```css
+#id值｛
+	属性名：属性值；
+｝
+```
+
+- ﻿举例：  
+```css
+    /* 选中id值为earthy的那个元素 */
+	#earthy｛  
+    color: red; font-size: 60px;
+	}
+```
+
+- ﻿注意：
+- ﻿id 属性值：尽量由字母、数字、下划线（-）、短杠（ ）组成，最好以字母开头、不要包含空格、区分大小写。
+- ﻿一个元素只能拥有一个 id 属性，多个元素的 id属性值不能相同。
+- ﻿一个元素可以同时拥有id和 class 属性。
+## 复合选择器
+### 交集选择器
+·作用：选中同时符合多个条件的元素。
+交集有并且的含义(通俗理解：即…又…的意思)，例如：年轻且长得帅。
+。语法：选择器1选择器2选择器3.…选择器n{}
+·举例：
+```css
+/*选中：类名为beauty的p元素，为此种写法用的非常多！！！！*/
+p.beauty{
+color:blue;
+}
+/*选中：类名包含rich和beauty的元素*/
+rich.beauty{
+color:green;
+```
+
+・注意
+1.有标签名，标签名必须写在前面。
+2.1d选择器、理论上可以作为交集的条件，但实际应用中几乎不用一一因为没有意义。
+3.交集选择器中**不可能**出现**两个元素选择器**，因为一个元素，不可能即是p元素又是span元素。
+4.用的最多的交集选择器是：元素选择器配合类名选择器，例如：**p.beauty**。
+
+### 并集选择器
+作用：选中多个选择器对应的元素，又称：**分组选择器**。
+所谓并集就是或者的含义(通俗理解：要么…要么…的意思)，例如：给我转10万块钱或者我报警。
+·语法：**选择器1，选择器2，选择器3，…选择器n{}**
+多个选择器通过，连接，此处，的含义就是：**或**。
+·举例：
+```css
+/*选中id为peiqi,或类名为rich,或类名为beauty的元素*/
+#peiqi,
+.rich,
+beauty{
+font-size:40px;
+background-color:skyblue;
+width:200px;
+}
+```
+
+·注意：
+1.并集选择器，我们一般竖着写。
+2.任何形式的选择器，都可以作为并集选择器的一部分。
+3.并集选择器，通常用于集体声明，可以缩小样式表体积。
+
+### 后代选择器
+作用：选中指定元素中，符合要求的后代元素。
+语法：选择器1选择器2选择器3…选择器n{}
+(先写祖先，再写后代)
+选择器之间，用空格隔开，空格可以理解为："xxx中的"，其实就是后代的意思。
+选择器1234..n，可以是我们之前学的任何一种选择器。
+·举例：
+```css
+/*选中u1中的所有11*/
+u11i{
+color:red;
+}
+/*选中u1中所有1i中的a*/
+ul li a{
+color:orange;
+}
+/*选中类名为subject元素中的所有1i*/
+subject li{
+color:blue;
+}
+/*选中类名为subject元素中的所有类名为front-end的li*/
+subject li.front-end{
+color:blue;
+}
+```
+·注意：
+1.后代选择器，最终选择的是后代，不选中祖先。
+2.儿子、孙子、重孙子，都算是后代。
+3.结构一定要符合之前讲的HTML嵌套要求，例如：不能p中写h1~h6。
+### 子代选择器
+·作用：选中指定元素中，符合要求的子元素（儿子元素）。(先写父，再写子)
+子代选择器又称：子元素选择器、子选择器。
+语法：选择器1>选择器2>选择器3>…选择器n
+选择器之间，用>隔开，>可以理解为："xxx的子代"，其实就是儿子的意思。
+选择器1234.·.n,，可以是我们之学的任何一种选择器。
+·举例：
+```css
+/*div中的子代a元素*/
+div>a{
+color:red;
+}
+/*类名为persons的元素中的子代a元素*/
+persons>a{
+color:red;
+}
+```
+
+注意：
+1.子代选择器，最终选择的是子代，不是父级。
+2.子、孙子、重孙子、重重孙子…统称后代！，子就是指儿子。
+### 兄弟选择器
+·相邻兄弟选择器：
+作用：选中指定元素后，符合条件的**相邻兄弟**元素。
+所谓相邻，就是紧挨着他的下个，简记：睡在我下铺的兄弟。
+语法：**选择器1+选择器2{}**。
+示例：
+```css
+/*选中div后相邻的兄弟p元素*/
+div+p{
+color:red;
+}
+```
+
+·通用兄弟选择器：
+作用：选中指定元素后，符合条件的**所有兄弟**元素。(简记：睡在我下铺的所有兄弟)
+语法：**选择器1~选择器2{}**。
+实例：
+```css
+/*选中div后的所有的兄弟p元素*/
+div~p{
+color:red;
+}
+```
+
+注意：两种兄弟选择器，选择的是**下面**的兄弟。
+### 属性选择器
+·作用：选中属性值符合一定要求的元素。
+·语法：
+1.【属性名】选中具有某个属性的元素。
+2.[属性名=“值“]选中包含某个属性，且属性值等于指定值的元素。
+3.[属性名="值"]选中包含某个属性，且属性值以指定的值开头的元素。
+4.[属性名$="值“]选中包含某个属性，且属性值以指定的值结尾的元素。
+5.[属性名*=“值”]选择包含某个属性，属性值包含指定值的元素。
+举例：
+```css
+/*选中具有tit1e属性的元素*/
+div[title]{color:red;}
+/*选中title属性值为atguigu的元素*/
+div[title="atguigu"]{color:red;}
+/*选中title属性值以a开头的元素*/
+div[title^="a"]{color:red;}
+/*选中title属性值以u结尾的元素*/
+div[titleS="u"]{color:red;}
+/*选中title属性值包含g的元素*/
+div[title*="g"]{color:red;}
+```
+### 伪类选择器
+作用：选中特殊状态的元素。
+如何理解“伪”？一虚假的，不是真的。
+如何理解“伪类”？一像类(class),但不是类，是元素的一种特殊状态。
+
+常用的伪类选择器：
+#### 一、动态伪类：
+1.**:link**超链接未被访问的状态。
+2.**:visited**超链接访问过的状态。
+3.**:hover**鼠标悬停在元素上的状态。
+4.**:active**元素激活的状态。
+什么是激活？一一按下鼠标不松开。
+注意点：遵循LVHA的顺序，即：link、visited、hover、active.
+5.**:focus**获取焦点的元素。
+表单类元素才能使用：focus伪类。
+当用户：点击元素、触摸元素、或通过键盘的“tab”键等方式，选择元素时，就是获得焦点。
+#### 二、结构伪类
+常用的：
+1. :first-child 所有兄弟元素中的第一个。
+2. :last-child 所有兄弟元素中的最后一个。
+3. :nth-child(n) 所有兄弟元素中的第 n 个。
+4. :first-of-type 所有同类型兄弟元素中的第一个。
+5. :last-of-type 所有同类型兄弟元素中的最后一个。
+6. :nth-of-type(n) 所有同类型兄弟元素中的 第n个 。
+关于n 的值：
+1. 0 或不写：什么都选不中 —— 几乎不用。
+2. n ：选中所有子元素 —— 几乎不用。
+3. 1~正无穷的整数 ：选中对应序号的子元素。
+4. 2n 或 even ：选中序号为偶数的子元素。
+5. 2n+1 或 odd ：选中序号为奇数的子元素。
+6. -n+3 ：选中的是前3 个。
+了解即可：
+1. :nth-last-child(n) 所有兄弟元素中的倒数第 n 个。
+2. :nth-last-of-type(n) 所有同类型兄弟元素中的 倒数第n个 。
+3. :only-child 选择没有兄弟的元素（独生子女）。
+4. :only-of-type 选择没有同类型兄弟的元素。
+5. :root 根元素。
+6. :empty 内容为空元素（空格也算内容）。
+#### 三、否定伪类：
+:not(选择器) 排除满足括号中条件的元素。
+#### 四、UI伪类：
+1. :checked 被选中的复选框或单选按钮。
+2. :enable 可用的表单元素（没有 disabled 属性）。
+3. :disabled 不可用的表单元素（有disabled 属性）。
+#### 五、目标伪类（了解）
+:target 选中锚点指向的元素。
+#### 六、语言伪类（了解）
+:lang() 根据指定的语言选择元素（本质是看lang 属性的值）。
+### 伪元素选择器
+作用：选中元素中的一些特殊位置。
+常用伪元素：
+::first-letter 选中元素中的第一个文字。
+::first-line 选中元素中的第一行文字。
+::selection 选中被鼠标选中的内容。
+::placeholder 选中输入框的提示文字。
+::before 在元素最开始的位置，创建一个子元素（必须用 content 属性指定内容）。
+::after 在元素最后的位置，创建一个子元素（必须用 content 属性指定内容）。
+
+
+
+
 
 # Ajax
 
 # JQuery
 
-# Axios
+# [Axios](https://www.axios-http.cn/)
 
 ## vue-axios
 
@@ -1834,32 +2314,34 @@ new Vue({
 //使用：复制
 ```
 
+
+# 其他
+---
+## 前端开发流程
+
+原型图->系统交互图->UI设计图-切图->代码实现
+## 常用综合资源
+
+[Web 开发技术 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web)
+
+## 技术趋势
+
+### 2022
+
+[TS](https://www.tslang.cn/)、VUE3
 ## 组件
 
 #### [tree](https://element.eleme.cn/#/zh-CN/component/tree#attributes)动态新增子节点
 
-# [iconfont-阿里巴巴矢量图标库](https://www.iconfont.cn/)
+### [iconfont-阿里巴巴矢量图标库](https://www.iconfont.cn/)
 
+## 开发技巧
 
-
-
-
-# 其他
-
-1. Ajax：ajax最早出现的发送后端请求技术，隶属于原始js中，核心使用XMLHttpRequest对象，多个请求之间如果有先后关系的话，就会出现回调地狱。
-2. Jquery Ajax：是jQuery框架中的发送后端请求技术，由于jQuery是基于原始的基础上做的封装，所以，jquery Ajax自然也是原始ajax的封装。
-3. Promise:Promise主要用于解决异步回调嵌套的问题。
-4. Fetch：fetch号称是AJAX的替代品，是在ES6出现的，使用了ES6中的promise对象。Fetch是基于promise设计的。Fetch的代码结构比起ajax简单多了，参数有点像jQuery ajax。但是，一定记住fetch不是ajax的进一步封装，而是原生js。Fetch函数就是原生js，没有使用XMLHttpRequest对象。
-5. axios：axios是通过promise实现对ajax技术的一种封装，就像jQuery实现ajax封装一样。即*ajax技术实现了网页的局部数据刷新，axios实现了对ajax的封装。它不仅可以在客户端使用，也可以在nodejs端使用，也可以在请求和响应阶段进行拦截*
-5. 
-
-# 开发技巧
-
-## VsCode代码片段模板
+### VsCode代码片段模板
 
 添加路径：Windows/Linux: File→Preferences→User Snippets macOS: Code→Preferences→User Snippets
 
-### 示例：VUE
+#### 示例：VUE
 
 ```vue
 "Print to console": {
@@ -1942,7 +2424,7 @@ new Vue({
 
 
 
-## 调试技巧
+### 调试技巧
 
 1. 侵入式：代码中添加debugger；
 
@@ -1958,11 +2440,11 @@ ctrl+F5强制刷新缓存
 
 
 
-# 设计之美
+## 设计之美
 
-# 开发规范
+## 开发规范
 
-## 命名规范（[VUE](https://v2.cn.vuejs.org/v2/style-guide)）
+### 命名规范（[VUE](https://v2.cn.vuejs.org/v2/style-guide)）
 
 - camelCase（小驼峰式命名法 —— 首字母小写）
 - PascalCase（大驼峰式命名法 —— 首字母大写）
@@ -1997,11 +2479,11 @@ JS
 
 
 
-# 综合应用
+## 综合应用
 
-## iframe
+### iframe
 
-### [iframe 父子间传值通信](https://www.cnblogs.com/dxt510/p/11151744.html)
+#### [iframe 父子间传值通信](https://www.cnblogs.com/dxt510/p/11151744.html)
 
 1、同域 iframe 父子间传值
 
@@ -2123,7 +2605,7 @@ export default {
 \</script>
 ```
 
-### 取消边框
+#### 取消边框
 
 ```html
 \<iframe src="https://blog.csdn.net/qq_33583069/article/details/111240367" style="width:100%;height:1100px" name="iframe_a"  frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes">\</iframe>
@@ -2131,7 +2613,7 @@ export default {
 
 ​    
 
-## 接口
+### 接口
 
 ```javascript
 //导入
@@ -2156,15 +2638,15 @@ axios.patch(url[, data[, config]])
       });
 ```
 
-## VUE深拷贝浅拷贝
+### VUE深拷贝浅拷贝
 
-## 缓存
+### 缓存
 
-### cookie 
+#### cookie 
 
 Cookie是存储在用户计算机上的小文件，保存特定客户端和网站的适量数据，并可以有Web服务器或客户端浏览器访问，允许服务器提供针对特定用户定制的页面，或者页面本身可以包含一些知道cookie中的数据的脚本。
 
-#### 存取
+##### 存取
 
 ```js
 //根据名称获取Cookie
@@ -2188,7 +2670,7 @@ function setCookie(cname, cvalue, exdays) {
 //使用时一定要修改 .xxxxx.com 为你的域名，  如www.baidu.com 改为.baidu.com
 ```
 
-#### 常规
+##### 常规
 
 ```js
 function setCookie(cname,cvalue,exdays){
@@ -2222,7 +2704,7 @@ function checkCookie(){
 
 
 
-#### 跨域cookie 
+##### 跨域cookie 
 
 ```js
 function setCookie(c_name, value, expiredays) {
@@ -2238,15 +2720,15 @@ function setCookie(c_name, value, expiredays) {
 	}
 ```
 
-### sessionStorage:临时的会话存储
+#### sessionStorage:临时的会话存储
 
 ​    只要当前的会话窗口未关闭，存储的信息就不会丢失，即便刷新了页面，或者在编辑器中更改了代码，存储的会话信息也不会丢失。
 
-### localStorage:永久存储
+#### localStorage:永久存储
 
  会一直将数据存储在客户端的储存方式，即使关闭了浏览器，下次打开的时候仍然可以看到之前存储的未主动清楚的数据(即便是杀毒软件或者浏览器自带的清除功能，也不能将localStorage存储的数据清除掉)
 
-#### 相关操作
+##### 相关操作
 
 ```js
 		//设置缓存
@@ -2281,9 +2763,9 @@ function setCookie(c_name, value, expiredays) {
         console.log(sessionStorage.getItem('name'), sessionStorage.age)
 ```
 
-## 数据类型转换
+### 数据类型转换
 
-## 判断终端类型
+### 判断终端类型
 
 ```js
 //判断终端类型
@@ -2302,7 +2784,7 @@ function setCookie(c_name, value, expiredays) {
       }
 ```
 
-## VUE项目局域网访问
+### VUE项目局域网访问
 
 1.开启对应端口的防火墙
 
@@ -2334,7 +2816,7 @@ webpack.dev.conf.js
 
 
 
-## Cannot find module '@/views/dgrh/project/index
+### Cannot find module '@/views/dgrh/project/index
 
 ```js
 export const loadView = (view) => { // 路由懒加载
@@ -2343,7 +2825,7 @@ export const loadView = (view) => { // 路由懒加载
 }
 ```
 
-## 未操作监听
+### 未操作监听
 
 ```js
     actionListener() {
@@ -2377,7 +2859,7 @@ export const loadView = (view) => { // 路由懒加载
     },
 ```
 
-## 获取url相关参数
+### 获取url相关参数
 
 ```
 var url      = window.location.href;  // 返回完整 URL (https://www.runoob.com/html/html-tutorial.html)
@@ -2398,7 +2880,7 @@ function getQueryVariable(variable)
 }
 ```
 
-## 同步异步
+### 同步异步
 
 JS是**单线程**的，**同步**是几件事一个事做完再做下个事，**异步**是几件事中间一件事可先跳过，剩下的事全部执行完后执行跳过的事。异步比如：定时器、事件绑定、Ajax读取数据、回调函数。
 

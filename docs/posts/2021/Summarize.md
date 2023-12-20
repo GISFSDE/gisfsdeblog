@@ -7,6 +7,7 @@ category:
   - 年月总结
 tag:
   - 年月总结
+article: false
 ---
 
 > 年月总结，技术情况。

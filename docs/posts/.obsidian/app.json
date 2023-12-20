@@ -1,10 +1,15 @@
 {
-  "showLineNumber": false,
+  "showLineNumber": true,
   "defaultViewMode": "source",
   "livePreview": true,
   "readableLineLength": false,
-  "spellcheckLanguages": [
-    "zh-CN",
-    "en-GB"
-  ]
+  "spellcheckLanguages": null,
+  "showIndentGuide": true,
+  "pdfExportSettings": {
+    "includeName": true,
+    "pageSize": "A4",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
 }

@@ -7,6 +7,7 @@ category:
   - 健身穿搭
 tag:
   - 健身穿搭
+sticker: emoji//1f4aa
 ---
 > ### 身体是革命的本钱
 

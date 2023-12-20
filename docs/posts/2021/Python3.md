@@ -8,8 +8,10 @@ category:
 tag:
   - Python 学习
 ---
-
-# Python3学习
+# TODO
+---
++ [ ] 爬虫了解，Python复习
+# Python3学习记录
 
 # [简介](https://www.python.org/about/)
 

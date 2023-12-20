@@ -7,6 +7,7 @@ category:
   - 程序员英语
 tag:
   - 程序员英语
+sticker: emoji//1f442
 ---
 
 > # 新学四问

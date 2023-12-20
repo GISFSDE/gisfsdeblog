@@ -7,6 +7,7 @@ category:
   - 音乐
 tag:
   - 音乐
+sticker: emoji//1f3b8
 ---
 
 > 乐理、吉他、尤克里里、钢琴、拇指琴
